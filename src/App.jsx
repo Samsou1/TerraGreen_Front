@@ -9,7 +9,6 @@ import Resetpassword from "./pages/ResetPassword";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import Footer from "./components/Footer";
-import './App.css'
 
 function App() {
 

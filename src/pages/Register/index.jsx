@@ -21,6 +21,7 @@ function Register() {
       try {
         await APIManager.registerUser(data);
         navigate('/');
+        window.location.reload();
       } catch (err) {
         console.error(err)
       }
