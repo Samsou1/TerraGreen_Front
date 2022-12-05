@@ -1,39 +1,36 @@
-import { useState } from 'react';
+import { useState } from "react";
 import APIManager from "../../services/api";
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function Register() {
+function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
       user: {
         email: email,
-        password: password
-      }
+        password: password,
+      },
+    };
+    try {
+      await APIManager.loginUser(data);
+      navigate("/");
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
     }
-    if (password === confirmPassword) {
-      try {
-        await APIManager.registerUser(data);
-        navigate('/');
-      } catch (err) {
-        console.error(err)
-      }
-    } else {
-      return <div> Password do not match </div>
-    }
-  }
+  };
+
   return (
     <>
-      <h1 className="register-title">Register</h1>
-      <form onSubmit={handleSubmit} className="register-form-container">
-        <div className='input-container'>
-          <label htmlFor="email">Email </label>
+      <h1 className="login-title">Login</h1>
+      <form onSubmit={handleSubmit} className="login-form-container">
+        <div className="input-container">
+          <label htmlFor="username">Email</label>
           <input
             onChange={(e) => setEmail(e.target.value)}
             value={email}
@@ -42,7 +39,7 @@ function Register() {
             placeholder="Email"
           />
         </div>
-        <div className='input-container'>
+        <div className="input-container">
           <label htmlFor="password">Password</label>
           <input
             onChange={(e) => setPassword(e.target.value)}
@@ -52,21 +49,23 @@ function Register() {
             placeholder="Password"
           />
         </div>
-        <div className='input-container'>
-          <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            value={confirmPassword}
-            type="password"
-            id="confirmPassword"
-            placeholder="Password"
-          />
+        <Link className="login-forgot-password" to="/resetpassword">
+          Forgot your password?
+        </Link>
+        <input type="submit" value="Login" />
+        <div className="login-no-account">
+          <p>
+            Don't have an account?{" "}
+            <span>
+              <Link className="link" to="/register">
+                Register
+              </Link>
+            </span>
+          </p>
         </div>
-        <input type="submit" value="Register" />
-        <p>Already have an account? <span><Link className="link" to='/login' >Log in</Link></span></p>
       </form>
     </>
-  )
+  );
 }
 
-export default Register;
+export default Login;
