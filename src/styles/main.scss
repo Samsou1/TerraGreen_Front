@@ -2,5 +2,9 @@
 @import "./abstracts/variables";
 @import "./abstracts/reset";
 @import "./abstracts/main";
+
 @import "./components/Navbar";
 @import "./components/LogoutButton";
+
+@import "./pages/Login";
+@import "./pages/Register";
