@@ -1,0 +1,172 @@
+header {
+  font-family: $font-family-title;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-blue;
+  padding: 10px;
+  & div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    & a:first-child img {
+      height: 40px;
+    }
+    & a:last-child {
+      color: $color-navy;
+      & :hover {
+        color: $color-whiteblue;
+      }
+      & h1 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  & nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style-type: none;
+    margin-top: 25px;
+    & li {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      & a {
+        letter-spacing: 0.2px;
+        &:link {
+          color: $color-navy;
+        }
+        &:visited {
+          color: $color-navy;
+        }
+      }
+    }
+  }
+
+  // .toggle-button {
+  //   position: absolute;
+  //   right: 10px;
+  //   top: 35px;
+  //   padding: 6px;
+  //   border: 2px solid $color-navy;
+  //   border-radius: 5px;
+  //   background-color: transparent;
+  //   color: $color-navy;
+  //   font-size: 0.8rem;
+  //   font-weight: bold;
+  // }
+
+  .toggle-button {
+    height: 80px;
+    width: 80px;
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    padding: 5px;
+    font-size: 18px;
+  }
+}
+
+svg {
+  height: 80px;
+  position: absolute;
+  width: 80px;
+}
+
+.burger {
+  filter: url(#gooeyness);
+}
+.x {
+  transform: scale(0);
+  transition: transform 400ms;
+}
+.line {
+  fill: none;
+  stroke: $color-whiteblue;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform-origin: 50%;
+  transition: stroke-dasharray 500ms 200ms, stroke-dashoffset 500ms 200ms, transform 500ms 200ms;
+}
+.x .line {
+  stroke-width: 5.5px;
+}
+
+.toggle-button .line1 {
+  stroke-dasharray: 21 185.62753295898438;
+  transition-delay: 0;
+}
+.toggle-button .line2 {
+  stroke-dasharray: 21 178.6514129638672;
+  transition-delay: 30ms;
+}
+.toggle-button .line3 {
+  stroke-dasharray: 21 197.92425537109375;
+  transition-delay: 60ms;
+}
+.toggle-button .line4 {
+  stroke-dasharray: 21 190.6597137451172;
+  transition-delay: 90ms;
+}
+.toggle-button .line5 {
+  stroke-dasharray: 21 208.52874755859375;
+  transition-delay: 120ms;
+}
+.toggle-button .line6 {
+  stroke-dasharray: 21 186.59703063964844;
+  transition-delay: 150ms;
+}
+.active.toggle-button .line1 {
+  stroke-dasharray: 5 185.62753295898438;
+  stroke-dashoffset: -141px;
+}
+.active.toggle-button .line2 {
+  stroke-dasharray: 5 178.6514129638672;
+  stroke-dashoffset: -137px;
+}
+.active.toggle-button .line3 {
+  stroke-dasharray: 5 197.92425537109375;
+  stroke-dashoffset: -176px;
+}
+.active.toggle-button .line4 {
+  stroke-dasharray: 5 190.6597137451172;
+  stroke-dashoffset: -159px;
+}
+.active.toggle-button .line5 {
+  stroke-dasharray: 5 208.52874755859375;
+  stroke-dashoffset: -139px;
+}
+.active.toggle-button .line6 {
+  stroke-dasharray: 5 186.59703063964844;
+  stroke-dashoffset: -176px;
+}
+.active.toggle-button .x {
+  transition: transform 400ms 250ms;
+}
+
+@media (min-width: $breakpoint-medium-devices) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 55px;
+    height: 80px;
+    & nav ul {
+      flex-direction: row;
+      gap: 10px;
+      margin-top: 0;
+      & li {
+        margin-bottom: 0;
+        & a:hover {
+          color: $color-whiteblue;
+          border-bottom: 2px solid $color-whiteblue;
+        }
+      }
+    }
+    .toggle-button {
+      display: none;
+    }
+  }
+}
