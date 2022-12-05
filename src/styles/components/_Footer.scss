@@ -1,0 +1,16 @@
+footer {
+  font-family: $font-family-title;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 55px;
+  background-color: $color-blue;
+  height: 80px;
+}
+
+.company {
+  color: $color-navy;
+  &:hover {
+    color: $color-whiteblue;
+  }
+}
