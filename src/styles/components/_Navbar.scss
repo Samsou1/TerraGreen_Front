@@ -54,17 +54,18 @@ header {
   }
 }
 
-.toggle-button {
-  position: absolute;
-  right: 10px;
-  top: 25px;
+.plate {
   height: 50px;
   width: 50px;
-  cursor: pointer;
+  position: absolute;
+  top: 25px;
+  right: 15px;
 }
 
-.plate {
-  height: 0px;
+.toggle-button {
+  position: absolute;
+  height: 50px;
+  width: 50px;
 }
 
 .burger {
@@ -95,67 +96,67 @@ header {
   transition: transform 400ms 350ms;
 }
 
-.plate2 .line1 {
+.plate .line1 {
   stroke-dasharray: 21 185.62753295898438;
   transition-delay: 0;
 }
 
-.plate2 .line2 {
+.plate .line2 {
   stroke-dasharray: 21 178.6514129638672;
   transition-delay: 30ms;
 }
 
-.plate2 .line3 {
+.plate .line3 {
   stroke-dasharray: 21 197.92425537109375;
   transition-delay: 60ms;
 }
 
-.plate2 .line4 {
+.plate .line4 {
   stroke-dasharray: 21 190.6597137451172;
   transition-delay: 90ms;
 }
 
-.plate2 .line5 {
+.plate .line5 {
   stroke-dasharray: 21 208.52874755859375;
   transition-delay: 120ms;
 }
 
-.plate2 .line6 {
+.plate .line6 {
   stroke-dasharray: 21 186.59703063964844;
   transition-delay: 150ms;
 }
 
-.active.plate2 .line1 {
+.active .line1 {
   stroke-dasharray: 5 185.62753295898438;
   stroke-dashoffset: -155px;
 }
 
-.active.plate2 .line2 {
+.active .line2 {
   stroke-dasharray: 5 178.6514129638672;
   stroke-dashoffset: -150px;
 }
 
-.active.plate2 .line3 {
+.active .line3 {
   stroke-dasharray: 5 197.92425537109375;
   stroke-dashoffset: -190px;
 }
 
-.active.plate2 .line4 {
+.active .line4 {
   stroke-dasharray: 5 190.6597137451172;
   stroke-dashoffset: -180px;
 }
 
-.active.plate2 .line5 {
+.active .line5 {
   stroke-dasharray: 5 208.52874755859375;
   stroke-dashoffset: -160px;
 }
 
-.active.plate2 .line6 {
+.active .line6 {
   stroke-dasharray: 5 186.59703063964844;
   stroke-dashoffset: -186px;
 }
 
-.active.plate2 .x {
+.active .x {
   transition: transform 400ms 250ms;
 }
 
@@ -182,7 +183,7 @@ header {
       }
     }
 
-    .toggle-button {
+    .plate {
       display: none;
     }
   }
