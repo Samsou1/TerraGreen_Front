@@ -2,7 +2,7 @@ header {
   font-family: $font-family-title;
   display: flex;
   flex-direction: column;
-  background-color: $color-blue;
+  background-color: $color-green-light;
   padding: 10px;
 
   & div {
@@ -16,10 +16,10 @@ header {
     }
 
     & a:last-child {
-      color: $color-navy;
+      color: $color-green-dark;
 
       & :hover {
-        color: $color-whiteblue;
+        color: $color-green-medium;
       }
 
       & h1 {
@@ -43,11 +43,11 @@ header {
         letter-spacing: 0.2px;
 
         &:link {
-          color: $color-navy;
+          color: $color-green-dark;
         }
 
         &:visited {
-          color: $color-navy;
+          color: $color-green-dark;
         }
       }
     }
@@ -79,7 +79,7 @@ header {
 
 .line {
   fill: none;
-  stroke: $color-whiteblue;
+  stroke: $color-green-dark;
   stroke-width: 6px;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -177,8 +177,8 @@ header {
         margin-bottom: 0;
 
         & a:hover {
-          color: $color-whiteblue;
-          border-bottom: 2px solid $color-whiteblue;
+          color: $color-green-medium;
+          border-bottom: 2px solid $color-green-medium;
         }
       }
     }
