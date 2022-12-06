@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/react.svg";
+import logo from "../../assets/images/logo.png";
 import LogoutButton from "../LogoutButton";
 
 const Navbar = () => {
@@ -29,7 +29,7 @@ const Navbar = () => {
           <img src={logo} alt="logo"></img>
         </Link>
         <Link to="/">
-          <h1 className="company">ImmoCorps</h1>
+          <h1 className="company">TerraGreen</h1>
         </Link>
       </div>
       <nav>
