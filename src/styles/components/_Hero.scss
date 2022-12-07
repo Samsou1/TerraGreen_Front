@@ -29,7 +29,7 @@
       margin: 0 0 25px 0;
     }
     & a {
-      background-color: #1B4965;
+      background-color: $color-green-dark;
       color: white;
       padding: 15px 0;
       border: none;
@@ -39,7 +39,7 @@
       cursor: pointer;
       &:hover {
         transition-duration: 0.2s;
-        background-color: #5FA8D3;
+        background-color:$color-green-medium;
       }
     }
   }
