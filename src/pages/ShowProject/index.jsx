@@ -10,6 +10,9 @@ const ShowProject = () => {
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
   const [status, setStatus] = useState("");
+  const [likes, setLikes] = useState(0);
+  const [liked, setLiked] = useState(false)
+  const [comments, setComments] = useState([]);
   const navigate = useNavigate();
 
   const setAll = (data) => {
@@ -17,12 +20,19 @@ const ShowProject = () => {
     setRegion(data.region);
     setStatus(data.status);
     setProject(data.project);
+    setLikes(data.likes.length);
+    setComments(data.comments);
+    if(Cookies.get('currentUser'))[
+      data.likes.filter(like => like.user_id == JSON.parse(Cookies.get('currentUser')).id).length === 0? setLiked(false) : setLiked(true)
+    ]
   };
 
   useEffect(() => {
     const id = window.location.pathname.split("/")[2];
     const fetchProject = async () => {
-      await APIManager.getProject(id).then((data) => setAll(data));
+      await APIManager.getProject(id).then((data) => {
+        setAll(data);
+      });
     };
     fetchProject().catch(console.error);
   }, []);
@@ -43,6 +53,18 @@ const ShowProject = () => {
           <p>City: {project.city}</p>
           <p>Postal code: {project.postal_code}</p>
           <p>GPS: {project.GPS}</p>
+          <p>Likes: {likes}</p>
+          <ul>
+            Comments:
+            {comments.map((comment) => {
+              return (
+                <li key={comment.id + comment.user_id}>
+                  <h3>{comment.user.username}</h3>
+                  <p>{comment.content}</p>
+                </li>
+              );
+            })}
+          </ul>
           <span className="current_user_access">
             <button className="edit_btn">
               <span>
@@ -70,6 +92,18 @@ const ShowProject = () => {
           <p>City: {project.city}</p>
           <p>Postal code: {project.postal_code}</p>
           <p>GPS: {project.GPS}</p>
+          <p>Likes: {likes}</p>
+          <ul>
+            Comments:
+            {comments.map((comment) => {
+              return (
+                <li key={comment.id + comment.user_id}>
+                  <h3>{comment.user.username}</h3>
+                  <p>{comment.content}</p>
+                </li>
+              );
+            })}
+          </ul>
         </div>
         <button onClick={() => navigate(-1)}>Go back</button>
       </div>
