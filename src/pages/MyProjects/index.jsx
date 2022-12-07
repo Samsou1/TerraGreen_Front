@@ -19,7 +19,7 @@ const MyProjects = () => {
         return <MyProjectsCard key={project.id + project.title} project={project}/>
       })}
     </div>
-    <container className="new_btn_footer"><Link className="new_btn" to='/newproject'>New project</Link></container>
+    <span className="new_btn_footer"><Link className="new_btn" to='/newproject'>New project</Link></span>
   </section>
   )
 }

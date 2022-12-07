@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import APIManager from "../../services/api";
 import { useNavigate } from "react-router-dom";
+import { useAtomValue } from "jotai";
+import { countriesAtom } from "../../store/country";
+import { projectStatusesAtom } from "../../store/projectStatus";
 
 const EditProject = () => {
   const [title, setTitle] = useState("");
@@ -8,10 +11,13 @@ const EditProject = () => {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [postalCode, setPostalCode] = useState("");
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState("France");
   const [region, setRegion] = useState("");
   const [GPS, setGPS] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("To plan");
+  const countryOptions = useAtomValue(countriesAtom);
+  const [regionOptions, setRegionOptions] = useState([]);
+  const projectStatusesOptions = useAtomValue(projectStatusesAtom);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -23,10 +29,10 @@ const EditProject = () => {
         address: address,
         city: city,
         postal_code: postalCode,
-        country_id: country,
-        region_id: region,
+        country: country,
+        region: region,
         GPS: GPS,
-        project_status_id: status,
+        project_status: status,
       },
     };
     try {
@@ -38,19 +44,19 @@ const EditProject = () => {
     }
   };
 
-  const SetAll = (project) => {
-    project.title ? setTitle(project.title) : setTitle("");
-    project.content ? setContent(project.content) : setContent("");
-    project.address ? setAddress(project.address) : setAddress("");
-    project.city ? setCity(project.city) : setCity("");
-    project.postal_code
-      ? setPostalCode(project.postal_code)
+  const SetAll = (data) => {
+    data.project.title ? setTitle(data.project.title) : setTitle("");
+    data.project.content ? setContent(data.project.content) : setContent("");
+    data.project.address ? setAddress(data.project.address) : setAddress("");
+    data.project.city ? setCity(data.project.city) : setCity("");
+    data.project.postal_code
+      ? setPostalCode(data.project.postal_code)
       : setPostalCode("");
-    project.country_id ? setCountry(project.country_id) : setCountry("");
-    project.region_id ? setRegion(project.region_id) : setRegion("");
-    project.GPS ? setGPS(project.GPS) : setGPS("");
-    project.project_status_id
-      ? setStatus(project.project_status_id)
+    data.country ? setCountry(data.country) : setCountry("");
+    data.region ? setRegion(data.region) : setRegion("");
+    data.project.GPS ? setGPS(data.project.GPS) : setGPS("");
+    data.status
+      ? setStatus(data.status)
       : setStatus("");
   };
 
@@ -59,8 +65,21 @@ const EditProject = () => {
     const fetchProject = async () => {
       await APIManager.getProject(id).then((data) => SetAll(data));
     };
-    fetchProject().catch(console.error);
+    fetchProject().then(regionOptions[0] ? setRegion(regionOptions[0].name) : setRegion("")).catch(console.error);
   }, []);
+
+  // useEffect(() => {
+  //   regionOptions[0] ? setRegion(regionOptions[0].name) : setRegion("");
+  // }), [];
+  
+  useEffect(() => {
+    const fetchRegions = async () => {
+      await APIManager.getRegionsFromCountry(country).then((data) =>
+        setRegionOptions(data)
+      );
+    };
+    fetchRegions().catch(console.error);
+  }, [country]);
 
   return (
     <>
@@ -117,24 +136,46 @@ const EditProject = () => {
           />
         </div>
         <div className="input-container">
-          <label htmlFor="country">Country</label>
-          <input
+        <label htmlFor="country">Country</label>
+          <select
             onChange={(e) => setCountry(e.target.value)}
             value={country}
             type="text"
             id="country"
             placeholder="Country"
-          />
+          >
+            {countryOptions.map((countryOption) => {
+              return (
+                <option
+                  key={countryOption.id + countryOption.name}
+                  value={countryOption.name}
+                >
+                  {countryOption.name}
+                </option>
+              );
+            })}
+          </select>
         </div>
         <div className="input-container">
-          <label htmlFor="region">Region</label>
-          <input
+        <label htmlFor="region">Region</label>
+          <select
             onChange={(e) => setRegion(e.target.value)}
             value={region}
             type="text"
             id="region"
             placeholder="Region"
-          />
+          >
+            {regionOptions.map((regionOption) => {
+              return (
+                <option
+                  key={regionOption.id + regionOption.name}
+                  value={regionOption.name}
+                >
+                  {regionOption.name}
+                </option>
+              );
+            })}
+          </select>
         </div>
         <div className="input-container">
           <label htmlFor="GPS">GPS</label>
@@ -147,14 +188,25 @@ const EditProject = () => {
           />
         </div>
         <div className="input-container">
-          <label htmlFor="status">Status</label>
-          <input
+        <label htmlFor="status">Status</label>
+          <select
             onChange={(e) => setStatus(e.target.value)}
             value={status}
             type="text"
             id="status"
             placeholder="Status"
-          />
+          >
+            {projectStatusesOptions.map((projectStatusesOption) => {
+              return (
+                <option
+                  key={projectStatusesOption.id + projectStatusesOption.name}
+                  value={projectStatusesOption.name}
+                >
+                  {projectStatusesOption.name}
+                </option>
+              );
+            })}
+          </select>
         </div>
         <input type="submit" value="Update" />
       </form>

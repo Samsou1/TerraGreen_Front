@@ -6,18 +6,24 @@ import DeleteProjectButton from "../../components/DeleteProjectButton";
 
 const ShowProject = () => {
   const [project, setProject] = useState({});
+  const [country, setCountry] = useState('');
+  const [region, setRegion] = useState('');
+  const [status, setStatus] = useState('');
+
+  const setAll = (data) => {
+    setCountry(data.country);
+    setRegion(data.region);
+    setStatus(data.status);
+    setProject(data.project);
+  };
 
   useEffect(() => {
     const id = window.location.pathname.split("/")[2];
     const fetchProject = async () => {
-      await APIManager.getProject(id).then((data) => setProject(data));
+      await APIManager.getProject(id).then((data) => setAll(data));
     };
     fetchProject().catch(console.error);
   }, []);
-
-  // if (!project.user) {
-  //   return <h3>No apartment with such id</h3>;
-  // }
 
   if (
     Cookies.get("currentUser") &&
@@ -27,22 +33,24 @@ const ShowProject = () => {
       <div className="">
         <div className="">
           <h1>Title:{project.title}</h1>
-          <p>Description: {project.description}</p>
-          <p>Region ID: {project.region_id}</p>
-          <p>Country ID: {project.country_id}</p>
-          <p>Project status ID: {project.project_status_id}</p>
+          <p>Content: {project.content}</p>
+          <p>Region ID: {region}</p>
+          <p>Country ID: {country}</p>
+          <p>Project status ID: {status}</p>
           <p>Address: {project.address}</p>
           <p>City: {project.city}</p>
           <p>Postal code: {project.postal_code}</p>
           <p>GPS: {project.GPS}</p>
-          <container className="current_user_access">    
-            <button className="edit_btn">              
-              <span><Link className="edit" to={`/editproject/${project.id}`}>Edit</Link></span>
-            </button>   
-            <button className="edit_btn">              
-              <span><DeleteProjectButton/></span>
-            </button>  
-          </container>          
+          <span className="current_user_access">
+            <button className="edit_btn">
+              <span>
+                <Link className="edit" to={`/editproject/${project.id}`}>
+                  Edit
+                </Link>
+              </span>
+            </button>
+            <DeleteProjectButton className="edit_btn" />
+          </span>
         </div>
       </div>
     );
@@ -50,17 +58,16 @@ const ShowProject = () => {
     return (
       <div className="apartmentCard show">
         <div className="product-details">
-        <h1>Title:{project.title}</h1>
-          <p>Description: {project.description}</p>
-          <p>Region ID: {project.region_id}</p>
-          <p>Country ID: {project.country_id}</p>
-          <p>Project status ID: {project.project_status_id}</p>
+          <h1>Title:{project.title}</h1>
+          <p>Content: {project.content}</p>
+          <p>Region ID: {region}</p>
+          <p>Country ID: {country}</p>
+          <p>Project status ID: {status}</p>
           <p>Address: {project.address}</p>
           <p>City: {project.city}</p>
           <p>Postal code: {project.postal_code}</p>
           <p>GPS: {project.GPS}</p>
         </div>
-
       </div>
     );
   }

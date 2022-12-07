@@ -43,17 +43,17 @@ const NewProject = () => {
     }
   };
 
-  useEffect(()=> {
-    regionOptions[0] ? setRegion((regionOptions[0]).name) : setRegion('')
-  })
+  useEffect(() => {
+    regionOptions[0] ? setRegion(regionOptions[0].name) : setRegion("");
+  });
 
   useEffect(() => {
-      const fetchRegions = async () => {
-        await APIManager.getRegionsFromCountry(country).then((data) =>
-          setRegionOptions(data)
-        );
-      };
-      fetchRegions().catch(console.error);
+    const fetchRegions = async () => {
+      await APIManager.getRegionsFromCountry(country).then((data) =>
+        setRegionOptions(data)
+      );
+    };
+    fetchRegions().catch(console.error);
   }, [country]);
 
   return (
