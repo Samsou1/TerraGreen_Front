@@ -11,6 +11,7 @@ const LogoutButton = () => {
       navigate("/");
     } catch (error) {
       console.error(error);
+      navigate("/");
     }
   };
 

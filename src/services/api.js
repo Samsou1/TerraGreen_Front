@@ -64,8 +64,9 @@ export default class APIManager {
         Cookies.remove("currentUser");
         return response;
       } catch(err) {
+        Cookies.remove("bearerToken");
+        Cookies.remove("currentUser");
         console.error(err)
-        throw new Error("Something went wrong");
       }
     }
   }
@@ -173,6 +174,16 @@ export default class APIManager {
   static async getProjectStatuses() {
     try {
       const response = await API.get("/project_statuses");
+      return response.data;
+    } catch (err) {
+      console.error(err);
+      throw new Error("Something went wrong");
+    }
+  }
+
+  static async getRegions() {
+    try {
+      const response = await API.get("/regions");
       return response.data;
     } catch (err) {
       console.error(err);

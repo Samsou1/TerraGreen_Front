@@ -3,12 +3,14 @@ import { useState, useEffect } from "react";
 import APIManager from "../../services/api";
 import { Link } from "react-router-dom";
 import DeleteProjectButton from "../../components/DeleteProjectButton";
+import { useNavigate } from "react-router-dom";
 
 const ShowProject = () => {
   const [project, setProject] = useState({});
-  const [country, setCountry] = useState('');
-  const [region, setRegion] = useState('');
-  const [status, setStatus] = useState('');
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
+  const [status, setStatus] = useState("");
+  const navigate = useNavigate();
 
   const setAll = (data) => {
     setCountry(data.country);
@@ -52,6 +54,7 @@ const ShowProject = () => {
             <DeleteProjectButton className="edit_btn" />
           </span>
         </div>
+        <button onClick={() => navigate(-1)}>Go back</button>
       </div>
     );
   } else {
@@ -68,6 +71,7 @@ const ShowProject = () => {
           <p>Postal code: {project.postal_code}</p>
           <p>GPS: {project.GPS}</p>
         </div>
+        <button onClick={() => navigate(-1)}>Go back</button>
       </div>
     );
   }
