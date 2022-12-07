@@ -14,8 +14,11 @@ const Profile = () => {
     <div className="profileCard">
       <h2>Profile</h2>
       <p>Email: {user.email}</p>
-      <p>Last name: {user.first_name}</p>
-      <p>First name: {user.last_name}</p>
+      <p>Username: {user.username}</p>
+      <p>Description: {user.description}</p>
+      <p>Country id: {user.country_id}</p>
+      <p>Region id: {user.region_id}</p>
+      <p>Notification subscription: {user.notification_subscription}</p>
       <Link className="btn_profile" to='/editprofile' >Edit profile</Link>
     </div>
   )

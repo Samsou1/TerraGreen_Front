@@ -10,12 +10,12 @@ main {
 
 .register-form-container {
   & input {
-    border: 1px solid $color-navy;
+    border: 1px solid $color-green-dark;
     padding: 12px 20px;
     margin: 8px 0;
     border-radius: 5px;
     &[type="submit"] {
-      background-color: $color-navy;
+      background-color: $color-green-dark;
       color: white;
       padding: 15px 0;
       margin: 5px 0 10px 0;
@@ -25,7 +25,7 @@ main {
       cursor: pointer;
       &:hover {
         transition-duration: 0.2s;
-        background-color: $color-blue;
+        background-color: $color-green-light;
       }
     }
   }

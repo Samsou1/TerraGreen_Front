@@ -9,6 +9,11 @@ import Resetpassword from "./pages/ResetPassword";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import Footer from "./components/Footer";
+import Projects from "./pages/Projects";
+import ShowProject from "./pages/ShowProject";
+import NewProject from "./pages/NewProject";
+import MyProjects from "./pages/MyProjects";
+import EditProject from "./pages/EditProject";
 
 function App() {
 
@@ -22,9 +27,14 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/resetpassword" element={<Resetpassword />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:id" element={<ShowProject />} />
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/editprofile" element={<EditProfile />} />
+            <Route path="/newproject" element={<NewProject />} />
+            <Route path="/myprojects" element={<MyProjects />} />
+            <Route path="/editproject/:id" element={<EditProject />} />
           </Route>
         </Routes>
       </main>
