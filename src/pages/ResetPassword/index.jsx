@@ -1,25 +1,25 @@
-import { useState } from 'react';
+import { useState } from "react";
 import APIManager from "../../services/api";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const ResetPassword = () => {
-  const [email, setEmail] = useState("")
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
       user: {
-        email: email
-      }
-    }
+        email: email,
+      },
+    };
     try {
       await APIManager.resetPassword(data);
-      navigate('/');
+      navigate("/");
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }
+  };
 
   return (
     <>
@@ -38,7 +38,7 @@ const ResetPassword = () => {
         <button>Reset password</button>
       </form>
     </>
-  )
-}
+  );
+};
 
 export default ResetPassword;

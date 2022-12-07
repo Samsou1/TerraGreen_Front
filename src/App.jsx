@@ -16,7 +16,6 @@ import MyProjects from "./pages/MyProjects";
 import EditProject from "./pages/EditProject";
 
 function App() {
-
   return (
     <BrowserRouter>
       <Navbar />
@@ -40,7 +39,7 @@ function App() {
       </main>
       <Footer />
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

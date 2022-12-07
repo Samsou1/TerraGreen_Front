@@ -43,14 +43,14 @@ const ProjectCard = ({ project }) => {
         </li>
       </div>
       <div className="control">
-          <button className="btn">
-            <span className="look">
-              <Link className="link" to={`/projects/${project.id}`}>
-                Have a look
-              </Link>
-            </span>
-          </button>
-        </div>
+        <button className="btn">
+          <span className="look">
+            <Link className="link" to={`/projects/${project.id}`}>
+              Have a look
+            </Link>
+          </span>
+        </button>
+      </div>
     </div>
   );
 };

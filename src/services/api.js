@@ -31,7 +31,7 @@ export default class APIManager {
       const response = await API.post("/users", payload);
       Cookies.set(
         "bearerToken",
-        response.headers.get("Authorization").split(' ')[1]
+        response.headers.get("Authorization").split(" ")[1]
       );
       Cookies.set("currentUser", JSON.stringify(response.data.user));
       return response;
@@ -45,7 +45,7 @@ export default class APIManager {
       const response = await API.post("/users/sign_in", payload);
       Cookies.set(
         "bearerToken",
-        response.headers.get("Authorization").split(' ')[1]
+        response.headers.get("Authorization").split(" ")[1]
       );
       Cookies.set("currentUser", JSON.stringify(response.data.user));
       return response;
@@ -63,10 +63,10 @@ export default class APIManager {
         Cookies.remove("bearerToken");
         Cookies.remove("currentUser");
         return response;
-      } catch(err) {
+      } catch (err) {
         Cookies.remove("bearerToken");
         Cookies.remove("currentUser");
-        console.error(err)
+        console.error(err);
       }
     }
   }
@@ -75,8 +75,8 @@ export default class APIManager {
     try {
       const response = await API.get(`/member-data`);
       return response.data.user;
-    } catch(err){
-      console.error(err)
+    } catch (err) {
+      console.error(err);
       throw new Error("Something went wrong");
     }
   }
@@ -85,8 +85,8 @@ export default class APIManager {
     try {
       const response = await API.get("/projects");
       return response.data;
-    } catch(err) {
-      console.error(err)
+    } catch (err) {
+      console.error(err);
       throw new Error("Something went wrong");
     }
   }
@@ -95,8 +95,8 @@ export default class APIManager {
     try {
       const response = await API.get(`/apartments?search_term=${search}`);
       return response.data;
-    } catch(err){
-      console.error(err)
+    } catch (err) {
+      console.error(err);
       throw new Error("Something went wrong");
     }
   }
@@ -115,8 +115,8 @@ export default class APIManager {
     try {
       const response = await API.get(`/projects/${id}`);
       return response.data;
-    } catch(err){
-      console.error(err)
+    } catch (err) {
+      console.error(err);
       throw new Error("Something went wrong");
     }
   }
@@ -125,8 +125,8 @@ export default class APIManager {
     try {
       const response = await API.delete(`/projects/${id}`);
       return response.data;
-    } catch(err){
-      console.error(err)
+    } catch (err) {
+      console.error(err);
       throw new Error("Something went wrong");
     }
   }
@@ -136,7 +136,7 @@ export default class APIManager {
       const response = await API.post(`/projects`, payload);
       return response;
     } catch (err) {
-      console.error(err)
+      console.error(err);
       throw new Error("Something went wrong");
     }
   }
@@ -145,8 +145,8 @@ export default class APIManager {
     try {
       const response = await API.put(`/projects/${id}`, payload);
       return response.data;
-    } catch(err) {
-      console.error(err)
+    } catch (err) {
+      console.error(err);
       throw new Error("Something went wrong");
     }
   }
@@ -190,5 +190,4 @@ export default class APIManager {
       throw new Error("Something went wrong");
     }
   }
-
 }

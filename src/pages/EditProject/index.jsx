@@ -55,9 +55,7 @@ const EditProject = () => {
     data.country ? setCountry(data.country) : setCountry("");
     data.region ? setRegion(data.region) : setRegion("");
     data.project.GPS ? setGPS(data.project.GPS) : setGPS("");
-    data.status
-      ? setStatus(data.status)
-      : setStatus("");
+    data.status ? setStatus(data.status) : setStatus("");
   };
 
   useEffect(() => {
@@ -65,13 +63,15 @@ const EditProject = () => {
     const fetchProject = async () => {
       await APIManager.getProject(id).then((data) => SetAll(data));
     };
-    fetchProject().then(regionOptions[0] ? setRegion(regionOptions[0].name) : setRegion("")).catch(console.error);
+    fetchProject()
+      .then(regionOptions[0] ? setRegion(regionOptions[0].name) : setRegion(""))
+      .catch(console.error);
   }, []);
 
   // useEffect(() => {
   //   regionOptions[0] ? setRegion(regionOptions[0].name) : setRegion("");
   // }), [];
-  
+
   useEffect(() => {
     const fetchRegions = async () => {
       await APIManager.getRegionsFromCountry(country).then((data) =>
@@ -136,7 +136,7 @@ const EditProject = () => {
           />
         </div>
         <div className="input-container">
-        <label htmlFor="country">Country</label>
+          <label htmlFor="country">Country</label>
           <select
             onChange={(e) => setCountry(e.target.value)}
             value={country}
@@ -157,7 +157,7 @@ const EditProject = () => {
           </select>
         </div>
         <div className="input-container">
-        <label htmlFor="region">Region</label>
+          <label htmlFor="region">Region</label>
           <select
             onChange={(e) => setRegion(e.target.value)}
             value={region}
@@ -188,7 +188,7 @@ const EditProject = () => {
           />
         </div>
         <div className="input-container">
-        <label htmlFor="status">Status</label>
+          <label htmlFor="status">Status</label>
           <select
             onChange={(e) => setStatus(e.target.value)}
             value={status}

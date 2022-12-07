@@ -4,10 +4,10 @@ const MyProjects = () => {
   return (
     <>
       <h1>My projects</h1>
-      <Link to='/newproject'>New Project</Link>
+      <Link to="/newproject">New Project</Link>
       <ProjectCards />
     </>
   );
-}
+};
 
 export default MyProjects;

@@ -11,7 +11,7 @@ const ShowProject = () => {
   const [region, setRegion] = useState("");
   const [status, setStatus] = useState("");
   const [likes, setLikes] = useState(0);
-  const [liked, setLiked] = useState(false)
+  const [liked, setLiked] = useState(false);
   const [comments, setComments] = useState([]);
   const navigate = useNavigate();
 
@@ -22,9 +22,14 @@ const ShowProject = () => {
     setProject(data.project);
     setLikes(data.likes.length);
     setComments(data.comments);
-    if(Cookies.get('currentUser'))[
-      data.likes.filter(like => like.user_id == JSON.parse(Cookies.get('currentUser')).id).length === 0? setLiked(false) : setLiked(true)
-    ]
+    if (Cookies.get("currentUser"))
+      [
+        data.likes.filter(
+          (like) => like.user_id == JSON.parse(Cookies.get("currentUser")).id
+        ).length === 0
+          ? setLiked(false)
+          : setLiked(true),
+      ];
   };
 
   useEffect(() => {
