@@ -93,7 +93,7 @@ export default class APIManager {
 
   static async getFilteredProjects(search) {
     try {
-      const response = await API.get(`/apartments?search_term=${search}`);
+      const response = await API.get(`/projects?search_term=${search}`);
       return response.data;
     } catch (err) {
       console.error(err);
@@ -152,7 +152,7 @@ export default class APIManager {
 
   static async toggleLike(payload) {
     try {
-      const response = await API.post(`/likes`, payload);
+      const response = await API.post(`/togglelike`, payload);
       console.log(response)
       return response;
     } catch (err) {

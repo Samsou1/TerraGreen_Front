@@ -21,7 +21,6 @@ function Login() {
     };
     try {
       await APIManager.loginUser(data);
-      console.log(data)
       navigate("/");
       window.location.reload();
     } catch{

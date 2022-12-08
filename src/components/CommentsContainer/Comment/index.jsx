@@ -1,7 +1,6 @@
 import { convertTimeStampToDate } from "../../../services/convertTimeStamp";
 
 const Comment = ({ comment }) => {
-  console.log(comment);
   return comment.user &&
     comment.user.username &&
     comment.user.username !== "" ? (

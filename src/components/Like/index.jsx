@@ -2,6 +2,8 @@ import APIManager from "../../services/api";
 import { userLoggedIn } from "../../services/user";
 import { projectLikedByCurrentUser } from "../../services/projectLikedByCurrentUser";
 import { useEffect, useState } from "react";
+import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Like = ({ likes }) => {
   const [liked, setLiked] = useState(false);
@@ -9,9 +11,13 @@ const Like = ({ likes }) => {
   const [id, setId] = useState("");
 
   useEffect(() => {
-    setLiked(likes.length);
     setId(window.location.pathname.split("/")[2]);
   }, []);
+
+  useEffect(() => {
+    setLiked(projectLikedByCurrentUser(likes));
+    setNumberOfLikes(likes.length);
+  }, [likes]);
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -31,10 +37,11 @@ const Like = ({ likes }) => {
     }
   };
 
-  return userLoggedIn() && projectLikedByCurrentUser(likes) ? (
-    <button onClick={handleClick}>{numberOfLikes} You can like</button>
-  ) : (
-    <button onClick={handleClick}>{numberOfLikes} You cannot like</button>
+  return (
+    <button onClick={handleClick}>
+      <FontAwesomeIcon className={liked ? "liked" : "unliked"} icon={faThumbsUp}>{numberOfLikes}</FontAwesomeIcon>
+      {numberOfLikes}
+    </button>
   );
 };
 

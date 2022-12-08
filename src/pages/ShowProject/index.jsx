@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import DeleteProjectButton from "../../components/DeleteProjectButton";
 import { useNavigate } from "react-router-dom";
 import CommentsContainer from "../../components/CommentsContainer";
+import Like from "../../components/Like";
 
 const ShowProject = () => {
   const [project, setProject] = useState({});
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
   const [status, setStatus] = useState("");
-  const [likes, setLikes] = useState(0);
-  const [liked, setLiked] = useState(false);
+  const [likes, setLikes] = useState([]);
   const [comments, setComments] = useState([]);
   const navigate = useNavigate();
 
@@ -21,16 +21,8 @@ const ShowProject = () => {
     setRegion(data.region);
     setStatus(data.status);
     setProject(data.project);
-    setLikes(data.likes.length);
+    setLikes(data.likes);
     setComments(data.comments);
-    if (Cookies.get("currentUser"))
-      [
-        data.likes.filter(
-          (like) => like.user_id == JSON.parse(Cookies.get("currentUser")).id
-        ).length === 0
-          ? setLiked(false)
-          : setLiked(true),
-      ];
   };
 
   useEffect(() => {
@@ -59,8 +51,8 @@ const ShowProject = () => {
           <p>City: {project.city}</p>
           <p>Postal code: {project.postal_code}</p>
           <p>GPS: {project.GPS}</p>
-          <p>Likes: {likes}</p>
-          <CommentsContainer comments={comments}/>
+          <Like likes={likes} />
+          <CommentsContainer comments={comments} />
           <span className="current_user_access">
             <button className="edit_btn">
               <span>
@@ -77,8 +69,8 @@ const ShowProject = () => {
     );
   } else {
     return (
-      <div className="apartmentCard show">
-        <div className="product-details">
+      <div className="">
+        <div className="">
           <h1>Title:{project.title}</h1>
           <p>Content: {project.content}</p>
           <p>Region: {region}</p>
@@ -88,8 +80,8 @@ const ShowProject = () => {
           <p>City: {project.city}</p>
           <p>Postal code: {project.postal_code}</p>
           <p>GPS: {project.GPS}</p>
-          <p>Likes: {likes}</p>
-          <CommentsContainer comments={comments}/>
+          <Like likes={likes} />
+          <CommentsContainer comments={comments} />
         </div>
         <button onClick={() => navigate(-1)}>Go back</button>
       </div>
