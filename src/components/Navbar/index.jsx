@@ -23,6 +23,7 @@ const Navbar = () => {
   }, []);
 
   return (
+    
     <header>
       <div>
         <Link to="/">
