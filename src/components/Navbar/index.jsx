@@ -6,17 +6,40 @@ import LogoutButton from "../LogoutButton";
 const Navbar = () => {
   return(
     <nav className="NavbarItems">
-      <h1 className="navbar-logo">Trippy</h1>
-
+      
+        <Link to="/">
+        <img src={logo} alt="logo" className="logo"></img>
+            TerraGreen
+         </Link>
+         
       <ul className="nav-menu">
         <li>
-          <Link>
-          Home</Link>
+          <Link to="/" className="nav-links">
+          <i className="fa-solid fa-house-user"></i>Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/about" className="nav-links">
+          <i className="fa-solid fa-circle-info"></i>About
+          </Link>
+        </li>
+        <li>
+          <Link to="/projects" className="nav-links">
+          <i className="fa-solid fa-briefcase"></i>Projects
+          </Link>
+        </li>
+        <li>
+          <Link to="/login" className="nav-links">
+          <i className="fa-solid fa-house-user"></i>Login
+          </Link>
+        </li>
+        <li>
+          <LogoutButton />
         </li>
       </ul>
 
     </nav>
-  )
-}
+  );
+};
 
 export default Navbar;

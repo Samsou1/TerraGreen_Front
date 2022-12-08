@@ -19,7 +19,7 @@ const Hero = () => {
       return (
         // autoPlay loop (Add it later before muted)
         <section className="hero-container">
-          <video src={videoBg} muted></video>
+          
           <div>
             <h1>Bienvenue sur TerraGreen</h1>
             <p>Participez à sauver la planète !</p>
