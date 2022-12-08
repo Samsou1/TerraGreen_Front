@@ -14,6 +14,7 @@ const EditProject = () => {
   const [country, setCountry] = useState("France");
   const [region, setRegion] = useState("");
   const [GPS, setGPS] = useState("");
+  const [date, setDate] = useState("");
   const [status, setStatus] = useState("To plan");
   const countryOptions = useAtomValue(countriesAtom);
   const [regionOptions, setRegionOptions] = useState([]);
@@ -33,6 +34,7 @@ const EditProject = () => {
         region: region,
         GPS: GPS,
         project_status: status,
+        date: date,
       },
     };
     try {
@@ -56,6 +58,7 @@ const EditProject = () => {
     data.region ? setRegion(data.region) : setRegion("");
     data.project.GPS ? setGPS(data.project.GPS) : setGPS("");
     data.status ? setStatus(data.status) : setStatus("");
+    data.date ? setDate(data.date) : setDate("");
   };
 
   useEffect(() => {
@@ -67,10 +70,6 @@ const EditProject = () => {
       .then(regionOptions[0] ? setRegion(regionOptions[0].name) : setRegion(""))
       .catch(console.error);
   }, []);
-
-  // useEffect(() => {
-  //   regionOptions[0] ? setRegion(regionOptions[0].name) : setRegion("");
-  // }), [];
 
   useEffect(() => {
     const fetchRegions = async () => {
@@ -185,6 +184,16 @@ const EditProject = () => {
             type="text"
             id="gps"
             placeholder="GPS"
+          />
+        </div>
+        <div className="input-container">
+          <label htmlFor="date">Date</label>
+          <input
+            onChange={(e) => setDate(e.target.value)}
+            value={date}
+            type="date"
+            id="date"
+            placeholder="Date"
           />
         </div>
         <div className="input-container">
