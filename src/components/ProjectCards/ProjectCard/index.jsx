@@ -30,11 +30,11 @@ const ProjectCard = ({ project }) => {
           {project.postal_code}
         </li>
         <li>
-          <strong>Region ID: </strong>
+          <strong>Region: </strong>
           {getRegionFromId(project.region_id).name}
         </li>
         <li>
-          <strong>Country ID: </strong>
+          <strong>Country: </strong>
           {getCountryFromId(project.country_id).name}
         </li>
         <li>

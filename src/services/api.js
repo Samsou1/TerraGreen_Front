@@ -141,6 +141,25 @@ export default class APIManager {
     }
   }
 
+  static async newComment(payload) {
+    try {
+      const response = await API.post(`/comments`, payload);
+      return response;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  static async toggleLike(payload) {
+    try {
+      const response = await API.post(`/likes`, payload);
+      console.log(response)
+      return response;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   static async editProject(id, payload) {
     try {
       const response = await API.put(`/projects/${id}`, payload);

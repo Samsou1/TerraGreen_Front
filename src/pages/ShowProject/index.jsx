@@ -4,6 +4,7 @@ import APIManager from "../../services/api";
 import { Link } from "react-router-dom";
 import DeleteProjectButton from "../../components/DeleteProjectButton";
 import { useNavigate } from "react-router-dom";
+import CommentsContainer from "../../components/CommentsContainer";
 
 const ShowProject = () => {
   const [project, setProject] = useState({});
@@ -51,25 +52,15 @@ const ShowProject = () => {
         <div className="">
           <h1>Title:{project.title}</h1>
           <p>Content: {project.content}</p>
-          <p>Region ID: {region}</p>
-          <p>Country ID: {country}</p>
-          <p>Project status ID: {status}</p>
+          <p>Region: {region}</p>
+          <p>Country: {country}</p>
+          <p>Project status: {status}</p>
           <p>Address: {project.address}</p>
           <p>City: {project.city}</p>
           <p>Postal code: {project.postal_code}</p>
           <p>GPS: {project.GPS}</p>
           <p>Likes: {likes}</p>
-          <ul>
-            Comments:
-            {comments.map((comment) => {
-              return (
-                <li key={comment.id + comment.user_id}>
-                  <h3>{comment.user.username}</h3>
-                  <p>{comment.content}</p>
-                </li>
-              );
-            })}
-          </ul>
+          <CommentsContainer comments={comments}/>
           <span className="current_user_access">
             <button className="edit_btn">
               <span>
@@ -90,25 +81,15 @@ const ShowProject = () => {
         <div className="product-details">
           <h1>Title:{project.title}</h1>
           <p>Content: {project.content}</p>
-          <p>Region ID: {region}</p>
-          <p>Country ID: {country}</p>
-          <p>Project status ID: {status}</p>
+          <p>Region: {region}</p>
+          <p>Country: {country}</p>
+          <p>Project status: {status}</p>
           <p>Address: {project.address}</p>
           <p>City: {project.city}</p>
           <p>Postal code: {project.postal_code}</p>
           <p>GPS: {project.GPS}</p>
           <p>Likes: {likes}</p>
-          <ul>
-            Comments:
-            {comments.map((comment) => {
-              return (
-                <li key={comment.id + comment.user_id}>
-                  <h3>{comment.user.username}</h3>
-                  <p>{comment.content}</p>
-                </li>
-              );
-            })}
-          </ul>
+          <CommentsContainer comments={comments}/>
         </div>
         <button onClick={() => navigate(-1)}>Go back</button>
       </div>

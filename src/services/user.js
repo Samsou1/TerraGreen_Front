@@ -1,9 +1,9 @@
 import Cookies from "js-cookie";
 
-export const currentUser = () => {
+export const userLoggedIn = () => {
   return Cookies.get("currentUser") ? true : false;
 };
 
 export const currentUserId = () => {
-  return currentUser() ? JSON.parse(Cookies.get("currentUser")).id : null;
+  return userLoggedIn() ? JSON.parse(Cookies.get("currentUser")).id : null;
 };

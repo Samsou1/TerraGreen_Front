@@ -2,14 +2,21 @@ import { useState } from "react";
 import APIManager from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import {
+  validateEmail,
+  validatePassword,
+} from "../../services/validateUserData";
+import Errors from "../../components/Errors";
 
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    setErrors([]);
     e.preventDefault();
     const data = {
       user: {
@@ -17,21 +24,37 @@ function Register() {
         password: password,
       },
     };
-    if (password === confirmPassword) {
+    if (!validateEmail(email)) {
+      setErrors([
+        { message: "The email doesn't match the standard email structure" },
+      ]);
+    } else if (!validatePassword(password)) {
+      setErrors([
+        {
+          message:
+            "The password must have at least one lowercase, one uppercase, one digit and be longer than 6 characters",
+        },
+      ]);
+    } else if (password !== confirmPassword) {
+      setErrors([
+        { message: "The password and the confirmation password don't match" },
+      ]);
+    } else {
       try {
         await APIManager.registerUser(data);
         navigate("/");
         window.location.reload();
       } catch (err) {
+        setErrors([{ message: "This email is already taken" }]);
         console.error(err);
       }
-    } else {
-      return <div> Password do not match </div>;
     }
   };
+
   return (
     <>
       <h1 className="register-title">Register</h1>
+      <Errors errors={errors}></Errors>
       <form onSubmit={handleSubmit} className="register-form-container">
         <div className="input-container">
           <label htmlFor="email">Email </label>

@@ -1,7 +1,7 @@
 import { regionsAtom } from "../store/region";
 import { countriesAtom } from "../store/country";
 import { projectStatusesAtom } from "../store/projectStatus";
-import { useAtomValue } from "jotai";
+import { useAtomValue } from "jotai/utils";
 
 export const getRegionFromId = (id) => {
   const regions = useAtomValue(regionsAtom);

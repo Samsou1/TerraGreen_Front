@@ -2,13 +2,16 @@ import { useState } from "react";
 import APIManager from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Errors from "../../components/Errors";
 
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
+    setErrors([])
     e.preventDefault();
     const data = {
       user: {
@@ -18,16 +21,18 @@ function Login() {
     };
     try {
       await APIManager.loginUser(data);
+      console.log(data)
       navigate("/");
       window.location.reload();
-    } catch (err) {
-      console.error(err);
+    } catch{
+      setErrors([{message:'Invalid password or email'}])
     }
   };
 
   return (
     <>
       <h1 className="login-title">Login</h1>
+      <Errors errors={errors}></Errors>
       <form onSubmit={handleSubmit} className="login-form-container">
         <div className="input-container">
           <label htmlFor="username">Email</label>

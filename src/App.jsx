@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PrivateRoute from "./config/PrivateRoute";
+import NotLoggedInRoute from "./config/NotLoggedInRoute";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import PrivateRoute from "./config/PrivateRoute";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Resetpassword from "./pages/ResetPassword";
@@ -23,9 +24,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/resetpassword" element={<Resetpassword />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:id" element={<ShowProject />} />
           <Route element={<PrivateRoute />}>
@@ -34,6 +32,11 @@ function App() {
             <Route path="/newproject" element={<NewProject />} />
             <Route path="/myprojects" element={<MyProjects />} />
             <Route path="/editproject/:id" element={<EditProject />} />
+          </Route>
+          <Route element={<NotLoggedInRoute />}>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/resetpassword" element={<Resetpassword />} />
           </Route>
         </Routes>
       </main>

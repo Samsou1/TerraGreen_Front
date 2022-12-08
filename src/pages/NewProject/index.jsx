@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import APIManager from "../../services/api";
 import { useNavigate } from "react-router-dom";
-import { useAtomValue } from "jotai";
 import { countriesAtom } from "../../store/country";
 import { projectStatusesAtom } from "../../store/projectStatus";
+import { useAtomValue } from "jotai/utils";
 
 const NewProject = () => {
   const [title, setTitle] = useState("");
