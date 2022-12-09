@@ -17,6 +17,36 @@ Air and water are vital, but today they have become big garbage dumps. Each and 
         
       </div>
     </div>
+    <div className='about-team'>
+        <h2>Our team</h2>
+        <div className='team-cards'>
+          <div className='card member-card'>
+            <h3>Name</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, modi?</p>
+            <img src='https://cdn2.iconfinder.com/data/icons/app-ui-solid/64/profile_user_avatar_people_app_website-512.png' alt='member-picture'/>
+          </div>
+          <div className='card member-card'>
+            <h3>Name</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, modi?</p>
+            <img src='https://cdn2.iconfinder.com/data/icons/app-ui-solid/64/profile_user_avatar_people_app_website-512.png' alt='member-picture'/>
+          </div>
+          <div className='card member-card'>
+            <h3>Name</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, modi?</p>
+            <img src='https://cdn2.iconfinder.com/data/icons/app-ui-solid/64/profile_user_avatar_people_app_website-512.png' alt='member-picture'/>
+          </div>
+          <div className='card member-card'>
+            <h3>Name</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, modi?</p>
+            <img src='https://cdn2.iconfinder.com/data/icons/app-ui-solid/64/profile_user_avatar_people_app_website-512.png' alt='member-picture'/>
+          </div>
+          <div className='card member-card'>
+            <h3>Name</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, modi?</p>
+            <img src='https://cdn2.iconfinder.com/data/icons/app-ui-solid/64/profile_user_avatar_people_app_website-512.png' alt='member-picture'/>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
