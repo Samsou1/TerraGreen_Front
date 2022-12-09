@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 import videoBg from "../../videos/videoBg.mp4";
 
@@ -11,7 +11,7 @@ const Hero = () => {
         <div>
           <h1>Bienvenue sur TerraGreen</h1>
           <p>Participez à sauver la planète !</p>
-          <Link to="/myprojects">Mes projets</Link>
+          <Link to="/register">S'inscrire</Link>
         </div>
       </section>
     )
@@ -30,5 +30,6 @@ const Hero = () => {
       );
     };
   }
-  
-  export default Hero;
+};
+
+export default Hero;
