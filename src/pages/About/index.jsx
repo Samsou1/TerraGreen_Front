@@ -1,4 +1,5 @@
-import dechet
+import dechet from "../../assets/images/dechet.avif"
+
 
 const About = () => {
   return (
