@@ -7,39 +7,39 @@ const ProjectCard = ({ project }) => {
   return (
     <div className="projectCard">
       <div className="product-details">
-        <h3>{project.title}</h3>
-        <li>{project.content}</li>
+        <h3>{project.attributes.title}</h3>
+        <li>{project.attributes.content}</li>
         <li>
           <strong>Status: </strong>
-          {getProjectStatusFromId(project.project_status_id).name}
+          {getProjectStatusFromId(project.attributes.project_status_id).name}
         </li>
         <li>
           <strong>Address: </strong>
-          {project.address}
+          {project.attributes.address}
         </li>
         <li>
           <strong>ZIP: </strong>
-          {project.postal_code}{" "}
+          {project.attributes.postal_code}{" "}
         </li>
         <li>
           <strong>City: </strong>
-          {project.city}
+          {project.attributes.city}
         </li>
         <li>
           <strong>Postal code: </strong>
-          {project.postal_code}
+          {project.attributes.postal_code}
         </li>
         <li>
           <strong>Region: </strong>
-          {getRegionFromId(project.region_id).name}
+          {getRegionFromId(project.attributes.region_id).name}
         </li>
         <li>
           <strong>Country: </strong>
-          {getCountryFromId(project.country_id).name}
+          {getCountryFromId(project.attributes.country_id).name}
         </li>
         <li>
           <strong>GPS: </strong>
-          {project.GPS}
+          {project.attributes.GPS}
         </li>
       </div>
       <div className="control">
@@ -51,6 +51,8 @@ const ProjectCard = ({ project }) => {
           </span>
         </button>
       </div>
+      <img src={project.attributes.image_url} />
+      {console.log(project)}
     </div>
   );
 };
