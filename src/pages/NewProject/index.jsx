@@ -1,209 +1,96 @@
-import { useState, useEffect } from "react";
-import APIManager from "../../services/api";
-import { useNavigate } from "react-router-dom";
-import { countriesAtom } from "../../store/country";
-import { projectStatusesAtom } from "../../store/projectStatus";
-import { useAtomValue } from "jotai/utils";
+import { AppContext} from "../../App"
+import React, { useContext, useState } from "react";
 
-const NewProject = () => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [region, setRegion] = useState("");
-  const [country, setCountry] = useState("France");
-  const [GPS, setGPS] = useState("");
-  const [date, setDate] = useState("");
-  const [status, setStatus] = useState("To plan");
-  const countryOptions = useAtomValue(countriesAtom);
-  const [regionOptions, setRegionOptions] = useState([]);
-  const projectStatusesOptions = useAtomValue(projectStatusesAtom);
-  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = {
-      project: {
-        title: title,
-        content: content,
-        address: address,
-        city: city,
-        postal_code: postalCode,
-        country: country,
-        region: region,
-        GPS: GPS,
-        project_status: status,
-        date: date,
-      },
-    };
-    try {
-      await APIManager.newProject(data);
-      navigate("/myprojects");
-    } catch (err) {
-      console.error(err);
-    }
-  };
+function FileForm() {
+  const { latestProject, setLatestProject } = useContext(AppContext);
+  const [projectStatus, setProjectStatus] = useState("")
+  const [userId, setUserId] = useState("")
+  const [regionId, setRegionId] = useState("")
+  const [countryId, setCountryId] = useState("")
 
-  useEffect(() => {
-    regionOptions[0] ? setRegion(regionOptions[0].name) : setRegion("");
-  });
+  function handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData();
 
-  useEffect(() => {
-    const fetchRegions = async () => {
-      await APIManager.getRegionsFromCountry(country).then((data) =>
-        setRegionOptions(data)
-      );
-    };
-    fetchRegions().catch(console.error);
-  }, [country]);
+    data.append("project[title]", event.target.title.value);
+    data.append("project[image]", event.target.image.files[0]);
+    data.append("project[content]", event.target.content.value);
+    data.append("project[date]", event.target.date.value);
+    data.append("project[city]", event.target.city.value);
+    data.append("project[address]",event.target.address.value);
+    data.append("project[postal_code]",event.target.postal_code.value);
+    data.append("project[project_status_id]", parseInt (projectStatus));
+    data.append("project[user_id]",parseInt(userId));
+    data.append("project[region_id]", parseInt(regionId));
+    data.append("project[country_id]", parseInt(countryId));
+    
+  
+   
+    console.log(data)
+
+ 
+
+    
+    submitToAPI(data);
+  }
+  function submitToAPI(data) {
+    fetch("http://localhost:3000/projects", {
+      method: "POST",
+      body: data,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setLatestProject(data.image_url);
+      })
+      .catch((error) => console.error(error));
+      
+  
+  }
 
   return (
-    <>
-      <h1 className="new-title">New project</h1>
-      <form onSubmit={handleSubmit} className="new-container-form">
-        <div className="input-container">
-          <label htmlFor="title">Title</label>
-          <input
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
-            type="text"
-            id="title"
-            placeholder="Title"
-            required={true}
-          />
-        </div>
-        <div className="input-container">
-          <label htmlFor="content">Content</label>
-          <input
-            onChange={(e) => setContent(e.target.value)}
-            value={content}
-            type="textarea"
-            id="content"
-            placeholder="Content"
-            required={true}
-          />
-        </div>
-        <div className="input-container">
-          <label htmlFor="address">Address</label>
-          <input
-            onChange={(e) => setAddress(e.target.value)}
-            value={address}
-            type="text"
-            id="address"
-            placeholder="Address"
-          />
-        </div>
-        <div className="input-container">
-          <label htmlFor="city">City</label>
-          <input
-            onChange={(e) => setCity(e.target.value)}
-            value={city}
-            type="text"
-            id="city"
-            placeholder="City"
-          />
-        </div>
-        <div className="input-container">
-          <label htmlFor="postalCode">ZIP Code</label>
-          <input
-            onChange={(e) => setPostalCode(e.target.value)}
-            value={postalCode}
-            type="text"
-            id="postalCode"
-            placeholder="Postal Code"
-          />
-        </div>
-        <div className="input-container">
-          <label htmlFor="date">Date</label>
-          <input
-            onChange={(e) => setDate(e.target.value)}
-            value={date}
-            type="date"
-            id="date"
-            placeholder="Date"
-          />
-        </div>
-        <div className="input-container">
-          <label htmlFor="country">Country</label>
-          <select
-            onChange={(e) => setCountry(e.target.value)}
-            value={country}
-            type="text"
-            id="country"
-            placeholder="Country"
-            required={true}
-          >
-            {countryOptions.map((countryOption) => {
-              return (
-                <option
-                  key={countryOption.id + countryOption.name}
-                  value={countryOption.name}
-                >
-                  {countryOption.name}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-        <div className="">
-          <label htmlFor="region">Region</label>
-          <select
-            onChange={(e) => setRegion(e.target.value)}
-            value={region}
-            type="text"
-            id="region"
-            placeholder="Region"
-            required={true}
-          >
-            {regionOptions.map((regionOption) => {
-              return (
-                <option
-                  key={regionOption.id + regionOption.name}
-                  value={regionOption.name}
-                >
-                  {regionOption.name}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-        <div className="input-container">
-          <label htmlFor="GPS">GPS</label>
-          <input
-            onChange={(e) => setGPS(e.target.value)}
-            value={GPS}
-            type="text"
-            id="gps"
-            placeholder="GPS"
-          />
-        </div>
-        <div className="input-container">
-          <label htmlFor="status">Status</label>
-          <select
-            onChange={(e) => setStatus(e.target.value)}
-            value={status}
-            type="text"
-            id="status"
-            placeholder="Status"
-            required={true}
-          >
-            {projectStatusesOptions.map((projectStatusesOption) => {
-              return (
-                <option
-                  key={projectStatusesOption.id + projectStatusesOption.name}
-                  value={projectStatusesOption.name}
-                >
-                  {projectStatusesOption.name}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-        <input type="submit" value="Begin" />
-      </form>
-    </>
-  );
-};
+    <div>
+      <h1>File Form</h1>
+      <form onSubmit={(event) => handleSubmit(event)}>
+        <label htmlFor="title">Title</label>
+        <input type="text" name="title" id="title" />
+        <br />
+        <label htmlFor="content">Content</label>
+        <input type="text" name="content" id="content"/>
+        <br />
+        <label htmlFor="date">Date</label>
+        <input type="datetime-local" name="date" id="date"/>
+        <br />
+        <label htmlFor="address">Address</label>
+        <input type="text" name="address" id="address"/>
+        <br />
+        <label htmlFor="city">City</label>
+        <input type="text" name="city" id="city"/>
+        <br />
+        <label htmlFor="postal_code">Postal Code</label>
+        <input type="text" name="postal_code" id="postal_code"/>
+        <br />
+        <label htmlFor="project_status_id">Project_Status</label>
+        <input type="number" name="project_status" onChange={(e)=> setProjectStatus(e.target.value)} value={projectStatus}/>
+        <br />
+        <label htmlFor="user_id">User_id</label>
+        <input type="number" name="user_id" onChange={(e)=> setUserId(e.target.value)} value={userId}/>
+        <br />
+        <label htmlFor="region_id">Region_id</label>
+        <input type="number" name="region_id" onChange={(e)=> setRegionId(e.target.value)} value={regionId}/>
+        <br />
+        <label htmlFor="country_id">Country_id</label>
+        <input type="number" name="country_id" onChange={(e)=> setCountryId(e.target.value)} value={countryId}/>
+        <br />
+        <label htmlFor="image">Image</label>
+        <input type="file" name="image" id="image" />
+        <br />
 
-export default NewProject;
+        <button type="submit">Create Post</button>
+      </form>
+      
+    </div>
+  );
+}
+
+export default FileForm;

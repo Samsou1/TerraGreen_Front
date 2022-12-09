@@ -1,11 +1,13 @@
 import Cookies from "js-cookie";
-import { useState, useEffect } from "react";
+import { useState,  useEffect } from "react";
 import APIManager from "../../services/api";
 import { Link } from "react-router-dom";
 import DeleteProjectButton from "../../components/DeleteProjectButton";
 import { useNavigate } from "react-router-dom";
 import CommentsContainer from "../../components/CommentsContainer";
 import Like from "../../components/Like";
+
+
 
 const ShowProject = () => {
   const [project, setProject] = useState({});
@@ -15,6 +17,9 @@ const ShowProject = () => {
   const [likes, setLikes] = useState([]);
   const [comments, setComments] = useState([]);
   const navigate = useNavigate();
+
+
+
 
   const setAll = (data) => {
     setCountry(data.country);
