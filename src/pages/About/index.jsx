@@ -1,3 +1,5 @@
+import dechet
+
 const About = () => {
   return (
     <>
