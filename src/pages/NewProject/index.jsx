@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import APIManager from "../../services/api";
 import { useNavigate } from "react-router-dom";
-import { useAtomValue } from "jotai";
 import { countriesAtom } from "../../store/country";
 import { projectStatusesAtom } from "../../store/projectStatus";
+import { useAtomValue } from "jotai/utils";
 
 const NewProject = () => {
   const [title, setTitle] = useState("");
@@ -14,6 +14,7 @@ const NewProject = () => {
   const [region, setRegion] = useState("");
   const [country, setCountry] = useState("France");
   const [GPS, setGPS] = useState("");
+  const [date, setDate] = useState("");
   const [status, setStatus] = useState("To plan");
   const countryOptions = useAtomValue(countriesAtom);
   const [regionOptions, setRegionOptions] = useState([]);
@@ -33,6 +34,7 @@ const NewProject = () => {
         region: region,
         GPS: GPS,
         project_status: status,
+        date: date,
       },
     };
     try {
@@ -68,6 +70,7 @@ const NewProject = () => {
             type="text"
             id="title"
             placeholder="Title"
+            required={true}
           />
         </div>
         <div className="input-container">
@@ -78,6 +81,7 @@ const NewProject = () => {
             type="textarea"
             id="content"
             placeholder="Content"
+            required={true}
           />
         </div>
         <div className="input-container">
@@ -111,6 +115,16 @@ const NewProject = () => {
           />
         </div>
         <div className="input-container">
+          <label htmlFor="date">Date</label>
+          <input
+            onChange={(e) => setDate(e.target.value)}
+            value={date}
+            type="date"
+            id="date"
+            placeholder="Date"
+          />
+        </div>
+        <div className="input-container">
           <label htmlFor="country">Country</label>
           <select
             onChange={(e) => setCountry(e.target.value)}
@@ -118,6 +132,7 @@ const NewProject = () => {
             type="text"
             id="country"
             placeholder="Country"
+            required={true}
           >
             {countryOptions.map((countryOption) => {
               return (
@@ -139,6 +154,7 @@ const NewProject = () => {
             type="text"
             id="region"
             placeholder="Region"
+            required={true}
           >
             {regionOptions.map((regionOption) => {
               return (
@@ -170,6 +186,7 @@ const NewProject = () => {
             type="text"
             id="status"
             placeholder="Status"
+            required={true}
           >
             {projectStatusesOptions.map((projectStatusesOption) => {
               return (

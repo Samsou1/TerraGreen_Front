@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import APIManager from "../../services/api";
 import { useNavigate } from "react-router-dom";
-import { useAtomValue } from "jotai";
+import { useAtomValue } from "jotai/utils";
 import { countriesAtom } from "../../store/country";
 import { projectStatusesAtom } from "../../store/projectStatus";
 
@@ -14,6 +14,7 @@ const EditProject = () => {
   const [country, setCountry] = useState("France");
   const [region, setRegion] = useState("");
   const [GPS, setGPS] = useState("");
+  const [date, setDate] = useState("");
   const [status, setStatus] = useState("To plan");
   const countryOptions = useAtomValue(countriesAtom);
   const [regionOptions, setRegionOptions] = useState([]);
@@ -33,6 +34,7 @@ const EditProject = () => {
         region: region,
         GPS: GPS,
         project_status: status,
+        date: date,
       },
     };
     try {
@@ -55,9 +57,8 @@ const EditProject = () => {
     data.country ? setCountry(data.country) : setCountry("");
     data.region ? setRegion(data.region) : setRegion("");
     data.project.GPS ? setGPS(data.project.GPS) : setGPS("");
-    data.status
-      ? setStatus(data.status)
-      : setStatus("");
+    data.status ? setStatus(data.status) : setStatus("");
+    data.date ? setDate(data.date) : setDate("");
   };
 
   useEffect(() => {
@@ -65,13 +66,11 @@ const EditProject = () => {
     const fetchProject = async () => {
       await APIManager.getProject(id).then((data) => SetAll(data));
     };
-    fetchProject().then(regionOptions[0] ? setRegion(regionOptions[0].name) : setRegion("")).catch(console.error);
+    fetchProject()
+      .then(regionOptions[0] ? setRegion(regionOptions[0].name) : setRegion(""))
+      .catch(console.error);
   }, []);
 
-  // useEffect(() => {
-  //   regionOptions[0] ? setRegion(regionOptions[0].name) : setRegion("");
-  // }), [];
-  
   useEffect(() => {
     const fetchRegions = async () => {
       await APIManager.getRegionsFromCountry(country).then((data) =>
@@ -136,7 +135,7 @@ const EditProject = () => {
           />
         </div>
         <div className="input-container">
-        <label htmlFor="country">Country</label>
+          <label htmlFor="country">Country</label>
           <select
             onChange={(e) => setCountry(e.target.value)}
             value={country}
@@ -157,7 +156,7 @@ const EditProject = () => {
           </select>
         </div>
         <div className="input-container">
-        <label htmlFor="region">Region</label>
+          <label htmlFor="region">Region</label>
           <select
             onChange={(e) => setRegion(e.target.value)}
             value={region}
@@ -188,7 +187,17 @@ const EditProject = () => {
           />
         </div>
         <div className="input-container">
-        <label htmlFor="status">Status</label>
+          <label htmlFor="date">Date</label>
+          <input
+            onChange={(e) => setDate(e.target.value)}
+            value={date}
+            type="date"
+            id="date"
+            placeholder="Date"
+          />
+        </div>
+        <div className="input-container">
+          <label htmlFor="status">Status</label>
           <select
             onChange={(e) => setStatus(e.target.value)}
             value={status}

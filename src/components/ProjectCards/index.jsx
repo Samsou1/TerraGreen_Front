@@ -10,8 +10,13 @@ const ProjectCards = () => {
       const search = window.location.search.split("?search=")[1];
       const fetchData = async () => {
         await APIManager.getFilteredProjects(search).then((data) =>
-        setProjects(data)
+          setProjects(data)
         );
+      };
+      fetchData().catch(console.error);
+    } else if (window.location.pathname === "/myprojects") {
+      const fetchData = async () => {
+        await APIManager.getMyProjects().then((data) => setProjects(data));
       };
       fetchData().catch(console.error);
     } else {
@@ -28,10 +33,7 @@ const ProjectCards = () => {
       <div className="projectsCards">
         {projects.map((project) => {
           return (
-            <ProjectCard
-              key={project.id + project.title}
-              project={project}
-            />
+            <ProjectCard key={project.id + project.title} project={project} />
           );
         })}
       </div>
