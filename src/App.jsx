@@ -14,9 +14,12 @@ import ShowProject from "./pages/ShowProject";
 import NewProject from "./pages/NewProject";
 import MyProjects from "./pages/MyProjects";
 import EditProject from "./pages/EditProject";
+import {createContext, useState} from "react";
+
+export const AppContext = createContext(null);
 
 function App() {
-
+  const [latestProject, setLatestProject] = useState(AppContext)
   return (
     <BrowserRouter>
       <Navbar />
@@ -32,9 +35,10 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/editprofile" element={<EditProfile />} />
-            <Route path="/newproject" element={<NewProject />} />
             <Route path="/myprojects" element={<MyProjects />} />
             <Route path="/editproject/:id" element={<EditProject />} />
+            <Route path="/newproject" element={ <AppContext.Provider value={{ latestProject, setLatestProject}} ><NewProject /> </AppContext.Provider> } />
+           
           </Route>
         </Routes>
       </main>

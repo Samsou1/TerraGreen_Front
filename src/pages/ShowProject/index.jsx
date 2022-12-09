@@ -1,14 +1,19 @@
 import Cookies from "js-cookie";
-import { useState, useEffect } from "react";
+import { useState,  useEffect } from "react";
 import APIManager from "../../services/api";
 import { Link } from "react-router-dom";
 import DeleteProjectButton from "../../components/DeleteProjectButton";
+
+
 
 const ShowProject = () => {
   const [project, setProject] = useState({});
   const [country, setCountry] = useState('');
   const [region, setRegion] = useState('');
   const [status, setStatus] = useState('');
+
+
+
 
   const setAll = (data) => {
     setCountry(data.country);
@@ -41,6 +46,8 @@ const ShowProject = () => {
           <p>City: {project.city}</p>
           <p>Postal code: {project.postal_code}</p>
           <p>GPS: {project.GPS}</p>
+          
+       
           <span className="current_user_access">
             <button className="edit_btn">
               <span>

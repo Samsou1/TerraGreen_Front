@@ -26,7 +26,9 @@ const ProjectCard = ({ project }) => {
             <li><strong>Postal code: </strong>{project.postal_code}</li>   
             <li><strong>Region ID: </strong>{project.region_id}</li>   
             <li><strong>Country ID: </strong>{project.country_id}</li>   
-            <li><strong>GPS: </strong>{project.GPS}</li>   
+            <li><strong>GPS: </strong>{project.GPS}</li>
+            
+            
 
           </ul>
         </div>       

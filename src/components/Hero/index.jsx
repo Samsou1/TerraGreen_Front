@@ -4,7 +4,7 @@ import videoBg from "../../videos/videoBg.mp4";
 
 const Hero = () => {
   if (Cookies.get('currentUser')) {
-    //return (
+    return (
       // autoPlay loop (Add it later before muted)
       <section className="hero-container">
         <video src={videoBg} muted></video>
@@ -14,8 +14,9 @@ const Hero = () => {
           <Link to="/myprojects">Mes projets</Link>
         </div>
       </section>
+    )
       //);
-    //} else {
+    } else {
       return (
         // autoPlay loop (Add it later before muted)
         <section className="hero-container">
