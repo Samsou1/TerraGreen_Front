@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 let BASE_URL;
 switch (process.env.NODE_ENV) {
   case "production":
-    url = "https://stackoverflow.com";
+    url = "https://terra-green.fly.dev/";
     break;
   case "development":
     BASE_URL = "http://localhost:3000";
