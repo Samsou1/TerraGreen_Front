@@ -4,10 +4,10 @@ import React, { useContext, useState } from "react";
 
 function FileForm() {
   const { latestProject, setLatestProject } = useContext(AppContext);
-  const [projectStatus, setProjectStatus] = useState(3)
-  const [userId, setUserId] = useState(11)
-  const [regionId, setRegionId] = useState(2)
-  const [countryId, setCountryId] = useState(2)
+  const [projectStatus, setProjectStatus] = useState("")
+  const [userId, setUserId] = useState("")
+  const [regionId, setRegionId] = useState("")
+  const [countryId, setCountryId] = useState("")
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -16,15 +16,18 @@ function FileForm() {
     data.append("project[title]", event.target.title.value);
     data.append("project[image]", event.target.image.files[0]);
     data.append("project[content]", event.target.content.value);
-    data.append("project[date]", event.target.date.value)
-    data.append("project[")
-    data.append("project[project_status_id]", projectStatus);;
-    data.append("project[user_id]", userId);
-    data.append("project[region_id]", regionId);
-    data.append("project[country_id]", countryId);
+    data.append("project[date]", event.target.date.value);
+    data.append("project[city]", event.target.city.value);
+    data.append("project[address]",event.target.address.value);
+    data.append("project[postal_code]",event.target.postal_code.value);
+    data.append("project[project_status_id]", parseInt (projectStatus));
+    data.append("project[user_id]",parseInt(userId));
+    data.append("project[region_id]", parseInt(regionId));
+    data.append("project[country_id]", parseInt(countryId));
     
   
    
+    console.log(data)
 
  
 
@@ -44,16 +47,28 @@ function FileForm() {
       
   
   }
-  console.log(setLatestProject)
+
   return (
     <div>
       <h1>File Form</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={(event) => handleSubmit(event)}>
         <label htmlFor="title">Title</label>
         <input type="text" name="title" id="title" />
         <br />
         <label htmlFor="content">Content</label>
         <input type="text" name="content" id="content"/>
+        <br />
+        <label htmlFor="date">Date</label>
+        <input type="datetime-local" name="date" id="date"/>
+        <br />
+        <label htmlFor="address">Address</label>
+        <input type="text" name="address" id="address"/>
+        <br />
+        <label htmlFor="city">City</label>
+        <input type="text" name="city" id="city"/>
+        <br />
+        <label htmlFor="postal_code">Postal Code</label>
+        <input type="text" name="postal_code" id="postal_code"/>
         <br />
         <label htmlFor="project_status_id">Project_Status</label>
         <input type="number" name="project_status" onChange={(e)=> setProjectStatus(e.target.value)} value={projectStatus}/>
