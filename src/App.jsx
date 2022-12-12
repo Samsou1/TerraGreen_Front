@@ -16,6 +16,7 @@ import NewProject from "./pages/NewProject";
 import MyProjects from "./pages/MyProjects";
 import EditProject from "./pages/EditProject";
 import {createContext, useState} from "react";
+import Map from "./components/Map";
 
 export const AppContext = createContext(null);
 
@@ -45,6 +46,7 @@ function App() {
           </Route>
         </Routes>
       </main>
+      <Map />
       <Footer />
     </BrowserRouter>
   );

@@ -12,3 +12,9 @@
 @import "./pages/Login";
 @import "./pages/Register";
 @import "./pages/about";
+
+.leaflet-container {
+  margin: 0 auto;
+  width: 500px;
+  height: 400px;
+}
