@@ -35,10 +35,6 @@ main {
   float: right;
 }
 
-.link {
-  font-size: 16px;
-}
-
 @media (min-width: $breakpoint-medium-devices) {
   .login-form-container {
     min-width: 400px;

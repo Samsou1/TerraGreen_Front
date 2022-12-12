@@ -42,49 +42,63 @@ const ShowProject = () => {
     return (
       <div className="">
         <div className="">
-          <h1>Title:{project.title}</h1>
-          <p>Content: {project.content}</p>
-          <p>Region: {region}</p>
-          <p>Country: {country}</p>
-          <p>Project status: {status}</p>
-          <p>Address: {project.address}</p>
-          <p>City: {project.city}</p>
-          <p>Postal code: {project.postal_code}</p>
-          <Like likes={likes} />
-          <ProjectRegistration projectRegistrations={projectRegistrations}/>
-          <CommentsContainer comments={comments} />
-          <span className="current_user_access">
-            <button className="edit_btn">
-              <span>
-                <Link className="edit" to={`/editproject/${project.id}`}>
-                  Edit
-                </Link>
-              </span>
-            </button>
-            <DeleteProjectButton className="edit_btn" />
-          </span>
+
+          <div className="wrapper">
+            <div className="product-img">
+              <img src="http://bit.ly/2tMBBTd" height="420" width="327" />
+            </div>
+            <div className="product-info">
+              <div className="product-text">
+                <h1>{project.title}</h1>
+                <h2>by studio and friends</h2>
+                <p>{project.content}</p>
+                <h3>Location</h3>
+                <p>{project.address}</p>
+                <p>{project.city} {project.postal_code}</p>
+                <p>{region}, {country}</p>
+              </div>
+              <div className="projectBtnShow">
+                <Like likes={likes} />
+                <Link className="edit" to={`/editproject/${project.id}`}>Edit</Link>
+                <DeleteProjectButton className="edit_btn" />
+              </div>
+            </div>
+          </div>
+          <button onClick={() => navigate(-1)}>Go back</button>
         </div>
-        <button onClick={() => navigate(-1)}>Go back</button>
       </div>
     );
   } else {
     return (
-      <div className="">
         <div className="">
-          <h1>Title:{project.title}</h1>
-          <p>Content: {project.content}</p>
-          <p>Region: {region}</p>
-          <p>Country: {country}</p>
-          <p>Project status: {status}</p>
-          <p>Address: {project.address}</p>
-          <p>City: {project.city}</p>
-          <p>Postal code: {project.postal_code}</p>
-          <Like likes={likes} />
-          <ProjectRegistration projectRegistrations={projectRegistrations}/>
-          <CommentsContainer comments={comments} />
+          <div className="">
+  
+            <div className="wrapper">
+              <div className="product-img">
+                <img src="http://bit.ly/2tMBBTd" height="420" width="327" />
+              </div>
+              <div className="product-info">
+                <div className="product-text">
+                  <h1>{project.title}</h1>
+                  <h2>Username</h2>
+                  <p>{project.content}</p>
+                  <h3>Location</h3>
+                  <p>{project.address}</p>
+                  <p>{project.city} {project.postal_code}</p>
+                  <p>{region}, {country}</p>
+                </div>
+                <div className="projectBtnShow">
+                  <Like likes={likes} />
+                  <ProjectRegistration projectRegistrations={projectRegistrations}/>
+                </div>
+              </div>
+            </div>
+
+            <button onClick={() => navigate(-1)}>Go back</button>
+            <CommentsContainer comments={comments} />
+  
+          </div>
         </div>
-        <button onClick={() => navigate(-1)}>Go back</button>
-      </div>
     );
   }
 };
