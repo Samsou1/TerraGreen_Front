@@ -1,5 +1,6 @@
 footer {
   font-family: $font-family-title;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +13,7 @@ footer {
 #logo-footer {
   position: absolute;
   left: 20px;
-  bottom: -110px;
+  bottom: 10px;
 
   & img {
     width: 100px;
@@ -30,7 +31,7 @@ footer {
 @media (min-width: $breakpoint-medium-devices) {
   #logo-footer {
     left: 15px;
-    bottom: -115px;
+    bottom: -10px;
     & img {
       width: 145px;
     }
@@ -46,7 +47,7 @@ footer {
 
   #logo-footer {
     left: 25px;
-    bottom: -125px;
+    bottom: 0px;
     & img {
       width: 175px;
     }
