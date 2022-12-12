@@ -1,9 +1,11 @@
 import APIManager from "../../services/api";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { userLoggedIn } from "../../services/user";
 
 const Profile = () => {
   const [user, setUser] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -11,6 +13,24 @@ const Profile = () => {
     };
     fetchProfile().catch(console.error);
   }, []);
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    if (
+      userLoggedIn() &&
+      window.confirm("Do you really want to delete your profile?")
+    ) {
+      // const data = {
+      //   like: { project_id: id },
+      // };
+      try {
+        await APIManager.deleteUser();
+        navigate("/");
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  };
 
   return (
     <div className="profileCard">
@@ -24,6 +44,7 @@ const Profile = () => {
       <Link className="btn_profile" to="/editprofile">
         Edit profile
       </Link>
+      <button onClick={handleClick}>Delete Profile</button>
     </div>
   );
 };

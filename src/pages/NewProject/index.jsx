@@ -11,7 +11,6 @@ function FileForm() {
   function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData();
-
     data.append("project[title]", event.target.title.value);
     data.append("project[image]", event.target.image.files[0]);
     data.append("project[content]", event.target.content.value);
@@ -23,11 +22,9 @@ function FileForm() {
     data.append("project[user_id]", parseInt(userId));
     data.append("project[region_id]", parseInt(regionId));
     data.append("project[country_id]", parseInt(countryId));
-
-    console.log(data);
-
     submitToAPI(data);
   }
+  
   function submitToAPI(data) {
     fetch("http://localhost:3000/projects", {
       method: "POST",

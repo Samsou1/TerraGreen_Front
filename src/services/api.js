@@ -169,7 +169,15 @@ export default class APIManager {
   static async toggleLike(payload) {
     try {
       const response = await API.post(`/togglelike`, payload);
-      console.log(response);
+      return response;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  static async toggleProjectRegistration(payload) {
+    try {
+      const response = await API.post(`/toggleprojectregistration`, payload);
       return response;
     } catch (err) {
       console.error(err);
@@ -219,6 +227,18 @@ export default class APIManager {
   static async getRegions() {
     try {
       const response = await API.get("/regions");
+      return response.data;
+    } catch (err) {
+      console.error(err);
+      throw new Error("Something went wrong");
+    }
+  }
+
+  static async deleteUser() {
+    try {
+      const response = await API.delete("/member-destroy");
+      Cookies.remove("bearerToken");
+      Cookies.remove("currentUser");
       return response.data;
     } catch (err) {
       console.error(err);

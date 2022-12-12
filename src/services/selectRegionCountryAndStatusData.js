@@ -17,3 +17,20 @@ export const getProjectStatusFromId = (id) => {
   const projectStatuses = useAtomValue(projectStatusesAtom);
   return projectStatuses.filter((projectStatus) => projectStatus.id === id)[0];
 };
+
+export const getRegionFromName = (name) => {
+  const regions = useAtomValue(regionsAtom);
+  return regions.filter((region) => region.name === name)[0];
+};
+
+export const getCountryFromName = (name) => {
+  const countries = useAtomValue(countriesAtom);
+  return countries.filter((country) => country.name === name)[0];
+};
+
+export const getProjectStatusFromName = (name) => {
+  const projectStatuses = useAtomValue(projectStatusesAtom);
+  return projectStatuses.filter(
+    (projectStatus) => projectStatus.name === name
+  )[0];
+};
