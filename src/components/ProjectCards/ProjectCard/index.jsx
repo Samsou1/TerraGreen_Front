@@ -19,7 +19,7 @@ const ProjectCard = ({ project }) => {
         </li>
         <li>
           <strong>ZIP: </strong>
-          {project.postal_code}{" "}
+          {project.postal_code}
         </li>
         <li>
           <strong>City: </strong>
