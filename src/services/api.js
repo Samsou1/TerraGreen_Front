@@ -153,7 +153,15 @@ export default class APIManager {
   static async toggleLike(payload) {
     try {
       const response = await API.post(`/togglelike`, payload);
-      console.log(response)
+      return response;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  static async toggleProjectRegistration(payload) {
+    try {
+      const response = await API.post(`/toggleprojectregistration`, payload);
       return response;
     } catch (err) {
       console.error(err);
