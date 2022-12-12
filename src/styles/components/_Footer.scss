@@ -1,15 +1,27 @@
 footer {
   font-family: $font-family-title;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  padding: 0 55px;
+  border-top-left-radius: 65px;
+  border-top-right-radius: 65px;
   background-color: $color-green-light;
-  height: 80px;
+  height: 100px;
+}
+
+#logo-footer {
+  position: absolute;
+  left: 25px;
+  bottom: -125px;
+
+  & img {
+    width: 175px;
+  }
 }
 
 .company {
   color: $color-green-dark;
+
   &:hover {
     color: $color-green-medium;
   }
