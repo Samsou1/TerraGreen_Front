@@ -1,0 +1,25 @@
+.search-container-form {
+  & input {
+    font-family: $font-family-content;
+    font-size: medium;
+    border: 1px solid $color-green-dark;
+    border-radius: 20px;
+    padding: 8px 20px;
+    margin-top: 1.2rem;
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
+    &:hover {
+      border: 2px solid $color-green-dark;
+    }
+    &:focus {
+      outline: none;      
+    }
+  }
+  }
+  
+  $breakpoint-tablet: 768px;
+@media (min-width: $breakpoint-tablet) {
+  .search-form-container {
+    min-width: 400px;
+  }
+}
