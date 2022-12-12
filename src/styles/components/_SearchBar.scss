@@ -14,9 +14,15 @@
     }
     &:hover {
       border: 2px solid $color-green-dark;
+      &::placeholder {
+        color: $color-green-medium;
+      }
     }
     &:focus {
-      outline: none;      
+      outline: none;
+      &::placeholder {
+        color: $color-green-medium;
+      }
     }
   }
   }
