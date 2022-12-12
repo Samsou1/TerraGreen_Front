@@ -46,7 +46,7 @@ function App() {
           </Route>
         </Routes>
       </main>
-      <Map />
+     
       <Footer />
     </BrowserRouter>
   );

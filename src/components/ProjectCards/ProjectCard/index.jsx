@@ -11,7 +11,7 @@ const ProjectCard = ({ project }) => {
         <li>{project.content}</li>
         <li>
           <strong>Status: </strong>
-          {getProjectStatusFromId(project.project_status_id).name}
+          {getProjectStatusFromId(project.project_status_id)}
         </li>
         <li>
           <strong>Address: </strong>
@@ -31,11 +31,11 @@ const ProjectCard = ({ project }) => {
         </li>
         <li>
           <strong>Region: </strong>
-          {getRegionFromId(project.region_id).name}
+          {getRegionFromId(project.region_id)}
         </li>
         <li>
           <strong>Country: </strong>
-          {getCountryFromId(project.country_id).name}
+          {getCountryFromId(project.country_id)}
         </li>
         <li>
           <strong>GPS: </strong>

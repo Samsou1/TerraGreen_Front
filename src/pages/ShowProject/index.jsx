@@ -90,7 +90,7 @@ const ShowProject = () => {
           <CommentsContainer comments={comments} />
         </div>
         <button onClick={() => navigate(-1)}>Go back</button>
-        <Mapping />
+        <Mapping project= {project}/>
       </div>
     );
   }
