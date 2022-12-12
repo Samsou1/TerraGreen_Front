@@ -1,13 +1,12 @@
-import Cookies from "js-cookie";
-import { useState,  useEffect } from "react";
+import { useState, useEffect } from "react";
 import APIManager from "../../services/api";
 import { Link } from "react-router-dom";
 import DeleteProjectButton from "../../components/DeleteProjectButton";
 import { useNavigate } from "react-router-dom";
 import CommentsContainer from "../../components/CommentsContainer";
 import Like from "../../components/Like";
-
-
+import { userLoggedIn, currentUserId } from "../../services/user";
+import ProjectRegistration from "../../components/ProjectRegistration";
 
 const ShowProject = () => {
   const [project, setProject] = useState({});
@@ -16,10 +15,8 @@ const ShowProject = () => {
   const [status, setStatus] = useState("");
   const [likes, setLikes] = useState([]);
   const [comments, setComments] = useState([]);
+  const [projectRegistrations, setProjectRegistrations] = useState([]);
   const navigate = useNavigate();
-
-
-
 
   const setAll = (data) => {
     setCountry(data.country);
@@ -28,6 +25,7 @@ const ShowProject = () => {
     setProject(data.project);
     setLikes(data.likes);
     setComments(data.comments);
+    setProjectRegistrations(data.project_registrations)
   };
 
   useEffect(() => {
@@ -40,10 +38,7 @@ const ShowProject = () => {
     fetchProject().catch(console.error);
   }, []);
 
-  if (
-    Cookies.get("currentUser") &&
-    JSON.parse(Cookies.get("currentUser")).id === project.user_id
-  ) {
+  if (userLoggedIn() && currentUserId() === project.user_id) {
     return (
       <div className="">
         <div className="">
@@ -55,8 +50,8 @@ const ShowProject = () => {
           <p>Address: {project.address}</p>
           <p>City: {project.city}</p>
           <p>Postal code: {project.postal_code}</p>
-          <p>GPS: {project.GPS}</p>
           <Like likes={likes} />
+          <ProjectRegistration projectRegistrations={projectRegistrations}/>
           <CommentsContainer comments={comments} />
           <span className="current_user_access">
             <button className="edit_btn">
@@ -84,8 +79,8 @@ const ShowProject = () => {
           <p>Address: {project.address}</p>
           <p>City: {project.city}</p>
           <p>Postal code: {project.postal_code}</p>
-          <p>GPS: {project.GPS}</p>
           <Like likes={likes} />
+          <ProjectRegistration projectRegistrations={projectRegistrations}/>
           <CommentsContainer comments={comments} />
         </div>
         <button onClick={() => navigate(-1)}>Go back</button>

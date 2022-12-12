@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { getCountryFromId } from "../../../services/turnIdToString";
-import { getRegionFromId } from "../../../services/turnIdToString";
-import { getProjectStatusFromId } from "../../../services/turnIdToString";
+import { getCountryFromId } from "../../../services/selectRegionCountryAndStatusData";
+import { getRegionFromId } from "../../../services/selectRegionCountryAndStatusData";
+import { getProjectStatusFromId } from "../../../services/selectRegionCountryAndStatusData";
 
 const ProjectCard = ({ project }) => {
   return (
@@ -25,7 +25,6 @@ const ProjectCard = ({ project }) => {
             </Link>
         </button>
       </div>
-      {console.log(project)}
     </div>
   );
 };

@@ -4,11 +4,13 @@ import { projectLikedByCurrentUser } from "../../services/projectLikedByCurrentU
 import { useEffect, useState } from "react";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 const Like = ({ likes }) => {
   const [liked, setLiked] = useState(false);
   const [numberOfLikes, setNumberOfLikes] = useState(0);
   const [id, setId] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     setId(window.location.pathname.split("/")[2]);
@@ -34,12 +36,19 @@ const Like = ({ likes }) => {
       } catch (err) {
         console.error(err);
       }
+    } else {
+      navigate("/login");
     }
   };
 
   return (
     <button onClick={handleClick}>
-      <FontAwesomeIcon className={liked ? "liked" : "unliked"} icon={faThumbsUp}>{numberOfLikes}</FontAwesomeIcon>
+      <FontAwesomeIcon
+        className={liked ? "liked" : "unliked"}
+        icon={faThumbsUp}
+      >
+        {numberOfLikes}
+      </FontAwesomeIcon>
       {numberOfLikes}
     </button>
   );
