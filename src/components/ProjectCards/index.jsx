@@ -29,7 +29,6 @@ const ProjectCards = () => {
 
   return (
     <section className="projects-cards-container">
-      <h2 className="project_title">Our projects:</h2>
       <div className="projectsCards">
         {projects.map((project) => {  
           return (
