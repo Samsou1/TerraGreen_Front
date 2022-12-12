@@ -3,19 +3,19 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top-left-radius: 65px;
-  border-top-right-radius: 65px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
   background-color: $color-green-light;
-  height: 100px;
+  height: 70px;
 }
 
 #logo-footer {
   position: absolute;
-  left: 25px;
-  bottom: -125px;
+  left: 20px;
+  bottom: -110px;
 
   & img {
-    width: 175px;
+    width: 100px;
   }
 }
 
@@ -24,5 +24,31 @@ footer {
 
   &:hover {
     color: $color-green-medium;
+  }
+}
+
+@media (min-width: $breakpoint-medium-devices) {
+  #logo-footer {
+    left: 15px;
+    bottom: -115px;
+    & img {
+      width: 145px;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-large-devices) {
+  footer {
+    border-top-left-radius: 65px;
+    border-top-right-radius: 65px;
+    height: 100px;
+  }
+
+  #logo-footer {
+    left: 25px;
+    bottom: -125px;
+    & img {
+      width: 175px;
+    }
   }
 }
