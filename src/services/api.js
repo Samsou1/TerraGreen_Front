@@ -217,4 +217,16 @@ export default class APIManager {
       throw new Error("Something went wrong");
     }
   }
+
+  static async deleteUser() {
+    try {
+      const response = await API.delete("/member-destroy");
+      Cookies.remove("bearerToken");
+      Cookies.remove("currentUser");
+      return response.data;
+    } catch (err) {
+      console.error(err);
+      throw new Error("Something went wrong");
+    }
+  }
 }
