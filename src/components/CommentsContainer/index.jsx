@@ -21,7 +21,6 @@ const CommentsContainer = ({ comments }) => {
         {comments.map((comment, index) => {
           return <Comment key={"comment" + index} comment={comment} />;
         })}
-        <NewCommentForm />
       </div>
     );
   }

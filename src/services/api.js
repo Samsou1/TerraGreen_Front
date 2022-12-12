@@ -35,8 +35,8 @@ export default class APIManager {
       );
       Cookies.set("currentUser", JSON.stringify(response.data.user));
       return response;
-    } catch {
-      throw new Error("Invalid email or password");
+    } catch (err) {
+      throw new Error(err);
     }
   }
 
@@ -49,8 +49,8 @@ export default class APIManager {
       );
       Cookies.set("currentUser", JSON.stringify(response.data.user));
       return response;
-    } catch {
-      throw new Error("Invalid email or password");
+    } catch (err) {
+      throw new Error(err);
     }
   }
 
@@ -77,7 +77,15 @@ export default class APIManager {
       return response.data.user;
     } catch (err) {
       console.error(err);
-      throw new Error("Something went wrong");
+    }
+  }
+
+  static async getNotifications() {
+    try {
+      const response = await API.get(`/notifications`);
+      return response.data;
+    } catch (err) {
+      console.error(err);
     }
   }
 

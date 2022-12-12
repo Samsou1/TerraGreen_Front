@@ -22,8 +22,7 @@ function Login() {
     try {
       await APIManager.loginUser(data);
       navigate("/");
-      window.location.reload();
-    } catch{
+    } catch(err){
       setErrors([{message:'Invalid password or email'}])
     }
   };
