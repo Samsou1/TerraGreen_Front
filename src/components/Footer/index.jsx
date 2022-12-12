@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
+import logo from "../../assets/images/logo.png";
 
 const Footer = () => {
   return (
     <footer>
+      <Link to="/" id="logo-footer">
+        <img src={logo} alt="logo"></img>
+      </Link>
       <Link className="link" to="/">
         <p className="company">TerraGreen</p>
       </Link>
