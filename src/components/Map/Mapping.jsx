@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import Map from './index'
+import Map from './index';
 
 
- export function Mapping({project})  {
+  function Mapping({project})  {
   const [coords, setCoords] = useState ({
     latitude: "",
     longitude: ""
@@ -16,7 +16,9 @@ useEffect(() => {
   &city=${project.city}
   &postalcode=${project.postal_code}&format=json`;
   getData(url)
+  console.log(project.address)
 }, [project]);
+
 
 
 
@@ -33,13 +35,16 @@ function getData(url) {
       if (response.ok) {
         return response.json();
       }
+      
     })
     .then((data) => {
       setCoords({
         latitude: data[0].lat,
         longitude: data[0].lon
       });
+      console.log(data)
     })
+    
     .catch(() => error("Please Check your input"));
 }
 
