@@ -30,9 +30,9 @@ const ProjectCards = () => {
   return (
     <section className="projects-cards-container">
       <div className="projectsCards">
-        {projects.map((project) => {
+        {projects.map((project) => {  
           return (
-            <ProjectCard key={project.id + project.title} project={project} />
+            <ProjectCard key={'project' + project.id } project={project.attributes} />
           );
         })}
       </div>

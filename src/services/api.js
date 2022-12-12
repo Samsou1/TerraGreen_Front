@@ -1,7 +1,17 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const BASE_URL = "http://localhost:3000";
+let BASE_URL;
+switch (process.env.NODE_ENV) {
+  case "production":
+    url = "https://terra-green.fly.dev/";
+    break;
+  case "development":
+    BASE_URL = "http://localhost:3000";
+  default:
+    BASE_URL = "http://localhost:3000";
+}
+
 const API = axios.create({ baseURL: BASE_URL });
 
 API.interceptors.request.use(({ headers, ...config }) =>
@@ -31,9 +41,12 @@ export default class APIManager {
       const response = await API.post("/users", payload);
       Cookies.set(
         "bearerToken",
-        response.headers.get("Authorization").split(" ")[1]
+        response.headers.get("Authorization").split(" ")[1],
+        { expires: 1 }
       );
-      Cookies.set("currentUser", JSON.stringify(response.data.user));
+      Cookies.set("currentUser", JSON.stringify(response.data.user), {
+        expires: 1,
+      });
       return response;
     } catch {
       throw new Error("Invalid email or password");
@@ -45,9 +58,12 @@ export default class APIManager {
       const response = await API.post("/users/sign_in", payload);
       Cookies.set(
         "bearerToken",
-        response.headers.get("Authorization").split(" ")[1]
+        response.headers.get("Authorization").split(" ")[1],
+        { expires: 1 }
       );
-      Cookies.set("currentUser", JSON.stringify(response.data.user));
+      Cookies.set("currentUser", JSON.stringify(response.data.user), {
+        expires: 1,
+      });
       return response;
     } catch {
       throw new Error("Invalid email or password");
