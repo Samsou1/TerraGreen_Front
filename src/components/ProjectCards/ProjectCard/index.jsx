@@ -12,12 +12,12 @@ const ProjectCard = ({ project }) => {
         <div className="card__header">                     
           <img className="card__thumb" src="https://images.unsplash.com/photo-1557053910-d9eadeed1c58?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="user avatar" />
           <div className="card__header-text">
-            <h3 className="card__title">{project.attributes.title}</h3>
-            <span className="card__tagline">{project.attributes.city} {project.attributes.postal_code}</span>
-            <span className="card__tagline">{getRegionFromId(project.attributes.region_id).name}, {getCountryFromId(project.attributes.country_id).name}</span>            
+            <h3 className="card__title">{project.attributes.title}</h3>           
             <span className="card__status">Username</span>
           </div>
         </div>
+        <span className="card__tagline">{project.attributes.city} {project.attributes.postal_code}</span>
+        <span className="card__tagline">{getRegionFromId(project.attributes.region_id).name}, {getCountryFromId(project.attributes.country_id).name}</span> 
         <p className="card__description">{project.attributes.content}</p>
         <button className="projectBtn">
             <Link to={`/projects/${project.id}`}>
