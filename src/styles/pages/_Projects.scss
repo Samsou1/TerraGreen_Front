@@ -4,4 +4,27 @@
 
 .projectPageTitle {
   margin-top: 2rem;
+  text-align: center;
+}
+
+.newProjectBtn {
+  background-color: $color-green-dark;
+  color: white;
+  padding: 12px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+  & a {
+    all: unset;
+    font-family: $font-family-content;
+    color: white;
+  }
+  &:hover {
+    transition-duration: 0.2s;
+    background-color:$color-green-medium;
+    color: white;
+  }
 }
