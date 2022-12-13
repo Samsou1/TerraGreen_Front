@@ -7,7 +7,7 @@ const Projects = () => {
   return (
     <>
       <div className="projectPage">      
-        <h1 className="projectPageTitle">Projects city by city</h1>
+        <h1 className="projectPageTitle">Projects</h1>
         <SearchBar />
         <Link to="/newproject" className="newProjectBtn">New Project</Link>
         <ProjectCards />

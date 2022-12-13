@@ -16,7 +16,6 @@ useEffect(() => {
   &city=${project.city}
   &postalcode=${project.postal_code}&format=json`;
   getData(url)
-  console.log(project.address)
 }, [project]);
 
 
@@ -42,7 +41,6 @@ function getData(url) {
         latitude: data[0].lat,
         longitude: data[0].lon
       });
-      console.log(data)
     })
     
     .catch(() => error("Please Check your input"));
