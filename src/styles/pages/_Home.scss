@@ -1,221 +1,174 @@
 @import "../abstracts/variables";
 
-// Mixins
-@mixin absCenter {
- position: absolute;
- top: 50%;
- left: 50%;
- transform: translate(-50%, -50%);
+.home-container {
+  
+    & h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    & p {
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 0 10px;
+      margin: 0 0 25px 0;
+    }
+    & img {
+      width: 200px;
+      margin-left: 6rem;
+    }
 }
 
-@mixin flexCenter {
- flex-flow: wrap;
- align-items: center;
- justify-content: center;
+@media (min-width: $breakpoint-medium-devices) {
+  .home-container {
+    & img {
+      margin-left: 19.5rem;
+    }
+  }
+
 }
 
-@mixin respond($breakpoint) {
- @if $breakpoint == phone {
-  @media (max-width: 37.5em) {
-   @content;
-  } // < 600px
- }
- @if $breakpoint == tab-port {
-  @media (max-width: 56.25em) {
-   @content;
-  } // < 900px
- }
- @if $breakpoint == tab-land {
-  @media (max-width: 75em) {
-   @content;
-  } // < 1200px
- }
- @if $breakpoint == big-desktop {
-  @media (min-width: 112.5em) {
-   @content;
-  } // > 1800px
- }
+@media (min-width: $breakpoint-large-devices) {
+  .home-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+      & h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      & p {
+        font-size: 1.1rem;
+        text-align: center;
+        padding: 0 10px;
+        margin: 0 0 25px 0;
+      }
+      & .img1 {
+        width: 400px;
+        margin-left: 5rem;
+        padding-top: 0.5rem;
+      }
+      & .img2 {
+        width: 400px;
+        margin-left: 1rem;
+      }
+      & .img3 {
+        width: 400px;
+        margin-left: 3rem;
+      }
+      
+  }
+
 }
 
+.title-home {
+  padding: 2rem 0 2rem 0;
+}
 
+.carousel-container {
+  height: 600px;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 500px 100px;
+  grid-template-columns: 1fr 30px 30px 30px 30px 30px 1fr;
+  align-items: center;
+  justify-items: center;
+}
 
+article#carousel {
+  grid-row: 1 / 2;
+  grid-column: 1 / 8;
+  width: 100vw;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 400px;
+  --items: 5;
+  --middle: 3;
+  --position: 1;
+  pointer-events: none;
+}
 
-
-body {
-  background-color: rgba($color: #d0fa67c8, $alpha: 1.0)
+div.item {
+  position: absolute;
+  border-radius: 13px;
+  width: 500px;
+  height: 450px;
+  background-color: coral;
+  --r: calc(var(--position) - var(--offset));
+  --abs: max(calc(var(--r) * -1), var(--r));
+  transition: all 0.25s linear;
+  transform: rotateY(calc(-10deg * var(--r)))
+    translateX(calc(-300px * var(--r)));
+  z-index: calc((var(--position) - var(--abs)));
   
 }
 
-.artboard {
- display: flex;
- @include flexCenter;
- padding: 4rem;
- height: 100%;
- position: relative;
-font-size: 62.5%;
-
+div.item:nth-of-type(1) {
+  --offset: 1;
+  
 }
-
-.card {
- flex: initial;
- position: relative;
- height: 32rem;
- width: 28rem;
- -moz-perspective: 200rem;
- perspective: 200rem;
- margin: 2rem;
-
- &__side {
-  height: 32rem;
-  transition: all 0.8s ease;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  -webkit-backface-visibility: hidden; /* We don't want to see the back part of the element. */
-  backface-visibility: hidden; /* We don't want to see the back part of the element. */
-  border-radius: 3px;
-  overflow: hidden; /* The image is overflowing the parent. */
-  box-shadow: 0 2rem 6rem rgba($color-green-dark, 0.15);
-
-  &--front {
-   background-image: linear-gradient(
-     to right bottom,
-     rgba($color-green-light, 0.65),
-     rgba($color-green-medium, 0.7)
-    ),
-    url(https://cdn.spacetelescope.org/archives/images/screen/heic0406a.jpg);
-  }
-
-  &--back {
-   background-color: $color-green-light;
-   transform: rotateY(180deg);
-  }
- }
-
- &:hover &__side--back {
-  transform: rotateY(0);
- }
- &:hover &__side--front {
-  transform: rotateY(-180deg);
- }
-
- // Front side of the card
- &__theme {
-  @include absCenter;
-  top: 54%;
-  width: 90%;
-  text-align: center;
- }
-
- &__theme-box {
-  color: $color-green-dark;
-  margin-bottom: 8rem;
- }
-
- &__subject {
-  letter-spacing: 0.8rem;
-  font-size: 1.6rem;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
- }
-
- &__title {
-  text-transform: uppercase;
-  font-size: 6rem;
-  font-weight: 100;
- }
+div.item:nth-of-type(2) {
+  --offset: 2;
+  
+}
+div.item:nth-of-type(3) {
+  --offset: 3;
  
- // Back side of the card
- &__cover {
-  position: relative;
-  background-size: cover;
-  height: 14rem;
-  // background-blend-mode: screen;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-  border-top-left-radius: 13px;
-  border-top-right-radius: 13px;
-  background-image: linear-gradient(
-    to top right,
-    rgba($color-green-medium, 0.65),
-    rgba($color-yellow, 0.65)
-   ),
-   url(https://cdn.spacetelescope.org/archives/images/screen/heic0406a.jpg);
- }
-
- &__heading {
-  text-align: center;
-  color: $color-green-dark;
-  @include absCenter;
-  width: 75%;
- }
-
- &__heading-span {
-  font-size: 4.2rem;
-  font-weight: 300;
-  text-transform: uppercase;
-  padding: 1rem 1.5rem;
-  color: $color-green-dark;
- }
-
- &__details {
-  padding: 4rem 2rem;
-  ul {
-   list-style: none;
-   width: 80%;
-   margin: 0 auto;
-
-   li {
-    text-align: center;
-    padding: 1rem;
-   }
-  }
- }
-
- // Responsivity
- @media only screen and (max-width: 37.5em), only screen and (hover: none) {
-  height: auto;
-  border-radius: 13px;
-  background-color: $color-green-medium;
-  box-shadow: 0 2rem 6rem rgba($color-blue-dark, 0.15);
-
-  &__side {
-   height: auto;
-   position: relative;
-   box-shadow: none;
-
-   &--front {
-    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
-   }
-
-   &--back {
-    transform: rotateY(0);
-   }
-  }
-
-  &:hover &__side--front {
-   transform: rotateY(0);
-  }
-
-  &__details {
-   padding: 3rem 2rem;
-  }
-
-  // Front side responsive styling
-  &__theme {
-   position: relative;
-   top: 0;
-   left: 0;
-   transform: translate(0);
-   width: 100%;
-   padding: 5rem 4rem 1.5rem 4rem;
-   text-align: right;
-  }
-
-  &__theme-box {
-   margin-bottom: 1.5rem;
-  }
-
- }
 }
+div.item:nth-of-type(4) {
+  --offset: 4;
+  
+}
+div.item:nth-of-type(5) {
+  --offset: 5;
+  
+}
+
+input:nth-of-type(1) {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+input:nth-of-type(1):checked ~ article#carousel {
+  --position: 1;
+}
+
+input:nth-of-type(2) {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+input:nth-of-type(2):checked ~ article#carousel {
+  --position: 2;
+}
+
+input:nth-of-type(3) {
+  grid-column: 4 /5;
+  grid-row: 2 / 3;
+}
+input:nth-of-type(3):checked ~ article#carousel {
+  --position: 3;
+}
+
+input:nth-of-type(4) {
+  grid-column: 5 / 6;
+  grid-row: 2 / 3;
+}
+input:nth-of-type(4):checked ~ article#carousel {
+  --position: 4;
+}
+
+input:nth-of-type(5) {
+  grid-column: 6 / 7;
+  grid-row: 2 / 3;
+}
+input:nth-of-type(5):checked ~ article#carousel {
+  --position: 5;
+}
+
+
+

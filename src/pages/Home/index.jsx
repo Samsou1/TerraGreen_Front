@@ -1,101 +1,64 @@
 import Hero from "../../components/Hero";
+import home1 from "../../assets/images/home1.png";
+import home2 from "../../assets/images/home2.png";
+import home3 from "../../assets/images/home3.png";
+
 
 const Home = () => {
   return (
     <>
     <Hero />
-    <section class="artboard">
-      <div class="card">
-        <div class="card__side card__side--back">
-          <div class="card__cover">
-           <h4 class="card__heading">
-             <span class="card__heading-span">Les bonnes raisons</span>
-           </h4>
-          </div>
-          <div class="card__details">
-            <ul>
-              <li>Advanced JS and CSS</li>
-              <li>JS/CSS Preprocessors</li>
-              <li>JS Frameworks</li>
-              <li>Advanced Animations</li>
-              <li>Deployment Pipelines</li>
-              <li>Large Apps Architectures</li>
-              <li>Naming Conventions</li>
-              </ul>
-          </div>
+    <section className="home-container">
+      <article>
+        <img src={home1} alt="logo" className="img1"></img>
+        <h1>Why?</h1>
+        <p className="p1">Because it is important to offer a bright future
+         to future generations, 
+        who do not have to suffer from our mistakes</p>
+      </article>
+
+      <article>
+        <img src={home2} alt="logo" className="img2"></img>
+        <h1>Who?</h1>
+        <p className="p2">Everyone can participate,
+         your family, your friends, your coworkers, just suggest it!</p>
+      </article>
+    
+      <article>
+        <img src={home3} alt="logo" className="img3"></img>
+        <h1>How?</h1>
+        <p className="p3">With your desire and your motivation! 
+        A bag and gloves and off you go
+         for the forest or the nearest beach!</p>
+      </article>
+    </section>
+    <h1 className="title-home">You can also take inspiration from some!</h1>
+  <section className="carousel-container">
+      
+      <input type="radio" name="position" />
+      <input type="radio" name="position" />
+      <input type="radio" name="position" />
+      <input type="radio" name="position" />
+      <input type="radio" name="position" />
+      <article id="carousel">
+      <div class="item">
+      
       </div>
-      <div class="card__side card__side--front">
-        <div class="card__theme">
-          <div class="card__theme-box">
-            <p class="card__subject">Participer à l'effort collectif</p>
-            <p class="card__title"> Pourquoi ? </p>
-        </div>
-    </div>
-  </div>
-</div>
- <div class="card">
+      <div class="item">
 
-  <div class="card__side card__side--back">
-   <div class="card__cover">
-    <h4 class="card__heading">
-     <span class="card__heading-span">Plus que tu ne le crois</span>
-    </h4>
-   </div>
-   <div class="card__details">
-    <ul>
-     <li>Advanced JS and CSS</li>
-     <li>JS/CSS Preprocessors</li>
-     <li>JS Frameworks</li>
-     <li>Advanced Animations</li>
-     <li>Deployment Pipelines</li>
-     <li>Large Apps Architectures</li>
-     <li>Naming Conventions</li>
-    </ul>
-   </div>
-  </div>
+      </div>
+      <div class="item">
 
-  <div class="card__side card__side--front">
-   <div class="card__theme">
-    <div class="card__theme-box">
-     <p class="card__subject">D'autres peuvent se joindre à toi !</p>
-     <p class="card__title"> Qui ? </p>
-    </div>
-   </div>
-  </div>
+      </div>
+      <div class="item">
 
- </div>
- <div class="card">
+      </div>
+      <div class="item">
 
-  <div class="card__side card__side--back">
-   <div class="card__cover">
-    <h4 class="card__heading">
-     <span class="card__heading-span">Aussi simple que ça</span>
-    </h4>
-   </div>
-   <div class="card__details">
-    <ul>
-     <li>Advanced JS and CSS</li>
-     <li>JS/CSS Preprocessors</li>
-     <li>JS Frameworks</li>
-     <li>Advanced Animations</li>
-     <li>Deployment Pipelines</li>
-     <li>Large Apps Architectures</li>
-     <li>Naming Conventions</li>
-    </ul>
-   </div>
-  </div>
-
-  <div class="card__side card__side--front">
-   <div class="card__theme">
-    <div class="card__theme-box">
-     <p class="card__subject">Plus facile qu'il n'y parait</p>
-     <p class="card__title"> Comment ? </p>
-    </div>
-   </div>
-  </div>
-
- </div>
-</section>
+      </div>
+    </article> 
+  </section>
+    
   </>
   );
 };
