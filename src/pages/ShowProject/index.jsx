@@ -40,65 +40,58 @@ const ShowProject = () => {
 
   if (userLoggedIn() && currentUserId() === project.user_id) {
     return (
-      <div className="">
-        <div className="">
-
-          <div className="wrapper">
-            <div className="product-img">
-              <img src="http://bit.ly/2tMBBTd" height="420" width="327" />
+      <div className="showContainer">
+        <div className="projectWrapper">
+          <div className="projectImg">
+            <img src="http://bit.ly/2tMBBTd" height="420" width="327" />
+          </div>
+          <div className="projectInfos">
+            <div className="projectDescription">
+              <h1>{project.title}</h1>
+              <h2>Username</h2>
+              <p>{project.content}</p>
+              <h3>Location</h3>
+              <p>{project.address}</p>
+              <p>{project.city} {project.postal_code}</p>
+              <p>{region}, {country}</p>
             </div>
-            <div className="product-info">
-              <div className="product-text">
-                <h1>{project.title}</h1>
-                <h2>by studio and friends</h2>
-                <p>{project.content}</p>
-                <h3>Location</h3>
-                <p>{project.address}</p>
-                <p>{project.city} {project.postal_code}</p>
-                <p>{region}, {country}</p>
-              </div>
-              <div className="projectBtnShow">
-                <Like likes={likes} />
-                <Link className="edit" to={`/editproject/${project.id}`}>Edit</Link>
-                <DeleteProjectButton className="edit_btn" />
-              </div>
+            <div className="projectBtnShow">
+              <Like likes={likes} />
+              <Link className="edit" to={`/editproject/${project.id}`}>Edit</Link>
+              <DeleteProjectButton className="edit_btn" />
             </div>
           </div>
-          <button onClick={() => navigate(-1)}>Go back</button>
         </div>
-      </div>
+        <button onClick={() => navigate(-1)} >Go back</button>
+        <CommentsContainer comments={comments} />
+    </div>
     );
   } else {
     return (
-        <div className="">
-          <div className="">
-  
-            <div className="wrapper">
-              <div className="product-img">
-                <img src="http://bit.ly/2tMBBTd" height="420" width="327" />
-              </div>
-              <div className="product-info">
-                <div className="product-text">
-                  <h1>{project.title}</h1>
-                  <h2>Username</h2>
-                  <p>{project.content}</p>
-                  <h3>Location</h3>
-                  <p>{project.address}</p>
-                  <p>{project.city} {project.postal_code}</p>
-                  <p>{region}, {country}</p>
-                </div>
-                <div className="projectBtnShow">
-                  <Like likes={likes} />
-                  <ProjectRegistration projectRegistrations={projectRegistrations}/>
-                </div>
-              </div>
+      <div className="showContainer">
+        <div className="projectWrapper">
+          <div className="projectImg">
+            <img src="http://bit.ly/2tMBBTd" height="420" width="327" />
+          </div>
+          <div className="projectInfos">
+            <div className="projectDescription">
+              <h1>{project.title}</h1>
+              <h2>Username</h2>
+              <p>{project.content}</p>
+              <h3>Location</h3>
+              <p>{project.address}</p>
+              <p>{project.city} {project.postal_code}</p>
+              <p>{region}, {country}</p>
             </div>
-
-            <button onClick={() => navigate(-1)}>Go back</button>
-            <CommentsContainer comments={comments} />
-  
+            <div className="projectBtnShow">
+              <Like likes={likes} />
+              <ProjectRegistration projectRegistrations={projectRegistrations}/>
+            </div>
           </div>
         </div>
+        <button onClick={() => navigate(-1)} >Go back</button>
+        <CommentsContainer comments={comments} />
+      </div>
     );
   }
 };

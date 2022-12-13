@@ -1,4 +1,4 @@
-.wrapper {
+.projectWrapper {
   height: 420px;
   width: 654px;
   margin: 50px auto;
@@ -9,7 +9,7 @@
   box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
 }
 
-.product-img {
+.projectImg {
   float: left;
   height: 420px;
   width: 327px;
@@ -19,7 +19,7 @@
   }
 }
 
-.product-info {
+.projectInfos {
   float: left;
   height: 420px;
   width: 327px;
@@ -28,7 +28,7 @@
   padding: 1.5rem;
 }
 
-.product-text {
+.projectDescription {
   height: 300px;
   width: 327px;
 
@@ -57,35 +57,14 @@
   }
 }
 
-.product-price-btn {
-  height: 103px;
-  width: 327px;
-  position: relative;
-
-  & p {
-    display: inline-block;
-    position: absolute;
-    height: 50px;
-    font-size: 28px;
-    font-weight: lighter;
-    color: #474747;
-  }
-}
-
-span {
-  display: inline-block;
-  height: 50px;
-  font-size: 34px;
-}
-
 .projectBtnShow button {
   display: inline-block;
   padding: 1rem;
   margin: 1rem;
   box-sizing: border-box;
   border: transparent;
-  border-radius: 60px;
-  font-size: 14px;
+  border-radius: 40px;
+  font-size: 11px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.2em;
