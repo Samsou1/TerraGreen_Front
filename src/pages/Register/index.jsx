@@ -7,6 +7,8 @@ import {
   validatePassword,
 } from "../../services/validateUserData";
 import Errors from "../../components/Errors";
+import { useSetAtom } from "jotai";
+import { userLoggedInAtom } from "../../store/user";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -14,6 +16,7 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
+  const setUser = useSetAtom(userLoggedInAtom);
 
   const handleSubmit = async (e) => {
     setErrors([]);
@@ -42,8 +45,8 @@ function Register() {
     } else {
       try {
         await APIManager.registerUser(data);
+        setUser(true);
         navigate("/");
-        window.location.reload();
       } catch (err) {
         setErrors([{ message: "This email is already taken" }]);
         console.error(err);
