@@ -5,18 +5,22 @@
     border: 1px solid $color-green-dark;
     border-radius: 20px;
     padding: 8px 20px;
-    margin-top: 1.2rem;
-    margin-left: 0.7rem;
-    margin-right: 0.7rem;
+    margin: 1.5rem;
     color: $color-green-medium;
     &::placeholder {
       color: $color-green-dark;
     }
     &:hover {
       border: 2px solid $color-green-dark;
+      &::placeholder {
+        color: $color-green-medium;
+      }
     }
     &:focus {
-      outline: none;      
+      outline: none;
+      &::placeholder {
+        color: $color-green-medium;
+      }
     }
   }
   }
