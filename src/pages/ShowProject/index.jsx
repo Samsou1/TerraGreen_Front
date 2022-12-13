@@ -5,6 +5,9 @@ import DeleteProjectButton from "../../components/DeleteProjectButton";
 import { useNavigate } from "react-router-dom";
 import CommentsContainer from "../../components/CommentsContainer";
 import Like from "../../components/Like";
+import Mapping from "../../components/Map/Mapping";
+
+
 import { userLoggedIn, currentUserId } from "../../services/user";
 import ProjectRegistration from "../../components/ProjectRegistration";
 
@@ -84,6 +87,7 @@ const ShowProject = () => {
           <CommentsContainer comments={comments} />
         </div>
         <button onClick={() => navigate(-1)}>Go back</button>
+        <Mapping project={project}/>
       </div>
     );
   }

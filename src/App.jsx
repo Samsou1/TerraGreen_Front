@@ -17,6 +17,7 @@ import MyProjects from "./pages/MyProjects";
 import EditProject from "./pages/EditProject";
 import {createContext, useState} from "react";
 
+
 export const AppContext = createContext(null);
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
           </Route>
         </Routes>
       </main>
+     
       <Footer />
     </BrowserRouter>
   );
