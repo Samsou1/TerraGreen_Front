@@ -1,9 +1,14 @@
 header {
   font-family: $font-family-title;
+  color: #fff;
   display: flex;
   flex-direction: column;
-  background-color: $color-green-light;
+  background-color: transparent;
   padding: 10px;
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  
 
   & div {
     display: flex;
@@ -19,10 +24,11 @@ header {
       color: $color-green-dark;
 
       & :hover {
-        color: $color-green-medium;
+        color: $color-green-dark;
       }
 
       & h1 {
+        color: #fff;
         font-size: 1.5rem;
       }
     }
@@ -34,6 +40,7 @@ header {
     align-items: center;
     list-style-type: none;
     margin-top: 25px;
+
 
     & li {
       margin-bottom: 10px;
@@ -54,6 +61,12 @@ header {
   }
 }
 
+.header-bg {
+  background-color: $color-green-light;
+  border-radius: 13px;
+  opacity: 90%;
+}
+
 .plate {
   height: 50px;
   width: 50px;
@@ -66,6 +79,9 @@ header {
   position: absolute;
   height: 50px;
   width: 50px;
+  padding-top: 1rem;
+  margin-bottom: 1.5rem;
+  margin-right: 4rem;
 }
 
 .burger {
@@ -167,6 +183,7 @@ header {
     align-items: center;
     padding: 0 55px;
     height: 80px;
+    
 
     & nav ul {
       flex-direction: row;
@@ -177,7 +194,7 @@ header {
         margin-bottom: 0;
 
         & a:hover {
-          color: $color-green-medium;
+          color: $color-green-dark;
           border-bottom: 2px solid $color-green-medium;
         }
       }
