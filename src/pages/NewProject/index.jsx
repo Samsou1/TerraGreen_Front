@@ -29,7 +29,7 @@ function FileForm() {
     data.append("project[country_id]", event.target.country.value);
     data.append("project[image]", event.target.image.files[0]);
     submitToAPI(data);
-    navigate("/myprojects")
+    navigate("/myprojects");
   }
 
   function submitToAPI(data) {
@@ -74,10 +74,7 @@ function FileForm() {
         </div>
         <div className="input-container">
           <label htmlFor="project_status_id">Status</label>
-          <select
-            id="status"
-            name="status"
-          >
+          <select id="status" name="status">
             {projectStatusesOptions.map((projectStatusesOption) => {
               return (
                 <option
@@ -92,10 +89,7 @@ function FileForm() {
         </div>
         <div className="input-container">
           <label htmlFor="region_id">Region</label>
-          <select
-            id="region"
-            name="region"
-          >
+          <select id="region" name="region">
             {regionOptions.map((regionOption) => {
               return (
                 <option
@@ -110,10 +104,7 @@ function FileForm() {
         </div>
         <div className="input-container">
           <label htmlFor="country_id">Country</label>
-          <select
-            id="country"
-            name="country"
-          >
+          <select id="country" name="country">
             {countryOptions.map((countryOption) => {
               return (
                 <option
