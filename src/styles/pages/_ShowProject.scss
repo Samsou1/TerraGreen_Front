@@ -1,12 +1,14 @@
 .showContainer {
   width: 85%;
   margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .projectWrapper {
-  height: 420px;
-  width: 654px;
-  margin: 50px auto;
+  width: 90%;
+  height: auto;
+  margin: 1.8rem auto;
   border-radius: 7px 7px 7px 7px;
   /* VIA CSS MATIC https://goo.gl/cIbnS */
   -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
@@ -14,29 +16,19 @@
   box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
 }
 
-.projectImg {
-  float: left;
-  height: 420px;
-  width: 327px;
-
-  & img {
-    border-radius: 7px 0 0 7px;
-  }
+.projectImg img {
+  width: 100%;
+  border-radius: 7px;
 }
 
 .projectInfos {
-  float: left;
-  height: 420px;
-  width: 327px;
   border-radius: 0 7px 10px 7px;
   background-color: #ffffff;
   padding: 1.5rem;
 }
 
 .projectDescription {
-  height: 300px;
-  width: 327px;
-
+  width: 100%;
   & h1 {
     font-size: 34px;
     margin-bottom: 0.8rem;
@@ -88,10 +80,10 @@
 }
 
 .projectBtnShow button,
-button {
+main button {
   display: inline-block;
   padding: 1rem;
-  margin: 1rem;
+  margin: 0.2rem;
   box-sizing: border-box;
   border: transparent;
   border-radius: 40px;
@@ -108,4 +100,28 @@ button {
     transition-duration: 0.2s;
     background-color: $color-green-medium;
   }
+}
+
+@media (min-width: $breakpoint-medium-devices) {
+  .showContainer {
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+    width: 70%;
+  }
+  .projectWrapper {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    margin: 1.8rem auto;
+  }
+
+  .projectImg {
+    width: 45%;
+    & img {
+      height: 100%;
+      border-radius: 7px 0 0 7px;
+    }
+  }
+  
+  .projectBtnShow button, main button { margin: 1rem }
 }
