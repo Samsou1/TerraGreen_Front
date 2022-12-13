@@ -4,17 +4,16 @@ const Comment = ({ comment }) => {
   return comment.user &&
     comment.user.username &&
     comment.user.username !== "" ? (
-    <div className="comment">
-      <p>
-        {comment.user.username} posted on
-        {convertTimeStampToDate(comment.created_at)}:
+    <div className="commentCard">
+      <p className="commentDatas">
+        <span>{comment.user.username}</span> posted on {convertTimeStampToDate(comment.created_at)}
       </p>
-      <p>{comment.content}</p>
+      <p className="commentContent">{comment.content}</p>
     </div>
   ) : (
-    <div className="comment">
-      <p>Anonymous posted on {convertTimeStampToDate(comment.created_at)}:</p>
-      <p>{comment.content}</p>
+    <div className="commentCard">
+      <p className="commentDatas"><span>Anonymous</span> posted on {convertTimeStampToDate(comment.created_at)}</p>
+      <p className="commentContent">{comment.content}</p>
     </div>
   );
 };
