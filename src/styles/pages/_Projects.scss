@@ -1,13 +1,25 @@
-.projectPage {
+.projectsPage {
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.projectPageTitle {
+.projectsTitle {
   margin-top: 2rem;
   text-align: center;
 }
 
+.projectsHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
 .newProjectBtn {
+  justify-content: center;
   background-color: $color-green-dark;
   color: white;
   padding: 12px;
