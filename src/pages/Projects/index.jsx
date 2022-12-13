@@ -1,13 +1,17 @@
 import React from "react";
 import SearchBar from "../../components/SearchBar";
+import { Link } from "react-router-dom";
 import ProjectCards from "../../components/ProjectCards";
 
 const Projects = () => {
   return (
     <>
-      <div className="projectPage">      
-        <h1 className="projectPageTitle">Projects city by city</h1>
-        <SearchBar />
+      <div className="projectsPage">      
+        <h1 className="projectsTitle">Projects city by city</h1>
+        <div className="projectsHeader">
+          <SearchBar />
+          <Link to="/newproject" className="newProjectBtn">New Project</Link>
+        </div>
         <ProjectCards />
       </div>
     </>

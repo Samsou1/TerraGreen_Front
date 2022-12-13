@@ -17,6 +17,7 @@ import MyProjects from "./pages/MyProjects";
 import EditProject from "./pages/EditProject";
 import {createContext, useState} from "react";
 
+
 export const AppContext = createContext(null);
 
 function App() {
@@ -36,7 +37,6 @@ function App() {
             <Route path="/myprojects" element={<MyProjects />} />
             <Route path="/editproject/:id" element={<EditProject />} />
             <Route path="/newproject" element={ <AppContext.Provider value={{ latestProject, setLatestProject}} ><NewProject /> </AppContext.Provider> } />
-           
           </Route>
           <Route element={<NotLoggedInRoute />}>
             <Route path="/register" element={<Register />} />
@@ -45,6 +45,7 @@ function App() {
           </Route>
         </Routes>
       </main>
+     
       <Footer />
     </BrowserRouter>
   );

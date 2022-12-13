@@ -5,6 +5,9 @@ import DeleteProjectButton from "../../components/DeleteProjectButton";
 import { useNavigate } from "react-router-dom";
 import CommentsContainer from "../../components/CommentsContainer";
 import Like from "../../components/Like";
+import Mapping from "../../components/Map/Mapping";
+
+
 import { userLoggedIn, currentUserId } from "../../services/user";
 import ProjectRegistration from "../../components/ProjectRegistration";
 
@@ -40,50 +43,70 @@ const ShowProject = () => {
 
   if (userLoggedIn() && currentUserId() === project.user_id) {
     return (
-      <div className="">
-        <div className="">
-          <h1>Title:{project.title}</h1>
-          <p>Content: {project.content}</p>
-          <p>Region: {region}</p>
-          <p>Country: {country}</p>
-          <p>Project status: {status}</p>
-          <p>Address: {project.address}</p>
-          <p>City: {project.city}</p>
-          <p>Postal code: {project.postal_code}</p>
-          <Like likes={likes} />
-          <ProjectRegistration projectRegistrations={projectRegistrations}/>
-          <CommentsContainer comments={comments} />
-          <span className="current_user_access">
-            <button className="edit_btn">
-              <span>
-                <Link className="edit" to={`/editproject/${project.id}`}>
-                  Edit
-                </Link>
-              </span>
-            </button>
-            <DeleteProjectButton className="edit_btn" />
-          </span>
+      <div className="showContainer">
+        <div className="projectWrapper">
+          <div className="projectImg">
+            <img src="http://bit.ly/2tMBBTd" height="420" width="327" />
+          </div>
+          <div className="projectInfos">
+            <div className="projectDescription">
+              <h1>{project.title}</h1>
+              <h2>Username</h2>
+              <p>{project.content}</p>
+              <div className="projectLocation">
+                <h3>Location</h3>
+                <p>{project.address}</p>
+                <p>{project.city} {project.postal_code}</p>
+                <p>{region}, {country}</p>                
+              </div>
+              <div className="projectStatus">
+                <h3>Status</h3>
+                <p>{project.status}</p>
+              </div>
+            </div>
+            <div className="projectBtnShow">
+              <Like likes={likes} />
+              <Link className="edit" to={`/editproject/${project.id}`}>Edit</Link>
+              <DeleteProjectButton className="edit_btn" />
+            </div>
+          </div>
         </div>
-        <button onClick={() => navigate(-1)}>Go back</button>
-      </div>
+        <button onClick={() => navigate(-1)} >Go back</button>
+        <CommentsContainer comments={comments} />
+    </div>
     );
   } else {
     return (
-      <div className="">
-        <div className="">
-          <h1>Title:{project.title}</h1>
-          <p>Content: {project.content}</p>
-          <p>Region: {region}</p>
-          <p>Country: {country}</p>
-          <p>Project status: {status}</p>
-          <p>Address: {project.address}</p>
-          <p>City: {project.city}</p>
-          <p>Postal code: {project.postal_code}</p>
-          <Like likes={likes} />
-          <ProjectRegistration projectRegistrations={projectRegistrations}/>
-          <CommentsContainer comments={comments} />
+      <div className="showContainer">
+        <div className="projectWrapper">
+          <div className="projectImg">
+            <img src="https://images.unsplash.com/photo-1562077981-4d7eafd44932?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="project illustration" />
+          </div>
+          <div className="projectInfos">
+            <div className="projectDescription">
+              <h1>{project.title}</h1>
+              <h2>Username</h2>
+              <p>{project.content}</p>
+              <div className="projectLocation">
+                <h3>Location</h3>
+                <p>{project.address}</p>
+                <p>{project.city} {project.postal_code}</p>
+                <p>{region}, {country}</p>                
+              </div>
+              <div className="projectStatus">
+                <h3>Status</h3>
+                <p>{project.status}</p>
+              </div>
+            </div>
+            <div className="projectBtnShow">
+              <Like likes={likes} />
+              <ProjectRegistration projectRegistrations={projectRegistrations}/>
+            </div>
+          </div>
         </div>
-        <button onClick={() => navigate(-1)}>Go back</button>
+        <button onClick={() => navigate(-1)} >Go back</button>
+        <CommentsContainer comments={comments} />
+        <Mapping project={project}/>
       </div>
     );
   }

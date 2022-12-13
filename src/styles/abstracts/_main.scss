@@ -7,7 +7,8 @@ body {
   font-family: $font-family-content;
   color: $color-green-medium;
   & h1, h2, h3, h4, h5, h6 {
-    color: $color-green-dark
+    color: $color-green-dark;
+    font-family: $font-family-title;
   }
 }
 
@@ -24,6 +25,15 @@ main {
 
 a {
   text-decoration: none;
+  color: $color-green-dark;
+
+  &:hover {
+    color: $color-green-medium;
+  }
+}
+
+.link {
+  font-size: 16px;
 }
 
 .input-container{

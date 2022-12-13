@@ -1,3 +1,5 @@
+@charset 'utf-8';
+
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300;0,500;1,300;1,500&family=Urbanist:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap');
 @import "./abstracts/variables";
 @import "./abstracts/reset";
@@ -8,6 +10,12 @@
 @import "./components/Footer";
 @import "./components/Hero";
 @import "./components/Errors";
+@import "./components/Map";
+
+@import "./pages/Login";
+@import "./pages/Register";
+@import "./pages/About";
+
 @import "./components/ProjectCard";
 @import "./components/SearchBar";
 
@@ -15,4 +23,5 @@
 @import "./pages/Register";
 @import "./pages/About";
 @import "./pages/Projects";
+@import "./pages/ShowProject";
 @import "./pages/Home"

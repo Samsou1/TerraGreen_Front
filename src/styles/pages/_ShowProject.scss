@@ -1,0 +1,127 @@
+.showContainer {
+  width: 85%;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectWrapper {
+  width: 90%;
+  height: auto;
+  margin: 1.8rem auto;
+  border-radius: 7px 7px 7px 7px;
+  /* VIA CSS MATIC https://goo.gl/cIbnS */
+  -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+}
+
+.projectImg img {
+  width: 100%;
+  border-radius: 7px;
+  object-fit: cover;
+}
+
+.projectInfos {
+  border-radius: 0 7px 10px 7px;
+  background-color: #ffffff;
+  padding: 1.5rem;
+}
+
+.projectDescription {
+  width: 100%;
+  & h1 {
+    font-size: 34px;
+    margin-bottom: 0.8rem;
+  }
+
+  & h2 {
+    margin-bottom: 0.7rem;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+  }
+
+  & p {
+    line-height: 1.2em;
+    font-size: 16px;
+    font-weight: 300;
+    overflow: hidden;
+  }
+}
+
+.projectLocation {
+  & h3 {
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  & p {
+  line-height: 1.2rem;
+  font-size: 14px;
+  }
+}
+
+.projectStatus {
+  & h3 {
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  & p {
+  line-height: 1.2rem;
+  font-size: 14px;
+  }
+}
+
+.projectBtnShow button {
+  display: inline-block;
+  padding: 1rem;
+  margin: 0.2rem;
+  box-sizing: border-box;
+  border: transparent;
+  border-radius: 40px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  background-color: $color-green-dark;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    transition-duration: 0.2s;
+    background-color: $color-green-medium;
+  }
+}
+
+@media (min-width: $breakpoint-medium-devices) {
+  .showContainer {
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+    width: 70%;
+  }
+  .projectWrapper {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    margin: 1.8rem auto;
+  }
+
+  .projectImg {
+    width: 45%;
+    & img {
+      height: 100%;
+      border-radius: 7px 0 0 7px;
+    }
+  }
+  
+  .projectBtnShow button { margin: 1rem }
+}
