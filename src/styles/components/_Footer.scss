@@ -1,16 +1,55 @@
 footer {
   font-family: $font-family-title;
+  position: relative;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  padding: 0 55px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
   background-color: $color-green-light;
-  height: 80px;
+  height: 70px;
+}
+
+#logo-footer {
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+
+  & img {
+    width: 100px;
+  }
 }
 
 .company {
   color: $color-green-dark;
+
   &:hover {
     color: $color-green-medium;
+  }
+}
+
+@media (min-width: $breakpoint-medium-devices) {
+  #logo-footer {
+    left: 15px;
+    bottom: -10px;
+    & img {
+      width: 145px;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-large-devices) {
+  footer {
+    border-top-left-radius: 65px;
+    border-top-right-radius: 65px;
+    height: 100px;
+  }
+
+  #logo-footer {
+    left: 25px;
+    bottom: 0px;
+    & img {
+      width: 175px;
+    }
   }
 }

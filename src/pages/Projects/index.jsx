@@ -5,9 +5,11 @@ import ProjectCards from "../../components/ProjectCards";
 const Projects = () => {
   return (
     <>
-      <h1>Projects city by city</h1>
-      <SearchBar />
-      <ProjectCards />
+      <div className="projectPage">      
+        <h1 className="projectPageTitle">Projects city by city</h1>
+        <SearchBar />
+        <ProjectCards />
+      </div>
     </>
   );
 };

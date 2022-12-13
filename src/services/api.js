@@ -1,7 +1,17 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const BASE_URL = "http://localhost:3000";
+let BASE_URL;
+switch (process.env.NODE_ENV) {
+  case "production":
+    url = "https://terra-green.fly.dev/";
+    break;
+  case "development":
+    BASE_URL = "http://localhost:3000";
+  default:
+    BASE_URL = "http://localhost:3000";
+}
+
 const API = axios.create({ baseURL: BASE_URL });
 
 API.interceptors.request.use(({ headers, ...config }) =>
@@ -31,12 +41,15 @@ export default class APIManager {
       const response = await API.post("/users", payload);
       Cookies.set(
         "bearerToken",
-        response.headers.get("Authorization").split(" ")[1]
+        response.headers.get("Authorization").split(" ")[1],
+        { expires: 1 }
       );
-      Cookies.set("currentUser", JSON.stringify(response.data.user));
+      Cookies.set("currentUser", JSON.stringify(response.data.user), {
+        expires: 1,
+      });
       return response;
-    } catch {
-      throw new Error("Invalid email or password");
+    } catch (err) {
+      throw new Error(err);
     }
   }
 
@@ -45,12 +58,15 @@ export default class APIManager {
       const response = await API.post("/users/sign_in", payload);
       Cookies.set(
         "bearerToken",
-        response.headers.get("Authorization").split(" ")[1]
+        response.headers.get("Authorization").split(" ")[1],
+        { expires: 1 }
       );
-      Cookies.set("currentUser", JSON.stringify(response.data.user));
+      Cookies.set("currentUser", JSON.stringify(response.data.user), {
+        expires: 1,
+      });
       return response;
-    } catch {
-      throw new Error("Invalid email or password");
+    } catch (err) {
+      throw new Error(err);
     }
   }
 
@@ -66,7 +82,7 @@ export default class APIManager {
       } catch (err) {
         Cookies.remove("bearerToken");
         Cookies.remove("currentUser");
-        console.error(err);
+        throw new Error(err);
       }
     }
   }
@@ -76,8 +92,16 @@ export default class APIManager {
       const response = await API.get(`/member-data`);
       return response.data.user;
     } catch (err) {
-      console.error(err);
-      throw new Error("Something went wrong");
+      throw new Error(err);
+    }
+  }
+
+  static async getNotifications() {
+    try {
+      const response = await API.get(`/notifications`);
+      return response.data;
+    } catch (err) {
+      throw new Error(err);
     }
   }
 
@@ -86,8 +110,7 @@ export default class APIManager {
       const response = await API.get("/projects");
       return response.data;
     } catch (err) {
-      console.error(err);
-      throw new Error("Something went wrong");
+      throw new Error(err);
     }
   }
 
@@ -96,8 +119,7 @@ export default class APIManager {
       const response = await API.get(`/projects?search_term=${search}`);
       return response.data;
     } catch (err) {
-      console.error(err);
-      throw new Error("Something went wrong");
+      throw new Error(err);
     }
   }
 
@@ -106,8 +128,7 @@ export default class APIManager {
       const response = await API.get("/projects?search_term=user");
       return response.data;
     } catch (err) {
-      console.error(err);
-      throw new Error("Something went wrong");
+      throw new Error(err);
     }
   }
 
@@ -116,8 +137,7 @@ export default class APIManager {
       const response = await API.get(`/projects/${id}`);
       return response.data;
     } catch (err) {
-      console.error(err);
-      throw new Error("Something went wrong");
+      throw new Error(err);
     }
   }
 
@@ -126,8 +146,7 @@ export default class APIManager {
       const response = await API.delete(`/projects/${id}`);
       return response.data;
     } catch (err) {
-      console.error(err);
-      throw new Error("Something went wrong");
+      throw new Error(err);
     }
   }
 
@@ -136,8 +155,7 @@ export default class APIManager {
       const response = await API.post(`/projects`, payload);
       return response;
     } catch (err) {
-      console.error(err);
-      throw new Error("Something went wrong");
+      throw new Error(err);
     }
   }
 
@@ -146,17 +164,25 @@ export default class APIManager {
       const response = await API.post(`/comments`, payload);
       return response;
     } catch (err) {
-      console.error(err);
+      throw new Error(err);
     }
   }
 
   static async toggleLike(payload) {
     try {
       const response = await API.post(`/togglelike`, payload);
-      console.log(response)
       return response;
     } catch (err) {
-      console.error(err);
+      throw new Error(err);
+    }
+  }
+
+  static async toggleProjectRegistration(payload) {
+    try {
+      const response = await API.post(`/toggleprojectregistration`, payload);
+      return response;
+    } catch (err) {
+      throw new Error(err);
     }
   }
 
@@ -165,8 +191,7 @@ export default class APIManager {
       const response = await API.put(`/projects/${id}`, payload);
       return response.data;
     } catch (err) {
-      console.error(err);
-      throw new Error("Something went wrong");
+      throw new Error(err);
     }
   }
 
@@ -175,8 +200,7 @@ export default class APIManager {
       const response = await API.get("/countries");
       return response.data;
     } catch (err) {
-      console.error(err);
-      throw new Error("Something went wrong");
+      throw new Error(err);
     }
   }
 
@@ -185,8 +209,7 @@ export default class APIManager {
       const response = await API.get(`/regions?search_term=${country}`);
       return response.data;
     } catch (err) {
-      console.error(err);
-      throw new Error("Something went wrong");
+      throw new Error(err);
     }
   }
 
@@ -195,8 +218,7 @@ export default class APIManager {
       const response = await API.get("/project_statuses");
       return response.data;
     } catch (err) {
-      console.error(err);
-      throw new Error("Something went wrong");
+      throw new Error(err);
     }
   }
 
@@ -205,8 +227,18 @@ export default class APIManager {
       const response = await API.get("/regions");
       return response.data;
     } catch (err) {
-      console.error(err);
-      throw new Error("Something went wrong");
+      throw new Error(err);
+    }
+  }
+
+  static async deleteUser() {
+    try {
+      const response = await API.delete("/member-destroy");
+      Cookies.remove("bearerToken");
+      Cookies.remove("currentUser");
+      return response.data;
+    } catch (err) {
+      throw new Error(err);
     }
   }
 }

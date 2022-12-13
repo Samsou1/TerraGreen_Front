@@ -29,11 +29,10 @@ const ProjectCards = () => {
 
   return (
     <section className="projects-cards-container">
-      <h2 className="project_title">Our projects:</h2>
       <div className="projectsCards">
-        {projects.map((project) => {
+        {projects.map((project) => {  
           return (
-            <ProjectCard key={project.id + project.title} project={project} />
+            <ProjectCard key={'project' + project.id } project={project.attributes} />
           );
         })}
       </div>
