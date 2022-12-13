@@ -36,11 +36,10 @@ const NewCommentForm = () => {
 
   return (
     <div>
-      <h3>Post a new comment</h3>
       <Errors errors={errors}></Errors>
-      <form onSubmit={handleSumbit}>
-        <div className="input-container">
-          <label htmlFor="comment">Comment </label>
+      <form onSubmit={handleSumbit} className="commentForm">
+        <div className="commentInput">
+          <label htmlFor="commentLabel">New comment </label>
           <input
             onChange={(e) => setComment(e.target.value)}
             value={comment}
