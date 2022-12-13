@@ -50,10 +50,16 @@ const ShowProject = () => {
               <h1>{project.title}</h1>
               <h2>Username</h2>
               <p>{project.content}</p>
-              <h3>Location</h3>
-              <p>{project.address}</p>
-              <p>{project.city} {project.postal_code}</p>
-              <p>{region}, {country}</p>
+              <div className="projectLocation">
+                <h3>Location</h3>
+                <p>{project.address}</p>
+                <p>{project.city} {project.postal_code}</p>
+                <p>{region}, {country}</p>                
+              </div>
+              <div className="projectStatus">
+                <h3>Status</h3>
+                <p>{project.status}</p>
+              </div>
             </div>
             <div className="projectBtnShow">
               <Like likes={likes} />
@@ -84,7 +90,10 @@ const ShowProject = () => {
                 <p>{project.city} {project.postal_code}</p>
                 <p>{region}, {country}</p>                
               </div>
-
+              <div className="projectStatus">
+                <h3>Status</h3>
+                <p>{project.status}</p>
+              </div>
             </div>
             <div className="projectBtnShow">
               <Like likes={likes} />
