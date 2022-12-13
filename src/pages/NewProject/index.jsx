@@ -1,4 +1,5 @@
 import { AppContext } from "../../App";
+import APIManager from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import React, { useContext } from "react";
 import { currentUserId } from "../../services/user";
@@ -14,7 +15,7 @@ function FileForm() {
   const regionOptions = useAtomValue(regionsAtom);
   const projectStatusesOptions = useAtomValue(projectStatusesAtom);
 
-  function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData();
     data.append("project[user_id]", currentUserId());
@@ -28,21 +29,13 @@ function FileForm() {
     data.append("project[region_id]", event.target.region.value);
     data.append("project[country_id]", event.target.country.value);
     data.append("project[image]", event.target.image.files[0]);
-    submitToAPI(data);
-    navigate("/myprojects");
-  }
-
-  function submitToAPI(data) {
-    fetch("http://localhost:3000/projects", {
-      method: "POST",
-      body: data,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setLatestProject(data.image_url);
-      })
-      .catch((error) => console.error(error));
-  }
+    try {
+      await APIManager.newProject(data);
+      navigate("/myprojects");
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div>
