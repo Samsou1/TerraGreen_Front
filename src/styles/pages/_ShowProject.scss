@@ -80,8 +80,8 @@ span {
 
 .projectBtnShow button {
   display: inline-block;
-  height: 50px;
-  width: 176px;
+  padding: 1rem;
+  margin: 1rem;
   box-sizing: border-box;
   border: transparent;
   border-radius: 60px;
@@ -90,11 +90,12 @@ span {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: #ffffff;
-  background-color: #9cebd5;
+  background-color: $color-green-dark;
   cursor: pointer;
   outline: none;
 
   &:hover {
-    background-color: #79b0a1;
+    transition-duration: 0.2s;
+    background-color: $color-green-medium;
   }
 }
