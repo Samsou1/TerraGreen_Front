@@ -19,27 +19,27 @@
 .projectCard {
   position: relative;
   display: block;
-  height: 100%;  
+  height: 400px;  
   border-radius: calc(var(--curve) * 1px);
   overflow: hidden;
   text-decoration: none;
   color: $color-green-medium;
 
-  &:hover .card__overlay {
+  &:hover .cardOverlay {
     transform: translateY(0);
   }
 
-  &:hover .card__header {
+  &:hover .cardHeader {
     transform: translateY(0);
   }
 }
 
-.card__image {      
+.cardImg {      
   width: 100%;
   height: auto;
 }
 
-.card__overlay {
+.cardOverlay {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -51,7 +51,7 @@
   transition: .2s ease-in-out;
 }
 
-.card__header {
+.cardHeader {
   position: relative;
   display: flex;
   align-items: center;
@@ -63,44 +63,47 @@
   transition: .2s ease-in-out;
 }
 
-.card__thumb {
+.cardThumb {
   flex-shrink: 0;
   width: 50px;
   height: 50px;      
   border-radius: 50%;      
 }
 
-.card__title {
-  font-size: 1em;
+.cardTitle {
+  font-size: 18px;
   margin: 0 0 .3em;
 }
 
-.card__tagline {
+.cardTagline {
   display: block;
   margin: 1em 0; 
   font-size: .8em;  
 }
 
-.card__status {
+.cardStatus {
   font-size: .8em;
 }
 
-.card__description {
+.cardText {
   padding: 0 2em 2em;
-  margin: 0;  
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
   overflow: hidden;
-}    
+}
+
+.cardLocation {
+  margin-bottom: 1rem;
+  font-weight: lighter;
+}   
 
 .projectBtn {
+  position: relative;
+  left: 130px;
+  bottom: 10px;
   background-color: $color-green-dark;
   color: white;
-  padding: 15px 0;
+  padding: 14px;
   border: none;
   border-radius: 8px;
-  width: 150px;
   text-align: center;
   cursor: pointer;
   & a {

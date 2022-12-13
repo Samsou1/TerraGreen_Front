@@ -19,6 +19,7 @@
 .projectImg img {
   width: 100%;
   border-radius: 7px;
+  object-fit: cover;
 }
 
 .projectInfos {
@@ -79,8 +80,7 @@
   }
 }
 
-.projectBtnShow button,
-main button {
+.projectBtnShow button {
   display: inline-block;
   padding: 1rem;
   margin: 0.2rem;
@@ -123,5 +123,5 @@ main button {
     }
   }
   
-  .projectBtnShow button, main button { margin: 1rem }
+  .projectBtnShow button { margin: 1rem }
 }
