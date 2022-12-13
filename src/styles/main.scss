@@ -8,13 +8,9 @@
 @import "./components/Footer";
 @import "./components/Hero";
 @import "./components/Errors";
+@import "./components/Map";
 
 @import "./pages/Login";
 @import "./pages/Register";
-@import "./pages/about";
+@import "./pages/about"
 
-.leaflet-container {
-  margin: 0 auto;
-  width: 500px;
-  height: 400px;
-}
