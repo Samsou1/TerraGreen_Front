@@ -1,19 +1,19 @@
 import APIManager from "../../services/api";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Errors from "../../components/Errors";
 
 const EditProfile = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
+  const [errors, setErrors] = useState([])
   const navigate = useNavigate();
 
   const setAll = (data) => {
     data.email ? setEmail(data.email) : setEmail("");
-    data.first_name ? setFirstName(data.first_name) : setFirstName("");
-    data.last_name ? setLastName(data.last_name) : setLastName("");
+    data.username ? setUsername(data.username) : setLastName("");
   };
 
   useEffect(() => {
@@ -28,8 +28,7 @@ const EditProfile = () => {
     if (password === confirmPassword) {
       const data = {
         user: {
-          first_name: firstName,
-          last_name: lastName,
+          username: username,
           email: email,
         },
       };
@@ -52,6 +51,7 @@ const EditProfile = () => {
   return (
     <>
       <h1 className="register-title">Edit Profile</h1>
+      <Errors errors={errors}/>
       <form onSubmit={handleSubmit} className="register-form-container">
         <div className="input-container">
           <label htmlFor="email">Email </label>
@@ -84,23 +84,13 @@ const EditProfile = () => {
           />
         </div>
         <div className="input-container">
-          <label htmlFor="firstName">First Name</label>
+          <label htmlFor="username">Username</label>
           <input
-            onChange={(e) => setFirstName(e.target.value)}
-            value={firstName}
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
             type="text"
-            id="firstName"
-            placeholder="First Name"
-          />
-        </div>
-        <div className="input-container">
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            onChange={(e) => setLastName(e.target.value)}
-            value={lastName}
-            type="text"
-            id="lastName"
-            placeholder="Last Name"
+            id="username"
+            placeholder="Username"
           />
         </div>
         <input type="submit" value="Edit profile" />
