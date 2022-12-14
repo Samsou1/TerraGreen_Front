@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAtomValue } from "jotai/utils";
 import { countriesAtom } from "../../store/country";
 import { projectStatusesAtom } from "../../store/projectStatus";
+import { currentUserId } from "../../services/user";
 
 const EditProject = () => {
   const [title, setTitle] = useState("");
@@ -11,51 +12,51 @@ const EditProject = () => {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [postalCode, setPostalCode] = useState("");
-  const [country, setCountry] = useState("France");
-  const [region, setRegion] = useState("");
   const [date, setDate] = useState("");
-  const [status, setStatus] = useState("To plan");
-  const countryOptions = useAtomValue(countriesAtom);
-  const [regionOptions, setRegionOptions] = useState([]);
   const projectStatusesOptions = useAtomValue(projectStatusesAtom);
+  const [status, setStatus] = useState("");
+  const [regionOptions, setRegionOptions] = useState([]);
+  const [region, setRegion] = useState("");
+  const countryOptions = useAtomValue(countriesAtom);
+  const [country, setCountry] = useState("France");
+  const [image, setImage] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = {
-      project: {
-        title: title,
-        content: content,
-        address: address,
-        city: city,
-        postal_code: postalCode,
-        country: country,
-        region: region,
-        project_status: status,
-        date: date,
-      },
-    };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const data = new FormData();
+    data.append("project[user_id]", currentUserId());
+    data.append("project[title]", title);
+    data.append("project[content]", content);
+    data.append("project[date]", date);
+    data.append("project[address]", address);
+    data.append("project[city]", city);
+    data.append("project[postal_code]", postalCode);
+    data.append("project[project_status_id]", status);
+    data.append("project[region_id]", region);
+    data.append("project[country_id]", country);
+    data.append("project[image]", event.target.image.files[0]);
     try {
       const id = window.location.pathname.split("/")[2];
       await APIManager.editProject(id, data);
-      navigate("/myprojects");
+      // navigate("/myprojects");
     } catch (err) {
       console.error(err);
     }
   };
 
   const SetAll = (data) => {
+    console.log(data)
     data.project.title ? setTitle(data.project.title) : setTitle("");
     data.project.content ? setContent(data.project.content) : setContent("");
+    data.project.date ? setDate(data.project.date) : setDate("");
     data.project.address ? setAddress(data.project.address) : setAddress("");
     data.project.city ? setCity(data.project.city) : setCity("");
-    data.project.postal_code
-      ? setPostalCode(data.project.postal_code)
-      : setPostalCode("");
-    data.country ? setCountry(data.country) : setCountry("");
-    data.region ? setRegion(data.region) : setRegion("");
-    data.status ? setStatus(data.status) : setStatus("");
-    data.date ? setDate(data.date) : setDate("");
+    data.project.postal_code ? setPostalCode(data.project.postal_code) : setPostalCode("");
+    data.project.project_status_id ? setStatus(data.project.project_status_id) : setStatus("");
+    data.project.region_id ? setRegion(data.project.region_id) : setRegion("");
+    data.project.country_id ? setCountry(data.project.country_id) : setCountry("");
+    data.image_url ? setImage(data.image_url) : setImage("");
   };
 
   useEffect(() => {
@@ -102,6 +103,16 @@ const EditProject = () => {
           />
         </div>
         <div className="input-container">
+          <label htmlFor="date">Date</label>
+          <input
+            onChange={(e) => setDate(e.target.value)}
+            value={date}
+            type="date"
+            id="date"
+            placeholder="Date"
+          />
+        </div>
+        <div className="input-container">
           <label htmlFor="address">Address</label>
           <input
             onChange={(e) => setAddress(e.target.value)}
@@ -132,40 +143,38 @@ const EditProject = () => {
           />
         </div>
         <div className="input-container">
-          <label htmlFor="country">Country</label>
+          <label htmlFor="project_status_id">Status</label>
           <select
-            onChange={(e) => setCountry(e.target.value)}
-            value={country}
-            type="text"
-            id="country"
-            placeholder="Country"
+            onChange={(e) => setStatus(e.target.value)}
+            value={status}
+            id="status"
+            name="status"
           >
-            {countryOptions.map((countryOption) => {
+            {projectStatusesOptions.map((projectStatusesOption) => {
               return (
                 <option
-                  key={countryOption.id + countryOption.name}
-                  value={countryOption.name}
+                  key={projectStatusesOption.id + projectStatusesOption.name}
+                  value={projectStatusesOption.id}
                 >
-                  {countryOption.name}
+                  {projectStatusesOption.name}
                 </option>
               );
             })}
           </select>
         </div>
         <div className="input-container">
-          <label htmlFor="region">Region</label>
+          <label htmlFor="region_id">Region</label>
           <select
             onChange={(e) => setRegion(e.target.value)}
             value={region}
-            type="text"
             id="region"
-            placeholder="Region"
+            name="region"
           >
             {regionOptions.map((regionOption) => {
               return (
                 <option
                   key={regionOption.id + regionOption.name}
-                  value={regionOption.name}
+                  value={regionOption.id}
                 >
                   {regionOption.name}
                 </option>
@@ -174,38 +183,34 @@ const EditProject = () => {
           </select>
         </div>
         <div className="input-container">
-          <label htmlFor="date">Date</label>
-          <input
-            onChange={(e) => setDate(e.target.value)}
-            value={date}
-            type="date"
-            id="date"
-            placeholder="Date"
-          />
-        </div>
-        <div className="input-container">
-          <label htmlFor="status">Status</label>
+          <label htmlFor="country_id">Country</label>
           <select
-            onChange={(e) => setStatus(e.target.value)}
-            value={status}
-            type="text"
-            id="status"
-            placeholder="Status"
+            onChange={(e) => setCountry(e.target.value)}
+            value={country}
+            id="country"
+            name="country"
           >
-            {projectStatusesOptions.map((projectStatusesOption) => {
+            {countryOptions.map((countryOption) => {
               return (
                 <option
-                  key={projectStatusesOption.id + projectStatusesOption.name}
-                  value={projectStatusesOption.name}
+                  key={countryOption.id + countryOption.name}
+                  value={countryOption.id}
                 >
-                  {projectStatusesOption.name}
+                  {countryOption.name}
                 </option>
               );
             })}
           </select>
         </div>
+        <div id="image-container">
+          <label htmlFor="image">Image</label>
+          <input type="file" name="image" id="image" />
+        </div>
         <input type="submit" value="Update" />
       </form>
+      <div>
+        {image && <img src={image} alt="The current file" />}
+      </div>
     </>
   );
 };
