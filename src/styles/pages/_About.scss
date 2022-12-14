@@ -17,9 +17,9 @@
   }
 
     & .about-hero {
-      font-size: 6rem;
+      font-size: 2rem;
       position: absolute;
-      padding-top: 10rem;
+      padding-top: 1rem;
       opacity: 70%;
     }
 
@@ -123,7 +123,7 @@
 @media (min-width: $breakpoint-large-devices) {
   .about{
      & .img1 {
-       height: calc(100vh - 30px); 
+       height: calc(100vh - 220px); 
     }
 
         & .about-goal {
