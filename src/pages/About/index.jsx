@@ -1,4 +1,4 @@
-import dechet from "../../assets/images/dechet.avif"
+import home3 from "../../assets/images/home3.png"
 
 
 const About = () => {
@@ -13,7 +13,7 @@ const About = () => {
       
       <div className='card about-goal'>
         <div className="about-goal-left">
-          <img src={dechet} alt="beach image" />
+          <img src={home3} alt="beach image" />
         </div>
         <div className="about-goal-right">
           <h2 className='about-goal-title'>Our goal</h2>
@@ -34,29 +34,34 @@ const About = () => {
           <h2>Our team</h2>
           <div className='team-cards'>
             <div className='card member-card'>
-              <h3>Name</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, modi?</p>
-              <img src='https://cdn2.iconfinder.com/data/icons/app-ui-solid/64/profile_user_avatar_people_app_website-512.png' alt='member-picture'/>
+              <h3>ANDRIEU Pierre</h3>
+              <p>Mettre lien gitt ett linkdin</p>
+              <img src='https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzZ8fGljb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
+               alt='member-picture'/>
             </div>
             <div className='card member-card'>
-              <h3>Name</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, modi?</p>
-              <img src='https://cdn2.iconfinder.com/data/icons/app-ui-solid/64/profile_user_avatar_people_app_website-512.png' alt='member-picture'/>
+              <h3>LAIGNEAU Gregory</h3>
+              <p>Mettre lien gitt ett linkdin</p>
+              <img src='https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzZ8fGljb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
+               alt='member-picture'/>
             </div>
             <div className='card member-card'>
-              <h3>Name</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, modi?</p>
-              <img src='https://cdn2.iconfinder.com/data/icons/app-ui-solid/64/profile_user_avatar_people_app_website-512.png' alt='member-picture'/>
+              <h3>Linard Sami</h3>
+              <p>Mettre lien gitt ett linkdin</p>
+              <img src='https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzZ8fGljb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
+               alt='member-picture'/>
             </div>
             <div className='card member-card'>
-              <h3>Name</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, modi?</p>
-              <img src='https://cdn2.iconfinder.com/data/icons/app-ui-solid/64/profile_user_avatar_people_app_website-512.png' alt='member-picture'/>
+              <h3>PEUCH Noellie</h3>
+              <p>Mettre lien gitt ett linkdin</p>
+              <img src='https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzZ8fGljb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
+               alt='member-picture'/>
             </div>
             <div className='card member-card'>
-              <h3>Name</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, modi?</p>
-              <img src='https://cdn2.iconfinder.com/data/icons/app-ui-solid/64/profile_user_avatar_people_app_website-512.png' alt='member-picture'/>
+              <h3>PFEIFFER Christopher</h3>
+              <p>Mettre lien gitt ett linkdin </p>
+              <img src='https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzZ8fGljb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60' 
+              alt='member-picture'/>
             </div>
           </div>
         </div>

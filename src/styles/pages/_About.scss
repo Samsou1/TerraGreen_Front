@@ -1,8 +1,3 @@
-h1, h2, h3, h4, h5, h6 {
-  color: $color-green-light;
-}
-
-
 .about{
   display: flex;
   flex-direction: column;
@@ -14,7 +9,7 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   & .img1 {
     width: 100%;
-    height: calc(100vh - 30px);
+    height: calc(100vh - 290px);
     object-fit: cover;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
@@ -27,6 +22,12 @@ h1, h2, h3, h4, h5, h6 {
       padding-top: 10rem;
       opacity: 70%;
     }
+
+      & h1 {
+        font-size: 5rem;
+        padding-top: 8rem;
+        opacity: 90%;
+      }
 }
 
 
@@ -100,8 +101,39 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: $breakpoint-medium-devices) {
-  .about-goal {
-    display: flex;
-    flex-wrap: wrap;
+  
+   .about{
+  
+    & .img1 {
+      height: calc(100vh - 490px);
+    }
+
+    & .about-goal {
+          display: flex;
+          flex-wrap: wrap;
+      }
+
+          & h1 {
+            font-size: 8rem;
+            padding-top: 8rem;
+          }
+  }
+}
+
+@media (min-width: $breakpoint-large-devices) {
+  .about{
+     & .img1 {
+       height: calc(100vh - 30px); 
+    }
+
+        & .about-goal {
+          display: flex;
+          flex-wrap: wrap;
+      }
+
+          & h1 {
+            font-size: 11rem;
+            padding-top: 8rem;
+          }
   }
 }
