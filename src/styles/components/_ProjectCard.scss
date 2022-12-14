@@ -24,6 +24,7 @@
   overflow: hidden;
   text-decoration: none;
   color: $color-green-medium;
+  box-shadow: 0 10px 20px 1px grey;
 
   &:hover .cardOverlay {
     transform: translateY(0);
@@ -45,7 +46,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1;      
+  //z-index: 1;      
   border-radius: calc(var(--curve) * 1px);    
   background-color: var(--surface-color);      
   transform: translateY(100%);
@@ -126,6 +127,8 @@
 
 @media (min-width: $breakpoint-large-devices) {
   .projectsCards {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
