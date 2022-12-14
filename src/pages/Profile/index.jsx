@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { userLoggedIn } from "../../services/user";
 import NotificationsContainer from "../../components/NotificationsContainer";
+import { getCountryFromId } from "../../services/selectRegionCountryAndStatusData";
+import { getRegionFromId } from "../../services/selectRegionCountryAndStatusData";
 
 const Profile = () => {
   const [user, setUser] = useState("");
@@ -10,7 +12,10 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      await APIManager.getUser().then((data) => setUser(data));
+      await APIManager.getUser().then((data) => {
+        console.log(data);
+        setUser(data);
+      });
     };
     fetchProfile().catch(console.error);
   }, []);
@@ -36,9 +41,26 @@ const Profile = () => {
       <p>Email: {user.email}</p>
       <p>Username: {user.username}</p>
       <p>Description: {user.description}</p>
-      <p>Country id: {user.country_id}</p>
-      <p>Region id: {user.region_id}</p>
-      <p>Notification subscription: {user.notification_subscription}</p>
+      <p>
+        Country:
+        {user.country_id
+          ? getCountryFromId(user.country_id)
+            ? getCountryFromId(user.country_id)
+            : "Unknown"
+          : "Unknown"}
+      </p>
+      <p>
+        Region:
+        {user.region_id
+          ? getRegionFromId(user.region_id)
+            ? getRegionFromId(user.region_id)
+            : "Unknown"
+          : "Unknown"}
+      </p>
+      <p>
+        Do I want to receive notifications?{" "}
+        {user.notification_subscription ? "Yes" : "No"}
+      </p>
       <NotificationsContainer />
       <Link className="btn_profile" to="/editprofile">
         Edit profile
