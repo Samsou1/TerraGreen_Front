@@ -1,15 +1,35 @@
-h1, h2, h3, h4, h5, h6 {
-  color: $color-green-light;
-}
-
 .about{
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  margin: 2rem;
+  margin-top: -5em;
   color: $color-green-light;
+  width: 100%;
+  position: relative;
+  & .img1 {
+    width: 100%;
+    height: calc(100vh - 290px);
+    object-fit: cover;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    box-shadow: 0 10px 20px 1px grey;
+  }
+
+    & .about-hero {
+      font-size: 2rem;
+      position: absolute;
+      padding-top: 1rem;
+      opacity: 70%;
+    }
+
+      & h1 {
+        font-size: 5rem;
+        padding-top: 8rem;
+        opacity: 90%;
+      }
 }
+
 
 .card {
   box-shadow: 0 10px 20px 1px grey;
@@ -81,8 +101,39 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: $breakpoint-medium-devices) {
-  .about-goal {
-    display: flex;
-    flex-wrap: wrap;
+  
+   .about{
+  
+    & .img1 {
+      height: calc(100vh - 490px);
+    }
+
+    & .about-goal {
+          display: flex;
+          flex-wrap: wrap;
+      }
+
+          & h1 {
+            font-size: 8rem;
+            padding-top: 8rem;
+          }
+  }
+}
+
+@media (min-width: $breakpoint-large-devices) {
+  .about{
+     & .img1 {
+       height: calc(100vh - 220px); 
+    }
+
+        & .about-goal {
+          display: flex;
+          flex-wrap: wrap;
+      }
+
+          & h1 {
+            font-size: 11rem;
+            padding-top: 8rem;
+          }
   }
 }

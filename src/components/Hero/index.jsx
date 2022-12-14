@@ -7,13 +7,14 @@ const Hero = () => {
     return (
       // autoPlay loop (Add it later before muted)
       <section className="hero-container">
-        <video src={videoBg} muted></video>
+        <video src={videoBg} autoPlay loop muted></video>
         <div>
           <h1>Bienvenue sur TerraGreen</h1>
-          <p>Participez à sauver la planète !</p>
-          <Link to="/register">S'inscrire</Link>
+          <p>Créer ton projet TerraGreen</p>
+           <Link to="/newproject">New Project</Link>
         </div>
       </section>
+<<<<<<< HEAD
     );
     //);
   } else {
@@ -28,6 +29,25 @@ const Hero = () => {
         </div>
       </section>
     );
+=======
+    )
+      //);
+    } else {
+      return (
+        // autoPlay loop (Add it later before muted)
+        <section className="hero-container">
+          <video src={videoBg} muted></video>
+          <div>
+            <h1>Bienvenue sur TerraGreen</h1>
+            <p>Participez à sauver la planète !</p>
+            <Link to="/register">S'inscrire</Link>
+          </div>
+          <hr/>
+        </section>
+        
+      );
+    };
+>>>>>>> e20bac5f21098ab5889c0848519c0d7d0d8c8583
   }
 };
 

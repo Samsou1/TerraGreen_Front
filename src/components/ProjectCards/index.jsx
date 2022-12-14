@@ -11,24 +11,10 @@ const ProjectCards = () => {
   useEffect(() => {
     if (window.location.search) {
       setSearch(window.location.search.split("?search=")[1]);
-      const fetchData = async () => {
-        await APIManager.getFilteredProjects(search).then((data) =>
-          setProjects(data)
-        );
-      };
-      fetchData().catch(console.error);
     } else if (window.location.pathname === "/myprojects") {
       setSearch(null);
-      const fetchData = async () => {
-        await APIManager.getMyProjects().then((data) => setProjects(data));
-      };
-      fetchData().catch(console.error);
     } else {
       setSearch(null);
-      const fetchData = async () => {
-        await APIManager.getAllProjects().then((data) => setProjects(data));
-      };
-      fetchData().catch(console.error);
     }
   }, []);
 
@@ -38,6 +24,11 @@ const ProjectCards = () => {
         await APIManager.getFilteredProjects(search).then((data) =>
           setProjects(data)
         );
+      };
+      fetchData().catch(console.error);
+    } else if (window.location.pathname === "/myprojects") {
+      const fetchData = async () => {
+        await APIManager.getMyProjects().then((data) => setProjects(data));
       };
       fetchData().catch(console.error);
     } else {
@@ -50,7 +41,7 @@ const ProjectCards = () => {
 
   return (
     <section className="projects-cards-container">
-      <h2>{search ? `Results for '${search}'` : `All the projects`}</h2>
+      <h2>{search ? `Results for '${search}'` : `You can take inspiration from projects already completed!`}</h2>
       <div className="projectsCards">
         {projects.map((project) => {
           return (

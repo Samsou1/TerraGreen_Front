@@ -20,7 +20,7 @@ API.interceptors.request.use(({ headers, ...config }) =>
         ...config,
         headers: {
           ...headers,
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${
             headers.Authorization || Cookies.get("bearerToken")
           }`,
@@ -30,7 +30,7 @@ API.interceptors.request.use(({ headers, ...config }) =>
         ...config,
         headers: {
           ...headers,
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
         },
       }
 );
@@ -189,6 +189,15 @@ export default class APIManager {
   static async editProject(id, payload) {
     try {
       const response = await API.put(`/projects/${id}`, payload);
+      return response.data;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
+  static async editProfile(payload) {
+    try {
+      const response = await API.patch(`/member-update`, payload);
       return response.data;
     } catch (err) {
       throw new Error(err);

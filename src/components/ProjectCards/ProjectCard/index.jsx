@@ -5,9 +5,8 @@ import { getRegionFromId } from "../../../services/selectRegionCountryAndStatusD
 const ProjectCard = ({ project }) => {
   return (
     <div className="projectCard">
-      {/* <img src={project.image_url} /> */}
       <img
-        src="https://images.unsplash.com/photo-1562077981-4d7eafd44932?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        src={project.image_url}
         className="cardImg"
         alt="project illustration"
       />
@@ -20,7 +19,9 @@ const ProjectCard = ({ project }) => {
           />
           <div className="cardHeaderText">
             <h3 className="cardTitle">{project.title}</h3>
-            <p className="cardTagline">Username</p>
+            <p className="cardTagline">Set username</p>
+            {/* TO DO : set username */}
+            {console.log(project)}
           </div>
         </div>
         <div className="cardText">
