@@ -1,4 +1,3 @@
-import { AppContext } from "../../App";
 import APIManager from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import React, { useContext } from "react";
@@ -10,7 +9,6 @@ import { projectStatusesAtom } from "../../store/projectStatus";
 
 function FileForm() {
   const navigate = useNavigate();
-  const { latestProject, setLatestProject } = useContext(AppContext);
   const countryOptions = useAtomValue(countriesAtom);
   const regionOptions = useAtomValue(regionsAtom);
   const projectStatusesOptions = useAtomValue(projectStatusesAtom);

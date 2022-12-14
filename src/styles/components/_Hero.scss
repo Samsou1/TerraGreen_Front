@@ -5,12 +5,14 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-top: -5em;
   & video {
     width: 100%;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 30px);
     object-fit: cover;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
+    box-shadow: 0 10px 20px 1px grey;
   }
   & div {
     position: absolute;
@@ -75,3 +77,4 @@
     }
   }
 }
+

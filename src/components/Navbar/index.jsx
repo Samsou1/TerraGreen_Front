@@ -6,6 +6,8 @@ import { userLoggedInAtom } from "../../store/user";
 import { useAtomValue } from "jotai";
 
 const Navbar = () => {
+
+
   const userLoggedIn = useAtomValue(userLoggedInAtom);
   const [toggleMenu, setToggleMenu] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
@@ -25,9 +27,21 @@ const Navbar = () => {
     };
   }, []);
 
+  //change nav color when scroling
+  const [color, setColor] = useState(false)
+  const changeColor = () => {
+    if (window.scrollY >= 160 ) {
+      setColor(true)
+    } else {
+      setColor()
+    }
+  }
+
+  window.addEventListener('scroll', changeColor);
+
   if (userLoggedIn) {
     return (
-      <header>
+      <header className={color ? 'header header-bg' : 'header'}>
         <div>
           <Link to="/">
             <img src={logo} alt="logo"></img>
@@ -111,7 +125,7 @@ const Navbar = () => {
     );
   } else {
     return (
-      <header>
+      <header className={color ? 'header header-bg' : 'header'}>
         <div>
           <Link to="/">
             <img src={logo} alt="logo"></img>

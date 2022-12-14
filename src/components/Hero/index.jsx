@@ -26,7 +26,9 @@ const Hero = () => {
             <p>Participez à sauver la planète !</p>
             <Link to="/register">S'inscrire</Link>
           </div>
+          <hr/>
         </section>
+        
       );
     };
   }
