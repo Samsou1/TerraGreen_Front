@@ -44,35 +44,38 @@ const ShowProject = () => {
   if (userLoggedIn() && currentUserId() === project.user_id) {
     return (
       <div className="showContainer">
-        <div className="projectWrapper">
-          <div className="projectImg">
-            <img src="http://bit.ly/2tMBBTd" height="420" width="327" />
+      <div className="projectWrapper">
+        <div className="projectImg">
+          <img src="https://images.unsplash.com/photo-1562077981-4d7eafd44932?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="project illustration" />
+        </div>
+        <div className="projectInfos">
+          <div className="projectDescription">
+            <h1>{project.title}</h1>
+            <h2>Username</h2>
+            <p>{project.content}</p>
+            <div className="projectLocation">
+              <h3>Location</h3>
+              <p>{project.address}</p>
+              <p>{project.city} {project.postal_code}</p>
+              <p>{region}, {country}</p>                
+            </div>
+            <div className="projectStatus">
+              <h3>Status</h3>
+              <p>{project.status}</p>
+            </div>
           </div>
-          <div className="projectInfos">
-            <div className="projectDescription">
-              <h1>{project.title}</h1>
-              <h2>Username</h2>
-              <p>{project.content}</p>
-              <div className="projectLocation">
-                <h3>Location</h3>
-                <p>{project.address}</p>
-                <p>{project.city} {project.postal_code}</p>
-                <p>{region}, {country}</p>                
-              </div>
-              <div className="projectStatus">
-                <h3>Status</h3>
-                <p>{project.status}</p>
-              </div>
-            </div>
-            <div className="projectBtnShow">
-              <Like likes={likes} />
-              <Link className="edit" to={`/editproject/${project.id}`}>Edit</Link>
-              <DeleteProjectButton className="edit_btn" />
-            </div>
+          <div className="projectBtnShow">
+            <Like likes={likes} />
+            <Link className="editBtn" to={`/editproject/${project.id}`}>Edit</Link>
+            <DeleteProjectButton className="editBtn" />
           </div>
         </div>
+      </div>
+      <div className="projectAdditionnalBlocks">
         <button onClick={() => navigate(-1)} >Go back</button>
         <CommentsContainer comments={comments} />
+        <Mapping project={project}/>
+      </div>
     </div>
     );
   } else {
