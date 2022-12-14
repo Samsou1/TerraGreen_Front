@@ -85,7 +85,7 @@ const ShowProject = () => {
       <div className="showContainer">
         <div className="projectWrapper">
           <div className="projectImg">
-            <img src="https://images.unsplash.com/photo-1562077981-4d7eafd44932?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="project illustration" />
+          <img src={image} alt="project illustration" />
           </div>
           <div className="projectInfos">
             <div className="projectDescription">
