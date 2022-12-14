@@ -41,7 +41,7 @@ const ProjectCards = () => {
 
   return (
     <section className="projects-cards-container">
-      <h2>{search ? `Results for '${search}'` : `All the projects`}</h2>
+      <h2>{search ? `Results for '${search}'` : `You can take inspiration from projects already completed!`}</h2>
       <div className="projectsCards">
         {projects.map((project) => {
           return (

@@ -11,6 +11,7 @@ const LogoutButton = () => {
     e.preventDefault();
     try {
       await APIManager.logoutUser();
+      window.location.reload(false)
       setUser(false);
       navigate("/");
     } catch (error) {
