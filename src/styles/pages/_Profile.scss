@@ -2,11 +2,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 35px;
+  margin: 1.5rem;
+
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+
+  backdrop-filter: blur(15px);
 }
 
 .profileHeader {
   text-align: center;
   margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: solid;
 }
 
 .profileContainer {
@@ -16,7 +27,9 @@
 }
 
 .profileInfos {
-
+  margin: 0 2rem;
+  padding-right: 5rem;
+  border-right: solid;
 }
 
 .profileBtns {
@@ -26,7 +39,32 @@
 .profileBtn, .profileBtns button {
   all: unset;
   background-color: $color-green-dark;
+  cursor: pointer;
+  margin: 0 1rem;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
 }
+
+.profileBtn {
+  background-color: $color-green-dark;  
+
+  &:hover {
+    transition-duration: 0.2s;
+    background-color: $color-green-medium;
+    color: white;
+  }
+}
+
+.profileBtns button {
+  background-color: $color-orange;
+
+  &:hover {
+    transition-duration: 0.2s;
+    background-color: $color-yellow;
+  }
+}
+
 
 .profileActivities {
 
