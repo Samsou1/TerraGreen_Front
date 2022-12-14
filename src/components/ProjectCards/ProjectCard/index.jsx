@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { getCountryFromId } from "../../../services/selectRegionCountryAndStatusData";
 import { getRegionFromId } from "../../../services/selectRegionCountryAndStatusData";
-import { getProjectStatusFromId } from "../../../services/selectRegionCountryAndStatusData";
 
 const ProjectCard = ({ project }) => {
   return (
@@ -26,9 +25,14 @@ const ProjectCard = ({ project }) => {
         </div>
         <div className="cardText">
           <p className="cardLocation">
-            {project.city} {project.postal_code} <br />{" "}
-            {getRegionFromId(project.region_id).name},{" "}
-            {getCountryFromId(project.country_id).name}
+            {project.city} {project.postal_code} <br />
+            {getRegionFromId(project.region_id)
+              ? getRegionFromId(project.region_id).name
+              : "Region unknown"}
+            ,
+            {getCountryFromId(project.country_id)
+              ? getCountryFromId(project.country_id).name
+              : "Country unknown"}
           </p>
           <p className="cardDescription">{project.content}</p>
         </div>

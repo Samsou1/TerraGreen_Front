@@ -6,11 +6,13 @@ import ProjectCards from "../../components/ProjectCards";
 const Projects = () => {
   return (
     <>
-      <div className="projectsPage">      
+      <div className="projectsPage">
         <h1 className="projectsTitle">Projects</h1>
         <div className="projectsHeader">
           <SearchBar />
-          <Link to="/newproject" className="newProjectBtn">New Project</Link>
+          <Link to="/newproject" className="newProjectBtn">
+            New Project
+          </Link>
         </div>
         <ProjectCards />
       </div>

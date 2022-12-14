@@ -6,13 +6,17 @@ const Comment = ({ comment }) => {
     comment.user.username !== "" ? (
     <div className="commentCard">
       <p className="commentDatas">
-        <span>{comment.user.username}</span> posted on {convertTimeStampToDate(comment.created_at)}
+        <span>{comment.user.username}</span> posted on{" "}
+        {convertTimeStampToDate(comment.created_at)}
       </p>
       <p className="commentContent">{comment.content}</p>
     </div>
   ) : (
     <div className="commentCard">
-      <p className="commentDatas"><span>Anonymous</span> posted on {convertTimeStampToDate(comment.created_at)}</p>
+      <p className="commentDatas">
+        <span>Anonymous</span> posted on{" "}
+        {convertTimeStampToDate(comment.created_at)}
+      </p>
       <p className="commentContent">{comment.content}</p>
     </div>
   );

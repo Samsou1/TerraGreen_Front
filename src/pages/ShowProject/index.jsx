@@ -7,7 +7,6 @@ import CommentsContainer from "../../components/CommentsContainer";
 import Like from "../../components/Like";
 import Mapping from "../../components/Map/Mapping";
 
-
 import { userLoggedIn, currentUserId } from "../../services/user";
 import ProjectRegistration from "../../components/ProjectRegistration";
 
@@ -28,7 +27,7 @@ const ShowProject = () => {
     setProject(data.project);
     setLikes(data.likes);
     setComments(data.comments);
-    setProjectRegistrations(data.project_registrations)
+    setProjectRegistrations(data.project_registrations);
   };
 
   useEffect(() => {
@@ -56,8 +55,12 @@ const ShowProject = () => {
               <div className="projectLocation">
                 <h3>Location</h3>
                 <p>{project.address}</p>
-                <p>{project.city} {project.postal_code}</p>
-                <p>{region}, {country}</p>                
+                <p>
+                  {project.city} {project.postal_code}
+                </p>
+                <p>
+                  {region}, {country}
+                </p>
               </div>
               <div className="projectStatus">
                 <h3>Status</h3>
@@ -66,21 +69,26 @@ const ShowProject = () => {
             </div>
             <div className="projectBtnShow">
               <Like likes={likes} />
-              <Link className="edit" to={`/editproject/${project.id}`}>Edit</Link>
+              <Link className="edit" to={`/editproject/${project.id}`}>
+                Edit
+              </Link>
               <DeleteProjectButton className="edit_btn" />
             </div>
           </div>
         </div>
-        <button onClick={() => navigate(-1)} >Go back</button>
+        <button onClick={() => navigate(-1)}>Go back</button>
         <CommentsContainer comments={comments} />
-    </div>
+      </div>
     );
   } else {
     return (
       <div className="showContainer">
         <div className="projectWrapper">
           <div className="projectImg">
-            <img src="https://images.unsplash.com/photo-1562077981-4d7eafd44932?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="project illustration" />
+            <img
+              src="https://images.unsplash.com/photo-1562077981-4d7eafd44932?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+              alt="project illustration"
+            />
           </div>
           <div className="projectInfos">
             <div className="projectDescription">
@@ -90,8 +98,12 @@ const ShowProject = () => {
               <div className="projectLocation">
                 <h3>Location</h3>
                 <p>{project.address}</p>
-                <p>{project.city} {project.postal_code}</p>
-                <p>{region}, {country}</p>                
+                <p>
+                  {project.city} {project.postal_code}
+                </p>
+                <p>
+                  {region}, {country}
+                </p>
               </div>
               <div className="projectStatus">
                 <h3>Status</h3>
@@ -100,14 +112,16 @@ const ShowProject = () => {
             </div>
             <div className="projectBtnShow">
               <Like likes={likes} />
-              <ProjectRegistration projectRegistrations={projectRegistrations}/>
+              <ProjectRegistration
+                projectRegistrations={projectRegistrations}
+              />
             </div>
           </div>
         </div>
         <div className="projectAdditionnalBlocks">
-          <button onClick={() => navigate(-1)} >Go back</button>
+          <button onClick={() => navigate(-1)}>Go back</button>
           <CommentsContainer comments={comments} />
-          <Mapping project={project}/>
+          <Mapping project={project} />
         </div>
       </div>
     );

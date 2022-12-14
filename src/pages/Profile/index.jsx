@@ -39,7 +39,7 @@ const Profile = () => {
       <p>Country id: {user.country_id}</p>
       <p>Region id: {user.region_id}</p>
       <p>Notification subscription: {user.notification_subscription}</p>
-      <NotificationsContainer/>
+      <NotificationsContainer />
       <Link className="btn_profile" to="/editprofile">
         Edit profile
       </Link>
