@@ -24,7 +24,7 @@ function Map({ coords, name }) {
         <Popup className="request-popup">
           <div style={popupContent}>
             <img
-              src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/000000/external-trash-camping-flaticons-lineal-color-flat-icons-5.png"
+              src="https://img.icons8.com/external-flat-kendis-lasman/64/null/external-take-care-of-the-earth-ecology-flat-kendis-lasman.png"
               width="100"
               height="100"
               alt="no img"
