@@ -20,7 +20,7 @@ API.interceptors.request.use(({ headers, ...config }) =>
         ...config,
         headers: {
           ...headers,
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${
             headers.Authorization || Cookies.get("bearerToken")
           }`,
@@ -30,7 +30,7 @@ API.interceptors.request.use(({ headers, ...config }) =>
         ...config,
         headers: {
           ...headers,
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
         },
       }
 );
