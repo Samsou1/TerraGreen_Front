@@ -34,6 +34,7 @@ function Map({ coords, name }) {
             </div>
             <span style={popupText}>
               Ici se trouve le site, sur lequel tu te rendras pour participer au projet <strong>"{name}"</strong>
+              <br/>N'oublie pas ton matériel nécessaire au nettoyage d'une zone (gants, bottes et sacs)
             </span>
           </div>
         </Popup>
