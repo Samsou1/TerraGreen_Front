@@ -8,7 +8,7 @@ const Footer = () => {
         <img src={logo} alt="logo"></img>
       </Link>
       <Link className="link" to="/">
-        <p className="company">TerraGreen</p>
+        <h1 className="company">TerraGreen</h1>
       </Link>
     </footer>
   );
