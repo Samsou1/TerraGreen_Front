@@ -1,0 +1,33 @@
+.profileCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profileContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+}
+
+.profileInfos {
+
+}
+
+.profileBtns {
+  margin-top: 2rem;
+}
+
+.profileBtn, .profileBtns button {
+  all: unset;
+  background-color: $color-green-dark;
+}
+
+.profileActivities {
+
+}
