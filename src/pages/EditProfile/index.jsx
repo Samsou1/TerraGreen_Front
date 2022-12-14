@@ -8,12 +8,14 @@ const EditProfile = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [description, setDescription] = useState("");
   const [errors, setErrors] = useState([])
   const navigate = useNavigate();
 
   const setAll = (data) => {
     data.email ? setEmail(data.email) : setEmail("");
     data.username ? setUsername(data.username) : setLastName("");
+    data.description ? setDescription(data.description) : setDescription("");
   };
 
   useEffect(() => {
@@ -30,6 +32,7 @@ const EditProfile = () => {
         user: {
           username: username,
           email: email,
+          description: description,
         },
       };
       if (password !== "") {
@@ -91,6 +94,16 @@ const EditProfile = () => {
             type="text"
             id="username"
             placeholder="Username"
+          />
+        </div>
+        <div className="input-container">
+          <label htmlFor="description">Description</label>
+          <input
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+            type="text"
+            id="description"
+            placeholder="Description"
           />
         </div>
         <input type="submit" value="Edit profile" />
