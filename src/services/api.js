@@ -195,6 +195,15 @@ export default class APIManager {
     }
   }
 
+  static async editProfile(payload) {
+    try {
+      const response = await API.patch(`/member-update`, payload);
+      return response.data;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
   static async getCountries() {
     try {
       const response = await API.get("/countries");
