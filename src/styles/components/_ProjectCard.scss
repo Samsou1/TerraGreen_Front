@@ -91,6 +91,8 @@
 .cardText {
   padding: 0 2em 2em;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .cardLocation {
@@ -99,9 +101,9 @@
 }   
 
 .projectBtn {
-  position: relative;
-  left: 130px;
-  bottom: 10px;
+  width: 40%;
+  align-self: center;
+  margin-top: 1rem;
   background-color: $color-green-dark;
   color: white;
   padding: 14px;
