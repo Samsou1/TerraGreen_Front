@@ -13,7 +13,6 @@ const EditProject = () => {
   const [postalCode, setPostalCode] = useState("");
   const [country, setCountry] = useState("France");
   const [region, setRegion] = useState("");
-  const [GPS, setGPS] = useState("");
   const [date, setDate] = useState("");
   const [status, setStatus] = useState("To plan");
   const countryOptions = useAtomValue(countriesAtom);
@@ -32,7 +31,6 @@ const EditProject = () => {
         postal_code: postalCode,
         country: country,
         region: region,
-        GPS: GPS,
         project_status: status,
         date: date,
       },
@@ -56,7 +54,6 @@ const EditProject = () => {
       : setPostalCode("");
     data.country ? setCountry(data.country) : setCountry("");
     data.region ? setRegion(data.region) : setRegion("");
-    data.project.GPS ? setGPS(data.project.GPS) : setGPS("");
     data.status ? setStatus(data.status) : setStatus("");
     data.date ? setDate(data.date) : setDate("");
   };
@@ -175,16 +172,6 @@ const EditProject = () => {
               );
             })}
           </select>
-        </div>
-        <div className="input-container">
-          <label htmlFor="GPS">GPS</label>
-          <input
-            onChange={(e) => setGPS(e.target.value)}
-            value={GPS}
-            type="text"
-            id="gps"
-            placeholder="GPS"
-          />
         </div>
         <div className="input-container">
           <label htmlFor="date">Date</label>
