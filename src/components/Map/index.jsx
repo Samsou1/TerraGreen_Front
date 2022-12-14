@@ -33,7 +33,7 @@ function Map({ coords, name }) {
               Le site de nettoyage
             </div>
             <span style={popupText}>
-              Ici se trouve le site, sur lequel tu te rendras pour participer au projet <strong>{name}</strong>
+              Ici se trouve le site, sur lequel tu te rendras pour participer au projet <strong>"{name}"</strong>
             </span>
           </div>
         </Popup>
