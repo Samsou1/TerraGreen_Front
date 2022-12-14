@@ -101,7 +101,7 @@ const EditProfile = () => {
           <input
             onChange={(e) => setDescription(e.target.value)}
             value={description}
-            type="text"
+            type="textarea"
             id="description"
             placeholder="Description"
           />
