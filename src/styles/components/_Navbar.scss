@@ -63,7 +63,8 @@ header {
 
 .header-bg {
   background-color: $color-green-light;
-  border-radius: 13px;
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
   opacity: 90%;
 }
 

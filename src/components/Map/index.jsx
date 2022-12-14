@@ -1,5 +1,5 @@
 import React from 'react'
-import { MapContainer , TileLayer, Marker, Popup, useMap } from "react-leaflet"
+//import { MapContainer , TileLayer, Marker, Popup, useMap } from "react-leaflet"
 
 function Map({coords}) {
   const { latitude, longitude } = coords;
