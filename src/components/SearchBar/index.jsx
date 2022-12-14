@@ -22,8 +22,7 @@ const SearchBar = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="search-container-form">
-      <div className="input-container">
+    <form onSubmit={handleSubmit} className="searchForm">
         <input
           onChange={(e) => setSearch(e.target.value)}
           value={search}
@@ -31,7 +30,6 @@ const SearchBar = () => {
           id="search"
           placeholder="Location"
         />
-      </div>
     </form>
   );
 };

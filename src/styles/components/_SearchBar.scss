@@ -1,20 +1,17 @@
-.search-container-form {
+.searchForm {
+  font-size: medium;
+  border: 1px solid $color-green-dark;
+  border-radius: 20px;
+  padding: 8px 20px;
+  margin: 1.5rem;
+
   & input {
+    all: unset;
+    width: 100%;
     font-family: $font-family-content;
-    font-size: medium;
-    border: 1px solid $color-green-dark;
-    border-radius: 20px;
-    padding: 8px 20px;
-    margin: 1.5rem;
     color: $color-green-medium;
     &::placeholder {
       color: $color-green-dark;
-    }
-    &:hover {
-      border: 2px solid $color-green-dark;
-      &::placeholder {
-        color: $color-green-medium;
-      }
     }
     &:focus {
       outline: none;
@@ -23,11 +20,33 @@
       }
     }
   }
+
+  &:hover {
+    border: 2px solid $color-green-dark;
+    &::placeholder {
+      color: $color-green-medium;
+    }
   }
+
+  &:focus {
+    outline: none;
+    &::placeholder {
+      color: $color-green-medium;
+    }
+  }
+
+  & button {
+    all: unset;
+
+    & .searchIcon {
+    color: $color-green-dark;      
+    }
+  }
+}
   
-  $breakpoint-tablet: 768px;
+$breakpoint-tablet: 768px;
 @media (min-width: $breakpoint-tablet) {
-  .search-form-container {
+  .searchForm {
     min-width: 400px;
   }
 }

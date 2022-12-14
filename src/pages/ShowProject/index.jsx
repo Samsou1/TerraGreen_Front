@@ -104,9 +104,11 @@ const ShowProject = () => {
             </div>
           </div>
         </div>
-        <button onClick={() => navigate(-1)} >Go back</button>
-        <CommentsContainer comments={comments} />
-        <Mapping project={project}/>
+        <div className="projectAdditionnalBlocks">
+          <button onClick={() => navigate(-1)} >Go back</button>
+          <CommentsContainer comments={comments} />
+          <Mapping project={project}/>
+        </div>
       </div>
     );
   }

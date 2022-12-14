@@ -102,6 +102,35 @@
   }
 }
 
+.projectAdditionnalBlocks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & h3 {
+    margin: 20px;
+  }
+
+  & button{
+    all: unset;
+    padding: 0.7rem;
+    margin: 0.2rem;
+    border-radius: 40px;
+    font-weight: 300;
+    color: #ffffff;
+    background-color: $color-green-dark;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    width: 80px;
+  
+    &:hover {
+      transition-duration: 0.2s;
+      background-color: $color-green-medium;
+    }
+  }
+}
+
 @media (min-width: $breakpoint-medium-devices) {
   .showContainer {
     margin-top: 1rem;
