@@ -8,6 +8,10 @@ import Map from './index';
     longitude: ""
   
   });
+  const name = project.title
+
+
+
 
 
 useEffect(() => {
@@ -48,7 +52,7 @@ function getData(url) {
 
   return (
     <>
-    <Map coords={coords} />
+    <Map coords={coords} name={name}   />
     
     </>
   )

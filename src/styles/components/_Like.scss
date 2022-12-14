@@ -1,0 +1,14 @@
+.liked {
+  margin-right: 5px;
+  & path {
+    fill: $color-blue-dark;
+  }
+}
+
+.unliked {
+  margin-right: 5px;
+  & path {
+    fill: $color-orange;
+  }
+  
+}
