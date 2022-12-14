@@ -8,7 +8,7 @@ import Map from './index';
     longitude: ""
   
   });
-
+  const name = project.title
 
 useEffect(() => {
   let url = `https://nominatim.openstreetmap.org/search?
@@ -48,7 +48,7 @@ function getData(url) {
 
   return (
     <>
-    <Map coords={coords} />
+    <Map coords={coords} name={name} />
     
     </>
   )

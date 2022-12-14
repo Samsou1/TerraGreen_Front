@@ -1,7 +1,7 @@
 import React from 'react'
 import { MapContainer , TileLayer, Marker, Popup, useMap } from "react-leaflet"
 
-function Map({coords}) {
+function Map({coords, name}) {
   const { latitude, longitude } = coords;
 
   function MapView() {
@@ -17,7 +17,7 @@ function Map({coords}) {
   />
   <Marker position={[latitude, longitude]}>
     <Popup>
-      A pretty CSS3 popup. <br /> Easily customizable.
+     {name}
     </Popup>
   </Marker>
   <MapView />
