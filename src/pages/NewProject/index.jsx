@@ -1,19 +1,16 @@
 import APIManager from "../../services/api";
 import { useNavigate } from "react-router-dom";
-import React, { useContext, useState } from "react";
-import { currentUserId } from "../../services/user";
-import { useAtomValue } from "jotai";
-import { countriesAtom } from "../../store/country";
-import { regionsAtom } from "../../store/region";
-import { projectStatusesAtom } from "../../store/projectStatus";
 import Errors from "../../components/Errors";
+import React, { useEffect, useState } from "react";
+import { currentUserId } from "../../services/user";
 
 function FileForm() {
   const navigate = useNavigate();
-  const countryOptions = useAtomValue(countriesAtom);
-  const regionOptions = useAtomValue(regionsAtom);
-  const projectStatusesOptions = useAtomValue(projectStatusesAtom);
-  const [errors, setErrors] = useState([]);
+  const [countryOptions, setCountryOptions] = useState([]);
+  const [regionOptions, setRegionOptions] = useState([]);
+  const [projectStatusesOptions, setProjectStatusesOptions] = useState([]);
+  const [country, setCountry] = useState(78);
+  const [errors, setErrors] = useState([])
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,18 +42,55 @@ function FileForm() {
     }
   };
 
+  useEffect(() => {
+    const fetchCountries = async () => {
+      await APIManager.getCountries().then((data) => setCountryOptions(data));
+    };
+    fetchCountries().catch(console.error);
+    const fetchProjectStatuses = async () => {
+      await APIManager.getProjectStatuses().then((data) =>
+        setProjectStatusesOptions(data)
+      );
+    };
+    fetchProjectStatuses().catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    if (country) {
+      const fetchRegions = async () => {
+        await APIManager.getRegionsFromCountryID(country).then((data) =>
+          setRegionOptions(data)
+        );
+      };
+      fetchRegions().catch(console.error);
+    }
+  }, [country]);
+
   return (
     <div>
       <h1 className="newproject-title">Create your project:</h1>
       <Errors errors={errors}></Errors>
-      <form onSubmit={(event) => handleSubmit(event)} className="newproject-form-container">
+      <form
+        onSubmit={(event) => handleSubmit(event)}
+        className="newproject-form-container"
+      >
         <div className="input-container">
           <label htmlFor="title">Title</label>
-          <input type="text" name="title" id="title" placeholder="CleanForest..."/>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="CleanForest..."
+          />
         </div>
         <div className="input-container">
           <label htmlFor="content">Content</label>
-          <input type="text" name="content" id="content" placeholder="To reduce polution..." />
+          <input
+            type="text"
+            name="content"
+            id="content"
+            placeholder="To reduce polution..."
+          />
         </div>
         <div className="input-container">
           <label htmlFor="date">Date</label>
@@ -64,15 +98,25 @@ function FileForm() {
         </div>
         <div className="input-container">
           <label htmlFor="address">Address</label>
-          <input type="text" name="address" id="address" placeholder="18 rue barthelemy" />
+          <input
+            type="text"
+            name="address"
+            id="address"
+            placeholder="18 rue barthelemy"
+          />
         </div>
         <div className="input-container">
           <label htmlFor="city">City</label>
-          <input type="text" name="city" id="city" placeholder="Paris"/>
+          <input type="text" name="city" id="city" placeholder="Paris" />
         </div>
         <div className="input-container">
           <label htmlFor="postal_code">Postal Code</label>
-          <input type="text" name="postal_code" id="postal_code" placeholder="75000"/>
+          <input
+            type="text"
+            name="postal_code"
+            id="postal_code"
+            placeholder="75000"
+          />
         </div>
         <div className="input-container">
           <label htmlFor="project_status_id">Status</label>
@@ -106,7 +150,12 @@ function FileForm() {
         </div>
         <div className="input-container">
           <label htmlFor="country_id">Country</label>
-          <select id="country" name="country">
+          <select
+            id="country"
+            name="country"
+            onChange={(e) => setCountry(e.target.value)}
+            value={country}
+          >
             {countryOptions.map((countryOption) => {
               return (
                 <option
@@ -127,6 +176,6 @@ function FileForm() {
       </form>
     </div>
   );
-};
+}
 
 export default FileForm;
