@@ -16,13 +16,15 @@ const EditProfile = () => {
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState([]);
   const [notifications, setNotifications] = useState(false);
-  const [countryOptions, setCountryOptions] = useState([]);
-  const [regionOptions, setRegionOptions] = useState([]);
-  const [country, setCountry] = useState("France");
-  const [region, setRegion] = useState("");
   const navigate = useNavigate();
 
+  const [regionOptions, setRegionOptions] = useState([]);
+  const [region, setRegion] = useState("");
+  const countryOptions = useAtomValue(countriesAtom);
+  const [country, setCountry] = useState(78);
+
   const setAll = (data) => {
+    console.log(data);
     data.email ? setEmail(data.email) : setEmail("");
     data.username ? setUsername(data.username) : setLastName("");
     data.notification_subscription
@@ -52,6 +54,7 @@ const EditProfile = () => {
   }, [country]);
 
   const handleSubmit = async (e) => {
+    setErrors([]);
     e.preventDefault();
     if (password === confirmPassword) {
       const data = {
@@ -59,7 +62,7 @@ const EditProfile = () => {
           username: username,
           email: email,
           notification_subscription: notifications,
-          country_id: 78,
+          country_id: country,
           region_id: region,
         },
       };
@@ -70,18 +73,32 @@ const EditProfile = () => {
         await APIManager.editProfile(data);
         navigate("/profile");
       } catch (err) {
+        setErrors([{ message: "Something went wrong" }]);
         console.error(err);
       }
     } else {
+      setErrors([
+        { message: "Password and confirmation password are different" },
+      ]);
       throw new Error(
         "The password and the confirmation password are different"
       );
     }
   };
 
+  useEffect(() => {
+    const fetchRegions = async () => {
+      await APIManager.getRegionsFromCountryID(country).then((data) =>
+        setRegionOptions(data)
+      );
+    };
+    fetchRegions().catch(console.error);
+  }, [country]);
+
   return (
     <>
       <h1 className="register-title">Edit Profile</h1>
+      <Errors errors={errors} />
       <Errors errors={errors} />
       <form onSubmit={handleSubmit} className="register-form-container">
         <div className="input-container">
