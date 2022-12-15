@@ -6,6 +6,7 @@ main {
 
 .register-title {
   margin-bottom: 35px;
+  padding-top: 6rem;
 }
 
 .register-form-container {
@@ -28,6 +29,21 @@ main {
         background-color: $color-green-light;
       }
     }
+  }
+  .input-container{
+    & label {
+      padding: 0.5rem 0 0.5rem 0;
+      
+    }
+    & select {
+      border: 1px solid $color-green-dark;
+      border-radius: 5px;
+      height: 30px;
+    }
+     & textarea {
+      border-radius: 8px;
+      border: 1px solid $color-green-dark;
+     }
   }
 }
 
