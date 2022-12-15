@@ -141,9 +141,9 @@ const EditProfile = () => {
             })}
           </select>
         </div>
-        <div className="input-container">
+        <div className="input-container-notif">
           <label for="notification_subscription">Notification</label>
-          <input
+           <input
             type="checkbox"
             id="notification_subscription"
             name="notification_subscription"
