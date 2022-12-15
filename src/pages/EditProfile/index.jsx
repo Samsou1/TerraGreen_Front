@@ -2,8 +2,6 @@ import APIManager from "../../services/api";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Errors from "../../components/Errors";
-import { useAtomValue } from "jotai/utils";
-import { countriesAtom } from "../../store/country";
 
 const EditProfile = () => {
   const [password, setPassword] = useState("");
@@ -12,15 +10,14 @@ const EditProfile = () => {
   const [username, setUsername] = useState("");
   const [description, setDescription] = useState("");
   const [errors, setErrors] = useState([]);
-  const navigate = useNavigate();
+  const [countryOptions, setCountryOptions] = useState([]);
+  const [country, setCountry] = useState();
 
   const [regionOptions, setRegionOptions] = useState([]);
   const [region, setRegion] = useState("");
-  const countryOptions = useAtomValue(countriesAtom);
-  const [country, setCountry] = useState(78);
+  const navigate = useNavigate();
 
   const setAll = (data) => {
-    console.log(data);
     data.email ? setEmail(data.email) : setEmail("");
     data.username ? setUsername(data.username) : setLastName("");
     data.description ? setDescription(data.description) : setDescription("");
@@ -32,7 +29,11 @@ const EditProfile = () => {
     const fetchProfile = async () => {
       await APIManager.getUser().then((data) => setAll(data));
     };
-    fetchProfile()
+    const fetchCountries = async () => {
+      await APIManager.getCountries().then((data) => setCountryOptions(data));
+    };
+    fetchCountries()
+      .then(fetchProfile().catch(console.error))
       .then(regionOptions[0] ? setRegion(regionOptions[0].name) : setRegion(""))
       .catch(console.error);
   }, []);
@@ -57,11 +58,13 @@ const EditProfile = () => {
         await APIManager.editProfile(data);
         navigate("/profile");
       } catch (err) {
-        setErrors([{message: 'Something went wrong'}])
+        setErrors([{ message: "Something went wrong" }]);
         console.error(err);
       }
     } else {
-      setErrors([{message: 'Password and confirmation password are different'}])
+      setErrors([
+        { message: "Password and confirmation password are different" },
+      ]);
       throw new Error(
         "The password and the confirmation password are different"
       );
@@ -69,12 +72,14 @@ const EditProfile = () => {
   };
 
   useEffect(() => {
-    const fetchRegions = async () => {
-      await APIManager.getRegionsFromCountryID(country).then((data) =>
-        setRegionOptions(data)
-      );
-    };
-    fetchRegions().catch(console.error);
+    if (country) {
+      const fetchRegions = async () => {
+        await APIManager.getRegionsFromCountryID(country).then((data) => {
+          setRegionOptions(data);
+        });
+      };
+      fetchRegions().catch(console.error);
+    }
   }, [country]);
 
   return (
@@ -93,26 +98,6 @@ const EditProfile = () => {
           />
         </div>
         <div className="input-container">
-          <label htmlFor="password">Password</label>
-          <input
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            type="password"
-            id="password"
-            placeholder="Password"
-          />
-        </div>
-        <div className="input-container">
-          <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            value={confirmPassword}
-            type="password"
-            id="confirmPassword"
-            placeholder="Password"
-          />
-        </div>
-        <div className="input-container">
           <label htmlFor="username">Username</label>
           <input
             onChange={(e) => setUsername(e.target.value)}
@@ -123,14 +108,34 @@ const EditProfile = () => {
           />
         </div>
         <div className="input-container">
-        <label htmlFor="description">Description</label>
-          <input
+          <label htmlFor="description">Description</label>
+          <textarea
             onChange={(e) => setDescription(e.target.value)}
             value={description}
-            type="textarea"
             id="description"
             placeholder="Description"
           />
+        </div>
+
+<div className="input-container">
+          <label htmlFor="country_id">Country</label>
+          <select
+            onChange={(e) => setCountry(e.target.value)}
+            value={country}
+            id="country"
+            name="country"
+          >
+            {countryOptions.map((countryOption) => {
+              return (
+                <option
+                  key={countryOption.id + countryOption.name}
+                  value={countryOption.id}
+                >
+                  {countryOption.name}
+                </option>
+              );
+            })}
+          </select>
         </div>
         <div className="input-container">
           <label htmlFor="region_id">Region</label>
@@ -153,24 +158,24 @@ const EditProfile = () => {
           </select>
         </div>
         <div className="input-container">
-          <label htmlFor="country_id">Country</label>
-          <select
-            onChange={(e) => setCountry(e.target.value)}
-            value={country}
-            id="country"
-            name="country"
-          >
-            {countryOptions.map((countryOption) => {
-              return (
-                <option
-                  key={countryOption.id + countryOption.name}
-                  value={countryOption.id}
-                >
-                  {countryOption.name}
-                </option>
-              );
-            })}
-          </select>
+          <label htmlFor="password">Password</label>
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            type="password"
+            id="password"
+            placeholder="Password"
+          />
+        </div>
+        <div className="input-container">
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <input
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={confirmPassword}
+            type="password"
+            id="confirmPassword"
+            placeholder="Password"
+          />
         </div>
         <input type="submit" value="Edit profile" />
       </form>

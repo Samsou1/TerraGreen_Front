@@ -13,12 +13,15 @@ const EditProject = () => {
   const [city, setCity] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [date, setDate] = useState("");
-  const projectStatusesOptions = useAtomValue(projectStatusesAtom);
+  const [projectStatusesOptions, setProjectStatusesOptions] = useState([]);
+  // const projectStatusesOptions = useAtomValue(projectStatusesAtom);
   const [status, setStatus] = useState("");
+  const [countryOptions, setCountryOptions] = useState([]);
+  const [country, setCountry] = useState();
   const [regionOptions, setRegionOptions] = useState([]);
   const [region, setRegion] = useState("");
-  const countryOptions = useAtomValue(countriesAtom);
-  const [country, setCountry] = useState(78);
+  // const countryOptions = useAtomValue(countriesAtom);
+
   const [image, setImage] = useState("");
   const navigate = useNavigate();
 
@@ -48,7 +51,6 @@ const EditProject = () => {
   };
 
   const SetAll = (data) => {
-    console.log(data);
     data.project.title ? setTitle(data.project.title) : setTitle("");
     data.project.content ? setContent(data.project.content) : setContent("");
     data.project.date ? setDate(data.project.date) : setDate("");
@@ -72,23 +74,35 @@ const EditProject = () => {
     const fetchProject = async () => {
       await APIManager.getProject(id).then((data) => SetAll(data));
     };
-    fetchProject()
+    const fetchCountries = async () => {
+      await APIManager.getCountries().then((data) => setCountryOptions(data));
+    };
+    const fetchProjectStatuses = async () => {
+      await APIManager.getProjectStatuses().then((data) =>
+        setProjectStatusesOptions(data)
+      );
+    };
+    fetchProjectStatuses().catch(console.error);
+    fetchCountries()
+      .then(fetchProject().catch(console.error))
       .then(regionOptions[0] ? setRegion(regionOptions[0].name) : setRegion(""))
       .catch(console.error);
   }, []);
 
   useEffect(() => {
-    const fetchRegions = async () => {
-      await APIManager.getRegionsFromCountryID(country).then((data) =>
-        setRegionOptions(data)
-      );
-    };
-    fetchRegions().catch(console.error);
+    if (country) {
+      const fetchRegions = async () => {
+        await APIManager.getRegionsFromCountryID(country).then((data) =>
+          setRegionOptions(data)
+        );
+      };
+      fetchRegions().catch(console.error);
+    }
   }, [country]);
 
   return (
     <>
-      <h1 className="new-title">New project</h1>
+      <h1 className="new-title">Edit project</h1>
       <form onSubmit={handleSubmit} className="new-container-form">
         <div className="input-container">
           <label htmlFor="title">Title</label>
