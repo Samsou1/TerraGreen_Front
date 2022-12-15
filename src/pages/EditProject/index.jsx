@@ -48,7 +48,6 @@ const EditProject = () => {
   };
 
   const SetAll = (data) => {
-    console.log(data);
     data.project.title ? setTitle(data.project.title) : setTitle("");
     data.project.content ? setContent(data.project.content) : setContent("");
     data.project.date ? setDate(data.project.date) : setDate("");

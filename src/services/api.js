@@ -240,6 +240,24 @@ export default class APIManager {
     }
   }
 
+  static async getRegionWithID(id) {
+    try {
+      const response = await API.get(`/regions/${id}`);
+      return response.data;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
+  static async getCountryWithID(id) {
+    try {
+      const response = await API.get(`/countries/${id}`);
+      return response.data;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
   static async deleteUser() {
     try {
       const response = await API.delete("/member-destroy");

@@ -24,29 +24,27 @@ const EditProfile = () => {
   const [country, setCountry] = useState(78);
 
   const setAll = (data) => {
-    console.log(data);
     data.email ? setEmail(data.email) : setEmail("");
     data.username ? setUsername(data.username) : setLastName("");
     data.notification_subscription
       ? setNotifications(data.notification_subscription)
       : setNotifications(false);
-    console.log(data);
+    data.region_id ? setRegion(data.region_id) : setRegion("");
+    data.country_id ? setCountry(data.country_id) : setCountry("");
   };
 
   useEffect(() => {
     const fetchProfile = async () => {
       await APIManager.getUser().then((data) => setAll(data));
     };
-    const fetchCountries = async () => {
-      await APIManager.getCountries().then((data) => setCountryOptions(data));
-    };
-    fetchProfile().catch(console.error);
-    fetchCountries().catch(console.error);
+    fetchProfile()
+      .then(regionOptions[0] ? setRegion(regionOptions[0].name) : setRegion(""))
+      .catch(console.error);
   }, []);
 
   useEffect(() => {
     const fetchRegions = async () => {
-      await APIManager.getRegionsFromCountry(country).then((data) =>
+      await APIManager.getRegionsFromCountryID(country).then((data) =>
         setRegionOptions(data)
       );
     };
