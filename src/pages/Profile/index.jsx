@@ -11,13 +11,6 @@ const Profile = () => {
   const [regionID, setRegionID] = useState(null);
   const [countryID, setCountryID] = useState(null);
   const navigate = useNavigate();
-  const [isChecked, setIsChecked] = useState(false);
-  const [notification_subscription,setNotification] = useState(false);
-
-  const checkHandler = (data) => {
-    setIsChecked(!isChecked);
-    data.notification_subscription ? setNotification(true) : setNotification(false);
-  };
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -83,21 +76,10 @@ const Profile = () => {
             <h3>Parameters</h3>
             <p>{user.username}</p>
             <p>{user.email}</p>
-            <div>
-              <label htmlFor="checkbox">I want notifications </label>
-              <input
-                type="checkbox"
-                id="checkbox"
-                checked={isChecked}
-                onChange={checkHandler}
-                value={user.notification_subscription}
-              />
-            </div>
-            {/* {console.log(user.notification_subscription)} */}
-                  <p>
-        Do I want to receive notifications:
-        {user.notification_subscription ? " Yes" : " No"}
-      </p>
+            <p>
+              Do I want to receive notifications:
+              {user.notification_subscription ? " Yes" : " No"}
+            </p>
             <div className="profileBtns">
             <Link className="profileBtn" to="/editprofile">
               Edit profile
@@ -123,7 +105,10 @@ const Profile = () => {
             <p>{user.region_id}, {user.country_id}</p>
             <h3>Parameters</h3>
             <p>{user.email}</p>
-            <p>Notification subscription: {user.notification_subscription}</p> 
+            <p>
+              Do I want to receive notifications:
+              {user.notification_subscription ? " Yes" : " No"}
+            </p>
             <div className="profileBtns">
               <Link className="profileBtn" to="/editprofile">
                 Edit profile

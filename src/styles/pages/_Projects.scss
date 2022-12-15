@@ -73,7 +73,8 @@
 
 @media (min-width: $breakpoint-medium-devices) {
   
-   .projectsPage{
+  .projectsPage{
+    margin-bottom: 3rem;
       & .img1 {
       height: calc(100vh - 290px);
     }
