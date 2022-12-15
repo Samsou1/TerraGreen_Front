@@ -32,3 +32,8 @@ export const getProjectStatusFromName = (name) => {
   const projectStatuses = useAtomValue(projectStatusesAtom);
   return projectStatuses.find((projectStatus) => projectStatus.name === name);
 };
+
+export const getRegionsFromCountryId = (id) => {
+  const regions = useAtomValue(regionsAtom);
+  return regions.filter((region) => region.country_id === id);
+}

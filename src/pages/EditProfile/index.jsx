@@ -2,26 +2,54 @@ import APIManager from "../../services/api";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Errors from "../../components/Errors";
+import { useAtomValue } from "jotai/utils";
+import { countriesAtom } from "../../store/country";
+import {
+  getCountryFromName,
+  getRegionFromName,
+} from "../../services/selectRegionCountryAndStatusData";
 
 const EditProfile = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([]);
+  const [notifications, setNotifications] = useState(false);
+  const [countryOptions, setCountryOptions] = useState([]);
+  const [regionOptions, setRegionOptions] = useState([]);
+  const [country, setCountry] = useState("France");
+  const [region, setRegion] = useState("");
   const navigate = useNavigate();
 
   const setAll = (data) => {
     data.email ? setEmail(data.email) : setEmail("");
     data.username ? setUsername(data.username) : setLastName("");
+    data.notification_subscription
+      ? setNotifications(data.notification_subscription)
+      : setNotifications(false);
+    console.log(data);
   };
 
   useEffect(() => {
     const fetchProfile = async () => {
       await APIManager.getUser().then((data) => setAll(data));
     };
+    const fetchCountries = async () => {
+      await APIManager.getCountries().then((data) => setCountryOptions(data));
+    };
     fetchProfile().catch(console.error);
+    fetchCountries().catch(console.error);
   }, []);
+
+  useEffect(() => {
+    const fetchRegions = async () => {
+      await APIManager.getRegionsFromCountry(country).then((data) =>
+        setRegionOptions(data)
+      );
+    };
+    fetchRegions().catch(console.error);
+  }, [country]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +58,9 @@ const EditProfile = () => {
         user: {
           username: username,
           email: email,
+          notification_subscription: notifications,
+          country_id: 78,
+          region_id: region,
         },
       };
       if (password !== "") {
@@ -51,7 +82,7 @@ const EditProfile = () => {
   return (
     <>
       <h1 className="register-title">Edit Profile</h1>
-      <Errors errors={errors}/>
+      <Errors errors={errors} />
       <form onSubmit={handleSubmit} className="register-form-container">
         <div className="input-container">
           <label htmlFor="email">Email </label>
@@ -92,6 +123,61 @@ const EditProfile = () => {
             id="username"
             placeholder="Username"
           />
+        </div>
+        <div className="input-container">
+          <label htmlFor="notifications">Notifications</label>
+          <select
+            onChange={(e) =>
+              setNotifications(e.target.value === "Yes" ? true : false)
+            }
+            value={notifications ? "Yes" : "No"}
+            id="notifications"
+          >
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+        <div className="input-container">
+          <label htmlFor="country">Country</label>
+          <select
+            onChange={(e) => setCountry(e.target.value)}
+            value={country}
+            type="text"
+            id="country"
+            placeholder="Country"
+          >
+            {countryOptions.map((countryOption) => {
+              return (
+                <option
+                  key={countryOption.id + countryOption.name}
+                  value={countryOption.id}
+                >
+                  {countryOption.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        <div className="input-container">
+          <label htmlFor="region">Region</label>
+          <select
+            onChange={(e) => setRegion(e.target.value)}
+            value={region}
+            type="text"
+            id="region"
+            placeholder="Region"
+          >
+            {regionOptions.map((regionOption) => {
+              return (
+                <option
+                  key={regionOption.id + regionOption.name}
+                  value={regionOption.id}
+                >
+                  {regionOption.name}
+                </option>
+              );
+            })}
+          </select>
         </div>
         <input type="submit" value="Edit profile" />
       </form>

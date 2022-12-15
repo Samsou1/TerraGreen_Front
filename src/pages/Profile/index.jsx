@@ -13,7 +13,6 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       await APIManager.getUser().then((data) => {
-        console.log(data);
         setUser(data);
       });
     };
