@@ -10,7 +10,6 @@ const Profile = () => {
   const [country, setCountry] = useState({});
   const [regionID, setRegionID] = useState(null);
   const [countryID, setCountryID] = useState(null);
-  const [notification, setNotification] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -79,17 +78,8 @@ const Profile = () => {
           <h3>Parameters</h3>
           <p>{user.username}</p>
           <p>{user.email}</p>
-          <div>
-            <label htmlFor="checkbox">I want notifications </label>
-            <input
-              type="checkbox"
-              id="checkbox"
-              checked={notification}
-              readOnly={true}
-            />
-          </div>
-          <p>
-            Do I want to receive notifications:
+          <p className="notifications">
+          <span>Do I want to receive notifications?</span>
             {user.notification_subscription ? " Yes" : " No"}
           </p>
           <div className="profileBtns">
@@ -115,11 +105,15 @@ const Profile = () => {
           <p>{user.description}</p>
           <h3>Location</h3>
           <p>
-            {user.region_id}, {user.country_id}
+            {region.name ? region.name : "Unknown"},{" "}
+            {country.name ? country.name : "Unknown"}
           </p>
           <h3>Parameters</h3>
           <p>{user.email}</p>
-          <p>Notification subscription: {user.notification_subscription}</p>
+          <p className="notifications">
+            <span>Do I want to receive notifications?</span>
+            {user.notification_subscription ? " Yes" : " No"}
+          </p>
           <div className="profileBtns">
             <Link className="profileBtn" to="/editprofile">
               Edit profile
