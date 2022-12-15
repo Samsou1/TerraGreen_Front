@@ -13,6 +13,7 @@
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     box-shadow: 0 10px 20px 1px grey;
+    opacity: 80%;
   }
   & div {
     position: absolute;
@@ -23,12 +24,15 @@
     & h1 {
       font-size: 1.5rem;
       margin: 0 0 20px 0;
+      text-shadow: 3px 3px 4px rgba(255, 255, 255, 0.50) ;
     }
     & p {
       font-size: 1.1rem;
       text-align: center;
       padding: 0 10px;
-      margin: 0 0 25px 0;
+      margin: 2.5rem 0 25px 0;
+      color: $color-green-dark;
+      text-shadow: 3px 3px 4px rgba(255, 255, 255, 0.75) ;
     }
     & a {
       background-color: $color-green-dark;
