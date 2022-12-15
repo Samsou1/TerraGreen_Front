@@ -41,7 +41,12 @@ function Mapping({ project }) {
 
   return (
     <>
+<<<<<<< HEAD
       <Map coords={coords} name={name} />
+=======
+    <Map coords={coords} name={name}   />
+    
+>>>>>>> 233c0048fa42bccb2937cea819f8f6eb755d5329
     </>
   );
 }
