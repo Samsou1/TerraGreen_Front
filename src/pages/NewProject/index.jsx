@@ -17,44 +17,13 @@ function FileForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await setErrors([]);
+    setErrors([]);
     if (event.target.title.value.length < 3) {
-      await setErrors((errs) => [
+      setErrors((errs) => [
         ...errs,
         { message: "Your title must be at least 3 characters long" },
       ]);
-    }
-    // if (event.target.content.value.length < 5) {
-    //   setErrors((errs) => [
-    //     ...errs,
-    //     { message: "Your content must be at least 5 characters long" },
-    //   ]);
-    // }
-    // if (event.target.date.value.length < 5) {
-    //   setErrors((errs) => [
-    //     ...errs,
-    //     { message: "Your must give your project a date" },
-    //   ]);
-    // }
-    // if (event.target.address.value.length < 3) {
-    //   setErrors((errs) => [
-    //     ...errs,
-    //     { message: "Address is too short" },
-    //   ]);
-    // }
-    // if (event.target.city.value.length < 3) {
-    //   setErrors((errs) => [
-    //     ...errs,
-    //     { message: "City is too short" },
-    //   ]);
-    // }
-    // if (event.target.postal_code.value.length < 3) {
-    //   setErrors((errs) => [
-    //     ...errs,
-    //     { message: "ZIP code is too short" },
-    //   ]);
-    // }
-    if (errors.length === 0) {
+    } else {
       const data = new FormData();
       data.append("project[user_id]", currentUserId());
       data.append("project[title]", event.target.title.value);
