@@ -20,7 +20,6 @@ const EditProfile = () => {
   const [country, setCountry] = useState(78);
 
   const setAll = (data) => {
-    console.log(data);
     data.email ? setEmail(data.email) : setEmail("");
     data.username ? setUsername(data.username) : setLastName("");
     data.description ? setDescription(data.description) : setDescription("");
@@ -57,11 +56,11 @@ const EditProfile = () => {
         await APIManager.editProfile(data);
         navigate("/profile");
       } catch (err) {
-        setErrors([{message: 'Something went wrong'}])
+        setErrors([{ message: 'Something went wrong' }])
         console.error(err);
       }
     } else {
-      setErrors([{message: 'Password and confirmation password are different'}])
+      setErrors([{ message: 'Password and confirmation password are different' }])
       throw new Error(
         "The password and the confirmation password are different"
       );
@@ -93,26 +92,6 @@ const EditProfile = () => {
           />
         </div>
         <div className="input-container">
-          <label htmlFor="password">Password</label>
-          <input
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            type="password"
-            id="password"
-            placeholder="Password"
-          />
-        </div>
-        <div className="input-container">
-          <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            value={confirmPassword}
-            type="password"
-            id="confirmPassword"
-            placeholder="Password"
-          />
-        </div>
-        <div className="input-container">
           <label htmlFor="username">Username</label>
           <input
             onChange={(e) => setUsername(e.target.value)}
@@ -123,11 +102,10 @@ const EditProfile = () => {
           />
         </div>
         <div className="input-container">
-        <label htmlFor="description">Description</label>
-          <input
+          <label htmlFor="description">Description</label>
+          <textarea
             onChange={(e) => setDescription(e.target.value)}
             value={description}
-            type="textarea"
             id="description"
             placeholder="Description"
           />
@@ -171,6 +149,26 @@ const EditProfile = () => {
               );
             })}
           </select>
+        </div>
+        <div className="input-container">
+          <label htmlFor="password">Password</label>
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            type="password"
+            id="password"
+            placeholder="Password"
+          />
+        </div>
+        <div className="input-container">
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <input
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={confirmPassword}
+            type="password"
+            id="confirmPassword"
+            placeholder="Password"
+          />
         </div>
         <input type="submit" value="Edit profile" />
       </form>
