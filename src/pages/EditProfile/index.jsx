@@ -56,11 +56,11 @@ const EditProfile = () => {
         await APIManager.editProfile(data);
         navigate("/profile");
       } catch (err) {
-        setErrors([{message: 'Something went wrong'}])
+        setErrors([{ message: 'Something went wrong' }])
         console.error(err);
       }
     } else {
-      setErrors([{message: 'Password and confirmation password are different'}])
+      setErrors([{ message: 'Password and confirmation password are different' }])
       throw new Error(
         "The password and the confirmation password are different"
       );
@@ -102,7 +102,7 @@ const EditProfile = () => {
           />
         </div>
         <div className="input-container">
-        <label htmlFor="description">Description</label>
+          <label htmlFor="description">Description</label>
           <textarea
             onChange={(e) => setDescription(e.target.value)}
             value={description}
