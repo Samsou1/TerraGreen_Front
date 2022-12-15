@@ -20,7 +20,6 @@ const EditProfile = () => {
   const [country, setCountry] = useState(78);
 
   const setAll = (data) => {
-    console.log(data);
     data.email ? setEmail(data.email) : setEmail("");
     data.username ? setUsername(data.username) : setLastName("");
     data.description ? setDescription(data.description) : setDescription("");
