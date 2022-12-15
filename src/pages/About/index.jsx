@@ -40,31 +40,30 @@ const About = () => {
             <div className='card member-card'>
               <h3>ANDRIEU Pierre</h3>
               <p>Developer at TerraGreen</p>
-              <a href="https://github.com/PierreAND">Git</a>
+              
               <img src={pierro} alt="logo" ></img>
             </div>
             <div className='card member-card'>
               <h3>LAIGNEAU Gregory</h3>
               <p>Developer at TerraGreen</p>
-              <a href="https://github.com/GregoryLAIGNEAU">Git</a>
               <img src={greg} alt="logo" ></img>
             </div>
             <div className='card member-card'>
               <h3>Linard Sami</h3>
               <p>Developer at TerraGreen</p>
-              <a href="https://github.com/Samsou1">Git</a>
+             
               <img src={sam} alt="logo" ></img>
             </div>
             <div className='card member-card'>
               <h3>PEUCH Noellie</h3>
               <p>Developer at TerraGreen</p>
-              <a href="https://github.com/pandaka87">Git</a>
+              
               <img src={noellie} alt="logo" ></img>
             </div>
             <div className='card member-card'>
               <h3>PFEIFFER Christopher</h3>
               <p>Developer at TerraGreen</p>
-              <a href="https://github.com/chrispfr">Git</a>
+           
               <img src={chris} alt="logo" ></img>
             </div>
           </div>
