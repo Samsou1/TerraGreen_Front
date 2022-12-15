@@ -213,7 +213,7 @@ export default class APIManager {
     }
   }
 
-  static async getRegionsFromCountry(country) {
+  static async getRegionsFromCountryID(country) {
     try {
       const response = await API.get(`/regions?search_term=${country}`);
       return response.data;
