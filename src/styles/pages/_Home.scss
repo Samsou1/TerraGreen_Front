@@ -27,7 +27,7 @@
 @media (min-width: $breakpoint-medium-devices) {
   .home-container {
     & img {
-      margin-left: 18rem;
+    width: 50px;
     }
   }
 
@@ -36,8 +36,8 @@
 @media (min-width: $breakpoint-large-devices) {
   .home-container {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
   
       & h1 {
         font-size: 1.5rem;
@@ -51,16 +51,14 @@
         margin: 0 0 25px 0;
       }
       & .img1 {
-        width: 400px;
-        margin-left: 0.5rem;
+        width: 460px;
+
       }
       & .img2 {
-        width: 400px;
-        margin-left: 1rem;
+        width: 300px;
       }
       & .img3 {
-        width: 400px;
-        margin-left: 0.5rem;
+        width: 320px;
       }
       
   }

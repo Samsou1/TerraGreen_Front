@@ -9,7 +9,7 @@
   position: relative;
   & .img1 {
     width: 100%;
-    height: calc(100vh - 300px);
+    height: calc(100vh - 350px);
     object-fit: cover;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
@@ -19,13 +19,17 @@
     & .project-hero {
       font-size: 2rem;
       position: absolute;
-      padding-top: 0.5rem;
+      padding-top: 2rem;
       opacity: 90%;
     }
 
       & h1 {
         font-size: 4rem;
         padding-top: 8rem;
+      }
+      & .titlep {
+        font-size:2rem;
+        padding-top: 2rem;
       }
 }
 
@@ -71,11 +75,15 @@
   
    .projectsPage{
       & .img1 {
-      height: calc(100vh - 490px);
+      height: calc(100vh - 290px);
     }
         & h1 {
           font-size: 8rem;
           padding-top: 8rem;
+    }
+    & .titlep {
+      font-size:2rem;
+      padding-top: 2rem;
     }
   }
 }
@@ -83,11 +91,11 @@
 @media (min-width: $breakpoint-large-devices) {
   .projectsPage{
      & .img1 {
-       height: calc(100vh - 220px); 
+       height: calc(100vh - 290px); 
     }
           & h1 {
-            font-size: 11rem;
-            padding-top: 8rem;
+            font-size: 8rem;
+            padding-top: 6rem;
           }
   }
 }

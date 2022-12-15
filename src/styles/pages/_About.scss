@@ -20,7 +20,7 @@
       font-size: 2rem;
       position: absolute;
       padding-top: 1rem;
-      opacity: 70%;
+      
     }
 
       & h1 {
@@ -105,7 +105,7 @@
    .about{
   
     & .img1 {
-      height: calc(100vh - 490px);
+      height: calc(100vh - 290px);
     }
 
     & .about-goal {
@@ -114,7 +114,7 @@
       }
 
           & h1 {
-            font-size: 8rem;
+            font-size: 6rem;
             padding-top: 8rem;
           }
   }
@@ -123,7 +123,7 @@
 @media (min-width: $breakpoint-large-devices) {
   .about{
      & .img1 {
-       height: calc(100vh - 220px); 
+       height: calc(100vh - 290px); 
     }
 
         & .about-goal {
@@ -132,7 +132,7 @@
       }
 
           & h1 {
-            font-size: 11rem;
+            font-size: 8rem;
             padding-top: 8rem;
           }
   }

@@ -6,6 +6,7 @@ import { searchAtom } from "../../store/search";
 import Errors from "../Errors";
 import { validateDataSearch } from "../../services/validateDataSearch";
 
+
 const SearchBar = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ const SearchBar = () => {
     <>
       <Errors errors={errors} />
       <form onSubmit={handleSubmit} className="searchForm">
+      <i class="fa-solid fa-magnifying-glass"></i>
         <input
           onChange={(e) => setSearch(e.target.value)}
           value={search}
