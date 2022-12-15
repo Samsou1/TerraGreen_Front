@@ -37,22 +37,24 @@ const Profile = () => {
         <div className="profileHeader">
           <h2>Hello {user.username} !</h2>
         </div>
-        <div className="profileInformations">
-          <p>Email: {user.email}</p>
-          <p>Username: {user.username}</p>
-          <p>Description: {user.description}</p>
-          <p>Country id: {user.country_id}</p>
-          <p>Region id: {user.region_id}</p>
-          <p>Notification subscription: {user.notification_subscription}</p>            
-        </div>
-        <div className="profileBtns">
-          <Link className="profileBtn" to="/editprofile">
-            Edit profile
-          </Link>
-          <button onClick={handleClick}>Delete Profile</button>            
-        </div>
-        <div className="profileActivities">
-          <NotificationsContainer/>            
+        <div className="profileContainer">
+          <div className="profileInfos">
+            <p>Email: {user.email}</p>
+            <p>Username: {user.username}</p>
+            <p>Description: {user.description}</p>
+            <p>Country id: {user.country_id}</p>
+            <p>Region id: {user.region_id}</p>
+            <p>Notification subscription: {user.notification_subscription}</p>
+            <div className="profileBtns">
+            <Link className="profileBtn" to="/editprofile">
+              Edit profile
+            </Link>
+            <button onClick={handleClick}>Delete Profile</button>            
+          </div>
+          </div>              
+          <div className="profileActivities">
+            <NotificationsContainer/>            
+          </div>
         </div>
       </div>
     ) : (
