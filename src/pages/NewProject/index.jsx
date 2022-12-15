@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Errors from "../../components/Errors";
 import React, { useEffect, useState } from "react";
 import { currentUserId } from "../../services/user";
+import { validateInput } from "../../services/validateInput";
 
 function FileForm() {
   const navigate = useNavigate();
@@ -60,6 +61,22 @@ function FileForm() {
       setErrors((errs) => [
         ...errs,
         { message: "You must post a picture of the project" },
+      ]);
+      validate = false;
+    }
+    if (
+      [
+        event.target.title.value,
+        event.target.content.value,
+        event.target.postal_code.value,
+        event.target.date.value,
+        event.target.city.value,
+        event.target.address.value,
+      ].some((value) => !validateInput(value))
+    ) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "Please don't use special characters" },
       ]);
       validate = false;
     }
