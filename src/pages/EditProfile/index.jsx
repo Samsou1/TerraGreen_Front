@@ -114,7 +114,7 @@ const EditProfile = () => {
             placeholder="Description"
           />
         </div>
-        <div>
+        <div className="input-container">
           <label for="notification_subscription">Notification</label>
           <input
             type="checkbox"
