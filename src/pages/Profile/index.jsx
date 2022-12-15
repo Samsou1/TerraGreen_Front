@@ -39,12 +39,14 @@ const Profile = () => {
         </div>
         <div className="profileContainer">
           <div className="profileInfos">
-            <p>Email: {user.email}</p>
-            <p>Username: {user.username}</p>
-            <p>Description: {user.description}</p>
-            <p>Country id: {user.country_id}</p>
-            <p>Region id: {user.region_id}</p>
-            <p>Notification subscription: {user.notification_subscription}</p>
+            <h3>Biography</h3>
+            <p>{user.description}</p>
+            <h3>Location</h3>
+            <p>{user.region_id}, {user.country_id}</p>
+            <h3>Parameters</h3>
+            <p>{user.username}</p>
+            <p>{user.email}</p>
+            <p>Notification subscription: {user.notification_subscription}</p> 
             <div className="profileBtns">
             <Link className="profileBtn" to="/editprofile">
               Edit profile
@@ -64,10 +66,12 @@ const Profile = () => {
         </div>
         <div className="profileContainer">
           <div className="profileInfos">
-            <p>Email: {user.email}</p>
-            <p>Description: {user.description}</p>
-            <p>Country id: {user.country_id}</p>
-            <p>Region id: {user.region_id}</p>
+            <h3>Biography</h3>
+            <p>{user.description}</p>
+            <h3>Location</h3>
+            <p>{user.region_id}, {user.country_id}</p>
+            <h3>Parameters</h3>
+            <p>{user.email}</p>
             <p>Notification subscription: {user.notification_subscription}</p> 
             <div className="profileBtns">
               <Link className="profileBtn" to="/editprofile">
