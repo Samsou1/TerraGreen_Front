@@ -11,6 +11,7 @@ const EditProfile = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [description, setDescription] = useState("");
+  const [notification, setNotification] = useState("");
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 
@@ -25,6 +26,7 @@ const EditProfile = () => {
     data.description ? setDescription(data.description) : setDescription("");
     data.region_id ? setRegion(data.region_id) : setRegion("");
     data.country_id ? setCountry(data.country_id) : setCountry("");
+    data.notification_subscription ? setNotification(data.notification_subscription) : setNotification("");
   };
 
   useEffect(() => {
@@ -39,6 +41,7 @@ const EditProfile = () => {
   const handleSubmit = async (e) => {
     setErrors([]);
     e.preventDefault();
+    console.log(notification)
     if (password === confirmPassword) {
       const data = {
         user: {
@@ -47,6 +50,7 @@ const EditProfile = () => {
           description: description,
           country_id: country,
           region_id: region,
+          notification_subscription: notification
         },
       };
       if (password !== "") {
@@ -108,6 +112,15 @@ const EditProfile = () => {
             value={description}
             id="description"
             placeholder="Description"
+          />
+        </div>
+        <div>
+          <label for="notification_subscription">Notification</label>
+          <input
+            type="checkbox"
+            id="notification_subscription"
+            name="notification_subscription"
+            onChange={(e) => setNotification(e.target.checked)}
           />
         </div>
         <div className="input-container">
