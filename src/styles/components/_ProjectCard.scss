@@ -7,6 +7,12 @@
   box-sizing: border-box;
 }
 
+.projects-cards-container {
+& h2 {
+  text-align: center;
+}
+}
+
 .projectsCards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -126,6 +132,9 @@
    & .projectsCards {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
+  & h2 {
+    text-align: center;
+  }
 }
 }
 
@@ -135,6 +144,9 @@
   
    & .projectsCards {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  & h2 {
+    text-align: center;
   }
 }
 }

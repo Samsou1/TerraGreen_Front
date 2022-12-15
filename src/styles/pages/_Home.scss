@@ -36,8 +36,8 @@
 @media (min-width: $breakpoint-large-devices) {
   .home-container {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
   
       & h1 {
         font-size: 1.5rem;
@@ -51,14 +51,14 @@
         margin: 0 0 25px 0;
       }
       & .img1 {
-        width: 450px;
+        width: 460px;
 
       }
       & .img2 {
         width: 300px;
       }
       & .img3 {
-        width: 300px;
+        width: 320px;
       }
       
   }
