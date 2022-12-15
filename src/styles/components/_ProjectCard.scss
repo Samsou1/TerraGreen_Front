@@ -120,15 +120,21 @@
 }
 
 @media (min-width: $breakpoint-medium-devices) {
-  .projectsCards {
+  .projects-cards-container {
+    width: 100%;
+  
+   & .projectsCards {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 }
+}
 
 @media (min-width: $breakpoint-large-devices) {
-  .projectsCards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  .projects-cards-container {
+    width: 100%;
+  
+   & .projectsCards {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
+}
 }

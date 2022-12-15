@@ -6,6 +6,7 @@ function Mapping({ project }) {
     latitude: "",
     longitude: "",
   });
+  const name = project.title;
 
   useEffect(() => {
     let url = `https://nominatim.openstreetmap.org/search?
@@ -40,7 +41,7 @@ function Mapping({ project }) {
 
   return (
     <>
-      <Map coords={coords} />
+      <Map coords={coords} name={name} />
     </>
   );
 }
