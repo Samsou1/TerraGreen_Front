@@ -9,9 +9,8 @@
   cursor: pointer;
   &:hover {
     transition-duration: 0.2s;
-    background-color: transparent;
-    color: $color-green-dark;
+    background-color: $color-green-medium;
     font-weight: bolder;
-    border: 2px solid $color-green-dark;
+    border: 1px solid $color-green-dark;
   }
 }

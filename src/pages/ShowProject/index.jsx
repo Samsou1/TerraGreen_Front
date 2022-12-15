@@ -62,7 +62,7 @@ const ShowProject = () => {
             </div>
             <div className="projectStatus">
               <h3>Status</h3>
-              <p>{project.status}</p>
+              <p>{status}</p>
             </div>
           </div>
           <div className="projectBtnShow">
@@ -103,7 +103,7 @@ const ShowProject = () => {
               </div>
               <div className="projectStatus">
                 <h3>Status</h3>
-                <p>{project.status}</p>
+                <p>{status}</p>
               </div>
             </div>
             <div className="projectBtnShow">

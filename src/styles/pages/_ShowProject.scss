@@ -33,6 +33,7 @@
   & h1 {
     font-size: 34px;
     margin-bottom: 0.8rem;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
   }
 
   & h2 {
@@ -40,6 +41,7 @@
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 0.1em;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
   }
 
   & p {
@@ -52,31 +54,32 @@
 
 .projectLocation {
   & h3 {
-    font-size: 13px;
-    font-weight: 400;
+    font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
   }
   & p {
+  font-weight: 300;
   line-height: 1.2rem;
-  font-size: 14px;
+  font-size: 16px;
   }
 }
 
 .projectStatus {
   & h3 {
-    font-size: 13px;
-    font-weight: 400;
+    font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
   }
   & p {
   line-height: 1.2rem;
-  font-size: 14px;
+  font-size: 16px;
   }
 }
 
@@ -102,6 +105,7 @@
   background-color: $color-green-dark;
   cursor: pointer;
   outline: none;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
 
   &:hover {
     transition-duration: 0.2s;
@@ -131,6 +135,7 @@
     outline: none;
     text-align: center;
     width: 80px;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
   
     &:hover {
       transition-duration: 0.2s;

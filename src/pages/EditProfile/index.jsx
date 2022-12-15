@@ -16,6 +16,8 @@ const EditProfile = () => {
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState([]);
   const [notifications, setNotifications] = useState(false);
+  const [description, setDescription] = useState("");
+
   const navigate = useNavigate();
 
   const [regionOptions, setRegionOptions] = useState([]);
@@ -24,11 +26,13 @@ const EditProfile = () => {
   const [country, setCountry] = useState(78);
 
   const setAll = (data) => {
+    console.log(data);
     data.email ? setEmail(data.email) : setEmail("");
     data.username ? setUsername(data.username) : setLastName("");
     data.notification_subscription
       ? setNotifications(data.notification_subscription)
       : setNotifications(false);
+    data.description ? setDescription(data.description) : setDescription("");
     data.region_id ? setRegion(data.region_id) : setRegion("");
     data.country_id ? setCountry(data.country_id) : setCountry("");
   };
@@ -60,6 +64,7 @@ const EditProfile = () => {
           username: username,
           email: email,
           notification_subscription: notifications,
+          description: description,
           country_id: country,
           region_id: region,
         },
@@ -160,6 +165,14 @@ const EditProfile = () => {
             type="text"
             id="country"
             placeholder="Country"
+          <label htmlFor="description">Description</label>
+          <input
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+            type="textarea"
+            id="description"
+            placeholder="Description"
+          />
           >
             {countryOptions.map((countryOption) => {
               return (

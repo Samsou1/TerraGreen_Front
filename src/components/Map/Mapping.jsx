@@ -41,8 +41,7 @@ function Mapping({ project }) {
 
   return (
     <>
-    <Map coords={coords} name={name}   />
-    
+      <Map coords={coords} name={name} />
     </>
   );
 }
