@@ -4,20 +4,14 @@ import { useNavigate } from "react-router-dom";
 import Errors from "../../components/Errors";
 import { useAtomValue } from "jotai/utils";
 import { countriesAtom } from "../../store/country";
-import {
-  getCountryFromName,
-  getRegionFromName,
-} from "../../services/selectRegionCountryAndStatusData";
 
 const EditProfile = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [notifications, setNotifications] = useState(false);
   const [description, setDescription] = useState("");
-
+  const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 
   const [regionOptions, setRegionOptions] = useState([]);
@@ -29,9 +23,6 @@ const EditProfile = () => {
     console.log(data);
     data.email ? setEmail(data.email) : setEmail("");
     data.username ? setUsername(data.username) : setLastName("");
-    data.notification_subscription
-      ? setNotifications(data.notification_subscription)
-      : setNotifications(false);
     data.description ? setDescription(data.description) : setDescription("");
     data.region_id ? setRegion(data.region_id) : setRegion("");
     data.country_id ? setCountry(data.country_id) : setCountry("");
@@ -46,15 +37,6 @@ const EditProfile = () => {
       .catch(console.error);
   }, []);
 
-  useEffect(() => {
-    const fetchRegions = async () => {
-      await APIManager.getRegionsFromCountryID(country).then((data) =>
-        setRegionOptions(data)
-      );
-    };
-    fetchRegions().catch(console.error);
-  }, [country]);
-
   const handleSubmit = async (e) => {
     setErrors([]);
     e.preventDefault();
@@ -63,7 +45,6 @@ const EditProfile = () => {
         user: {
           username: username,
           email: email,
-          notification_subscription: notifications,
           description: description,
           country_id: country,
           region_id: region,
@@ -76,13 +57,11 @@ const EditProfile = () => {
         await APIManager.editProfile(data);
         navigate("/profile");
       } catch (err) {
-        setErrors([{ message: "Something went wrong" }]);
+        setErrors([{message: 'Something went wrong'}])
         console.error(err);
       }
     } else {
-      setErrors([
-        { message: "Password and confirmation password are different" },
-      ]);
+      setErrors([{message: 'Password and confirmation password are different'}])
       throw new Error(
         "The password and the confirmation password are different"
       );
@@ -101,7 +80,6 @@ const EditProfile = () => {
   return (
     <>
       <h1 className="register-title">Edit Profile</h1>
-      <Errors errors={errors} />
       <Errors errors={errors} />
       <form onSubmit={handleSubmit} className="register-form-container">
         <div className="input-container">
@@ -145,27 +123,7 @@ const EditProfile = () => {
           />
         </div>
         <div className="input-container">
-          <label htmlFor="notifications">Notifications</label>
-          <select
-            onChange={(e) =>
-              setNotifications(e.target.value === "Yes" ? true : false)
-            }
-            value={notifications ? "Yes" : "No"}
-            id="notifications"
-          >
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-        </div>
-        <div className="input-container">
-          <label htmlFor="country">Country</label>
-          <select
-            onChange={(e) => setCountry(e.target.value)}
-            value={country}
-            type="text"
-            id="country"
-            placeholder="Country"
-          <label htmlFor="description">Description</label>
+        <label htmlFor="description">Description</label>
           <input
             onChange={(e) => setDescription(e.target.value)}
             value={description}
@@ -173,27 +131,14 @@ const EditProfile = () => {
             id="description"
             placeholder="Description"
           />
-          >
-            {countryOptions.map((countryOption) => {
-              return (
-                <option
-                  key={countryOption.id + countryOption.name}
-                  value={countryOption.id}
-                >
-                  {countryOption.name}
-                </option>
-              );
-            })}
-          </select>
         </div>
         <div className="input-container">
-          <label htmlFor="region">Region</label>
+          <label htmlFor="region_id">Region</label>
           <select
             onChange={(e) => setRegion(e.target.value)}
             value={region}
-            type="text"
             id="region"
-            placeholder="Region"
+            name="region"
           >
             {regionOptions.map((regionOption) => {
               return (
@@ -202,6 +147,26 @@ const EditProfile = () => {
                   value={regionOption.id}
                 >
                   {regionOption.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        <div className="input-container">
+          <label htmlFor="country_id">Country</label>
+          <select
+            onChange={(e) => setCountry(e.target.value)}
+            value={country}
+            id="country"
+            name="country"
+          >
+            {countryOptions.map((countryOption) => {
+              return (
+                <option
+                  key={countryOption.id + countryOption.name}
+                  value={countryOption.id}
+                >
+                  {countryOption.name}
                 </option>
               );
             })}

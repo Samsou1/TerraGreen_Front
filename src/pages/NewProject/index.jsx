@@ -47,9 +47,6 @@ function FileForm() {
 
   return (
     <div>
-      <h1>File Form</h1>
-      <Errors errors={errors}></Errors>
-      <form onSubmit={(event) => handleSubmit(event)}>
       <h1 className="newproject-title">Create your project:</h1>
       <Errors errors={errors}></Errors>
       <form onSubmit={(event) => handleSubmit(event)} className="newproject-form-container">
@@ -130,6 +127,6 @@ function FileForm() {
       </form>
     </div>
   );
-}
+};
 
 export default FileForm;
