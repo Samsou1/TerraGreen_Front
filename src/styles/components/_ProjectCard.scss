@@ -51,8 +51,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  right: 0;
-  //z-index: 1;      
+  right: 0;      
   border-radius: calc(var(--curve) * 1px);    
   background-color: var(--surface-color);      
   transform: translateY(100%);
