@@ -2,8 +2,6 @@ import APIManager from "../../services/api";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Errors from "../../components/Errors";
-import { useAtomValue } from "jotai/utils";
-import { countriesAtom } from "../../store/country";
 
 const EditProfile = () => {
   const [password, setPassword] = useState("");
@@ -12,12 +10,12 @@ const EditProfile = () => {
   const [username, setUsername] = useState("");
   const [description, setDescription] = useState("");
   const [errors, setErrors] = useState([]);
-  const navigate = useNavigate();
+  const [countryOptions, setCountryOptions] = useState([]);
+  const [country, setCountry] = useState();
 
   const [regionOptions, setRegionOptions] = useState([]);
   const [region, setRegion] = useState("");
-  const countryOptions = useAtomValue(countriesAtom);
-  const [country, setCountry] = useState(78);
+  const navigate = useNavigate();
 
   const setAll = (data) => {
     data.email ? setEmail(data.email) : setEmail("");
@@ -31,7 +29,11 @@ const EditProfile = () => {
     const fetchProfile = async () => {
       await APIManager.getUser().then((data) => setAll(data));
     };
-    fetchProfile()
+    const fetchCountries = async () => {
+      await APIManager.getCountries().then((data) => setCountryOptions(data));
+    };
+    fetchCountries()
+      .then(fetchProfile().catch(console.error))
       .then(regionOptions[0] ? setRegion(regionOptions[0].name) : setRegion(""))
       .catch(console.error);
   }, []);
@@ -56,11 +58,13 @@ const EditProfile = () => {
         await APIManager.editProfile(data);
         navigate("/profile");
       } catch (err) {
-        setErrors([{ message: 'Something went wrong' }])
+        setErrors([{ message: "Something went wrong" }]);
         console.error(err);
       }
     } else {
-      setErrors([{ message: 'Password and confirmation password are different' }])
+      setErrors([
+        { message: "Password and confirmation password are different" },
+      ]);
       throw new Error(
         "The password and the confirmation password are different"
       );
@@ -68,12 +72,14 @@ const EditProfile = () => {
   };
 
   useEffect(() => {
-    const fetchRegions = async () => {
-      await APIManager.getRegionsFromCountryID(country).then((data) =>
-        setRegionOptions(data)
-      );
-    };
-    fetchRegions().catch(console.error);
+    if (country) {
+      const fetchRegions = async () => {
+        await APIManager.getRegionsFromCountryID(country).then((data) => {
+          setRegionOptions(data);
+        });
+      };
+      fetchRegions().catch(console.error);
+    }
   }, [country]);
 
   return (
@@ -110,6 +116,27 @@ const EditProfile = () => {
             placeholder="Description"
           />
         </div>
+
+<div className="input-container">
+          <label htmlFor="country_id">Country</label>
+          <select
+            onChange={(e) => setCountry(e.target.value)}
+            value={country}
+            id="country"
+            name="country"
+          >
+            {countryOptions.map((countryOption) => {
+              return (
+                <option
+                  key={countryOption.id + countryOption.name}
+                  value={countryOption.id}
+                >
+                  {countryOption.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
         <div className="input-container">
           <label htmlFor="region_id">Region</label>
           <select
@@ -125,26 +152,6 @@ const EditProfile = () => {
                   value={regionOption.id}
                 >
                   {regionOption.name}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-        <div className="input-container">
-          <label htmlFor="country_id">Country</label>
-          <select
-            onChange={(e) => setCountry(e.target.value)}
-            value={country}
-            id="country"
-            name="country"
-          >
-            {countryOptions.map((countryOption) => {
-              return (
-                <option
-                  key={countryOption.id + countryOption.name}
-                  value={countryOption.id}
-                >
-                  {countryOption.name}
                 </option>
               );
             })}
