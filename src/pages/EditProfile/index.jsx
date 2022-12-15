@@ -166,17 +166,6 @@ const EditProfile = () => {
             })}
           </select>
         </div>
-        <div className="input-container-notif">
-          <label htmlFor="notification_subscription">Notification</label>
-          <input
-            type="checkbox"
-            id="notification_subscription"
-            name="notification_subscription"
-            checked={notification}
-            readOnly={false}
-            onChange={(e) => setNotification(e.target.checked)}
-          />
-        </div>
         <div className="input-container">
           <label htmlFor="region_id">Region</label>
           <select
@@ -196,6 +185,17 @@ const EditProfile = () => {
               );
             })}
           </select>
+        </div>
+        <div className="input-container-notif">
+          <label htmlFor="notification_subscription">Notification</label>
+          <input
+            type="checkbox"
+            id="notification_subscription"
+            name="notification_subscription"
+            checked={notification}
+            readOnly={false}
+            onChange={(e) => setNotification(e.target.checked)}
+          />
         </div>
         <div className="input-container">
           <label htmlFor="password">Password</label>
