@@ -13,7 +13,7 @@ const DeleteProjectButton = () => {
   }, []);
 
   const handleClick = () => {
-    setErrors("");
+    setErrors([]);
     try {
       APIManager.deleteProject(id);
       navigate("/myprojects");

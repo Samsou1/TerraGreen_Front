@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 const ProjectRegistration = ({ projectRegistrations }) => {
   const [registered, setRegistered] = useState(false);
-  const [numberOfProjectRegistrations, setNumberOfProjectRegistrations] = useState(0);
+  const [numberOfProjectRegistrations, setNumberOfProjectRegistrations] =
+    useState(0);
   const [id, setId] = useState("");
   const navigate = useNavigate();
 
@@ -16,7 +17,7 @@ const ProjectRegistration = ({ projectRegistrations }) => {
 
   useEffect(() => {
     setRegistered(projectRegisteredByCurrentUser(projectRegistrations));
-    setNumberOfProjectRegistrations(projectRegistrations.length)
+    setNumberOfProjectRegistrations(projectRegistrations.length);
   }, [projectRegistrations]);
 
   const handleClick = async (e) => {
@@ -34,8 +35,8 @@ const ProjectRegistration = ({ projectRegistrations }) => {
       } catch (err) {
         console.error(err);
       }
-    }else{
-      navigate('/login')
+    } else {
+      navigate("/login");
     }
   };
 
@@ -43,7 +44,11 @@ const ProjectRegistration = ({ projectRegistrations }) => {
     <button
       onClick={handleClick}
       className={registered ? "registered" : "unregistered"}
-    >{registered ? `Unregister ${numberOfProjectRegistrations}` : `Register ${numberOfProjectRegistrations}`}</button>
+    >
+      {registered
+        ? `Unregister ${numberOfProjectRegistrations}`
+        : `Register ${numberOfProjectRegistrations}`}
+    </button>
   );
 };
 

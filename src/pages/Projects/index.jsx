@@ -15,7 +15,9 @@ const Projects = () => {
         <div className="projectsHeader">
           <h1 className="titlep">Search by city</h1>
           <SearchBar />
-          <Link to="/newproject" className="newProjectBtn">New Project</Link>
+          <Link to="/newproject" className="newProjectBtn">
+            New Project
+          </Link>
         </div>
         <ProjectCards />
       </div>

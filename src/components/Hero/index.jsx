@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import videoBg from "../../videos/videoBg.mp4";
 
 const Hero = () => {
-  if (Cookies.get('currentUser')) {
+  if (Cookies.get("currentUser")) {
     return (
       // autoPlay loop (Add it later before muted)
       <section className="hero-container">
@@ -31,7 +31,6 @@ const Hero = () => {
         
       );
     };
-  }
-
+  };
 
 export default Hero;

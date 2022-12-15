@@ -1,43 +1,54 @@
 import APIManager from "../../services/api";
 import { useNavigate } from "react-router-dom";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { currentUserId } from "../../services/user";
 import { useAtomValue } from "jotai";
 import { countriesAtom } from "../../store/country";
 import { regionsAtom } from "../../store/region";
 import { projectStatusesAtom } from "../../store/projectStatus";
+import Errors from "../../components/Errors";
 
 function FileForm() {
   const navigate = useNavigate();
   const countryOptions = useAtomValue(countriesAtom);
   const regionOptions = useAtomValue(regionsAtom);
   const projectStatusesOptions = useAtomValue(projectStatusesAtom);
+  const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData();
-    data.append("project[user_id]", currentUserId());
-    data.append("project[title]", event.target.title.value);
-    data.append("project[content]", event.target.content.value);
-    data.append("project[date]", event.target.date.value);
-    data.append("project[address]", event.target.address.value);
-    data.append("project[city]", event.target.city.value);
-    data.append("project[postal_code]", event.target.postal_code.value);
-    data.append("project[project_status_id]", event.target.status.value);
-    data.append("project[region_id]", event.target.region.value);
-    data.append("project[country_id]", event.target.country.value);
-    data.append("project[image]", event.target.image.files[0]);
-    try {
-      await APIManager.newProject(data);
-      navigate("/myprojects");
-    } catch (err) {
-      console.error(err);
+    setErrors([]);
+    if (event.target.title.value.length < 3) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "Your title must be at least 3 characters long" },
+      ]);
+    } else {
+      const data = new FormData();
+      data.append("project[user_id]", currentUserId());
+      data.append("project[title]", event.target.title.value);
+      data.append("project[content]", event.target.content.value);
+      data.append("project[date]", event.target.date.value);
+      data.append("project[address]", event.target.address.value);
+      data.append("project[city]", event.target.city.value);
+      data.append("project[postal_code]", event.target.postal_code.value);
+      data.append("project[project_status_id]", event.target.status.value);
+      data.append("project[region_id]", event.target.region.value);
+      data.append("project[country_id]", event.target.country.value);
+      data.append("project[image]", event.target.image.files[0]);
+      try {
+        await APIManager.newProject(data);
+        navigate("/myprojects");
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
 
   return (
     <div>
       <h1 className="newproject-title">Create your project:</h1>
+      <Errors errors={errors}></Errors>
       <form onSubmit={(event) => handleSubmit(event)} className="newproject-form-container">
         <div className="input-container">
           <label htmlFor="title">Title</label>
@@ -116,6 +127,6 @@ function FileForm() {
       </form>
     </div>
   );
-}
+};
 
 export default FileForm;

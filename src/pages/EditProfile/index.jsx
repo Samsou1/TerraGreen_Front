@@ -11,8 +11,7 @@ const EditProfile = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [description, setDescription] = useState("");
-  const [errors, setErrors] = useState([])
-
+  const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
 
   const [regionOptions, setRegionOptions] = useState([]);
@@ -124,7 +123,7 @@ const EditProfile = () => {
           />
         </div>
         <div className="input-container">
-          <label htmlFor="description">Description</label>
+        <label htmlFor="description">Description</label>
           <input
             onChange={(e) => setDescription(e.target.value)}
             value={description}
@@ -132,7 +131,8 @@ const EditProfile = () => {
             id="description"
             placeholder="Description"
           />
-
+        </div>
+        <div className="input-container">
           <label htmlFor="region_id">Region</label>
           <select
             onChange={(e) => setRegion(e.target.value)}
