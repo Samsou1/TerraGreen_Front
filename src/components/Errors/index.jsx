@@ -4,7 +4,7 @@ const Errors = ({ errors }) => {
   return (
     <div className="errors-container">
       {errors.map((error, index) => {
-        return <Error key={'error' + index} error={error}></Error>;
+        return <Error key={"error" + index} error={error}></Error>;
       })}
     </div>
   );

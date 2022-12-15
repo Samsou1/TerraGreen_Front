@@ -5,12 +5,27 @@ import { userLoggedIn } from "../../services/user";
 import NotificationsContainer from "../../components/NotificationsContainer";
 
 const Profile = () => {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState({});
+  const [region, setRegion] = useState({});
+  const [country, setCountry] = useState({});
+  const [regionID, setRegionID] = useState(null);
+  const [countryID, setCountryID] = useState(null);
   const navigate = useNavigate();
+  const [isChecked, setIsChecked] = useState(false);
+  const [notification_subscription,setNotification] = useState(false);
+
+  const checkHandler = (data) => {
+    setIsChecked(!isChecked);
+    data.notification_subscription ? setNotification(true) : setNotification(false);
+  };
 
   useEffect(() => {
     const fetchProfile = async () => {
-      await APIManager.getUser().then((data) => setUser(data));
+      await APIManager.getUser().then((data) => {
+        setUser(data);
+        setCountryID(data.country_id);
+        setRegionID(data.region_id);
+      });
     };
     fetchProfile().catch(console.error);
   }, []);
@@ -30,22 +45,98 @@ const Profile = () => {
     }
   };
 
-  return (
-    <div className="profileCard">
-      <h2>Profile</h2>
-      <p>Email: {user.email}</p>
-      <p>Username: {user.username}</p>
-      <p>Description: {user.description}</p>
-      <p>Country id: {user.country_id}</p>
-      <p>Region id: {user.region_id}</p>
-      <p>Notification subscription: {user.notification_subscription}</p>
-      <NotificationsContainer/>
-      <Link className="btn_profile" to="/editprofile">
-        Edit profile
-      </Link>
-      <button onClick={handleClick}>Delete Profile</button>
-    </div>
-  );
+  useEffect(() => {
+    if (countryID) {
+      const fetchProfile = async () => {
+        await APIManager.getCountryWithID(countryID).then((data) => {
+          setCountry(data);
+        });
+      };
+      fetchProfile().catch(console.error);
+    }
+  }, [countryID]);
+
+  useEffect(() => {
+    if (regionID) {
+      const fetchProfile = async () => {
+        await APIManager.getRegionWithID(regionID).then((data) => {
+          setRegion(data);
+        });
+      };
+      fetchProfile().catch(console.error);
+    }
+  }, [regionID]);
+
+    return user &&
+      user.username &&
+      user.username !== "Anonymous" ? (
+      <div className="profileCard">
+        <div className="profileHeader">
+          <h2>Hello {user.username} !</h2>
+        </div>
+        <div className="profileContainer">
+          <div className="profileInfos">
+            <h3>Biography</h3>
+            <p>{user.description}</p>
+            <h3>Location</h3>
+            <p>{region.name ? region.name : "Unknown"}, {country.name ? country.name : "Unknown"}</p>
+            <h3>Parameters</h3>
+            <p>{user.username}</p>
+            <p>{user.email}</p>
+            <div>
+              <label htmlFor="checkbox">I want notifications </label>
+              <input
+                type="checkbox"
+                id="checkbox"
+                checked={isChecked}
+                onChange={checkHandler}
+                value={user.notification_subscription}
+              />
+            </div>
+            {/* {console.log(user.notification_subscription)} */}
+                  <p>
+        Do I want to receive notifications:
+        {user.notification_subscription ? " Yes" : " No"}
+      </p>
+            <div className="profileBtns">
+            <Link className="profileBtn" to="/editprofile">
+              Edit profile
+            </Link>
+            <button onClick={handleClick}>Delete Profile</button>            
+          </div>
+          </div>              
+          <div className="profileActivities">
+            <NotificationsContainer/>            
+          </div>
+        </div>
+      </div>
+    ) : (
+      <div className="profileCard">
+        <div className="profileHeader">
+          <h2>Hello !</h2>
+        </div>
+        <div className="profileContainer">
+          <div className="profileInfos">
+            <h3>Biography</h3>
+            <p>{user.description}</p>
+            <h3>Location</h3>
+            <p>{user.region_id}, {user.country_id}</p>
+            <h3>Parameters</h3>
+            <p>{user.email}</p>
+            <p>Notification subscription: {user.notification_subscription}</p> 
+            <div className="profileBtns">
+              <Link className="profileBtn" to="/editprofile">
+                Edit profile
+              </Link>
+              <button onClick={handleClick}>Delete Profile</button>            
+            </div>           
+          </div>
+          <div className="profileActivities">
+            <NotificationsContainer/>            
+          </div>
+        </div>
+      </div>
+    );
 };
 
 export default Profile;

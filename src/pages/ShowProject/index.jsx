@@ -7,7 +7,6 @@ import CommentsContainer from "../../components/CommentsContainer";
 import Like from "../../components/Like";
 import Mapping from "../../components/Map/Mapping";
 
-
 import { userLoggedIn, currentUserId } from "../../services/user";
 import ProjectRegistration from "../../components/ProjectRegistration";
 
@@ -63,7 +62,7 @@ const ShowProject = () => {
             </div>
             <div className="projectStatus">
               <h3>Status</h3>
-              <p>{project.status}</p>
+              <p>{status}</p>
             </div>
           </div>
           <div className="projectBtnShow">
@@ -95,24 +94,30 @@ const ShowProject = () => {
               <div className="projectLocation">
                 <h3>Location</h3>
                 <p>{project.address}</p>
-                <p>{project.city} {project.postal_code}</p>
-                <p>{region}, {country}</p>                
+                <p>
+                  {project.city} {project.postal_code}
+                </p>
+                <p>
+                  {region}, {country}
+                </p>
               </div>
               <div className="projectStatus">
                 <h3>Status</h3>
-                <p>{project.status}</p>
+                <p>{status}</p>
               </div>
             </div>
             <div className="projectBtnShow">
               <Like likes={likes} />
-              <ProjectRegistration projectRegistrations={projectRegistrations}/>
+              <ProjectRegistration
+                projectRegistrations={projectRegistrations}
+              />
             </div>
           </div>
         </div>
         <div className="projectAdditionnalBlocks">
-          <button onClick={() => navigate(-1)} >Go back</button>
+          <button onClick={() => navigate(-1)}>Go back</button>
           <CommentsContainer comments={comments} />
-          <Mapping project={project}/>
+          <Mapping project={project} />
         </div>
       </div>
     );

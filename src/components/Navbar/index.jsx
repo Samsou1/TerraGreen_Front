@@ -30,7 +30,7 @@ const Navbar = () => {
   //change nav color when scroling
   const [color, setColor] = useState(false)
   const changeColor = () => {
-    if (window.scrollY >= 160 ) {
+    if (window.scrollY >= 90 ) {
       setColor(true)
     } else {
       setColor()
@@ -63,7 +63,7 @@ const Navbar = () => {
                 <Link to="/projects">Projects</Link>
               </li>
               <li>
-                <Link to="/myprojects">My projects</Link>
+                <Link to="/myprojects">Myprojects</Link>
               </li>
               <li>
                 <Link to="/profile">Profile</Link>

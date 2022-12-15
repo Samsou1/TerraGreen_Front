@@ -7,6 +7,12 @@
   box-sizing: border-box;
 }
 
+.projects-cards-container {
+& h2 {
+  text-align: center;
+}
+}
+
 .projectsCards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -91,6 +97,8 @@
 .cardText {
   padding: 0 2em 2em;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .cardLocation {
@@ -99,9 +107,9 @@
 }   
 
 .projectBtn {
-  position: relative;
-  left: 130px;
-  bottom: 10px;
+  width: 50%;
+  align-self: center;
+  margin-top: 1rem;
   background-color: $color-green-dark;
   color: white;
   padding: 14px;
@@ -109,6 +117,7 @@
   border-radius: 8px;
   text-align: center;
   cursor: pointer;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
   & a {
     all: unset;
     font-family: $font-family-content;
@@ -126,6 +135,9 @@
    & .projectsCards {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
+  & h2 {
+    text-align: center;
+  }
 }
 }
 
@@ -135,6 +147,9 @@
   
    & .projectsCards {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  & h2 {
+    text-align: center;
   }
 }
 }

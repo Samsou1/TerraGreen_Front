@@ -1,0 +1,131 @@
+.profileCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 35px;
+  margin: 6rem 1.5rem 3rem 1.5rem;
+  width: 80%;
+
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+
+  backdrop-filter: blur(15px);
+}
+
+.profileHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: solid;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
+}
+
+.profileContainer {
+  & h3 {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
+  }
+  & p {
+  font-weight: 300;
+  line-height: 1.2rem;
+  font-size: 16px;
+  }
+}
+
+.profileInfos {
+  margin: 0 2rem;
+}
+
+.profileBtns {
+  margin: 2rem 0;
+  display: flex;
+  align-content: center;
+  text-align: center;
+}
+
+.profileBtn, .profileBtns button {
+  all: unset;
+  background-color: $color-green-dark;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 300;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.profileBtn {
+  background-color: $color-green-dark;  
+
+  &:hover {
+    transition-duration: 0.2s;
+    background-color: $color-green-medium;
+    color: white;
+  }
+}
+
+.profileBtns button {
+  background-color: $color-orange;
+
+  &:hover {
+    transition-duration: 0.2s;
+    background-color: $color-yellow;
+  }
+}
+
+@media (min-width: $breakpoint-medium-devices) { 
+  .profileCard {
+    margin: 6rem 1.5rem 5rem 1.5rem;
+  }
+
+  .profileContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .profileInfos {
+    margin: 0 2rem;
+    border-right: solid;
+    width: 50%;
+  }
+
+  
+.profileActivities {
+  width: 50%;
+
+  & h3 {
+    text-align: center;
+  }
+}
+  .profileBtns {
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .profileBtn, .profileBtns button {
+    all: unset;
+    background-color: $color-green-dark;
+    cursor: pointer;
+    margin: 0 1rem;
+    padding: 12px;
+    color: white;
+    border-radius: 10px;
+    font-size: 14px;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
+  }
+
+  .profileBtns button {
+    background-color: $color-orange;
+  }
+}

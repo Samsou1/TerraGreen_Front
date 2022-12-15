@@ -11,10 +11,10 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const setUser = useSetAtom(userLoggedInAtom)
+  const setUser = useSetAtom(userLoggedInAtom);
 
   const handleSubmit = async (e) => {
-    setErrors([])
+    setErrors([]);
     e.preventDefault();
     const data = {
       user: {
@@ -24,10 +24,10 @@ function Login() {
     };
     try {
       await APIManager.loginUser(data);
-      setUser(true)
+      setUser(true);
       navigate("/");
-    } catch(err){
-      setErrors([{message:'Invalid password or email'}])
+    } catch (err) {
+      setErrors([{ message: "Invalid password or email" }]);
     }
   };
 
