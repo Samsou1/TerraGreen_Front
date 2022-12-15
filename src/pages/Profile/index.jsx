@@ -10,16 +10,8 @@ const Profile = () => {
   const [country, setCountry] = useState({});
   const [regionID, setRegionID] = useState(null);
   const [countryID, setCountryID] = useState(null);
+  const [notification, setNotification] = useState("");
   const navigate = useNavigate();
-  const [isChecked, setIsChecked] = useState(false);
-  const [notification_subscription, setNotification] = useState(false);
-
-  const checkHandler = (data) => {
-    setIsChecked(!isChecked);
-    data.notification_subscription
-      ? setNotification(true)
-      : setNotification(false);
-  };
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -27,6 +19,7 @@ const Profile = () => {
         setUser(data);
         setCountryID(data.country_id);
         setRegionID(data.region_id);
+        setNotification(data.notification_subscription);
       });
     };
     fetchProfile().catch(console.error);
@@ -91,9 +84,8 @@ const Profile = () => {
             <input
               type="checkbox"
               id="checkbox"
-              checked={isChecked}
-              onChange={checkHandler}
-              value={user.notification_subscription}
+              checked={notification}
+              readOnly={true}
             />
           </div>
           <p>
