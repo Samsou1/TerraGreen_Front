@@ -1,17 +1,14 @@
 import APIManager from "../../services/api";
 import { useNavigate } from "react-router-dom";
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { currentUserId } from "../../services/user";
-import { useAtomValue } from "jotai";
-import { countriesAtom } from "../../store/country";
-import { regionsAtom } from "../../store/region";
-import { projectStatusesAtom } from "../../store/projectStatus";
 
 function FileForm() {
   const navigate = useNavigate();
-  const countryOptions = useAtomValue(countriesAtom);
-  const regionOptions = useAtomValue(regionsAtom);
-  const projectStatusesOptions = useAtomValue(projectStatusesAtom);
+  const [countryOptions, setCountryOptions] = useState([]);
+  const [regionOptions, setRegionOptions] = useState([]);
+  const [projectStatusesOptions, setProjectStatusesOptions] = useState([]);
+  const [country, setCountry] = useState(78);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -34,6 +31,30 @@ function FileForm() {
       console.error(err);
     }
   };
+
+  useEffect(() => {
+    const fetchCountries = async () => {
+      await APIManager.getCountries().then((data) => setCountryOptions(data));
+    };
+    fetchCountries().catch(console.error);
+    const fetchProjectStatuses = async () => {
+      await APIManager.getProjectStatuses().then((data) =>
+        setProjectStatusesOptions(data)
+      );
+    };
+    fetchProjectStatuses().catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    if (country) {
+      const fetchRegions = async () => {
+        await APIManager.getRegionsFromCountryID(country).then((data) =>
+          setRegionOptions(data)
+        );
+      };
+      fetchRegions().catch(console.error);
+    }
+  }, [country]);
 
   return (
     <div>
@@ -95,7 +116,12 @@ function FileForm() {
         </div>
         <div className="input-container">
           <label htmlFor="country_id">Country</label>
-          <select id="country" name="country">
+          <select
+            id="country"
+            name="country"
+            onChange={(e) => setCountry(e.target.value)}
+            value={country}
+          >
             {countryOptions.map((countryOption) => {
               return (
                 <option
