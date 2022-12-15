@@ -10,16 +10,66 @@ function FileForm() {
   const [regionOptions, setRegionOptions] = useState([]);
   const [projectStatusesOptions, setProjectStatusesOptions] = useState([]);
   const [country, setCountry] = useState(78);
+  const [errors, setErrors] = useState([])
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setErrors([]);
+  const checkData = (event) => {
+    let validate = true;
     if (event.target.title.value.length < 3) {
       setErrors((errs) => [
         ...errs,
         { message: "Your title must be at least 3 characters long" },
       ]);
-    } else {
+      validate = false;
+    }
+    if (event.target.content.value.length < 5) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "Your content must be at least 5 characters long" },
+      ]);
+      validate = false;
+    }
+    if (event.target.address.value.length < 1) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "You must give the address of the project" },
+      ]);
+      validate = false;
+    }
+    if (event.target.city.value.length < 1) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "You must give the city of the project" },
+      ]);
+      validate = false;
+    }
+    if (!event.target.date.value) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "You must give a date to your project" },
+      ]);
+      validate = false;
+    }
+    if (event.target.postal_code.value.length < 1) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "You must give the ZIP code of your project" },
+      ]);
+      validate = false;
+    }
+    if (!event.target.image.files[0]) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "You must post a picture of the project" },
+      ]);
+      validate = false;
+    }
+    return validate;
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setErrors([]);
+    if (checkData(event)) {
       const data = new FormData();
       data.append("project[user_id]", currentUserId());
       data.append("project[title]", event.target.title.value);
