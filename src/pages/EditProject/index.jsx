@@ -35,7 +35,9 @@ const EditProject = () => {
     data.append("project[project_status_id]", status);
     data.append("project[region_id]", region);
     data.append("project[country_id]", country);
+    if (image === null) {
     data.append("project[image]", event.target.image.files[0]);
+    }
     try {
       const id = window.location.pathname.split("/")[2];
       await APIManager.editProject(id, data);
@@ -94,10 +96,9 @@ const EditProject = () => {
         </div>
         <div className="input-container">
           <label htmlFor="content">Content</label>
-          <input
+          <textarea
             onChange={(e) => setContent(e.target.value)}
             value={content}
-            type="textarea"
             id="content"
             placeholder="Content"
           />
@@ -209,7 +210,9 @@ const EditProject = () => {
         <input type="submit" value="Update" />
       </form>
       <div>
-        {image && <img src={image} alt="The current file" />}
+        
+      {image && <img src={image} alt="The current file" />}
+
       </div>
     </>
   );
