@@ -38,33 +38,49 @@ const About = () => {
           <h2>Our team</h2>
           <div className='team-cards'>
             <div className='card member-card'>
-              <h3>ANDRIEU Pierre</h3>
-              <p>Developer at TerraGreen</p>
-              
-              <img src={pierro} alt="logo" ></img>
+                <h3>ANDRIEU Pierre</h3>
+                <p>Developer at TerraGreen</p>
+              <div>
+                <a href="https://github.com/PierreAND"><i class="fa-brands fa-github"></i></a>
+                <a href="https://github.com/PierreAND"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
+                <img src={pierro} alt="logo" ></img>
             </div>
             <div className='card member-card'>
-              <h3>LAIGNEAU Gregory</h3>
-              <p>Developer at TerraGreen</p>
-              <img src={greg} alt="logo" ></img>
+                <h3>LAIGNEAU Gregory</h3>
+                <p>Developer at TerraGreen</p>
+              <div>
+                <a href="https://github.com/GregoryLAIGNEAUD"><i class="fa-brands fa-github"></i></a>
+                <a href="https://github.com/PierreAND"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
+                <img src={greg} alt="logo" ></img>
             </div>
             <div className='card member-card'>
-              <h3>Linard Sami</h3>
-              <p>Developer at TerraGreen</p>
-             
-              <img src={sam} alt="logo" ></img>
+                <h3>Linard Sami</h3>
+                <p>Developer at TerraGreen</p>
+              <div>
+                <a href="https://github.com/Samsou1"><i class="fa-brands fa-github"></i></a>
+                <a href="https://github.com/PierreAND"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
+                <img src={sam} alt="logo" ></img>
             </div>
             <div className='card member-card'>
-              <h3>PEUCH Noellie</h3>
-              <p>Developer at TerraGreen</p>
-              
-              <img src={noellie} alt="logo" ></img>
+                <h3>PEUCH Noellie</h3>
+                <p>Developer at TerraGreen</p>
+              <div>
+                <a href="https://github.com/pandaka87"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/noellie-peuch/"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
+                <img src={noellie} alt="logo" ></img>
             </div>
             <div className='card member-card'>
-              <h3>PFEIFFER Christopher</h3>
-              <p>Developer at TerraGreen</p>
-           
-              <img src={chris} alt="logo" ></img>
+                <h3>PFEIFFER Christopher</h3>
+                <p>Developer at TerraGreen</p>
+              <div>
+                <a href="https://github.com/chrispfr"><i class="fa-brands fa-github"></i></a>
+                <a href="https://github.com/PierreAND"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
+                <img src={chris} alt="logo" ></img>
             </div>
           </div>
         </div>
