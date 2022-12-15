@@ -12,6 +12,7 @@ import ProjectRegistration from "../../components/ProjectRegistration";
 
 const ShowProject = () => {
   const [project, setProject] = useState({});
+  const [username, setUsername] = useState("");
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
   const [status, setStatus] = useState("");
@@ -22,6 +23,7 @@ const ShowProject = () => {
   const navigate = useNavigate();
 
   const setAll = (data) => {
+    setUsername(data.user.username);
     setCountry(data.country);
     setRegion(data.region);
     setStatus(data.status);
@@ -52,7 +54,7 @@ const ShowProject = () => {
         <div className="projectInfos">
           <div className="projectDescription">
             <h1>{project.title}</h1>
-            <h2>Username</h2>
+            <h2>{username}</h2>
             <p>{project.content}</p>
             <div className="projectLocation">
               <h3>Location</h3>
@@ -89,7 +91,7 @@ const ShowProject = () => {
           <div className="projectInfos">
             <div className="projectDescription">
               <h1>{project.title}</h1>
-              <h2>Username</h2>
+              <h2>{username}</h2>
               <p>{project.content}</p>
               <div className="projectLocation">
                 <h3>Location</h3>
