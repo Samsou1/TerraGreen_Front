@@ -87,7 +87,7 @@ const EditProfile = () => {
 
   return (
     <>
-      <h1 className="register-title">Edit Profile</h1>
+      <h1 className="register-title">Edit your Profile</h1>
       <Errors errors={errors} />
       <form onSubmit={handleSubmit} className="register-form-container">
         <div className="input-container">
