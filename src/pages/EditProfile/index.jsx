@@ -93,26 +93,6 @@ const EditProfile = () => {
           />
         </div>
         <div className="input-container">
-          <label htmlFor="password">Password</label>
-          <input
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            type="password"
-            id="password"
-            placeholder="Password"
-          />
-        </div>
-        <div className="input-container">
-          <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            value={confirmPassword}
-            type="password"
-            id="confirmPassword"
-            placeholder="Password"
-          />
-        </div>
-        <div className="input-container">
           <label htmlFor="username">Username</label>
           <input
             onChange={(e) => setUsername(e.target.value)}
@@ -124,10 +104,9 @@ const EditProfile = () => {
         </div>
         <div className="input-container">
         <label htmlFor="description">Description</label>
-          <input
+          <textarea
             onChange={(e) => setDescription(e.target.value)}
             value={description}
-            type="textarea"
             id="description"
             placeholder="Description"
           />
@@ -171,6 +150,26 @@ const EditProfile = () => {
               );
             })}
           </select>
+        </div>
+        <div className="input-container">
+          <label htmlFor="password">Password</label>
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            type="password"
+            id="password"
+            placeholder="Password"
+          />
+        </div>
+        <div className="input-container">
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <input
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={confirmPassword}
+            type="password"
+            id="confirmPassword"
+            placeholder="Password"
+          />
         </div>
         <input type="submit" value="Edit profile" />
       </form>
