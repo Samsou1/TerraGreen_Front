@@ -7,6 +7,13 @@ import NotificationsContainer from "../../components/NotificationsContainer";
 const Profile = () => {
   const [user, setUser] = useState("");
   const navigate = useNavigate();
+  const [isChecked, setIsChecked] = useState(false);
+  const [notification_subscription,setNotification] = useState(false);
+
+  const checkHandler = (data) => {
+    setIsChecked(!isChecked);
+    data.notification_subscription ? setNotification(true) : setNotification(false);
+  };
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -46,6 +53,17 @@ const Profile = () => {
             <h3>Parameters</h3>
             <p>{user.username}</p>
             <p>{user.email}</p>
+            <div>
+              <label htmlFor="checkbox">I want notifications </label>
+              <input
+                type="checkbox"
+                id="checkbox"
+                checked={isChecked}
+                onChange={checkHandler}
+                value={user.notification_subscription}
+              />
+            </div>
+            {/* {console.log(user.notification_subscription)} */}
             <p>Notification subscription: {user.notification_subscription}</p> 
             <div className="profileBtns">
             <Link className="profileBtn" to="/editprofile">
