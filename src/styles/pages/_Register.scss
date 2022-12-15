@@ -6,6 +6,7 @@ main {
 
 .register-title {
   margin-bottom: 35px;
+  padding-top: 6rem;
 }
 
 .register-form-container {
@@ -18,7 +19,7 @@ main {
       background-color: $color-green-dark;
       color: white;
       padding: 15px 0;
-      margin: 5px 0 10px 0;
+      margin: 5px 0 50px 0;
       border: none;
       border-radius: 8px;
       width: 100%;
@@ -29,6 +30,27 @@ main {
       }
     }
   }
+  .input-container{
+    & label {
+      padding: 0.5rem 0 0.5rem 0;
+      
+    }
+    & select {
+      border: 1px solid $color-green-dark;
+      border-radius: 5px;
+      height: 30px;
+    }
+     & textarea {
+      border-radius: 8px;
+      border: 1px solid $color-green-dark;
+     }
+  }
+  .input-container-notif {
+    & label {
+      padding-right: 1rem;
+    }
+  }
+ 
 }
 
 @media (min-width: $breakpoint-medium-devices) {

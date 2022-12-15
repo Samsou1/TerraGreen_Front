@@ -1,10 +1,13 @@
 import ProjectCards from "../../components/ProjectCards";
 import { Link } from "react-router-dom";
+
 const MyProjects = () => {
   return (
     <>
-      <h1>My projects</h1>
-      <Link to="/newproject">New Project</Link>
+      <h1 className="myprojecttitle">My projects</h1>
+      <Link to="/newproject" className="newProjectBtn">
+            New Project
+          </Link>
       <ProjectCards />
     </>
   );
