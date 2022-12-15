@@ -88,7 +88,7 @@ const EditProfile = () => {
 
   return (
     <>
-      <h1 className="register-title">Edit Profile</h1>
+      <h1 className="register-title">Edit your Profile</h1>
       <Errors errors={errors} />
       <form onSubmit={handleSubmit} className="register-form-container">
         <div className="input-container">
@@ -121,7 +121,7 @@ const EditProfile = () => {
           />
         </div>
 
-<div className="input-container">
+        <div className="input-container">
           <label htmlFor="country_id">Country</label>
           <select
             onChange={(e) => setCountry(e.target.value)}
@@ -141,9 +141,9 @@ const EditProfile = () => {
             })}
           </select>
         </div>
-        <div className="input-container">
+        <div className="input-container-notif">
           <label for="notification_subscription">Notification</label>
-          <input
+           <input
             type="checkbox"
             id="notification_subscription"
             name="notification_subscription"
