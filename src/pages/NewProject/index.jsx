@@ -37,15 +37,15 @@ function FileForm() {
 
   return (
     <div>
-      <h1>File Form</h1>
-      <form onSubmit={(event) => handleSubmit(event)}>
+      <h1 className="newproject-title">Create your project:</h1>
+      <form onSubmit={(event) => handleSubmit(event)} className="newproject-form-container">
         <div className="input-container">
           <label htmlFor="title">Title</label>
-          <input type="text" name="title" id="title" />
+          <input type="text" name="title" id="title" placeholder="CleanForest..."/>
         </div>
         <div className="input-container">
           <label htmlFor="content">Content</label>
-          <input type="text" name="content" id="content" />
+          <input type="text" name="content" id="content" placeholder="To reduce polution..." />
         </div>
         <div className="input-container">
           <label htmlFor="date">Date</label>
@@ -53,15 +53,15 @@ function FileForm() {
         </div>
         <div className="input-container">
           <label htmlFor="address">Address</label>
-          <input type="text" name="address" id="address" />
+          <input type="text" name="address" id="address" placeholder="18 rue barthelemy" />
         </div>
         <div className="input-container">
           <label htmlFor="city">City</label>
-          <input type="text" name="city" id="city" />
+          <input type="text" name="city" id="city" placeholder="Paris"/>
         </div>
         <div className="input-container">
           <label htmlFor="postal_code">Postal Code</label>
-          <input type="text" name="postal_code" id="postal_code" />
+          <input type="text" name="postal_code" id="postal_code" placeholder="75000"/>
         </div>
         <div className="input-container">
           <label htmlFor="project_status_id">Status</label>

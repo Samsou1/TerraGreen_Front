@@ -1,5 +1,9 @@
-import home3 from "../../assets/images/home3.png"
-
+import home2 from "../../assets/images/home2.png";
+import greg from "../../assets/images/greg.png";
+import sam from "../../assets/images/sam.png";
+import pierro from "../../assets/images/pierro.png";
+import noellie from "../../assets/images/noellie.png";
+import chris from "../../assets/images/chris.png";
 
 const About = () => {
   return (
@@ -13,7 +17,7 @@ const About = () => {
       
       <div className='card about-goal'>
         <div className="about-goal-left">
-          <img src={home3} alt="beach image" />
+          <img src={home2} alt="beach image" />
         </div>
         <div className="about-goal-right">
           <h2 className='about-goal-title'>Our goal</h2>
@@ -35,33 +39,33 @@ const About = () => {
           <div className='team-cards'>
             <div className='card member-card'>
               <h3>ANDRIEU Pierre</h3>
-              <p>Mettre lien gitt ett linkdin</p>
-              <img src='https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzZ8fGljb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
-               alt='member-picture'/>
+              <p>Developer at TerraGreen</p>
+              <a href="https://github.com/PierreAND">Git</a>
+              <img src={pierro} alt="logo" ></img>
             </div>
             <div className='card member-card'>
               <h3>LAIGNEAU Gregory</h3>
-              <p>Mettre lien gitt ett linkdin</p>
-              <img src='https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzZ8fGljb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
-               alt='member-picture'/>
+              <p>Developer at TerraGreen</p>
+              <a href="https://github.com/GregoryLAIGNEAU">Git</a>
+              <img src={greg} alt="logo" ></img>
             </div>
             <div className='card member-card'>
               <h3>Linard Sami</h3>
-              <p>Mettre lien gitt ett linkdin</p>
-              <img src='https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzZ8fGljb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
-               alt='member-picture'/>
+              <p>Developer at TerraGreen</p>
+              <a href="https://github.com/Samsou1">Git</a>
+              <img src={sam} alt="logo" ></img>
             </div>
             <div className='card member-card'>
               <h3>PEUCH Noellie</h3>
-              <p>Mettre lien gitt ett linkdin</p>
-              <img src='https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzZ8fGljb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60'
-               alt='member-picture'/>
+              <p>Developer at TerraGreen</p>
+              <a href="https://github.com/pandaka87">Git</a>
+              <img src={noellie} alt="logo" ></img>
             </div>
             <div className='card member-card'>
               <h3>PFEIFFER Christopher</h3>
-              <p>Mettre lien gitt ett linkdin </p>
-              <img src='https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzZ8fGljb258ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60' 
-              alt='member-picture'/>
+              <p>Developer at TerraGreen</p>
+              <a href="https://github.com/chrispfr">Git</a>
+              <img src={chris} alt="logo" ></img>
             </div>
           </div>
         </div>

@@ -30,6 +30,10 @@ footer {
 }
 
 @media (min-width: $breakpoint-medium-devices) {
+  footer {
+    background-color: $color-green-light;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.50) ;
+  }
   #logo-footer {
     left: 15px;
     bottom: -10px;
@@ -37,6 +41,13 @@ footer {
       width: 145px;
     }
   }
+  .company {
+    color: $color-green-dark;
+  
+    &:hover {
+      color: $color-green-medium;
+    }
+}
 }
 
 @media (min-width: $breakpoint-large-devices) {
@@ -44,6 +55,8 @@ footer {
     border-top-left-radius: 65px;
     border-top-right-radius: 65px;
     height: 100px;
+    background-color: $color-green-light;
+    text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.50) ;
   }
 
   #logo-footer {

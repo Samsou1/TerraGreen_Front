@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useSetAtom } from "jotai";
 import { searchAtom } from "../../store/search";
 
+
 const SearchBar = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ const SearchBar = () => {
 
   return (
     <form onSubmit={handleSubmit} className="searchForm">
+      <i class="fa-solid fa-magnifying-glass"></i>
         <input
           onChange={(e) => setSearch(e.target.value)}
           value={search}

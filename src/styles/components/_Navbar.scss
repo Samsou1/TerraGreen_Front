@@ -191,6 +191,7 @@ header {
     align-items: center;
     padding: 0 55px;
     height: 80px;
+    //width: 100%;
 
     & div {
       & a:first-child img {
@@ -216,7 +217,7 @@ header {
     & nav ul {
       display: flex;
       flex-direction: row;
-      gap: 15px;
+      gap: 10px;
       margin-top: 0;
       background-color: transparent;
 
@@ -253,25 +254,6 @@ header {
   }
   .header-bg {
     background-color: $color-green-light;
-    & & a {
-      letter-spacing: 0.2px;
-
-      &:link {
-        color: $color-green-dark;
-        all: unset;
-        background-color:  rgba(255, 0, 255, 0.25);
-        border-radius: 5px;
-        padding: 6px 10px;
-        box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-      }
-
-      &:visited {
-        color: $color-green-dark;
-      }
-       &:hover {
-        padding: 10px 12px;
-        cursor: pointer;
-       }
-    }
   }
 }
+  

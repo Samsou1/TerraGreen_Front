@@ -1,0 +1,52 @@
+
+
+.newproject-title {
+  margin-bottom: 35px;
+  padding-top: 10rem;
+  text-align: center;
+}
+
+.newproject-form-container {
+  & input {
+    border: 1px solid $color-green-dark;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 5px;
+    &[type="submit"] {
+      background-color: $color-green-dark;
+      color: white;
+      margin: 15px 0;
+      border: none;
+      border-radius: 8px;
+      width: 50%;
+      cursor: pointer;
+      &:hover {
+        transition-duration: 0.2s;
+        background-color: $color-green-light;
+      }
+    }
+  }
+  #image-container {
+    & input {
+      border: none;
+    }
+  }
+  .input-container{
+    & label {
+      padding: 0.5rem 0 0.5rem 0;
+      
+    }
+    & select {
+      border: 1px solid $color-green-dark;
+      border-radius: 5px;
+      height: 30px;
+    }
+  }
+}
+
+
+@media (min-width: $breakpoint-medium-devices) {
+  .newproject-form-container {
+    min-width: 400px;
+  }
+}
