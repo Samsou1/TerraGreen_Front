@@ -32,10 +32,10 @@ const ProjectCard = ({ project }) => {
             {getCountryFromId(project.country_id).name}
           </p>
           <p className="cardDescription">{project.content}</p>
-        </div>
-        <button className="projectBtn">
+          <button className="projectBtn">
           <Link to={`/projects/${project.id}`}>Have a look</Link>
         </button>
+        </div>
       </div>
     </div>
   );

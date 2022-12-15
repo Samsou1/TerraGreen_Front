@@ -10,7 +10,9 @@ const EditProfile = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [description, setDescription] = useState("");
+  const [errors, setErrors] = useState([])
+
   const navigate = useNavigate();
 
   const [regionOptions, setRegionOptions] = useState([]);
@@ -22,6 +24,7 @@ const EditProfile = () => {
     console.log(data);
     data.email ? setEmail(data.email) : setEmail("");
     data.username ? setUsername(data.username) : setLastName("");
+    data.description ? setDescription(data.description) : setDescription("");
     data.region_id ? setRegion(data.region_id) : setRegion("");
     data.country_id ? setCountry(data.country_id) : setCountry("");
   };
@@ -43,6 +46,7 @@ const EditProfile = () => {
         user: {
           username: username,
           email: email,
+          description: description,
           country_id: country,
           region_id: region,
         },
@@ -120,6 +124,15 @@ const EditProfile = () => {
           />
         </div>
         <div className="input-container">
+          <label htmlFor="description">Description</label>
+          <input
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+            type="textarea"
+            id="description"
+            placeholder="Description"
+          />
+
           <label htmlFor="region_id">Region</label>
           <select
             onChange={(e) => setRegion(e.target.value)}
