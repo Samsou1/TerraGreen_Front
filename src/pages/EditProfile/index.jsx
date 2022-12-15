@@ -87,7 +87,7 @@ const EditProfile = () => {
 
   return (
     <>
-      <h1 className="register-title">Edit Profile</h1>
+      <h1 className="register-title">Edit your Profile</h1>
       <Errors errors={errors} />
       <form onSubmit={handleSubmit} className="register-form-container">
         <div className="input-container">
@@ -140,9 +140,9 @@ const EditProfile = () => {
             })}
           </select>
         </div>
-        <div className="input-container">
-          <label htmlFor="notification_subscription">Notification</label>
-          <input
+        <div className="input-container-notif">
+          <label for="notification_subscription">Notification</label>
+           <input
             type="checkbox"
             id="notification_subscription"
             name="notification_subscription"
