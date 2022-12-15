@@ -43,7 +43,6 @@ const EditProfile = () => {
   const handleSubmit = async (e) => {
     setErrors([]);
     e.preventDefault();
-    console.log(notification)
     if (password === confirmPassword) {
       const data = {
         user: {
@@ -121,7 +120,7 @@ const EditProfile = () => {
           />
         </div>
 
-<div className="input-container">
+        <div className="input-container">
           <label htmlFor="country_id">Country</label>
           <select
             onChange={(e) => setCountry(e.target.value)}
@@ -142,11 +141,13 @@ const EditProfile = () => {
           </select>
         </div>
         <div className="input-container">
-          <label for="notification_subscription">Notification</label>
+          <label htmlFor="notification_subscription">Notification</label>
           <input
             type="checkbox"
             id="notification_subscription"
             name="notification_subscription"
+            checked={notification}
+            readOnly={false}
             onChange={(e) => setNotification(e.target.checked)}
           />
         </div>
