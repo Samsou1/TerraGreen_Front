@@ -3,6 +3,7 @@ import APIManager from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { currentUserId } from "../../services/user";
 import Errors from "../../components/Errors";
+import { validateInput } from "../../services/validateInput";
 
 const EditProject = () => {
   const [title, setTitle] = useState("");
@@ -64,6 +65,14 @@ const EditProject = () => {
         { message: "You must give your project a date" },
       ]);
       validate = false;
+    }
+    if([title, content, address, city, postalCode, date].some(element => !validateInput(element))){
+      setErrors((errs) => [
+        ...errs,
+        { message: "Don't use special characters" },
+      ]);
+      validate = false;
+      
     }
     return validate;
   };
