@@ -18,7 +18,7 @@ const EditProject = () => {
   const [regionOptions, setRegionOptions] = useState([]);
   const [region, setRegion] = useState("");
   const countryOptions = useAtomValue(countriesAtom);
-  const [country, setCountry] = useState("France");
+  const [country, setCountry] = useState(78);
   const [image, setImage] = useState("");
   const navigate = useNavigate();
 
@@ -36,28 +36,34 @@ const EditProject = () => {
     data.append("project[region_id]", region);
     data.append("project[country_id]", country);
     if (image === null) {
-    data.append("project[image]", event.target.image.files[0]);
+      data.append("project[image]", event.target.image.files[0]);
     }
     try {
       const id = window.location.pathname.split("/")[2];
       await APIManager.editProject(id, data);
-      // navigate("/myprojects");
+      navigate("/myprojects");
     } catch (err) {
       console.error(err);
     }
   };
 
   const SetAll = (data) => {
-    console.log(data)
+    console.log(data);
     data.project.title ? setTitle(data.project.title) : setTitle("");
     data.project.content ? setContent(data.project.content) : setContent("");
     data.project.date ? setDate(data.project.date) : setDate("");
     data.project.address ? setAddress(data.project.address) : setAddress("");
     data.project.city ? setCity(data.project.city) : setCity("");
-    data.project.postal_code ? setPostalCode(data.project.postal_code) : setPostalCode("");
-    data.project.project_status_id ? setStatus(data.project.project_status_id) : setStatus("");
+    data.project.postal_code
+      ? setPostalCode(data.project.postal_code)
+      : setPostalCode("");
+    data.project.project_status_id
+      ? setStatus(data.project.project_status_id)
+      : setStatus("");
     data.project.region_id ? setRegion(data.project.region_id) : setRegion("");
-    data.project.country_id ? setCountry(data.project.country_id) : setCountry("");
+    data.project.country_id
+      ? setCountry(data.project.country_id)
+      : setCountry("");
     data.image_url ? setImage(data.image_url) : setImage("");
   };
 
@@ -73,7 +79,7 @@ const EditProject = () => {
 
   useEffect(() => {
     const fetchRegions = async () => {
-      await APIManager.getRegionsFromCountry(country).then((data) =>
+      await APIManager.getRegionsFromCountryID(country).then((data) =>
         setRegionOptions(data)
       );
     };
@@ -209,11 +215,7 @@ const EditProject = () => {
         </div>
         <input type="submit" value="Update" />
       </form>
-      <div>
-        
-      {image && <img src={image} alt="The current file" />}
-
-      </div>
+      <div>{image && <img src={image} alt="The current file" />}</div>
     </>
   );
 };
