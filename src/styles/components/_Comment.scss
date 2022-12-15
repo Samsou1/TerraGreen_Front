@@ -73,6 +73,7 @@
       outline: none;
       text-align: center;
       width: 80px;
+      box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
     
       &:hover {
         border: none;
@@ -81,6 +82,4 @@
       }
     }
   }
-
-  
 }
