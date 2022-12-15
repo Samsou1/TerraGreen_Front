@@ -76,7 +76,6 @@ const EditProfile = () => {
   const handleSubmit = async (e) => {
     setErrors([]);
     e.preventDefault();
-
     if (validateData()) {
       const data = {
         user: {
@@ -173,6 +172,8 @@ const EditProfile = () => {
             type="checkbox"
             id="notification_subscription"
             name="notification_subscription"
+            checked={notification}
+            readOnly={false}
             onChange={(e) => setNotification(e.target.checked)}
           />
         </div>
