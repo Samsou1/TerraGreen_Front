@@ -140,7 +140,7 @@ const EditProfile = () => {
             })}
           </select>
         </div>
-        <div className="input-container">
+        <div className="input-container-notif">
           <label htmlFor="notification_subscription">Notification</label>
           <input
             type="checkbox"
