@@ -1,8 +1,6 @@
 @import "../abstracts/variables";
 
-.hero-container {
-  margin-top: 0px;
-}
+
 
 .home-container {
 
@@ -14,12 +12,16 @@
     & img {
       width: 200px;
     }
+    & .img1{
+      margin-top: 1rem;
+      width: 250px;
+    }
 
     & p {
       font-size: 1.1rem;
       text-align: center;
       padding: 0 10px;
-      margin: 0 0 25px 0;
+      margin: 0 20px 25px 0;
     }
 
     h1 {
@@ -58,14 +60,7 @@
         margin: 0 0 25px 0;
       }
       & .img1 {
-        width: 460px;
-
-      }
-      & .img2 {
-        width: 300px;
-      }
-      & .img3 {
-        width: 320px;
+       width: 250px;
       }
       
   }
@@ -89,7 +84,7 @@
 article#carousel {
   grid-row: 1 / 2;
   grid-column: 1 / 8;
-  width: 100vw;
+  width: 80vw;
   height: 500px;
   display: flex;
   align-items: center;
@@ -106,8 +101,8 @@ article#carousel {
 div.item {
   position: absolute;
   border-radius: 13px;
-  width: 500px;
-  height: 450px;
+  width: 400px;
+  height: 350px;
   background-color: coral;
   --r: calc(var(--position) - var(--offset));
   --abs: max(calc(var(--r) * -1), var(--r));
