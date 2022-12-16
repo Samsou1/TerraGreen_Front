@@ -1,3 +1,3 @@
 export const validateDataSearch = (search) => {
-  return search.match(/^[A-z\s'-]+$/);
+  return search.match(/^[A-z\s'-]*$/);
 };
