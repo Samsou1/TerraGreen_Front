@@ -19,7 +19,9 @@ const ProjectCard = ({ project }) => {
           />
           <div className="cardHeaderText">
             <h3 className="cardTitle">{project.title}</h3>
-            <p className="cardTagline">Username</p>
+            <p className="cardTagline">
+              {project.user ? project.user.username : ""}
+            </p>
           </div>
         </div>
         <div className="cardText">
@@ -35,8 +37,8 @@ const ProjectCard = ({ project }) => {
           </p>
           <p className="cardDescription">{project.content}</p>
           <button className="projectBtn">
-          <Link to={`/projects/${project.id}`}>Have a look</Link>
-        </button>
+            <Link to={`/projects/${project.id}`}>Have a look</Link>
+          </button>
         </div>
       </div>
     </div>
