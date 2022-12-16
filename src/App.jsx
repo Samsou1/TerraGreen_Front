@@ -15,7 +15,9 @@ import ShowProject from "./pages/ShowProject";
 import NewProject from "./pages/NewProject";
 import MyProjects from "./pages/MyProjects";
 import EditProject from "./pages/EditProject";
-import { createContext, useState } from "react";
+import NewPassword from "./pages/NewPassword"
+import {createContext, useState} from "react";
+
 import CookieConsent from "react-cookie-consent";
 
 export const AppContext = createContext(null);
@@ -65,6 +67,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/resetpassword" element={<Resetpassword />} />
+            <Route path="/new_password" element={<NewPassword/>} />
           </Route>
         </Routes>
       </main>
