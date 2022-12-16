@@ -31,7 +31,7 @@ const Home = () => {
           <h1>How?</h1>
           <p className="p3">
             With your longing for change and your motivation! Just bring a bag, your gloves and off you
-            go to the forest or the nearest beach!
+            go to the forest or the nearest beach to clean the planet!
           </p>
         </article>
       </section>
