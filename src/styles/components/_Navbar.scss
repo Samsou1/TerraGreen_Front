@@ -210,8 +210,8 @@ header {
   text-align: center;
 }
 
-[type="checkbox"]:checked,
-[type="checkbox"]:not(:checked){
+#dropdown:checked,
+#dropdown:not(:checked){
   position: absolute;
   left: -9999px;
   opacity: 0;
