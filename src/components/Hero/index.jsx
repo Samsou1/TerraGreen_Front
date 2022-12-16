@@ -23,7 +23,6 @@ const Hero = () => {
           <video src={videoBg} muted></video>
           <div>
             <h1>Welcome to TerraGreen</h1>
-            <p></p>
             <p>Participate to save Earth!</p>
             <Link to="/register">Register</Link>
           </div>
