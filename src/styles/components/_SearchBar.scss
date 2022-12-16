@@ -1,55 +1,45 @@
 .searchForm {
-  font-size: medium;
-  border: 1px solid $color-green-dark;
-  border-radius: 20px;
+  display: flex;
   padding: 8px 20px;
   margin: 1.5rem;
-  display: flex;
+  border: 1px solid $color-green-dark;
+  border-radius: 20px;
+  font-size: medium;
+
   & .fa-magnifying-glass{
     padding-top: 0.2rem;
     padding-right: 0.4rem;
-  }
-  & input {
-    all: unset;
-    width: 80%;
-    font-family: $font-family-content;
-    color: $color-green-medium;
-    &::placeholder {
-      color: $color-green-dark;
-    }
-    &:focus {
-      outline: none;
-      &::placeholder {
-        color: $color-green-medium;
-      }
-    }
+    color: $color-green-dark;
   }
 
   &:hover {
     border: 2px solid $color-green-dark;
-    &::placeholder {
+
+    & .fa-magnifying-glass {
       color: $color-green-medium;
-    }
-  }
-
-  &:focus {
-    outline: none;
-    &::placeholder {
-      color: $color-green-medium;
-    }
-  }
-
-  & button {
-    all: unset;
-
-    & .searchIcon {
-    color: $color-green-dark;      
     }
   }
 }
-  
-$breakpoint-tablet: 768px;
-@media (min-width: $breakpoint-tablet) {
+
+.searchInput {
+  all: unset;
+  width: 80%;
+  font-family: $font-family-content;
+  color: $color-green-dark;
+  &::placeholder {
+    color: $color-green-dark;
+  }
+  &:focus {
+    &::placeholder {
+      color: $color-green-medium;
+    }
+  }
+  &:hover::placeholder {
+    color: $color-green-medium;
+  }
+}
+
+@media (min-width: $breakpoint-medium-devices) {
   .searchForm {
     min-width: 400px;
   }
