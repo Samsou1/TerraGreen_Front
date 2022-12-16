@@ -1,12 +1,12 @@
-header {
-  font-family: $font-family-title;
+header {  
   display: flex;
-  flex-direction: column;
-  background-color: transparent;
-  padding: 10px;
-  z-index: 1;
+  flex-direction: column;  
   position: fixed;
   width: 100%;
+  padding: 10px;
+  z-index: 1;
+  font-family: $font-family-title;
+  background-color: transparent;
 
   & div {
     display: flex;
@@ -19,8 +19,6 @@ header {
     }
 
     & a:last-child {
-      color: $color-green-light;
-
       & :hover {
         color: $color-green-medium;
       }
@@ -36,26 +34,19 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    list-style-type: none;
-   // margin-top: 25px;
-    background-color: $color-green-dark;
-    border-radius: 13px;
-    opacity: 90%;
     width: 100%;
     margin-top: -1rem;
+    padding-top: 1rem;
+    border-radius: 13px;
+    list-style-type: none;
+    background-color: $color-green-dark;
+    opacity: 90%;
 
     & li {
       margin-bottom: 10px;
       font-size: 1.2rem;
 
       & a {
-        position: relative;
-        transition: all 200ms linear;
-        font-weight: 500;
-        font-size: 18px;
-        margin: 4px 0;
-        text-align: left;
-        text-decoration: none;
         display: -ms-flexbox;
         display: flex;
         -webkit-align-items: center;
@@ -64,19 +55,25 @@ header {
         align-items: center;
         justify-content: space-between;
           -ms-flex-pack: distribute;
-        letter-spacing: 0.2px;
-        color: #fff;
-        //all: unset;
-        background-color:  $color-green-dark;
-        border-radius: $border-radius-normal;
+        position: relative;
         padding: 6px 10px;
+        margin: 4px 0;
+        border-radius: $border-radius-normal;
+        text-align: left;
+        text-decoration: none;
+        letter-spacing: 0.2px;
+        font-weight: 500;
+        font-size: 18px;
+        color: #fff;
+        background-color:  $color-green-dark;
         box-shadow: $box-shadow-dark;
 
         &:hover {
-          padding: 10px 12px;
+          padding: 8px 12px;
           cursor: pointer;
-          background-color: $color-green-medium;
           color: #fff;
+          background-color: $color-green-medium;
+          transition: $transition-time;
         }
       }
     }
@@ -84,11 +81,10 @@ header {
 }
 
 .header-bg {
-  background-color: $color-green-dark;
   border-bottom-left-radius: 13px;
   border-bottom-right-radius: 13px;
+  background-color: $color-green-dark;
   opacity: 90%;
-  
 }
 
 // Dropdown menu
@@ -100,20 +96,21 @@ header {
 }
 
 .navDropdown label {
-  background-color: $color-green-dark;
-  color: white;
+  width: 150px;
   padding: 8px;
   border: none;
   border-radius: 8px;
-  width: 150px;
   text-align: center;
+  color: #fff;
+  background-color: $color-green-dark;
   cursor: pointer;
+  box-shadow: $box-shadow-dark;
   z-index: 2;
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+
   &:hover {
-    transition-duration: 0.2s;
-    background-color:$color-green-medium;
     padding: 12px 14px;
+    background-color:$color-green-medium;
+    transition-duration: 0.2s;
   }
 }
 
@@ -128,11 +125,6 @@ header {
 .dropdown:checked + label,
 .dropdown:not(:checked) + label{
   position: relative;
-  font-weight: 400;
-  font-size: 15px;
-  transition: all 200ms linear;
-  border-radius: 4px;
-  letter-spacing: 1px;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -145,9 +137,14 @@ header {
   -ms-justify-content: center;
   justify-content: center;
   -ms-flex-pack: center;
-  text-align: center;
   border: none;
+  border-radius: $border-radius-normal;
+  letter-spacing: 1px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 17px;
   cursor: pointer;
+  transition: $transition-time;
 }
 
 .dropdown:checked + label:before,
@@ -160,32 +157,36 @@ header {
   cursor: auto;
   pointer-events: none;
 }
+
 .dropdown:checked + label:before{
   pointer-events: auto;
 }
+
 .dropdown:not(:checked) + label .uil {
   font-size: 24px;
   margin-left: 10px;
   transition: transform 200ms linear;
 }
+
 .dropdown:checked + label .uil {
   transform: rotate(180deg);
   font-size: 24px;
   margin-left: 10px;
   transition: transform 200ms linear;
 }
+
 .section-dropdown {
   position: absolute;
   padding: 5px;
   top: 70px;
   left: 0;
-  border-radius: 4px;
+  border-radius: $border-radius-normal;
   display: block;
   z-index: 2;
   opacity: 0;
   pointer-events: none;
   transform: translateY(20px);
-  transition: all 200ms linear;
+  transition: $transition-time;
 }
 
 .dropdown:checked ~ .section-dropdown{
@@ -314,51 +315,35 @@ header {
     height: 80px;
     width: 100%;
 
-    & div {
-      & a:first-child img {
-        height: 70px;
-      }
-  
-      & a:last-child {
+    & div a:last-child {
+      color: $color-green-dark;
+
+      & h1 {
         color: $color-green-dark;
-  
-        & :hover {
-          color: $color-green-light;
-        }
-  
-        & h1 {
-          color: $color-green-dark;
-          font-size: 1.5rem;
-          text-shadow: $text-shadow-dark ;
-        }
+        text-shadow: $text-shadow-dark ;
       }
     }    
 
     & nav ul {
-      display: flex;
       flex-direction: row;
       gap: 10px;
       margin-top: 0;
       background-color: transparent;
 
-      & li {
-  
-        & a {
-          color: $color-green-dark;
-          //all: unset;
-          background-color:  rgba(255, 255, 255, 0.45);
-          text-shadow: 2px 2px rgba(255, 255, 255, 0.25);
-          backdrop-filter: blur(15px);
-  
-          &:visited {
-            color: $color-green-dark;
-          }
+      & li a {
+        color: $color-green-dark;
+        text-shadow: $text-shadow-light;
+        background-color:  $bg-color-light;
+        backdrop-filter: blur(15px);
 
-          &:hover {
-            padding: 10px 12px;
-            cursor: pointer;
-            background-color:  rgba(255, 255, 255, 0.25);
-          }
+        &:visited {
+          color: $color-green-dark;
+        }
+
+        &:hover {
+          color: $color-green-dark;
+          background-color:  $bg-color-light;
+          cursor: pointer;
         }
       }
     }
@@ -367,6 +352,7 @@ header {
       display: none;
     }
   }
+  
   .header-bg {
     background-color: $color-green-light;
   }
