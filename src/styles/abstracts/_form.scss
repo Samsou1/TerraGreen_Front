@@ -1,0 +1,95 @@
+.formTitle {
+  padding-top: 6rem;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.formContainer {
+  width: 250px;
+
+  & input {
+    border: 1px solid $color-green-dark;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 5px;
+
+    &[type="submit"] {
+      font-family: $font-family-content;
+      font-size: 16px;
+      font-weight: lighter;
+      background-color: $color-green-dark;
+      color: #fff;
+      padding: 15px 0;
+      margin: 1rem 0 50px 0;
+      border: none;
+      letter-spacing: 0.1rem;
+      border-radius: 8px;
+      width: 100%;
+      box-shadow: $box-shadow-dark;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $color-green-medium;
+        transition: $transition-time;
+        padding: 17px 0;
+      }
+    }
+  }
+
+  .formInputContainer{
+    display: flex;
+    flex-direction: column;
+
+    & label {
+      padding: 0.5rem 0;    
+    }
+
+    & select {
+      border: 1px solid $color-green-dark;
+      border-radius: 5px;
+      height: 30px;
+    }
+
+    & textarea {
+      border-radius: 8px;
+      border: 1px solid $color-green-dark;
+    }
+  }
+  
+  .formCheckbox {
+    & label {
+      padding-right: 1rem;
+    }
+  }
+
+  .forgotPsswd {
+    float: right;
+  }
+
+  .formBtn {
+    font-family: $font-family-content;
+    font-size: 16px;
+    background-color: $color-green-dark;
+    color: #fff;
+    padding: 15px 0;
+    margin: 1rem 0 50px 0;
+    border: none;
+    letter-spacing: 0.1rem;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: $box-shadow-dark;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-green-medium;
+      transition: $transition-time;
+      padding: 17px 0;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-medium-devices) {
+  .formContainer {
+    min-width: 400px;
+  }
+}

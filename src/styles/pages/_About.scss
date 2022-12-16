@@ -1,92 +1,96 @@
-.about{
+.aboutContainer{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  margin-top: -5em;
-  color: $color-green-light;
   width: 100%;
   position: relative;
-  & .img1 {
-    width: 100%;
-    height: calc(100vh - 290px);
-    object-fit: cover;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    box-shadow: 0 10px 20px 1px grey;
+  gap: 2rem;
+  margin-top: -5em;
+  color: $color-green-medium;
+  font-weight: lighter;
+  
+  & h1 {
+    font-size: 4rem;
+    padding-top: 8rem;
+    opacity: 90%;
+    text-shadow: $text-shadow-light;
   }
-
-    & .about-hero {
-      font-size: 2rem;
-      position: absolute;
-      padding-top: 1rem;
-      
-    }
-
-      & h1 {
-        font-size: 5rem;
-        padding-top: 8rem;
-        opacity: 90%;
-      }
-      & a {
-        padding-right: 0.5rem;
-        padding-left: 0.5rem;
-      }
-      & i {
-        font-size: 1.5rem;
-      }
 }
 
+.aboutHeroImage {
+  width: 100%;
+  height: calc(100vh - 290px);
+  object-fit: cover;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  box-shadow: $box-shadow-hero;
+  opacity: 95%;
+}
+
+.aboutHero {
+  position: absolute;
+  padding-top: 2rem;
+  font-size: 2rem;
+}
 
 .card {
-  box-shadow: 0 10px 20px 1px grey;
-	background: rgba(255, 255, 255, 0.90);
-	text-align: center;
-	border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 20px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.90);
+  box-shadow: $box-shadow-dark;
 }
 
-.about-goal-title{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.about-goal{
+.aboutGoal{
   max-width: 80%;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 20px;
   gap: 1rem;
   padding: 2rem;
+  margin-top: 2rem;
 }
 
-.about-goal-left{
+.aboutGoalImg{
   flex: 1;
   justify-content: center;
-}
 
-.about-goal-left > img{
+  & img {
   width: 100%;
   border-radius: 15px;
+  }
 }
 
-.about-goal-right{
+.aboutGoalContent{
   flex: 2;
+
+  & p {
+    margin: 1.5rem;
+  }
 }
 
-.about-content{
-  margin: 1rem;
-}
-
-.about-team{
+.aboutTeam{
   max-width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1rem;
+  margin-bottom: 2.5rem;
   gap: 1rem;
+
+  & h2 {
+    margin-bottom: 1rem;
+  }
+
+  & a {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  & i {
+    font-size: 1.5rem;
+  }
 }
 
-.team-cards{
+.teamCards{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -94,53 +98,29 @@
   gap: 2rem;
 }
 
-.member-card{
+.memberCard{
   max-width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-}
 
-.member-card > img{
-  height: 150px;
-}
-
-@media (min-width: $breakpoint-medium-devices) {
-  
-   .about{
-  
-    & .img1 {
-      height: calc(100vh - 290px);
-    }
-
-    & .about-goal {
-          display: flex;
-          flex-wrap: wrap;
-      }
-
-          & h1 {
-            font-size: 6rem;
-            padding-top: 8rem;
-          }
+  & img{
+    height: 150px;
   }
 }
 
-@media (min-width: $breakpoint-large-devices) {
-  .about{
-     & .img1 {
-       height: calc(100vh - 290px); 
+@media (min-width: $breakpoint-medium-devices) {
+  .aboutGoal {
+        display: flex;
+        flex-wrap: wrap;
     }
+}
 
-        & .about-goal {
-          display: flex;
-          flex-wrap: wrap;
-      }
-
-          & h1 {
-            font-size: 8rem;
-            padding-top: 8rem;
-          }
+@media (min-width: $breakpoint-large-devices) {
+  .aboutContainer h1 {
+      font-size: 8rem;
+      padding-top: 14rem;
   }
 }
