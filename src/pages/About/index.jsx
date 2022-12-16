@@ -27,11 +27,11 @@ const About = () => {
             More and more environmentalists are working towards a common goal:
             to collect the garbage on the streets, country roads, bike paths and
             public places in order to make their environment more livable. Our
-            society is a throwaway society. It is easier for us to throw things
-            away. Air and water are vital, but today they have become big
-            garbage dumps. Each and every one of us must do our part to save the
-            planet. Our goal is to find the location of the area to be cleaned
-            and involve as many people as possible..{" "}
+            society is a throwaway society. It is easier for us to throw rather
+            than reuse or repair them. Air and water are vital, but today they
+            have become big garbage dumps. Each and every one of us must do our
+            part to save the planet. Our goal is to find the location of the
+            area to be cleaned and involve as many people as possible.
           </p>
         </div>
       </div>
@@ -65,7 +65,7 @@ const About = () => {
             <img src={greg} alt="logo"></img>
           </div>
           <div className="card member-card">
-            <h3>Linard Sami</h3>
+            <h3>LINARD Sami</h3>
             <p>Developer at TerraGreen</p>
             <div>
               <a href="https://github.com/Samsou1">
