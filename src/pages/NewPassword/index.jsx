@@ -5,14 +5,15 @@ import { useSearchParams } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
 const NewPassword = () => {
-  const [password, setPassword] = useState(null);
-  const [pwdConfirmation, setPwdConfirmation] = useState(null);
+  const [password, setPassword] = useState(false);
+  const [pwdConfirmation, setPwdConfirmation] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate()
   const token = searchParams.get('reset_token')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(password, pwdConfirmation, token)
     const data = {
       user: {
         password: password,
@@ -33,7 +34,7 @@ const NewPassword = () => {
         <h1 className="title-form">Set your new password</h1>
       <form onSubmit={handleSubmit} className="container-form">
         <div className="input-container">
-          <label htmlFor="email">New password </label>
+          <label htmlFor="password">New password </label>
           <input
             onChange={(e) => setPassword(e.target.value)}
             value={password}
@@ -41,7 +42,7 @@ const NewPassword = () => {
             id="password"
             placeholder="Password"
           />
-          <label htmlFor="email">Password Confirmation </label>
+          <label htmlFor="pwdConfirmation">Password Confirmation </label>
           <input
             onChange={(e) => setPwdConfirmation(e.target.value)}
             value={pwdConfirmation}
