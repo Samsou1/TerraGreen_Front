@@ -56,10 +56,10 @@ function Register() {
 
   return (
     <>
-      <h1 className="register-title">Register</h1>
+      <h1 className="formTitle">Register</h1>
       <Errors errors={errors}></Errors>
-      <form onSubmit={handleSubmit} className="register-form-container">
-        <div className="input-container">
+      <form onSubmit={handleSubmit} className="formContainer">
+        <div className="formInputContainer">
           <label htmlFor="email">Email </label>
           <input
             onChange={(e) => setEmail(e.target.value)}
@@ -69,7 +69,7 @@ function Register() {
             placeholder="Email"
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="password">Password</label>
           <input
             onChange={(e) => setPassword(e.target.value)}
@@ -79,7 +79,7 @@ function Register() {
             placeholder="Password"
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="confirmPassword">Confirm Password</label>
           <input
             onChange={(e) => setConfirmPassword(e.target.value)}
