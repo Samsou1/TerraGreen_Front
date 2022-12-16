@@ -1,16 +1,5 @@
-:root {
-  --surface-color: #fff;
-  --curve: 40;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.projects-cards-container {
-& h2 {
+.projectsContainer h2 {
   text-align: center;
-}
 }
 
 .projectsCards {
@@ -26,11 +15,11 @@
   position: relative;
   display: flex;
   height: 370px;  
-  border-radius: calc(var(--curve) * 1px);
+  border-radius: calc(40 * 1px);
   overflow: hidden;
   text-decoration: none;
   color: $color-green-medium;
-  box-shadow: 0 10px 20px 1px grey;
+  box-shadow: $box-shadow-hero;
 
   &:hover .cardOverlay {
     transform: translateY(0);
@@ -52,8 +41,8 @@
   bottom: 0;
   left: 0;
   right: 0;      
-  border-radius: calc(var(--curve) * 1px);    
-  background-color: var(--surface-color);      
+  border-radius: calc(40 * 1px);    
+  background-color: #fff;      
   transform: translateY(100%);
   transition: .2s ease-in-out;
 }
@@ -64,8 +53,8 @@
   align-items: center;
   gap: 2em;
   padding: 2em;
-  border-radius: calc(var(--curve) * 1px) 0 0 0;    
-  background-color: var(--surface-color);
+  border-radius: calc(40 * 1px) 0 0 0;    
+  background-color: #fff;
   transform: translateY(-100%);
   transition: .2s ease-in-out;
 }
@@ -84,8 +73,7 @@
 }
 
 .cardTagline {
-  display: block;
-  margin: 1em 0; 
+  display: block; 
   font-size: .8em;  
 }
 
@@ -94,10 +82,10 @@
 }
 
 .cardText {
-  padding: 0 2em 2em;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  padding: 0 2em 2em;
 }
 
 .cardLocation {
@@ -111,12 +99,12 @@
   margin-top: 1rem;
   background-color: $color-green-dark;
   color: white;
-  padding: 14px;
+  padding: 8px;
   border: none;
-  border-radius: 8px;
+  border-radius: $border-radius-normal;
   text-align: center;
   cursor: pointer;
-  box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: $box-shadow-dark;
   & a {
     all: unset;
     font-family: $font-family-content;
@@ -124,31 +112,16 @@
   &:hover {
     transition-duration: 0.2s;
     background-color:$color-green-medium;
+    padding: 10px;
   }
 }
 
 @media (min-width: $breakpoint-medium-devices) {
-  .projects-cards-container {
+  .projectsContainer {
     width: 100%;
-  
-   & .projectsCards {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
-  & h2 {
-    text-align: center;
-  }
-}
-}
+  }  
 
-@media (min-width: $breakpoint-large-devices) {
-  .projects-cards-container {
-    width: 100%;
-  
-   & .projectsCards {
+  .projectsCards {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
-  & h2 {
-    text-align: center;
-  }
-}
 }

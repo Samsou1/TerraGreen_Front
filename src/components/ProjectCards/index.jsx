@@ -40,7 +40,7 @@ const ProjectCards = () => {
   }, [search]);
 
   return (
-    <section className="projects-cards-container">
+    <section className="projectsContainer">
       <h2>{search ? `Results for '${search}'` : `You can take inspiration from projects already completed!`}</h2>
       <div className="projectsCards">
         {projects.map((project) => {

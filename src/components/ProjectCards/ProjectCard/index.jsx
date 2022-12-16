@@ -19,6 +19,7 @@ const ProjectCard = ({ project }) => {
           />
           <div className="cardHeaderText">
             <h3 className="cardTitle">{project.title}</h3>
+            <p className="cardTagline">{project.date}</p>
             <p className="cardTagline">
               {project.user ? project.user.username : ""}
             </p>

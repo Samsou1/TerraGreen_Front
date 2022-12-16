@@ -1,13 +1,12 @@
-header {
-  font-family: $font-family-title;
+header {  
   display: flex;
-  flex-direction: column;
-  background-color: transparent;
-  padding: 10px;
-  z-index: 1;
+  flex-direction: column;  
   position: fixed;
   width: 100%;
-  
+  padding: 10px;
+  z-index: 1;
+  font-family: $font-family-title;
+  background-color: transparent;
 
   & div {
     display: flex;
@@ -20,8 +19,6 @@ header {
     }
 
     & a:last-child {
-      color: $color-green-light;
-
       & :hover {
         color: $color-green-medium;
       }
@@ -37,27 +34,19 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    list-style-type: none;
-   // margin-top: 25px;
-    background-color: $color-green-dark;
-    border-radius: 13px;
-    opacity: 90%;
     width: 100%;
     margin-top: -1rem;
+    padding-top: 1rem;
+    border-radius: 13px;
+    list-style-type: none;
+    background-color: $color-green-dark;
+    opacity: 90%;
 
     & li {
       margin-bottom: 10px;
       font-size: 1.2rem;
 
       & a {
-        position: relative;
-        transition: all 200ms linear;
-        font-weight: 500;
-        font-size: 18px;
-        border-radius: 2px;
-        margin: 4px 0;
-        text-align: left;
-        text-decoration: none;
         display: -ms-flexbox;
         display: flex;
         -webkit-align-items: center;
@@ -66,19 +55,25 @@ header {
         align-items: center;
         justify-content: space-between;
           -ms-flex-pack: distribute;
-        letter-spacing: 0.2px;
-        color: white;
-        //all: unset;
-        background-color:  $color-green-dark;
-        border-radius: 5px;
+        position: relative;
         padding: 6px 10px;
-        box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+        margin: 4px 0;
+        border-radius: $border-radius-normal;
+        text-align: left;
+        text-decoration: none;
+        letter-spacing: 0.2px;
+        font-weight: 500;
+        font-size: 18px;
+        color: #fff;
+        background-color:  $color-green-dark;
+        box-shadow: $box-shadow-dark;
 
         &:hover {
-          padding: 10px 12px;
+          padding: 8px 12px;
           cursor: pointer;
+          color: #fff;
           background-color: $color-green-medium;
-          color: white;
+          transition: $transition-time;
         }
       }
     }
@@ -86,12 +81,121 @@ header {
 }
 
 .header-bg {
-  background-color: $color-green-dark;
   border-bottom-left-radius: 13px;
   border-bottom-right-radius: 13px;
+  background-color: $color-green-dark;
   opacity: 90%;
-  
 }
+
+// Dropdown menu
+
+.navDropdown {
+  position: relative;
+  max-width: 100%;
+  text-align: center;
+}
+
+.navDropdown label {
+  width: 150px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff;
+  background-color: $color-green-dark;
+  cursor: pointer;
+  box-shadow: $box-shadow-dark;
+  z-index: 2;
+
+  &:hover {
+    padding: 12px 14px;
+    background-color:$color-green-medium;
+    transition-duration: 0.2s;
+  }
+}
+
+#dropdown:checked,
+#dropdown:not(:checked){
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dropdown:checked + label,
+.dropdown:not(:checked) + label{
+  position: relative;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  border: none;
+  border-radius: $border-radius-normal;
+  letter-spacing: 1px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 17px;
+  cursor: pointer;
+  transition: $transition-time;
+}
+
+.dropdown:checked + label:before,
+.dropdown:not(:checked) + label:before{
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: '';
+  z-index: -1;
+  cursor: auto;
+  pointer-events: none;
+}
+
+.dropdown:checked + label:before{
+  pointer-events: auto;
+}
+
+.dropdown:not(:checked) + label .uil {
+  font-size: 24px;
+  margin-left: 10px;
+  transition: transform 200ms linear;
+}
+
+.dropdown:checked + label .uil {
+  transform: rotate(180deg);
+  font-size: 24px;
+  margin-left: 10px;
+  transition: transform 200ms linear;
+}
+
+.section-dropdown {
+  position: absolute;
+  padding: 5px;
+  top: 70px;
+  left: 0;
+  border-radius: $border-radius-normal;
+  display: block;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: $transition-time;
+}
+
+.dropdown:checked ~ .section-dropdown{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+// Hamburger Menu
 
 .plate {
   height: 50px;
@@ -202,111 +306,6 @@ header {
   transition: transform 400ms 250ms;
 }
 
-// A TESTER
-
-.sec-center {
-  position: relative;
-  max-width: 100%;
-  text-align: center;
-}
-
-[type="checkbox"]:checked,
-[type="checkbox"]:not(:checked){
-  position: absolute;
-  left: -9999px;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.dropdown:checked + label,
-.dropdown:not(:checked) + label{
-  position: relative;
-  font-weight: 400;
-  font-size: 15px;
-  transition: all 200ms linear;
-  border-radius: 4px;
-  letter-spacing: 1px;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
-  -ms-justify-content: center;
-  justify-content: center;
-  -ms-flex-pack: center;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-}
-
-.dropdown:checked + label:before,
-.dropdown:not(:checked) + label:before{
-  position: fixed;
-  top: 0;
-  left: 0;
-  content: '';
-  z-index: -1;
-  cursor: auto;
-  pointer-events: none;
-}
-.dropdown:checked + label:before{
-  pointer-events: auto;
-}
-.dropdown:not(:checked) + label .uil {
-  font-size: 24px;
-  margin-left: 10px;
-  transition: transform 200ms linear;
-}
-.dropdown:checked + label .uil {
-  transform: rotate(180deg);
-  font-size: 24px;
-  margin-left: 10px;
-  transition: transform 200ms linear;
-}
-.section-dropdown {
-  position: absolute;
-  padding: 5px;
-  top: 70px;
-  left: 0;
-  border-radius: 4px;
-  display: block;
-  z-index: 2;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(20px);
-  transition: all 200ms linear;
-}
-
-.dropdown:checked ~ .section-dropdown{
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-.sec-center label {
-  background-color: $color-green-dark;
-  color: white;
-  padding: 8px;
-  border: none;
-  border-radius: 8px;
-  width: 150px;
-  text-align: center;
-  cursor: pointer;
-  z-index: 2;
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-  &:hover {
-    transition-duration: 0.2s;
-    background-color:$color-green-medium;
-    padding: 12px 14px;
-  }
-}
-
-// 
-
 @media (min-width: $breakpoint-medium-devices) {
   header {
     flex-direction: row;
@@ -316,50 +315,35 @@ header {
     height: 80px;
     width: 100%;
 
-    & div {
-      & a:first-child img {
-        height: 70px;
-      }
-  
-      & a:last-child {
+    & div a:last-child {
+      color: $color-green-dark;
+
+      & h1 {
         color: $color-green-dark;
-  
-        & :hover {
-          color: $color-green-light;
-        }
-  
-        & h1 {
-          color: $color-green-dark;
-          font-size: 1.5rem;
-          text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.50) ;
-        }
+        text-shadow: $text-shadow-dark ;
       }
     }    
 
     & nav ul {
-      display: flex;
       flex-direction: row;
       gap: 10px;
       margin-top: 0;
       background-color: transparent;
 
-      & li {
-  
-        & a {
-          color: $color-green-dark;
-          //all: unset;
-          background-color:  rgba(255, 255, 255, 0.25);
-          text-shadow: 2px 2px rgba(255, 255, 255, 0.25);
-  
-          &:visited {
-            color: $color-green-dark;
-          }
+      & li a {
+        color: $color-green-dark;
+        text-shadow: $text-shadow-light;
+        background-color:  $bg-color-light;
+        backdrop-filter: blur(15px);
 
-          &:hover {
-            padding: 10px 12px;
-            cursor: pointer;
-            background-color:  rgba(255, 255, 255, 0.25);
-          }
+        &:visited {
+          color: $color-green-dark;
+        }
+
+        &:hover {
+          color: $color-green-dark;
+          background-color:  $bg-color-light;
+          cursor: pointer;
         }
       }
     }
@@ -368,6 +352,7 @@ header {
       display: none;
     }
   }
+  
   .header-bg {
     background-color: $color-green-light;
   }

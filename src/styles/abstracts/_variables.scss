@@ -1,3 +1,6 @@
+$font-family-title: 'Urbanist', sans-serif;
+$font-family-content: 'Red Hat Text', sans-serif;
+
 $breakpoint-medium-devices: 768px;
 $breakpoint-large-devices: 1024px;
 
@@ -6,9 +9,15 @@ $color-orange: #FD8E01;
 $color-green-light: #BCC21C;
 $color-green-medium: #80AB01;
 $color-green-dark: #0C7524;
-$color-blue-light: #00A8BB;
-$color-blue-medium: #017779;
-$color-blue-dark: #003349;
 
-$font-family-title: 'Urbanist', sans-serif;
-$font-family-content: 'Red Hat Text', sans-serif;
+$bg-color-light: rgba(255, 255, 255, 0.45);
+
+$border-radius-normal: 5px;
+
+$box-shadow-dark: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+$box-shadow-hero: 0 10px 20px 1px #808080;
+
+$text-shadow-dark: 2px 2px rgba(0, 0, 0, 0.15);
+$text-shadow-light: 2px 2px rgba(255, 255, 255, 0.50);
+
+$transition-time: all 200ms linear;

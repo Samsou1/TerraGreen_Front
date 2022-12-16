@@ -113,10 +113,10 @@ const EditProfile = () => {
 
   return (
     <>
-      <h1 className="register-title">Edit your Profile</h1>
+      <h1 className="formTitle">Edit your Profile</h1>
       <Errors errors={errors} />
-      <form onSubmit={handleSubmit} className="register-form-container">
-        <div className="input-container">
+      <form onSubmit={handleSubmit} className="formContainer">
+        <div className="formInputContainer">
           <label htmlFor="email">Email </label>
           <input
             onChange={(e) => setEmail(e.target.value)}
@@ -126,7 +126,7 @@ const EditProfile = () => {
             placeholder="Email"
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="username">Username</label>
           <input
             onChange={(e) => setUsername(e.target.value)}
@@ -136,7 +136,7 @@ const EditProfile = () => {
             placeholder="Username"
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="description">Description</label>
           <textarea
             onChange={(e) => setDescription(e.target.value)}
@@ -146,7 +146,7 @@ const EditProfile = () => {
           />
         </div>
 
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="country_id">Country</label>
           <select
             onChange={(e) => setCountry(e.target.value)}
@@ -166,7 +166,7 @@ const EditProfile = () => {
             })}
           </select>
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="region_id">Region</label>
           <select
             onChange={(e) => setRegion(e.target.value)}
@@ -186,7 +186,7 @@ const EditProfile = () => {
             })}
           </select>
         </div>
-        <div className="input-container-notif">
+        <div className="formCheckbox">
           <label htmlFor="notification_subscription">Notification</label>
           <input
             type="checkbox"
@@ -197,7 +197,7 @@ const EditProfile = () => {
             onChange={(e) => setNotification(e.target.checked)}
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="password">Password</label>
           <input
             onChange={(e) => setPassword(e.target.value)}
@@ -207,7 +207,7 @@ const EditProfile = () => {
             placeholder="Password"
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="confirmPassword">Confirm Password</label>
           <input
             onChange={(e) => setConfirmPassword(e.target.value)}

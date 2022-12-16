@@ -22,6 +22,9 @@ body {
 main {
   display: flex;
   flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 a {
@@ -31,13 +34,4 @@ a {
   &:hover {
     color: $color-green-medium;
   }
-}
-
-.link {
-  font-size: 16px;
-}
-
-.input-container{
-  display: flex;
-  flex-direction: column;
 }
