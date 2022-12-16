@@ -18,7 +18,6 @@ import EditProject from "./pages/EditProject";
 import NewPassword from "./pages/NewPassword"
 import {createContext, useState} from "react";
 
-import { createContext, useState } from "react";
 import CookieConsent from "react-cookie-consent";
 
 export const AppContext = createContext(null);
