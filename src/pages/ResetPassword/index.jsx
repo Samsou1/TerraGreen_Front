@@ -23,8 +23,8 @@ const ResetPassword = () => {
 
   return (
     <>
-      <h1 className="title-form">Reset your password</h1>
-      <form onSubmit={handleSubmit} className="container-form">
+      <h1 className="reset-title">Reset your password</h1>
+      <form onSubmit={handleSubmit} className="reset-container-form">
         <div className="input-container">
           <label htmlFor="email">Email </label>
           <input
