@@ -156,9 +156,9 @@ const EditProject = () => {
 
   return (
     <>
-      <h1 className="new-title">Edit project</h1>
+      <h1 className="edit-title">Edit project</h1>
       <Errors errors={errors} />
-      <form onSubmit={handleSubmit} className="new-container-form">
+      <form onSubmit={handleSubmit} className="editproject-container-form">
         <div className="input-container">
           <label htmlFor="title">Title</label>
           <input
@@ -284,7 +284,7 @@ const EditProject = () => {
         </div>
         <input type="submit" value="Update" />
       </form>
-      <div>{image && <img src={image} alt="The current file" />}</div>
+      
     </>
   );
 };

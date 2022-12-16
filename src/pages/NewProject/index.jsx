@@ -238,7 +238,7 @@ function FileForm() {
           <label htmlFor="image">Image</label>
           <input type="file" name="image" id="image" />
         </div>
-        <input type="submit" value="Create project" />
+        <input type="submit" value="Create project"  />
       </form>
     </div>
   );

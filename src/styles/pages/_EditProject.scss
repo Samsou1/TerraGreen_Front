@@ -1,21 +1,20 @@
-main {
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 
-.register-title {
+.edit-title {
   margin-bottom: 35px;
   padding-top: 6rem;
 }
 
-.register-form-container {
+.editproject-container-form {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 250px;
   & input {
     border: 1px solid $color-green-dark;
     padding: 12px 20px;
     margin: 8px 0;
     border-radius: 5px;
+  
     &[type="submit"] {
       background-color: $color-green-dark;
       color: white;
@@ -42,20 +41,22 @@ main {
       height: 30px;
     }
      & textarea {
-      border-radius: 8px;
+      border-radius: 5px;
       border: 1px solid $color-green-dark;
      }
   }
-  .input-container-notif {
-    & label {
-      padding-right: 1rem;
-    }
-  }
- 
+ #image-container {
+   & label {
+    padding-right: 1rem;
+   }
+   #image {
+    width: 250px;
+   }
+ }
 }
 
 @media (min-width: $breakpoint-medium-devices) {
-  .register-form-container {
+  .new-form-container {
     min-width: 400px;
   }
 }
