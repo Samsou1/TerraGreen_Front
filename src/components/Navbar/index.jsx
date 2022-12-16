@@ -63,13 +63,15 @@ const Navbar = () => {
                 <Link to="/projects">Projects</Link>
               </li>
               <li>
-                <Link to="/myprojects">Myprojects</Link>
-              </li>
-              <li>
-                <Link to="/profile">Profile</Link>
-              </li>
-              <li>
-                <LogoutButton />
+                <div className="sec-center"> 	
+                  <input className="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
+                  <label className="for-dropdown" htmlFor="dropdown">Profile</label>
+                  <div className="section-dropdown"> 
+                    <Link to="/profile">Profile</Link>
+                    <Link to="/myprojects">My projects</Link>
+                    <LogoutButton />
+                  </div>
+                </div>
               </li>
             </ul>
           )}
@@ -147,10 +149,14 @@ const Navbar = () => {
                 <Link to="/projects">Projects</Link>
               </li>
               <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/register">Register</Link>
+                <div className="sec-center"> 	
+                  <input className="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
+                  <label className="for-dropdown" htmlFor="dropdown">Connect</label>
+                  <div className="section-dropdown"> 
+                    <Link to="/login">Login</Link>
+                    <Link to="/register">Register</Link>
+                  </div>
+                </div>
               </li>
             </ul>
           )}

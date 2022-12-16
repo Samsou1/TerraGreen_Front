@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import APIManager from "../../services/api";
 import { useNavigate } from "react-router-dom";
-import { useAtomValue } from "jotai/utils";
-import { countriesAtom } from "../../store/country";
-import { projectStatusesAtom } from "../../store/projectStatus";
 import { currentUserId } from "../../services/user";
+import Errors from "../../components/Errors";
+import { validateInput } from "../../services/validateInput";
 
 const EditProject = () => {
   const [title, setTitle] = useState("");
@@ -14,39 +13,94 @@ const EditProject = () => {
   const [postalCode, setPostalCode] = useState("");
   const [date, setDate] = useState("");
   const [projectStatusesOptions, setProjectStatusesOptions] = useState([]);
-  // const projectStatusesOptions = useAtomValue(projectStatusesAtom);
   const [status, setStatus] = useState("");
   const [countryOptions, setCountryOptions] = useState([]);
   const [country, setCountry] = useState();
   const [regionOptions, setRegionOptions] = useState([]);
   const [region, setRegion] = useState("");
-  // const countryOptions = useAtomValue(countriesAtom);
-
   const [image, setImage] = useState("");
+  const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
+
+  const validateData = () => {
+    let validate = true;
+    if (title.length < 3) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "Your title must be at least 3 characters long" },
+      ]);
+      validate = false;
+    }
+    if (content.length < 10) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "Your description must be at least 10 characters long" },
+      ]);
+      validate = false;
+    }
+    if (address.length < 1) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "You must give the address of the project" },
+      ]);
+      validate = false;
+    }
+    if (city.length < 1) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "You must give the city of the project" },
+      ]);
+      validate = false;
+    }
+    if (postalCode.length < 1) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "You must give the ZIP code of the project" },
+      ]);
+      validate = false;
+    }
+    if (date.length < 1) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "You must give your project a date" },
+      ]);
+      validate = false;
+    }
+    if([title, content, address, city, postalCode, date].some(element => !validateInput(element))){
+      setErrors((errs) => [
+        ...errs,
+        { message: "Don't use special characters" },
+      ]);
+      validate = false;
+      
+    }
+    return validate;
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData();
-    data.append("project[user_id]", currentUserId());
-    data.append("project[title]", title);
-    data.append("project[content]", content);
-    data.append("project[date]", date);
-    data.append("project[address]", address);
-    data.append("project[city]", city);
-    data.append("project[postal_code]", postalCode);
-    data.append("project[project_status_id]", status);
-    data.append("project[region_id]", region);
-    data.append("project[country_id]", country);
-    if (image === null) {
-      data.append("project[image]", event.target.image.files[0]);
-    }
-    try {
-      const id = window.location.pathname.split("/")[2];
-      await APIManager.editProject(id, data);
-      navigate("/myprojects");
-    } catch (err) {
-      console.error(err);
+    if (validateData()) {
+      const data = new FormData();
+      data.append("project[user_id]", currentUserId());
+      data.append("project[title]", title);
+      data.append("project[content]", content);
+      data.append("project[date]", date);
+      data.append("project[address]", address);
+      data.append("project[city]", city);
+      data.append("project[postal_code]", postalCode);
+      data.append("project[project_status_id]", status);
+      data.append("project[region_id]", region);
+      data.append("project[country_id]", country);
+      if (image === null) {
+        data.append("project[image]", event.target.image.files[0]);
+      }
+      try {
+        const id = window.location.pathname.split("/")[2];
+        await APIManager.editProject(id, data);
+        navigate("/myprojects");
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
 
@@ -103,6 +157,7 @@ const EditProject = () => {
   return (
     <>
       <h1 className="new-title">Edit project</h1>
+      <Errors errors={errors} />
       <form onSubmit={handleSubmit} className="new-container-form">
         <div className="input-container">
           <label htmlFor="title">Title</label>

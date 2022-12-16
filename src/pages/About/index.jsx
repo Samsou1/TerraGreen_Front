@@ -27,45 +27,81 @@ const About = () => {
             More and more environmentalists are working towards a common goal:
             to collect the garbage on the streets, country roads, bike paths and
             public places in order to make their environment more livable. Our
-            society is a throwaway society. It is easier for us to throw things
-            away. Air and water are vital, but today they have become big
-            garbage dumps. Each and every one of us must do our part to save the
-            planet. Our goal is to find the location of the area to be cleaned
-            and involve as many people as possible..{" "}
+            society is a throwaway society. It is easier for us to throw rather
+            than reuse or repair them. Air and water are vital, but today they
+            have become big garbage dumps. Each and every one of us must do our
+            part to save the planet. Our goal is to find the location of the
+            area to be cleaned and involve as many people as possible.
           </p>
         </div>
       </div>
-      <div className='about-team'>
+      <div className="about-team">
         <h2>Our team</h2>
-        <div className='team-cards'>
-          <div className='card member-card'>
+        <div className="team-cards">
+          <div className="card member-card">
             <h3>ANDRIEU Pierre</h3>
             <p>Developer at TerraGreen</p>
-            
-            <img src={pierro} alt="logo" ></img>
+            <div>
+              <a href="https://github.com/PierreAND">
+                <i className="fa-brands fa-github"></i>
+              </a>
+              <a href="https://github.com/PierreAND">
+                <i className="fa-brands fa-linkedin"></i>
+              </a>
+            </div>
+            <img src={pierro} alt="logo"></img>
           </div>
-          <div className='card member-card'>
+          <div className="card member-card">
             <h3>LAIGNEAU Gregory</h3>
             <p>Developer at TerraGreen</p>
-            <img src={greg} alt="logo" ></img>
+            <div>
+              <a href="https://github.com/GregoryLAIGNEAUD">
+                <i className="fa-brands fa-github"></i>
+              </a>
+              <a href="https://github.com/PierreAND">
+                <i className="fa-brands fa-linkedin"></i>
+              </a>
+            </div>
+            <img src={greg} alt="logo"></img>
           </div>
-          <div className='card member-card'>
-            <h3>Linard Sami</h3>
+          <div className="card member-card">
+            <h3>LINARD Sami</h3>
             <p>Developer at TerraGreen</p>
-            
-            <img src={sam} alt="logo" ></img>
+            <div>
+              <a href="https://github.com/Samsou1">
+                <i className="fa-brands fa-github"></i>
+              </a>
+              <a href="https://github.com/PierreAND">
+                <i className="fa-brands fa-linkedin"></i>
+              </a>
+            </div>
+            <img src={sam} alt="logo"></img>
           </div>
-          <div className='card member-card'>
+          <div className="card member-card">
             <h3>PEUCH Noellie</h3>
             <p>Developer at TerraGreen</p>
-            
-            <img src={noellie} alt="logo" ></img>
+            <div>
+              <a href="https://github.com/pandaka87">
+                <i className="fa-brands fa-github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/noellie-peuch/">
+                <i className="fa-brands fa-linkedin"></i>
+              </a>
+            </div>
+            <img src={noellie} alt="logo"></img>
           </div>
-          <div className='card member-card'>
+          <div className="card member-card">
             <h3>PFEIFFER Christopher</h3>
             <p>Developer at TerraGreen</p>
-          
-            <img src={chris} alt="logo" ></img>
+            <div>
+              <a href="https://github.com/chrispfr">
+                <i className="fa-brands fa-github"></i>
+              </a>
+              <a href="https://github.com/PierreAND">
+                <i className="fa-brands fa-linkedin"></i>
+              </a>
+            </div>
+            <img src={chris} alt="logo"></img>
           </div>
         </div>
       </div>

@@ -2,6 +2,11 @@ import APIManager from "../../services/api";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Errors from "../../components/Errors";
+import {
+  validatePassword,
+  validateEmail,
+} from "../../services/validateUserData";
+import { validateInput } from "../../services/validateInput";
 
 const EditProfile = () => {
   const [password, setPassword] = useState("");
@@ -9,6 +14,7 @@ const EditProfile = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [description, setDescription] = useState("");
+  const [notification, setNotification] = useState("");
   const [errors, setErrors] = useState([]);
   const [countryOptions, setCountryOptions] = useState([]);
   const [country, setCountry] = useState();
@@ -23,6 +29,9 @@ const EditProfile = () => {
     data.description ? setDescription(data.description) : setDescription("");
     data.region_id ? setRegion(data.region_id) : setRegion("");
     data.country_id ? setCountry(data.country_id) : setCountry("");
+    data.notification_subscription
+      ? setNotification(data.notification_subscription)
+      : setNotification("");
   };
 
   useEffect(() => {
@@ -38,10 +47,36 @@ const EditProfile = () => {
       .catch(console.error);
   }, []);
 
+  const validateData = () => {
+    let validate = true;
+    if (password !== confirmPassword) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "Your password and confirmation password don't match" },
+      ]);
+      validate = false;
+    }
+    if (!validateEmail(email)) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "Your email doesn't satisfy the usual policy" },
+      ]);
+      validate = false;
+    }
+    if (!validateInput(username)) {
+      setErrors((errs) => [
+        ...errs,
+        { message: "Your username cannot use special characters" },
+      ]);
+      validate = false;
+    }
+    return validate;
+  };
+
   const handleSubmit = async (e) => {
     setErrors([]);
     e.preventDefault();
-    if (password === confirmPassword) {
+    if (validateData()) {
       const data = {
         user: {
           username: username,
@@ -49,6 +84,7 @@ const EditProfile = () => {
           description: description,
           country_id: country,
           region_id: region,
+          notification_subscription: notification,
         },
       };
       if (password !== "") {
@@ -61,13 +97,6 @@ const EditProfile = () => {
         setErrors([{ message: "Something went wrong" }]);
         console.error(err);
       }
-    } else {
-      setErrors([
-        { message: "Password and confirmation password are different" },
-      ]);
-      throw new Error(
-        "The password and the confirmation password are different"
-      );
     }
   };
 
@@ -84,7 +113,7 @@ const EditProfile = () => {
 
   return (
     <>
-      <h1 className="register-title">Edit Profile</h1>
+      <h1 className="register-title">Edit your Profile</h1>
       <Errors errors={errors} />
       <form onSubmit={handleSubmit} className="register-form-container">
         <div className="input-container">
@@ -117,7 +146,7 @@ const EditProfile = () => {
           />
         </div>
 
-<div className="input-container">
+        <div className="input-container">
           <label htmlFor="country_id">Country</label>
           <select
             onChange={(e) => setCountry(e.target.value)}
@@ -156,6 +185,17 @@ const EditProfile = () => {
               );
             })}
           </select>
+        </div>
+        <div className="input-container-notif">
+          <label htmlFor="notification_subscription">Notification</label>
+          <input
+            type="checkbox"
+            id="notification_subscription"
+            name="notification_subscription"
+            checked={notification}
+            readOnly={false}
+            onChange={(e) => setNotification(e.target.checked)}
+          />
         </div>
         <div className="input-container">
           <label htmlFor="password">Password</label>

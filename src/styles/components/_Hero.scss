@@ -43,6 +43,8 @@
       width: 150px;
       text-align: center;
       cursor: pointer;
+
+      box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
       &:hover {
         transition-duration: 0.2s;
         background-color:$color-green-medium;
@@ -69,6 +71,10 @@
       & p {
         font-size: 10rem;
         padding: 0;
+      }
+
+      & a {
+        z-index: 2;
       }
     }
   }
