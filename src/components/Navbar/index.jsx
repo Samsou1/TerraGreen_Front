@@ -63,7 +63,7 @@ const Navbar = () => {
                 <Link to="/projects">Projects</Link>
               </li>
               <li>
-                <div className="sec-center"> 	
+                <div className="navDropdown"> 	
                   <input className="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
                   <label className="for-dropdown" htmlFor="dropdown">Profile</label>
                   <div className="section-dropdown"> 
@@ -149,7 +149,7 @@ const Navbar = () => {
                 <Link to="/projects">Projects</Link>
               </li>
               <li>
-                <div className="sec-center"> 	
+                <div className="navDropdown"> 	
                   <input className="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
                   <label className="for-dropdown" htmlFor="dropdown">Connect</label>
                   <div className="section-dropdown"> 

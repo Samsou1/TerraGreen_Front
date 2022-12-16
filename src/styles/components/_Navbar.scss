@@ -7,7 +7,6 @@ header {
   z-index: 1;
   position: fixed;
   width: 100%;
-  
 
   & div {
     display: flex;
@@ -66,18 +65,18 @@ header {
         justify-content: space-between;
           -ms-flex-pack: distribute;
         letter-spacing: 0.2px;
-        color: white;
+        color: #fff;
         //all: unset;
         background-color:  $color-green-dark;
         border-radius: $border-radius-normal;
         padding: 6px 10px;
-        box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+        box-shadow: $box-shadow-dark;
 
         &:hover {
           padding: 10px 12px;
           cursor: pointer;
           background-color: $color-green-medium;
-          color: white;
+          color: #fff;
         }
       }
     }
@@ -91,6 +90,111 @@ header {
   opacity: 90%;
   
 }
+
+// Dropdown menu
+
+.navDropdown {
+  position: relative;
+  max-width: 100%;
+  text-align: center;
+}
+
+.navDropdown label {
+  background-color: $color-green-dark;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  &:hover {
+    transition-duration: 0.2s;
+    background-color:$color-green-medium;
+    padding: 12px 14px;
+  }
+}
+
+#dropdown:checked,
+#dropdown:not(:checked){
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dropdown:checked + label,
+.dropdown:not(:checked) + label{
+  position: relative;
+  font-weight: 400;
+  font-size: 15px;
+  transition: all 200ms linear;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown:checked + label:before,
+.dropdown:not(:checked) + label:before{
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: '';
+  z-index: -1;
+  cursor: auto;
+  pointer-events: none;
+}
+.dropdown:checked + label:before{
+  pointer-events: auto;
+}
+.dropdown:not(:checked) + label .uil {
+  font-size: 24px;
+  margin-left: 10px;
+  transition: transform 200ms linear;
+}
+.dropdown:checked + label .uil {
+  transform: rotate(180deg);
+  font-size: 24px;
+  margin-left: 10px;
+  transition: transform 200ms linear;
+}
+.section-dropdown {
+  position: absolute;
+  padding: 5px;
+  top: 70px;
+  left: 0;
+  border-radius: 4px;
+  display: block;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 200ms linear;
+}
+
+.dropdown:checked ~ .section-dropdown{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+// Hamburger Menu
 
 .plate {
   height: 50px;
@@ -200,111 +304,6 @@ header {
 .active .x {
   transition: transform 400ms 250ms;
 }
-
-// A TESTER
-
-.sec-center {
-  position: relative;
-  max-width: 100%;
-  text-align: center;
-}
-
-#dropdown:checked,
-#dropdown:not(:checked){
-  position: absolute;
-  left: -9999px;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.dropdown:checked + label,
-.dropdown:not(:checked) + label{
-  position: relative;
-  font-weight: 400;
-  font-size: 15px;
-  transition: all 200ms linear;
-  border-radius: 4px;
-  letter-spacing: 1px;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
-  -ms-justify-content: center;
-  justify-content: center;
-  -ms-flex-pack: center;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-}
-
-.dropdown:checked + label:before,
-.dropdown:not(:checked) + label:before{
-  position: fixed;
-  top: 0;
-  left: 0;
-  content: '';
-  z-index: -1;
-  cursor: auto;
-  pointer-events: none;
-}
-.dropdown:checked + label:before{
-  pointer-events: auto;
-}
-.dropdown:not(:checked) + label .uil {
-  font-size: 24px;
-  margin-left: 10px;
-  transition: transform 200ms linear;
-}
-.dropdown:checked + label .uil {
-  transform: rotate(180deg);
-  font-size: 24px;
-  margin-left: 10px;
-  transition: transform 200ms linear;
-}
-.section-dropdown {
-  position: absolute;
-  padding: 5px;
-  top: 70px;
-  left: 0;
-  border-radius: 4px;
-  display: block;
-  z-index: 2;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(20px);
-  transition: all 200ms linear;
-}
-
-.dropdown:checked ~ .section-dropdown{
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-.sec-center label {
-  background-color: $color-green-dark;
-  color: white;
-  padding: 8px;
-  border: none;
-  border-radius: 8px;
-  width: 150px;
-  text-align: center;
-  cursor: pointer;
-  z-index: 2;
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-  &:hover {
-    transition-duration: 0.2s;
-    background-color:$color-green-medium;
-    padding: 12px 14px;
-  }
-}
-
-// 
 
 @media (min-width: $breakpoint-medium-devices) {
   header {
