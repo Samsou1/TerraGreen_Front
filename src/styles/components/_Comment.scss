@@ -72,6 +72,6 @@
     padding: 10px 26px;
     cursor: pointer;
     background-color: $color-green-medium;
-    transition: all 200ms linear;
+    transition: $transition-time;
   }
 }
