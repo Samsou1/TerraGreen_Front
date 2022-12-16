@@ -149,10 +149,14 @@ const Navbar = () => {
                 <Link to="/projects">Projects</Link>
               </li>
               <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/register">Register</Link>
+                <div className="sec-center"> 	
+                  <input className="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
+                  <label className="for-dropdown" for="dropdown">Connect</label>
+                  <div className="section-dropdown"> 
+                    <Link to="/login">Login</Link>
+                    <Link to="/register">Register</Link>
+                  </div>
+                </div>
               </li>
             </ul>
           )}
