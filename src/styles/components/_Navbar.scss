@@ -53,9 +53,8 @@ header {
         position: relative;
         transition: all 200ms linear;
         font-weight: 500;
-        font-size: 15px;
+        font-size: 18px;
         border-radius: 2px;
-        padding: 6px 0;
         margin: 4px 0;
         text-align: left;
         text-decoration: none;
@@ -78,6 +77,7 @@ header {
         &:hover {
           padding: 10px 12px;
           cursor: pointer;
+          background-color: $color-green-medium;
           color: white;
         }
       }
@@ -290,7 +290,7 @@ header {
 .sec-center label {
   background-color: $color-green-dark;
   color: white;
-  padding: 6px 10px;
+  padding: 8px;
   border: none;
   border-radius: 8px;
   width: 150px;
@@ -301,7 +301,7 @@ header {
   &:hover {
     transition-duration: 0.2s;
     background-color:$color-green-medium;
-    padding: 8px 12px;
+    padding: 12px 14px;
   }
 }
 
@@ -344,34 +344,12 @@ header {
       background-color: transparent;
 
       & li {
-        margin-bottom: 10px;
-        font-size: 1.2rem;
   
         & a {
-          position: relative;
-          transition: all 200ms linear;
-          font-weight: 500;
-          font-size: 15px;
-          border-radius: 2px;
-          padding: 6px 0;
-          margin: 4px 0;
-          text-align: left;
-          text-decoration: none;
-          display: -ms-flexbox;
-          display: flex;
-          -webkit-align-items: center;
-          -moz-align-items: center;
-          -ms-align-items: center;
-          align-items: center;
-          justify-content: space-between;
-            -ms-flex-pack: distribute;
-          letter-spacing: 0.2px;
           color: $color-green-dark;
           //all: unset;
           background-color:  rgba(255, 255, 255, 0.25);
-          border-radius: 5px;
-          padding: 6px 10px;
-          box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+          text-shadow: 2px 2px rgba(255, 255, 255, 0.25);
   
           &:visited {
             color: $color-green-dark;
@@ -380,6 +358,7 @@ header {
           &:hover {
             padding: 10px 12px;
             cursor: pointer;
+            background-color:  rgba(255, 255, 255, 0.25);
           }
         }
       }
