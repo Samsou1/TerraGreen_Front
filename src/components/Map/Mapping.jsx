@@ -30,13 +30,15 @@ function Mapping({ project }) {
         }
       })
       .then((data) => {
-        setCoords({
-          latitude: data[0].lat,
-          longitude: data[0].lon,
-        });
+        if(data[0]){
+          setCoords({
+            latitude: data[0].lat,
+            longitude: data[0].lon,
+          });
+        }
       })
 
-      .catch(() => error("Please Check your input"));
+      .catch(console.error);
   }
 
   return (
