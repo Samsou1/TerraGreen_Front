@@ -65,7 +65,7 @@ const Navbar = () => {
               <li>
                 <div className="sec-center"> 	
                   <input className="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
-                  <label className="for-dropdown" for="dropdown">Profile</label>
+                  <label className="for-dropdown" htmlFor="dropdown">Profile</label>
                   <div className="section-dropdown"> 
                     <Link to="/profile">Profile</Link>
                     <Link to="/myprojects">My projects</Link>

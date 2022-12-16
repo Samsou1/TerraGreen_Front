@@ -15,15 +15,29 @@ import ShowProject from "./pages/ShowProject";
 import NewProject from "./pages/NewProject";
 import MyProjects from "./pages/MyProjects";
 import EditProject from "./pages/EditProject";
-import {createContext, useState} from "react";
-
+import { createContext, useState } from "react";
+import CookieConsent from "react-cookie-consent";
 
 export const AppContext = createContext(null);
 
 function App() {
-  const [latestProject, setLatestProject] = useState(AppContext)
+  const [latestProject, setLatestProject] = useState(AppContext);
   return (
     <BrowserRouter>
+      <CookieConsent
+        location="bottom"
+        cookieName="acceptCookies"
+        expires={999}
+        overlay
+        enableDeclineButton
+        flipButtons
+        buttonStyle={{ backgroundColor: "#4CAF50", borderRadius: "5px" }}
+        declineButtonStyle={{ backgroundColor: "#DB0A26", borderRadius: "5px" }}
+      >
+        This website uses cookies to enhance the user experience. It will only
+        store your session, your email address and any other information you write in
+        your profile. You can delete your account at any moment.
+      </CookieConsent>
       <Navbar />
       <main>
         <Routes>
@@ -36,7 +50,16 @@ function App() {
             <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/myprojects" element={<MyProjects />} />
             <Route path="/editproject/:id" element={<EditProject />} />
-            <Route path="/newproject" element={ <AppContext.Provider value={{ latestProject, setLatestProject}} ><NewProject /> </AppContext.Provider> } />
+            <Route
+              path="/newproject"
+              element={
+                <AppContext.Provider
+                  value={{ latestProject, setLatestProject }}
+                >
+                  <NewProject />{" "}
+                </AppContext.Provider>
+              }
+            />
           </Route>
           <Route element={<NotLoggedInRoute />}>
             <Route path="/register" element={<Register />} />
@@ -45,7 +68,7 @@ function App() {
           </Route>
         </Routes>
       </main>
-     
+
       <Footer />
     </BrowserRouter>
   );
