@@ -1,27 +1,34 @@
 @import "../abstracts/variables";
 
+.hero-container {
+  margin-top: 0px;
+}
+
 .home-container {
 
   & article {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     & img {
       width: 200px;
     }
-    &  p {
+
+    & p {
       font-size: 1.1rem;
       text-align: center;
       padding: 0 10px;
       margin: 0 0 25px 0;
     }
+
     h1 {
       font-size: 1.5rem;
       margin-bottom: 1rem;
       text-align: center;
     }
   }
-   
+
 }
 
 @media (min-width: $breakpoint-medium-devices) {
