@@ -10,7 +10,7 @@ const Hero = () => {
         <video src={videoBg}  muted></video>
         <div>
           <h1>Welcome to TerraGreen</h1>
-          <p>Create your project with TerraGreen</p>
+          <p>Create your cleaning project with TerraGreen</p>
            <Link to="/newproject">New Project</Link>
         </div>
       </section>
