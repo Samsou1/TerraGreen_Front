@@ -260,7 +260,7 @@ export default class APIManager {
 
   static async setNewPassword(payload) {
     try {
-      const response = await API.patch('/users/password', payload);
+      const response = await API.post('/users/password', payload);
       return response.data
     }catch (err) {
       throw new Error(err);

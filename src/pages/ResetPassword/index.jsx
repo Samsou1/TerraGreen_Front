@@ -14,7 +14,7 @@ const ResetPassword = () => {
       },
     };
     try {
-      await APIManager.resetPassword(data);
+      await APIManager.setNewPassword(data);
       navigate("/");
     } catch (err) {
       console.error(err);
