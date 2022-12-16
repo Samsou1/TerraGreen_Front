@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Errors from "../../components/Errors";
 import { useSetAtom } from "jotai";
 import { userLoggedInAtom } from "../../store/user";
+import { userLoggedIn } from "../../services/user";
 
 function Login() {
   const navigate = useNavigate();
@@ -24,7 +25,9 @@ function Login() {
     };
     try {
       await APIManager.loginUser(data);
-      setUser(true);
+      if (userLoggedIn()) {
+        setUser(true);
+      }
       navigate("/");
     } catch (err) {
       setErrors([{ message: "Invalid password or email" }]);
