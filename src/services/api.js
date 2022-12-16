@@ -258,9 +258,18 @@ export default class APIManager {
     }
   }
 
-  static async setNewPassword(payload) {
+  static async setResetPassword(payload) {
     try {
       const response = await API.post('/users/password', payload);
+      return response.data
+    }catch (err) {
+      throw new Error(err);
+  }
+  }
+
+  static async setNewPassword(payload) {
+    try {
+      const response = await API.patch('/users/password', payload);
       return response.data
     }catch (err) {
       throw new Error(err);
