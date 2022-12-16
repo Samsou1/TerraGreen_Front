@@ -63,13 +63,15 @@ const Navbar = () => {
                 <Link to="/projects">Projects</Link>
               </li>
               <li>
-                <Link to="/myprojects">Myprojects</Link>
-              </li>
-              <li>
-                <Link to="/profile">Profile</Link>
-              </li>
-              <li>
-                <LogoutButton />
+                <div className="sec-center"> 	
+                  <input className="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
+                  <label className="for-dropdown" for="dropdown">Profile</label>
+                  <div className="section-dropdown"> 
+                    <Link to="/profile">Profile</Link>
+                    <Link to="/myprojects">My projects</Link>
+                    <LogoutButton />
+                  </div>
+                </div>
               </li>
             </ul>
           )}

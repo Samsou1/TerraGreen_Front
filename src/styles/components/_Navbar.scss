@@ -50,18 +50,36 @@ header {
       font-size: 1.2rem;
 
       & a {
+        position: relative;
+        transition: all 200ms linear;
+        font-weight: 500;
+        font-size: 15px;
+        border-radius: 2px;
+        padding: 6px 0;
+        margin: 4px 0;
+        text-align: left;
+        text-decoration: none;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        -ms-align-items: center;
+        align-items: center;
+        justify-content: space-between;
+          -ms-flex-pack: distribute;
         letter-spacing: 0.2px;
+        color: white;
+        //all: unset;
+        background-color:  $color-green-dark;
+        border-radius: 5px;
+        padding: 6px 10px;
+        box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
 
-        &:link {
-          color: $color-green-light;
+        &:hover {
+          padding: 10px 12px;
+          cursor: pointer;
+          color: white;
         }
-
-        &:visited {
-          color: $color-green-light;
-        }
-         &:hover {
-          color: $color-green-medium;
-         }
       }
     }
   }
@@ -184,6 +202,111 @@ header {
   transition: transform 400ms 250ms;
 }
 
+// A TESTER
+
+.sec-center {
+  position: relative;
+  max-width: 100%;
+  text-align: center;
+}
+
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked){
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dropdown:checked + label,
+.dropdown:not(:checked) + label{
+  position: relative;
+  font-weight: 400;
+  font-size: 15px;
+  transition: all 200ms linear;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown:checked + label:before,
+.dropdown:not(:checked) + label:before{
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: '';
+  z-index: -1;
+  cursor: auto;
+  pointer-events: none;
+}
+.dropdown:checked + label:before{
+  pointer-events: auto;
+}
+.dropdown:not(:checked) + label .uil {
+  font-size: 24px;
+  margin-left: 10px;
+  transition: transform 200ms linear;
+}
+.dropdown:checked + label .uil {
+  transform: rotate(180deg);
+  font-size: 24px;
+  margin-left: 10px;
+  transition: transform 200ms linear;
+}
+.section-dropdown {
+  position: absolute;
+  padding: 5px;
+  top: 70px;
+  left: 0;
+  border-radius: 4px;
+  display: block;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 200ms linear;
+}
+
+.dropdown:checked ~ .section-dropdown{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.sec-center label {
+  background-color: $color-green-dark;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 8px;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  &:hover {
+    transition-duration: 0.2s;
+    background-color:$color-green-medium;
+    padding: 8px 12px;
+  }
+}
+
+// 
+
 @media (min-width: $breakpoint-medium-devices) {
   header {
     flex-direction: row;
@@ -211,8 +334,7 @@ header {
           text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.50) ;
         }
       }
-    }
-    
+    }    
 
     & nav ul {
       display: flex;
@@ -226,24 +348,39 @@ header {
         font-size: 1.2rem;
   
         & a {
+          position: relative;
+          transition: all 200ms linear;
+          font-weight: 500;
+          font-size: 15px;
+          border-radius: 2px;
+          padding: 6px 0;
+          margin: 4px 0;
+          text-align: left;
+          text-decoration: none;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-align-items: center;
+          -moz-align-items: center;
+          -ms-align-items: center;
+          align-items: center;
+          justify-content: space-between;
+            -ms-flex-pack: distribute;
           letter-spacing: 0.2px;
-  
-          &:link {
-            color: $color-green-dark;
-            //all: unset;
-            background-color:  rgba(255, 255, 255, 0.25);
-            border-radius: 5px;
-            padding: 6px 10px;
-            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
-          }
+          color: $color-green-dark;
+          //all: unset;
+          background-color:  rgba(255, 255, 255, 0.25);
+          border-radius: 5px;
+          padding: 6px 10px;
+          box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
   
           &:visited {
             color: $color-green-dark;
           }
-           &:hover {
+
+          &:hover {
             padding: 10px 12px;
             cursor: pointer;
-           }
+          }
         }
       }
     }
@@ -256,4 +393,3 @@ header {
     background-color: $color-green-light;
   }
 }
-  

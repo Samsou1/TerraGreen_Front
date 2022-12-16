@@ -42,6 +42,16 @@
   margin: 0 2rem;
 }
 
+.notifications {
+  margin-top: 1rem;
+
+  & span {
+    color: $color-green-dark;
+    font-style: italic;
+    margin-right: 1rem;
+  }
+}
+
 .profileBtns {
   margin: 2rem 0;
   display: flex;
