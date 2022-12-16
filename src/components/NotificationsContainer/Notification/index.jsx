@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { convertTimeStampToDate } from "../../../services/convertTimeStamp";
 
 const Notification = ({ notification }) => {
+
   if (notification.project_id) {
     return (
       <div className="notification">
