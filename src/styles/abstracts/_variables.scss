@@ -1,3 +1,6 @@
+$font-family-title: 'Urbanist', sans-serif;
+$font-family-content: 'Red Hat Text', sans-serif;
+
 $breakpoint-medium-devices: 768px;
 $breakpoint-large-devices: 1024px;
 
@@ -7,5 +10,8 @@ $color-green-light: #BCC21C;
 $color-green-medium: #80AB01;
 $color-green-dark: #0C7524;
 
-$font-family-title: 'Urbanist', sans-serif;
-$font-family-content: 'Red Hat Text', sans-serif;
+$bg-color-light: rgba(255, 255, 255, 0.45);
+
+$border-radius-normal: 5px;
+
+$box-shadow-dark: 0 0 10px 1px rgba(0, 0, 0, 0.25);

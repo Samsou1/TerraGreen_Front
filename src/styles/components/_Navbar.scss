@@ -54,7 +54,6 @@ header {
         transition: all 200ms linear;
         font-weight: 500;
         font-size: 18px;
-        border-radius: 2px;
         margin: 4px 0;
         text-align: left;
         text-decoration: none;
@@ -70,7 +69,7 @@ header {
         color: white;
         //all: unset;
         background-color:  $color-green-dark;
-        border-radius: 5px;
+        border-radius: $border-radius-normal;
         padding: 6px 10px;
         box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
 
@@ -348,8 +347,9 @@ header {
         & a {
           color: $color-green-dark;
           //all: unset;
-          background-color:  rgba(255, 255, 255, 0.25);
+          background-color:  rgba(255, 255, 255, 0.45);
           text-shadow: 2px 2px rgba(255, 255, 255, 0.25);
+          backdrop-filter: blur(15px);
   
           &:visited {
             color: $color-green-dark;
