@@ -19,6 +19,7 @@ const ShowProject = () => {
   const [comments, setComments] = useState([]);
   const [projectRegistrations, setProjectRegistrations] = useState([]);
   const [image, setImage] = useState("");
+  const [username, setUsername] = useState("")
   const navigate = useNavigate();
 
   const setAll = (data) => {
@@ -30,6 +31,7 @@ const ShowProject = () => {
     setComments(data.comments);
     setProjectRegistrations(data.project_registrations)
     setImage(data.image_url)
+    setUsername(data.user.username)
   };
 
   useEffect(() => {
@@ -52,7 +54,7 @@ const ShowProject = () => {
         <div className="projectInfos">
           <div className="projectDescription">
             <h1>{project.title}</h1>
-            <h2>Username</h2>
+            <h2>{username? username: "Anonymous"}</h2>
             <p>{project.content}</p>
             <div className="projectLocation">
               <h3>Location</h3>
@@ -89,7 +91,7 @@ const ShowProject = () => {
           <div className="projectInfos">
             <div className="projectDescription">
               <h1>{project.title}</h1>
-              <h2>Username</h2>
+              <h2>{username? username: "Anonymous"}</h2>
               <p>{project.content}</p>
               <div className="projectLocation">
                 <h3>Location</h3>
