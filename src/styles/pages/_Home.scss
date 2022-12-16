@@ -1,7 +1,5 @@
 @import "../abstracts/variables";
 
-
-
 .home-container {
 
   & article {
@@ -9,13 +7,17 @@
     flex-direction: column;
     align-items: center;
 
-    & img {
-      width: 200px;
+    & .img2 {
+      width: 180px;
     }
 
     & .img1 {
       width: 275px;
       margin-bottom: 1rem;
+    }
+
+    & .img3 {
+      width: 200px;
     }
 
     & p {
@@ -31,7 +33,6 @@
       text-align: center;
     }
   }
-
 }
 
 @media (min-width: $breakpoint-medium-devices) {
@@ -40,7 +41,6 @@
       width: 50px;
     }
   }
-
 }
 
 @media (min-width: $breakpoint-large-devices) {
@@ -62,7 +62,6 @@
     }
 
   }
-
 }
 
 .title-home {
