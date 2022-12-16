@@ -7,7 +7,7 @@ const Hero = () => {
     return (
       // autoPlay loop (Add it later before muted)
       <section className="hero-container">
-        <video src={videoBg} autoPlay loop  muted></video>
+        <video src={videoBg}   muted></video>
         <div>
           <h1>Welcome to TerraGreen</h1>
           <p>Create your cleaning project with TerraGreen</p>
@@ -20,7 +20,7 @@ const Hero = () => {
       return (
         // autoPlay loop (Add it later before muted)
         <section className="hero-container">
-          <video src={videoBg} muted autoPlay loop></video>
+          <video src={videoBg}  loop></video>
           <div>
             <h1>Welcome to TerraGreen</h1>
             <p>Participate to save Earth!</p>
