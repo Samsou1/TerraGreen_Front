@@ -19,7 +19,7 @@ const ProjectCard = ({ project }) => {
           />
           <div className="cardHeaderText">
             <h3 className="cardTitle">{project.title}</h3>
-            <p className="cardTagline">Set username</p>
+            <p className="cardTagline">Username</p>
           </div>
         </div>
         <div className="cardText">
