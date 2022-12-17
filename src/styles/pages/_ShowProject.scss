@@ -140,32 +140,6 @@
   }
 }
 
-// .projectShowBtnContainer button, 
-// .editBtn {
-//   all: unset;
-//   display: inline-block;
-//   padding: 1rem;
-//   margin: 0.2rem;
-//   box-sizing: border-box;
-//   border: transparent;
-//   border-radius: 40px;
-//   font-size: 11px;
-//   font-weight: 300;
-//   text-transform: uppercase;
-//   letter-spacing: 0.2em;
-//   color: #fff;
-//   background-color: $color-green-dark;
-//   cursor: pointer;
-//   outline: none;
-//   box-shadow: $box-shadow-dark;
-
-//   &:hover {
-//     transition-duration: 0.2s;
-//     background-color: $color-green-medium;
-//     color:#fff;
-//   }
-// }
-
 .projectAdditionnalBlocks {
   display: flex;
   flex-direction: column;
@@ -175,6 +149,10 @@
   & h3 {
     margin: 20px;
   }
+}
+
+.notificationsContainer {
+  margin: 1rem 2rem;
 }
 
 @media (min-width: $breakpoint-medium-devices) {
@@ -199,6 +177,4 @@
       border-top-right-radius: 0;
     }
   }
-  
-  // .projectShowBtnContainer button { margin: 1rem }
 }
