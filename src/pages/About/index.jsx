@@ -42,10 +42,10 @@ const About = () => {
             <h3>ANDRIEU Pierre</h3>
             <p>Developer at TerraGreen</p>
             <div>
-              <a href="https://github.com/PierreAND">
+              <a href="https://github.com/PierreAND" target="_blank">
                 <i className="fa-brands fa-github"></i>
               </a>
-              <a href="https://www.linkedin.com/in/pierre-andrieu-4103bb176/">
+              <a href="https://www.linkedin.com/in/pierre-andrieu-4103bb176/" target="_blank">
                 <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
@@ -55,10 +55,10 @@ const About = () => {
             <h3>LAIGNEAU Gregory</h3>
             <p>Developer at TerraGreen</p>
             <div>
-              <a href="https://github.com/GregoryLAIGNEAU">
+              <a href="https://github.com/GregoryLAIGNEAU" target="_blank">
                 <i className="fa-brands fa-github"></i>
               </a>
-              <a href="https://www.linkedin.com/in/gregory-laigneau-a92871119/">
+              <a href="https://www.linkedin.com/in/gregory-laigneau-a92871119/" target="_blank">
                 <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
@@ -68,10 +68,10 @@ const About = () => {
             <h3>LINARD Sami</h3>
             <p>Developer at TerraGreen</p>
             <div>
-              <a href="https://github.com/Samsou1">
+              <a href="https://github.com/Samsou1" target="_blank">
                 <i className="fa-brands fa-github"></i>
               </a>
-              <a href="https://www.linkedin.com/in/sami-linard-87ab55138/">
+              <a href="https://www.linkedin.com/in/sami-linard-87ab55138/" target="_blank">
                 <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
@@ -81,10 +81,10 @@ const About = () => {
             <h3>PEUCH Noellie</h3>
             <p>Developer at TerraGreen</p>
             <div>
-              <a href="https://github.com/pandaka87">
+              <a href="https://github.com/pandaka87" target="_blank">
                 <i className="fa-brands fa-github"></i>
               </a>
-              <a href="https://www.linkedin.com/in/noellie-peuch/">
+              <a href="https://www.linkedin.com/in/noellie-peuch/" target="_blank">
                 <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
@@ -94,10 +94,10 @@ const About = () => {
             <h3>PFEIFFER Christopher</h3>
             <p>Developer at TerraGreen</p>
             <div>
-              <a href="https://github.com/chrispfr">
+              <a href="https://github.com/chrispfr" target="_blank">
                 <i className="fa-brands fa-github"></i>
               </a>
-              <a href="https://github.com/PierreAND">
+              <a href="https://github.com/PierreAND" target="_blank">
                 <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
