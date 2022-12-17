@@ -23,7 +23,10 @@ const Hero = () => {
           <video src={videoBg} loop></video>
           <div>
             <h1>Welcome to TerraGreen</h1>
-            <p>Participate to save Earth!</p>
+            <p>Unfortunately today it needs our help: a seventh continent ("Plastic Vortex") <br /> 
+            is growing day by day with the waste that ends up in the ocean. <br />
+            You can act on your own scale by collecting the waste present in nature... <br />
+            So join us in collections near you, and share the places that need help!</p>
             <Link to="/register">Register</Link>
           </div>
           <hr/>
