@@ -6,12 +6,20 @@
 
 .formContainer {
   width: 250px;
+  margin-bottom: 2rem;
+  color: $color-green-dark;
 
   & input {
-    border: 1px solid $color-green-dark;
     padding: 12px 20px;
     margin: 8px 0;
-    border-radius: 5px;
+    border: 1px solid $color-green-dark;
+    border-radius: $border-radius-normal;
+    font-family: $font-family-content;
+
+    &:hover, :focus {
+      border: 2px solid $color-green-dark;
+      color: $color-green-dark;
+    }
 
     &[type="submit"] {
       font-family: $font-family-content;
@@ -39,22 +47,34 @@
   .formInputContainer{
     display: flex;
     flex-direction: column;
+    font-family: $font-family-content;
 
     & label {
       padding: 0.5rem 0;    
     }
 
     & select {
-      border: 1px solid $color-green-dark;
-      border-radius: 5px;
       height: 40px;
       padding: 0.5rem;
+      border: 1px solid $color-green-dark;
+      border-radius: $border-radius-normal;
+      font-family: $font-family-content;
+
+      &:hover, :focus {
+        border: 2px solid $color-green-dark;
+      }
     }
 
     & textarea {
-      border-radius: 8px;
-      border: 1px solid $color-green-dark;
       padding: 0.5rem;
+      border: 1px solid $color-green-dark;
+      border-radius: $border-radius-normal;
+      font-family: $font-family-content;
+
+      &:hover {
+        border: 2px solid $color-green-dark;
+        color: $color-green-dark;
+      }
     }
   }
 
