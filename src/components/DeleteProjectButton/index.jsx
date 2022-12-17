@@ -25,9 +25,10 @@ const DeleteProjectButton = () => {
   return (
     <div>
       <Errors errors={errors} />
-      <button onClick={handleClick} className="delete_btn">
-        Delete
-      </button>
+      <div className="deleteBtn">
+        <i className="fa-regular fa-trash-can"></i>
+        <button onClick={handleClick}>Delete</button>
+      </div>
     </div>
   );
 };

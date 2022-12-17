@@ -67,15 +67,18 @@ const ShowProject = () => {
               <p>{status}</p>
             </div>
           </div>
-          <div className="projectBtnShow">
+          <div className="projectShowBtnContainer">
             <Like likes={likes} />
-            <Link className="editBtn" to={`/editproject/${project.id}`}>Edit</Link>
-            <DeleteProjectButton className="editBtn" />
+            <Link className="projectShowBtn" to={`/editproject/${project.id}`}>Edit</Link>
+            <DeleteProjectButton />
           </div>
         </div>
       </div>
       <div className="projectAdditionnalBlocks">
-        <button onClick={() => navigate(-1)} >Go back</button>
+        <div className="backBtn">
+          <i class="fa-solid fa-arrow-left"></i>
+          <button onClick={() => navigate(-1)} >Go back</button>
+        </div>
         <CommentsContainer comments={comments} />
         <Mapping project={project}/>
       </div>
@@ -108,7 +111,7 @@ const ShowProject = () => {
                 <p>{status}</p>
               </div>
             </div>
-            <div className="projectBtnShow">
+            <div className="projectShowBtnContainer">
               <Like likes={likes} />
               <ProjectRegistration
                 projectRegistrations={projectRegistrations}
@@ -117,7 +120,10 @@ const ShowProject = () => {
           </div>
         </div>
         <div className="projectAdditionnalBlocks">
-          <button onClick={() => navigate(-1)}>Go back</button>
+          <div className="backBtn">
+            <i class="fa-solid fa-arrow-left"></i>
+            <button onClick={() => navigate(-1)} >Go back</button>
+          </div>
           <CommentsContainer comments={comments} />
           <Mapping project={project} />
         </div>

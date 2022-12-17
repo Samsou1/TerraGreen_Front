@@ -83,8 +83,7 @@
   display: inline-block;
   align-items: center;
   margin: 0.5rem;
-  color: $color-orange;
-  font-weight: lighter;
+  color: crimson;
 
   & button {
     all: unset;    
@@ -94,9 +93,14 @@
 
   &:hover {
     transition: $transition-time;
-    color: $color-yellow;
+    color: $color-orange;
     cursor: pointer;
   }
+}
+
+.myMrojectTitle {
+  padding-top: 6rem;
+  padding-bottom: 1rem;
 }
 
 @media (min-width: $breakpoint-medium-devices) { 
