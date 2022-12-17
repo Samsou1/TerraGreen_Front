@@ -47,15 +47,17 @@
     & select {
       border: 1px solid $color-green-dark;
       border-radius: 5px;
-      height: 30px;
+      height: 40px;
+      padding: 0.5rem;
     }
 
     & textarea {
       border-radius: 8px;
       border: 1px solid $color-green-dark;
+      padding: 0.5rem;
     }
   }
-  
+
   .formCheckbox {
     & label {
       padding-right: 1rem;
