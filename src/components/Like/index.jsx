@@ -43,7 +43,7 @@ const Like = ({ likes }) => {
 
   return (
     <button onClick={handleClick} className="projectShowBtn">
-      <i class={liked ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i>
+      <i className={liked ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i>
       {numberOfLikes}
     </button>
   );

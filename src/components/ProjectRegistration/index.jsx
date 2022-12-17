@@ -42,7 +42,7 @@ const ProjectRegistration = ({ projectRegistrations }) => {
 
   return (
     <div className="registerBtn">
-      <i class={registered ? "fa-solid fa-bookmark" : "fa-regular fa-bookmark"}></i>
+      <i className={registered ? "fa-solid fa-bookmark" : "fa-regular fa-bookmark"}></i>
       <button
         onClick={handleClick}
         className={registered ? "registered" : "unregistered"}
