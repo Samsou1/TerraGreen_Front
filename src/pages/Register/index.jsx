@@ -9,6 +9,7 @@ import {
 import Errors from "../../components/Errors";
 import { useSetAtom } from "jotai";
 import { userLoggedInAtom } from "../../store/user";
+import { userLoggedIn } from "../../services/user";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -45,7 +46,9 @@ function Register() {
     } else {
       try {
         await APIManager.registerUser(data);
-        setUser(true);
+        if(userLoggedIn()){
+          setUser(true);
+        }
         navigate("/");
       } catch (err) {
         setErrors([{ message: "This email is already taken" }]);
