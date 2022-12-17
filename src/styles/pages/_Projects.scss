@@ -17,7 +17,7 @@
     opacity: 85%;
   }
 
-    & .project-hero {
+    & .projectsHero {
       font-size: 2rem;
       position: absolute;
       padding-top: 2rem;
@@ -28,16 +28,10 @@
         font-size: 4rem;
         padding-top: 8rem;
       }
-      & .titlep {
+      & .projectsTitle {
         font-size:2rem;
         padding-top: 2rem;
       }
-}
-
-
-.projectsTitle {
-  margin-top: 2rem;
-  text-align: center;
 }
 
 .projectsHeader {

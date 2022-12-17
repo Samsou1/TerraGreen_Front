@@ -85,7 +85,10 @@ const Profile = () => {
             <Link className="profileBtn" to="/editprofile">
               Edit profile
             </Link>
-            <button onClick={handleClick}>Delete Profile</button>
+            <div className="deleteBtn">
+              <i className="fa-regular fa-trash-can"></i>
+              <button onClick={handleClick}>Delete Profile</button>
+            </div>
           </div>
         </div>
         <div className="profileActivities">
@@ -117,7 +120,10 @@ const Profile = () => {
             <Link className="profileBtn" to="/editprofile">
               Edit profile
             </Link>
-            <button onClick={handleClick}>Delete Profile</button>
+            <div className="deleteBtn">
+              <i className="fa-regular fa-trash-can"></i>
+              <button onClick={handleClick}>Delete Profile</button>
+            </div>
           </div>
         </div>
         <div className="profileActivities">
