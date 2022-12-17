@@ -2,8 +2,6 @@ import APIManager from "../../services/api";
 import { userLoggedIn } from "../../services/user";
 import { projectLikedByCurrentUser } from "../../services/projectLikedByCurrentUser";
 import { useEffect, useState } from "react";
-import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 
 const Like = ({ likes }) => {
