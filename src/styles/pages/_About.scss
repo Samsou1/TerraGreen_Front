@@ -35,7 +35,7 @@
 
 .card {
   border: 1px solid rgba(255, 255, 255, .25);
-  border-radius: 20px;
+  border-radius: $border-radius-plus;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.90);
   box-shadow: $box-shadow-dark;
@@ -44,7 +44,7 @@
 .aboutGoal{
   max-width: 80%;
   align-items: center;
-  border-radius: 20px;
+  border-radius: $border-radius-plus;
   gap: 1rem;
   padding: 2rem;
   margin-top: 2rem;
@@ -121,6 +121,6 @@
 @media (min-width: $breakpoint-large-devices) {
   .aboutContainer h1 {
       font-size: 8rem;
-      padding-top: 14rem;
+      padding-top: 10rem;
   }
 }

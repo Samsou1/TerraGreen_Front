@@ -6,35 +6,34 @@
   margin: 6rem 1.5rem 3rem 1.5rem;
   width: 80%;
 
-  border: 1px solid rgba(255, 255, 255, .25);
-  border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  border-radius: $border-radius-plus;
+  background-color: $bg-color-light;
+  box-shadow: $box-shadow-dark;
 
   backdrop-filter: blur(15px);
 }
 
 .profileHeader {
-  text-align: center;
   margin-bottom: 2rem;
   padding-bottom: 0.5rem;
   border-bottom: solid;
-  text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  text-shadow: $text-shadow-dark;
 }
 
 .profileContainer {
   & h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
+    text-shadow: $text-shadow-dark;
   }
   & p {
-  font-weight: 300;
   line-height: 1.2rem;
   font-size: 16px;
+  font-weight: lighter;
   }
 }
 
@@ -46,49 +45,62 @@
   margin-top: 1rem;
 
   & span {
+    margin-right: 1rem;
     color: $color-green-dark;
     font-style: italic;
-    margin-right: 1rem;
   }
 }
 
 .profileBtns {
-  margin: 2rem 0;
   display: flex;
+  flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
+  margin: 2rem 0;
   text-align: center;
 }
 
-.profileBtn, .profileBtns button {
+.profileBtn {
   all: unset;
   background-color: $color-green-dark;
   cursor: pointer;
   margin: 0 0.5rem;
   padding: 10px;
-  color: white;
+  color: #fff;
   border-radius: 10px;
   font-size: 14px;
   font-weight: 300;
-  box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
-}
-
-.profileBtn {
-  background-color: $color-green-dark;  
+  box-shadow: $box-shadow-dark;
 
   &:hover {
     transition-duration: 0.2s;
     background-color: $color-green-medium;
-    color: white;
+    color: #fff;
   }
 }
 
-.profileBtns button {
-  background-color: $color-orange;
+.deleteBtn {
+  display: inline-block;
+  align-items: center;
+  margin: 0.5rem;
+  color: crimson;
+
+  & button {
+    all: unset;    
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+  }
 
   &:hover {
-    transition-duration: 0.2s;
-    background-color: $color-yellow;
+    transition: $transition-time;
+    color: $color-orange;
+    cursor: pointer;
   }
+}
+
+.myProjectTitle {
+  padding-top: 6rem;
+  padding-bottom: 1rem;
 }
 
 @media (min-width: $breakpoint-medium-devices) { 
@@ -103,39 +115,19 @@
   }
 
   .profileInfos {
-    margin: 0 2rem;
-    border-right: solid;
     width: 50%;
   }
 
-  
-.profileActivities {
-  width: 50%;
+  .profileActivities {
+    border-left: solid;
+    width: 50%;
 
-  & h3 {
-    text-align: center;
-  }
-}
-  .profileBtns {
-    margin: 1.5rem 0;
-    display: flex;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .profileBtn, .profileBtns button {
-    all: unset;
-    background-color: $color-green-dark;
-    cursor: pointer;
-    margin: 0 1rem;
-    padding: 12px;
-    color: white;
-    border-radius: 10px;
-    font-size: 14px;
-    box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
+    & h3 {
+      text-align: center;
+    }
   }
 
-  .profileBtns button {
-    background-color: $color-orange;
+  .deleteBtn {
+    margin: 0 0.8rem;
   }
 }
