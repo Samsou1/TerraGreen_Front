@@ -24,6 +24,7 @@ const NewCommentForm = () => {
       };
       try {
         await APIManager.newComment(data);
+        setComment('')
       } catch (err) {
         setErrors([{ message: "Something went wrong" }]);
       }
