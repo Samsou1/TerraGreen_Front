@@ -13,7 +13,7 @@ const NewCommentForm = () => {
     setErrors([]);
     if (!validateComment(comment)) {
       setErrors([
-        { message: "Your comment must be at least 5 characters long" },
+        { message: "Your comment must be at least 3 characters long and be without special characters" },
       ]);
     } else {
       const data = {
