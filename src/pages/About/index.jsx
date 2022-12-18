@@ -45,7 +45,7 @@ const About = () => {
               <a href="https://github.com/PierreAND" target="_blank">
                 <i className="fa-brands fa-github"></i>
               </a>
-              <a href="https://github.com/PierreAND" target="_blank">
+              <a href="https://www.linkedin.com/in/pierre-andrieu-4103bb176/" target="_blank">
                 <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
@@ -58,7 +58,7 @@ const About = () => {
               <a href="https://github.com/GregoryLAIGNEAUD" target="_blank">
                 <i className="fa-brands fa-github"></i>
               </a>
-              <a href="https://github.com/PierreAND" target="_blank">
+              <a href="https://www.linkedin.com/in/gregory-laigneau-a92871119/" target="_blank">
                 <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
@@ -71,7 +71,7 @@ const About = () => {
               <a href="https://github.com/Samsou1" target="_blank">
                 <i className="fa-brands fa-github"></i>
               </a>
-              <a href="https://github.com/PierreAND" target="_blank">
+              <a href="https://www.linkedin.com/in/sami-linard-87ab55138/" target="_blank">
                 <i className="fa-brands fa-linkedin"></i>
               </a>
             </div>
