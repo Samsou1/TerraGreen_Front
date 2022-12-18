@@ -2,6 +2,7 @@ import Hero from "../../components/Hero";
 import home1 from "../../assets/images/home1.png";
 import home2 from "../../assets/images/home2.png";
 import home3 from "../../assets/images/home3.png";
+import ProjectCards from "../../components/ProjectCards";
 
 const Home = () => {
   return (
@@ -35,20 +36,8 @@ const Home = () => {
           </p>
         </article>
       </section>
-      <h1 className="title-home">You can also take inspiration from some!</h1>
-      <section className="carousel-container">
-        <input type="radio" name="position" />
-        <input type="radio" name="position" />
-        <input type="radio" name="position" />
-        <input type="radio" name="position" />
-        <input type="radio" name="position" />
-        <article id="carousel">
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-        </article>
+      <section className="projecthome">
+        <ProjectCards/>
       </section>
     </>
   );
