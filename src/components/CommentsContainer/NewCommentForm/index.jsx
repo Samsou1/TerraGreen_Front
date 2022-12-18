@@ -24,7 +24,7 @@ const NewCommentForm = () => {
       };
       try {
         await APIManager.newComment(data);
-        setComment('')
+        setComment("");
       } catch (err) {
         setErrors([{ message: "Something went wrong" }]);
       }
@@ -39,7 +39,9 @@ const NewCommentForm = () => {
     <div>
       <Errors errors={errors}></Errors>
       <form onSubmit={handleSumbit} className="commentForm">
-        <label htmlFor="commentLabel"><h3>New comment</h3></label>
+        <label htmlFor="commentLabel">
+          <h3>New comment</h3>
+        </label>
         <input
           onChange={(e) => setComment(e.target.value)}
           value={comment}
