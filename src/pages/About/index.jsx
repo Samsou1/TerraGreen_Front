@@ -55,7 +55,7 @@ const About = () => {
             <h3>LAIGNEAU Gregory</h3>
             <p>Developer at TerraGreen</p>
             <div>
-              <a href="https://github.com/GregoryLAIGNEAUD" target="_blank">
+              <a href="https://github.com/GregoryLAIGNEAU" target="_blank">
                 <i className="fa-brands fa-github"></i>
               </a>
               <a href="https://www.linkedin.com/in/gregory-laigneau-a92871119/" target="_blank">
