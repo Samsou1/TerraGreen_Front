@@ -42,13 +42,8 @@ const Like = ({ likes }) => {
   };
 
   return (
-    <button onClick={handleClick}>
-      <FontAwesomeIcon
-        className={liked ? "liked" : "unliked"}
-        icon={faThumbsUp}
-      >
-        {numberOfLikes}
-      </FontAwesomeIcon>
+    <button onClick={handleClick} className="projectShowBtn">
+      <i class={liked ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i>
       {numberOfLikes}
     </button>
   );
