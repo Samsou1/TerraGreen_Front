@@ -17,6 +17,7 @@ import MyProjects from "./pages/MyProjects";
 import EditProject from "./pages/EditProject";
 import NewPassword from "./pages/NewPassword"
 import {createContext, useState} from "react";
+import NotFound from "./pages/NotFound";
 
 import CookieConsent from "react-cookie-consent";
 
