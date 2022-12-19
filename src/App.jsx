@@ -15,8 +15,9 @@ import ShowProject from "./pages/ShowProject";
 import NewProject from "./pages/NewProject";
 import MyProjects from "./pages/MyProjects";
 import EditProject from "./pages/EditProject";
-import NewPassword from "./pages/NewPassword"
-import {createContext, useState} from "react";
+import NewPassword from "./pages/NewPassword";
+import { createContext, useState } from "react";
+import NotFound from "./pages/NotFound";
 
 import CookieConsent from "react-cookie-consent";
 
@@ -37,15 +38,17 @@ function App() {
         declineButtonStyle={{ backgroundColor: "#DB0A26", borderRadius: "5px" }}
       >
         This website uses cookies to enhance the user experience. It will only
-        store your session, your email address and any other information you write in
-        your profile. You can delete your account at any moment.
+        store your session, your email address and any other information you
+        write in your profile. You can delete your account at any moment.
       </CookieConsent>
       <Navbar />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/*" element={<NotFound />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/new_password" element={<NewPassword />} />
           <Route path="/projects/:id" element={<ShowProject />} />
           <Route element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
@@ -67,7 +70,6 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/resetpassword" element={<Resetpassword />} />
-            <Route path="/new_password" element={<NewPassword/>} />
           </Route>
         </Routes>
       </main>
