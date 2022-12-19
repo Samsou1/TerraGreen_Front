@@ -1,39 +1,36 @@
 .showContainer {
-  width: 85%;
-  margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
   padding-top: 6rem;
+  margin-bottom: 3rem;
+  width: 90%;
 }
 
 .projectWrapper {
-  width: 90%;
-  height: auto;
   margin: 1.8rem auto;
-  border-radius: 7px 7px 7px 7px;
-  /* VIA CSS MATIC https://goo.gl/cIbnS */
-  -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  height: auto;
+  border-radius: $border-radius-plus;
+  box-shadow: $box-shadow-dark;
+  background-color: $bg-color-light;
 }
 
 .projectImg img {
-  width: 100%;
-  border-radius: 7px;
   object-fit: cover;
+  width: 100%;
+  border-top-left-radius: $border-radius-plus;
+  border-top-right-radius: $border-radius-plus;
 }
 
 .projectInfos {
-  border-radius: 0 7px 10px 7px;
   padding: 1.5rem;
 }
 
 .projectDescription {
   width: 100%;
   & h1 {
-    font-size: 34px;
     margin-bottom: 0.8rem;
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
+    font-size: 1.5;
+    text-shadow: $text-shadow-dark;
   }
 
   & h2 {
@@ -41,7 +38,7 @@
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 0.1em;
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
+    text-shadow: $text-shadow-dark;
   }
 
   & p {
@@ -59,8 +56,9 @@
     letter-spacing: 0.1em;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
+    text-shadow: $text-shadow-dark;
   }
+
   & p {
   font-weight: 300;
   line-height: 1.2rem;
@@ -75,42 +73,70 @@
     letter-spacing: 0.1em;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
+    text-shadow: $text-shadow-dark;
   }
+
   & p {
   line-height: 1.2rem;
   font-size: 16px;
   }
 }
 
-.projectBtnShow {
+.projectShowBtnContainer {
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
-.projectBtnShow button, 
-.editBtn {
+.projectShowBtn, .backBtn {
   all: unset;
   display: inline-block;
-  padding: 1rem;
-  margin: 0.2rem;
-  box-sizing: border-box;
-  border: transparent;
-  border-radius: 40px;
-  font-size: 11px;
-  font-weight: 300;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: #ffffff;
+  align-items: center;
+  padding: 6px 10px;
+  margin: 4px;
+  border-radius: $border-radius-normal;
+  color: #fff;
+  font-size: 14px;
   background-color: $color-green-dark;
-  cursor: pointer;
-  outline: none;
-  box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: $box-shadow-dark;
+
+  & button {
+    all: unset;
+    padding-left: 0.5rem;
+  }
 
   &:hover {
-    transition-duration: 0.2s;
+    transition: $transition-time;
+    color:#fff;
     background-color: $color-green-medium;
-    color:#ffffff
+    cursor: pointer;
+  }
+
+  & i {
+    margin-right: 5px;
+  }
+}
+
+.registerBtn {
+  display: inline-block;
+  align-items: center;
+  padding: 6px 10px;
+  margin: 4px;
+  border-radius: $border-radius-normal;
+  color: #fff;
+  background-color: $color-green-dark;
+  box-shadow: $box-shadow-dark;
+
+  & button {
+    all: unset;
+    padding-left: 0.5rem;
+  }
+
+  &:hover {
+    transition: $transition-time;
+    background-color: $color-green-medium;
+    cursor: pointer;
   }
 }
 
@@ -118,30 +144,66 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 1rem;
 
   & h3 {
     margin: 20px;
   }
+}
 
-  & button {
-    all: unset;
-    padding: 0.7rem;
-    margin: 0.2rem;
-    border-radius: 40px;
-    font-weight: 300;
-    color: #ffffff;
-    background-color: $color-green-dark;
-    cursor: pointer;
-    outline: none;
-    text-align: center;
-    width: 80px;
-    box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
-  
-    &:hover {
-      transition-duration: 0.2s;
-      background-color: $color-green-medium;
-    }
-  }
+.notificationsContainer {
+  margin: 1rem 2rem;
+}
+
+// Progress bar
+
+.progressBar {
+  text-align: center;
+  margin: 0 auto;
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: $border-radius-plus;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.progress-bar {
+  height: 16px;
+  border-radius: $border-radius-plus;
+	background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.04));
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.04));
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.04));
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.04));
+  -webkit-transition: 0.4s linear;
+  -moz-transition: 0.4s linear;
+  -o-transition: 0.4s linear;
+  transition: 0.4s linear;
+  -webkit-transition-property: width, background-color;
+  -moz-transition-property: width, background-color;
+  -o-transition-property: width, background-color;
+  transition-property: width, background-color;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: $box-shadow-dark;
+}
+
+.progress-bar[id='To plan'] {
+  width: 5%;
+  background-color: #f63a0f;
+}
+
+.progress-bar[id='Planned'] {
+  width: 35%;
+  background-color: $color-orange;
+}
+
+.progress-bar[id='In progress'] {
+  width: 75%;
+  background-color: #f2d31b;
+}
+
+.progress-bar[id='Done'] {
+  width: 100%;
+  background-color: $color-green-dark;
 }
 
 @media (min-width: $breakpoint-medium-devices) {
@@ -154,16 +216,16 @@
     display: flex;
     flex-direction: row;
     height: auto;
-    margin: 1.8rem auto;
   }
 
   .projectImg {
     width: 45%;
+
     & img {
       height: 100%;
-      border-radius: 7px 0 0 7px;
+      border-bottom-left-radius: $border-radius-plus;
+      border-top-left-radius: $border-radius-plus;
+      border-top-right-radius: 0;
     }
   }
-  
-  .projectBtnShow button { margin: 1rem }
 }
