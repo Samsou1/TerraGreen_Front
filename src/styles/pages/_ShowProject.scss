@@ -140,32 +140,6 @@
   }
 }
 
-// .projectShowBtnContainer button, 
-// .editBtn {
-//   all: unset;
-//   display: inline-block;
-//   padding: 1rem;
-//   margin: 0.2rem;
-//   box-sizing: border-box;
-//   border: transparent;
-//   border-radius: 40px;
-//   font-size: 11px;
-//   font-weight: 300;
-//   text-transform: uppercase;
-//   letter-spacing: 0.2em;
-//   color: #fff;
-//   background-color: $color-green-dark;
-//   cursor: pointer;
-//   outline: none;
-//   box-shadow: $box-shadow-dark;
-
-//   &:hover {
-//     transition-duration: 0.2s;
-//     background-color: $color-green-medium;
-//     color:#fff;
-//   }
-// }
-
 .projectAdditionnalBlocks {
   display: flex;
   flex-direction: column;
@@ -175,6 +149,61 @@
   & h3 {
     margin: 20px;
   }
+}
+
+.notificationsContainer {
+  margin: 1rem 2rem;
+}
+
+// Progress bar
+
+.progressBar {
+  text-align: center;
+  margin: 0 auto;
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: $border-radius-plus;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.progress-bar {
+  height: 16px;
+  border-radius: $border-radius-plus;
+	background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.04));
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.04));
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.04));
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.04));
+  -webkit-transition: 0.4s linear;
+  -moz-transition: 0.4s linear;
+  -o-transition: 0.4s linear;
+  transition: 0.4s linear;
+  -webkit-transition-property: width, background-color;
+  -moz-transition-property: width, background-color;
+  -o-transition-property: width, background-color;
+  transition-property: width, background-color;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: $box-shadow-dark;
+}
+
+.progress-bar[id='To plan'] {
+  width: 5%;
+  background-color: #f63a0f;
+}
+
+.progress-bar[id='Planned'] {
+  width: 35%;
+  background-color: $color-orange;
+}
+
+.progress-bar[id='In progress'] {
+  width: 75%;
+  background-color: #f2d31b;
+}
+
+.progress-bar[id='Done'] {
+  width: 100%;
+  background-color: $color-green-dark;
 }
 
 @media (min-width: $breakpoint-medium-devices) {
@@ -199,6 +228,4 @@
       border-top-right-radius: 0;
     }
   }
-  
-  // .projectShowBtnContainer button { margin: 1rem }
 }

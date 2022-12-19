@@ -64,7 +64,9 @@ const ShowProject = () => {
             </div>
             <div className="projectStatus">
               <h3>Status</h3>
-              <p>{status}</p>
+              <div className="progressBar">
+                <div className="progress-bar" id={status}></div>
+              </div>
             </div>
           </div>
           <div className="projectShowBtnContainer">
@@ -108,7 +110,9 @@ const ShowProject = () => {
               </div>
               <div className="projectStatus">
                 <h3>Status</h3>
-                <p>{status}</p>
+                <div className="progressBar">
+                  <div className="progress-bar" id={status}></div>
+                </div>
               </div>
             </div>
             <div className="projectShowBtnContainer">
