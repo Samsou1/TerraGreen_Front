@@ -9,14 +9,15 @@
   position: relative;
   & .img1 {
     width: 100%;
-    height: calc(100vh - 350px);
+    height: calc(100vh - 290px);
     object-fit: cover;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    box-shadow: 0 10px 20px 1px grey;
+    box-shadow: $box-shadow-hero;
+    opacity: 85%;
   }
 
-    & .project-hero {
+    & .projectsHero {
       font-size: 2rem;
       position: absolute;
       padding-top: 2rem;
@@ -27,16 +28,10 @@
         font-size: 4rem;
         padding-top: 8rem;
       }
-      & .titlep {
+      & .projectsTitle {
         font-size:2rem;
         padding-top: 2rem;
       }
-}
-
-
-.projectsTitle {
-  margin-top: 2rem;
-  text-align: center;
 }
 
 .projectsHeader {
@@ -54,11 +49,11 @@
   padding: 12px;
   margin: 5px;
   border: none;
-  border-radius: 8px;
+  border-radius: $border-radius-normal;
   width: 150px;
   text-align: center;
   cursor: pointer;
-  box-shadow: 2px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: $box-shadow-dark;
   & a {
     all: unset;
     font-family: $font-family-content;
@@ -81,7 +76,7 @@
           font-size: 8rem;
           padding-top: 8rem;
     }
-    & .titlep {
+    & .projectsTitle {
       font-size:2rem;
       padding-top: 2rem;
     }
@@ -95,7 +90,7 @@
     }
           & h1 {
             font-size: 8rem;
-            padding-top: 6rem;
+            padding-top: 10rem;
           }
   }
 }

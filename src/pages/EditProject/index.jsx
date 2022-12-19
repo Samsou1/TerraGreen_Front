@@ -156,10 +156,10 @@ const EditProject = () => {
 
   return (
     <>
-      <h1 className="new-title">Edit project</h1>
+      <h1 className="formTitle">Edit project</h1>
       <Errors errors={errors} />
-      <form onSubmit={handleSubmit} className="new-container-form">
-        <div className="input-container">
+      <form onSubmit={handleSubmit} className="formContainer">
+        <div className="formInputContainer">
           <label htmlFor="title">Title</label>
           <input
             onChange={(e) => setTitle(e.target.value)}
@@ -169,7 +169,7 @@ const EditProject = () => {
             placeholder="Title"
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="content">Content</label>
           <textarea
             onChange={(e) => setContent(e.target.value)}
@@ -178,7 +178,7 @@ const EditProject = () => {
             placeholder="Content"
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="date">Date</label>
           <input
             onChange={(e) => setDate(e.target.value)}
@@ -188,7 +188,7 @@ const EditProject = () => {
             placeholder="Date"
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="address">Address</label>
           <input
             onChange={(e) => setAddress(e.target.value)}
@@ -198,7 +198,7 @@ const EditProject = () => {
             placeholder="Address"
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="city">City</label>
           <input
             onChange={(e) => setCity(e.target.value)}
@@ -208,7 +208,7 @@ const EditProject = () => {
             placeholder="City"
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="postalCode">ZIP Code</label>
           <input
             onChange={(e) => setPostalCode(e.target.value)}
@@ -218,7 +218,7 @@ const EditProject = () => {
             placeholder="Postal Code"
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="project_status_id">Status</label>
           <select
             onChange={(e) => setStatus(e.target.value)}
@@ -238,7 +238,7 @@ const EditProject = () => {
             })}
           </select>
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="region_id">Region</label>
           <select
             onChange={(e) => setRegion(e.target.value)}
@@ -258,7 +258,7 @@ const EditProject = () => {
             })}
           </select>
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="country_id">Country</label>
           <select
             onChange={(e) => setCountry(e.target.value)}
@@ -278,13 +278,13 @@ const EditProject = () => {
             })}
           </select>
         </div>
-        <div id="image-container">
+        <div className="formInputContainer">
           <label htmlFor="image">Image</label>
           <input type="file" name="image" id="image" />
         </div>
         <input type="submit" value="Update" />
       </form>
-      <div>{image && <img src={image} alt="The current file" />}</div>
+      
     </>
   );
 };

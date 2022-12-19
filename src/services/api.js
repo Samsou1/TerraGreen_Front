@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 let BASE_URL;
 switch (process.env.NODE_ENV) {
   case "production":
-    url = "https://terra-green.fly.dev/";
+    BASE_URL = "https://terra-green-2.fly.dev";
     break;
   case "development":
     BASE_URL = "http://localhost:3000";
@@ -256,6 +256,24 @@ export default class APIManager {
     } catch (err) {
       throw new Error(err);
     }
+  }
+
+  static async setResetPassword(payload) {
+    try {
+      const response = await API.post('/users/password', payload);
+      return response.data
+    }catch (err) {
+      throw new Error(err);
+  }
+  }
+
+  static async setNewPassword(payload) {
+    try {
+      const response = await API.patch('/users/password', payload);
+      return response.data
+    }catch (err) {
+      throw new Error(err);
+  }
   }
 
   static async deleteUser() {

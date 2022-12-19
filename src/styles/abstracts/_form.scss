@@ -1,0 +1,117 @@
+.formTitle {
+  padding-top: 6rem;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.formContainer {
+  width: 250px;
+  margin-bottom: 2rem;
+  color: $color-green-dark;
+
+  & input {
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid $color-green-dark;
+    border-radius: $border-radius-normal;
+    font-family: $font-family-content;
+
+    &:hover, :focus {
+      border: 2px solid $color-green-dark;
+      color: $color-green-dark;
+    }
+
+    &[type="submit"] {
+      font-family: $font-family-content;
+      font-size: 16px;
+      font-weight: lighter;
+      background-color: $color-green-dark;
+      color: #fff;
+      padding: 15px 0;
+      margin: 1rem 0 50px 0;
+      border: none;
+      letter-spacing: 0.1rem;
+      border-radius: 8px;
+      width: 100%;
+      box-shadow: $box-shadow-dark;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $color-green-medium;
+        transition: $transition-time;
+        padding: 17px 0;
+      }
+    }
+  }
+
+  .formInputContainer{
+    display: flex;
+    flex-direction: column;
+    font-family: $font-family-content;
+
+    & label {
+      padding: 0.5rem 0;    
+    }
+
+    & select {
+      height: 40px;
+      padding: 0.5rem;
+      border: 1px solid $color-green-dark;
+      border-radius: $border-radius-normal;
+      font-family: $font-family-content;
+
+      &:hover, :focus {
+        border: 2px solid $color-green-dark;
+      }
+    }
+
+    & textarea {
+      padding: 0.5rem;
+      border: 1px solid $color-green-dark;
+      border-radius: $border-radius-normal;
+      font-family: $font-family-content;
+
+      &:hover {
+        border: 2px solid $color-green-dark;
+        color: $color-green-dark;
+      }
+    }
+  }
+
+  .formCheckbox {
+    & label {
+      padding-right: 1rem;
+    }
+  }
+
+  .forgotPsswd {
+    float: right;
+  }
+
+  .formBtn {
+    font-family: $font-family-content;
+    font-size: 16px;
+    background-color: $color-green-dark;
+    color: #fff;
+    padding: 15px 0;
+    margin: 1rem 0 50px 0;
+    border: none;
+    letter-spacing: 0.1rem;
+    border-radius: 8px;
+    width: 100%;
+    box-shadow: $box-shadow-dark;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-green-medium;
+      transition: $transition-time;
+      padding: 17px 0;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-medium-devices) {
+  .formContainer {
+    min-width: 400px;
+  }
+}

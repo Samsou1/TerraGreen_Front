@@ -18,7 +18,6 @@ const Profile = () => {
         setUser(data);
         setCountryID(data.country_id);
         setRegionID(data.region_id);
-        setNotification(data.notification_subscription);
       });
     };
     fetchProfile().catch(console.error);
@@ -79,14 +78,17 @@ const Profile = () => {
           <p>{user.username}</p>
           <p>{user.email}</p>
           <p className="notifications">
-          <span>Do I want to receive notifications?</span>
+            <span>Do I want to receive notifications?</span>
             {user.notification_subscription ? " Yes" : " No"}
           </p>
           <div className="profileBtns">
             <Link className="profileBtn" to="/editprofile">
               Edit profile
             </Link>
-            <button onClick={handleClick}>Delete Profile</button>
+            <div className="deleteBtn">
+              <i className="fa-regular fa-trash-can"></i>
+              <button onClick={handleClick}>Delete Profile</button>
+            </div>
           </div>
         </div>
         <div className="profileActivities">
@@ -118,7 +120,10 @@ const Profile = () => {
             <Link className="profileBtn" to="/editprofile">
               Edit profile
             </Link>
-            <button onClick={handleClick}>Delete Profile</button>
+            <div className="deleteBtn">
+              <i className="fa-regular fa-trash-can"></i>
+              <button onClick={handleClick}>Delete Profile</button>
+            </div>
           </div>
         </div>
         <div className="profileActivities">

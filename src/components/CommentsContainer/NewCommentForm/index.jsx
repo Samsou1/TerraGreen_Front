@@ -13,7 +13,7 @@ const NewCommentForm = () => {
     setErrors([]);
     if (!validateComment(comment)) {
       setErrors([
-        { message: "Your comment must be at least 5 characters long" },
+        { message: "Your comment must be at least 3 characters long and be without special characters" },
       ]);
     } else {
       const data = {
@@ -24,6 +24,7 @@ const NewCommentForm = () => {
       };
       try {
         await APIManager.newComment(data);
+        setComment("");
       } catch (err) {
         setErrors([{ message: "Something went wrong" }]);
       }
@@ -38,17 +39,18 @@ const NewCommentForm = () => {
     <div>
       <Errors errors={errors}></Errors>
       <form onSubmit={handleSumbit} className="commentForm">
-        <div className="commentInput">
-          <label htmlFor="commentLabel">New comment </label>
-          <input
-            onChange={(e) => setComment(e.target.value)}
-            value={comment}
-            type="text"
-            id="comment"
-            placeholder="Comment"
-          />
-        </div>
-        <input type="submit" value="Post" />
+        <label htmlFor="commentLabel">
+          <h3>New comment</h3>
+        </label>
+        <input
+          onChange={(e) => setComment(e.target.value)}
+          value={comment}
+          type="text"
+          className="commentInput"
+          id="comment"
+          placeholder="Comment"
+        />
+        <input type="submit" value="Post" className="commentBtn" />
       </form>
     </div>
   );

@@ -134,13 +134,13 @@ function FileForm() {
 
   return (
     <div>
-      <h1 className="newproject-title">Create your project:</h1>
+      <h1 className="formTitle">Create your project</h1>
       <Errors errors={errors}></Errors>
       <form
         onSubmit={(event) => handleSubmit(event)}
-        className="newproject-form-container"
+        className="formContainer"
       >
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -149,7 +149,7 @@ function FileForm() {
             placeholder="CleanForest..."
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="content">Content</label>
           <input
             type="text"
@@ -158,11 +158,11 @@ function FileForm() {
             placeholder="To reduce polution..."
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="date">Date</label>
           <input type="date" name="date" id="date" />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="address">Address</label>
           <input
             type="text"
@@ -171,11 +171,11 @@ function FileForm() {
             placeholder="18 rue barthelemy"
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="city">City</label>
           <input type="text" name="city" id="city" placeholder="Paris" />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="postal_code">Postal Code</label>
           <input
             type="text"
@@ -184,7 +184,7 @@ function FileForm() {
             placeholder="75000"
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="project_status_id">Status</label>
           <select id="status" name="status">
             {projectStatusesOptions.map((projectStatusesOption) => {
@@ -199,7 +199,7 @@ function FileForm() {
             })}
           </select>
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="region_id">Region</label>
           <select id="region" name="region">
             {regionOptions.map((regionOption) => {
@@ -214,7 +214,7 @@ function FileForm() {
             })}
           </select>
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="country_id">Country</label>
           <select
             id="country"
@@ -234,11 +234,11 @@ function FileForm() {
             })}
           </select>
         </div>
-        <div id="image-container">
+        <div className="formInputContainer">
           <label htmlFor="image">Image</label>
-          <input type="file" name="image" id="image" />
+          <input type="file" name="image" />
         </div>
-        <input type="submit" value="Create project" />
+        <input type="submit" value="Create project"  />
       </form>
     </div>
   );

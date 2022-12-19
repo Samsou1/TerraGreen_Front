@@ -6,8 +6,6 @@ import { userLoggedInAtom } from "../../store/user";
 import { useAtomValue } from "jotai";
 
 const Navbar = () => {
-
-
   const userLoggedIn = useAtomValue(userLoggedInAtom);
   const [toggleMenu, setToggleMenu] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
@@ -28,20 +26,20 @@ const Navbar = () => {
   }, []);
 
   //change nav color when scroling
-  const [color, setColor] = useState(false)
+  const [color, setColor] = useState(false);
   const changeColor = () => {
-    if (window.scrollY >= 90 ) {
-      setColor(true)
+    if (window.scrollY >= 90) {
+      setColor(true);
     } else {
-      setColor()
+      setColor();
     }
-  }
+  };
 
-  window.addEventListener('scroll', changeColor);
+  window.addEventListener("scroll", changeColor);
 
   if (userLoggedIn) {
     return (
-      <header className={color ? 'header header-bg' : 'header'}>
+      <header className={color ? "header header-bg" : "header"}>
         <div>
           <Link to="/">
             <img src={logo} alt="logo"></img>
@@ -63,10 +61,17 @@ const Navbar = () => {
                 <Link to="/projects">Projects</Link>
               </li>
               <li>
-                <div className="sec-center"> 	
-                  <input className="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
-                  <label className="for-dropdown" htmlFor="dropdown">Profile</label>
-                  <div className="section-dropdown"> 
+                <div className="navDropdown">
+                  <input
+                    className="dropdown"
+                    type="checkbox"
+                    id="dropdown"
+                    name="dropdown"
+                  />
+                  <label className="for-dropdown" htmlFor="dropdown">
+                    Profile
+                  </label>
+                  <div className="section-dropdown">
                     <Link to="/profile">Profile</Link>
                     <Link to="/myprojects">My projects</Link>
                     <LogoutButton />
@@ -127,7 +132,7 @@ const Navbar = () => {
     );
   } else {
     return (
-      <header className={color ? 'header header-bg' : 'header'}>
+      <header className={color ? "header header-bg" : "header"}>
         <div>
           <Link to="/">
             <img src={logo} alt="logo"></img>
@@ -149,10 +154,21 @@ const Navbar = () => {
                 <Link to="/projects">Projects</Link>
               </li>
               <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/register">Register</Link>
+                <div className="navDropdown">
+                  <input
+                    className="dropdown"
+                    type="checkbox"
+                    id="dropdown"
+                    name="dropdown"
+                  />
+                  <label className="for-dropdown" htmlFor="dropdown">
+                    Connect
+                  </label>
+                  <div className="section-dropdown">
+                    <Link to="/login">Login</Link>
+                    <Link to="/register">Register</Link>
+                  </div>
+                </div>
               </li>
             </ul>
           )}

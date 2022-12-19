@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Errors from "../../components/Errors";
 import { useSetAtom } from "jotai";
 import { userLoggedInAtom } from "../../store/user";
+import { userLoggedIn } from "../../services/user";
 
 function Login() {
   const navigate = useNavigate();
@@ -24,7 +25,9 @@ function Login() {
     };
     try {
       await APIManager.loginUser(data);
-      setUser(true);
+      if (userLoggedIn()) {
+        setUser(true);
+      }
       navigate("/");
     } catch (err) {
       setErrors([{ message: "Invalid password or email" }]);
@@ -33,10 +36,10 @@ function Login() {
 
   return (
     <>
-      <h1 className="login-title">Login</h1>
+      <h1 className="formTitle">Login</h1>
       <Errors errors={errors}></Errors>
-      <form onSubmit={handleSubmit} className="login-form-container">
-        <div className="input-container">
+      <form onSubmit={handleSubmit} className="formContainer">
+        <div className="formInputContainer">
           <label htmlFor="username">Email</label>
           <input
             onChange={(e) => setEmail(e.target.value)}
@@ -46,7 +49,7 @@ function Login() {
             placeholder="Email"
           />
         </div>
-        <div className="input-container">
+        <div className="formInputContainer">
           <label htmlFor="password">Password</label>
           <input
             onChange={(e) => setPassword(e.target.value)}
@@ -56,11 +59,11 @@ function Login() {
             placeholder="Password"
           />
         </div>
-        <Link className="login-forgot-password" to="/resetpassword">
+        <Link className="forgotPsswd" to="/resetpassword">
           Forgot your password?
         </Link>
         <input type="submit" value="Login" />
-        <div className="login-no-account">
+        <div>
           <p>
             Don't have an account?{" "}
             <span>

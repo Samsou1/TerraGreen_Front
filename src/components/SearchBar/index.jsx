@@ -30,13 +30,14 @@ const SearchBar = () => {
     <>
       <Errors errors={errors} />
       <form onSubmit={handleSubmit} className="searchForm">
-      <i className="fa-solid fa-magnifying-glass"></i>
+        <i className="fa-solid fa-magnifying-glass"></i>
         <input
           onChange={(e) => setSearch(e.target.value)}
           value={search}
           type="text"
           id="search"
           placeholder="Location"
+          className="searchInput"
         />
       </form>
     </>

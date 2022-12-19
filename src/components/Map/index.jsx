@@ -30,11 +30,11 @@ function Map({ coords, name }) {
               alt="no img"
             />
             <div className="m-2" style={popupHead}>
-              Le site de nettoyage
+              Cleaning area
             </div>
             <span style={popupText}>
-              Ici se trouve le site, sur lequel tu te rendras pour participer au projet <strong>"{name}"</strong>
-              <br/>N'oublie pas ton matériel nécessaire au nettoyage d'une zone (gants, bottes et sacs)
+              Here you can find the area that needs cleaning. That's where the group will gather on the day of the event: <strong>"{name}"</strong>
+              <br/>Don't forget to bring your gear to clean up the area (gloves, boots et trashbags)
             </span>
           </div>
         </Popup>
