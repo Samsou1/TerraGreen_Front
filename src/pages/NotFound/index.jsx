@@ -3,7 +3,7 @@ import MarkdownView from 'react-showdown';
 import { useNavigate } from 'react-router-dom';
 
 function NotFound() {
-const markdown = `###Ooooops !! You weren't supposed to see this !! The page you're looking fot no longer exists :dash: :exclamation:
+const markdown = `###Ooooops !! You weren't supposed to see this !! The page you're looking for no longer exists :dash: :exclamation:
 `
 const navigate = useNavigate()
   return (
